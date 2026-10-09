@@ -69,6 +69,9 @@ return [
 
     'timezone' => env('APP_TIMEZONE', 'Asia/Tokyo'),
 
+    // IP アドレスのハッシュ用の秘密鍵(設計書14章)。空なら APP_KEY を使う
+    'ip_hash_secret' => env('IP_HASH_SECRET', ''),
+
     /*
     |--------------------------------------------------------------------------
     | Application Locale Configuration

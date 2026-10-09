@@ -1,0 +1,118 @@
+name: Release
+
+# リリースの作り方(実装指示書 3.1・フェーズ1)
+#  - 正式版: 人が `vYY.M.N` のタグを push する(Claude Code は作らない)
+#  - ベータ: Actions の「Run workflow」から、タグ名を入れて beta を ON にして実行する(プレリリース「【BETA】vYY.M.N」になる)
+# どちらも、テスト → 配布用ZIPの作成(vendor・ビルド済みアセット・VERSION・public/.htaccess を含み、.env・tests を除く)→ Release に添付、の順。
+
+on:
+  push:
+    tags: ['v[0-9][0-9].[0-9]*.[0-9]*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'タグ名(vYY.M.N。例 v26.10.1)'
+        required: true
+        type: string
+      beta:
+        description: 'ベータ(プレリリース)として出す'
+        required: true
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    services:
+      mysql:
+        image: mysql:8.0.46
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: doinaka_test
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -uroot -proot"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=20
+
+    env:
+      DB_CONNECTION: mysql
+      DB_HOST: 127.0.0.1
+      DB_PORT: 3306
+      DB_DATABASE: doinaka_test
+      DB_USERNAME: root
+      DB_PASSWORD: root
+
+    steps:
+      - name: タグ名と種類を決める
+        id: meta
+        env:
+          INPUT_TAG: ${{ inputs.tag }}
+          INPUT_BETA: ${{ inputs.beta }}
+          EVENT: ${{ github.event_name }}
+          REF_NAME: ${{ github.ref_name }}
+        run: |
+          if [ "$EVENT" = "workflow_dispatch" ]; then
+            tag="$INPUT_TAG"; beta="$INPUT_BETA"
+          else
+            tag="$REF_NAME"; beta="false"
+          fi
+          if ! echo "$tag" | grep -Eq '^v[0-9]{2}\.([1-9]|1[0-2])\.[1-9][0-9]*$'; then
+            echo "タグ名は vYY.M.N の形にしてください(例 v26.10.1): $tag"; exit 1
+          fi
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "beta=$beta" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: pdo_mysql, mbstring, intl, gd, imagick, zip, bcmath, exif, fileinfo
+          tools: composer:v2
+          coverage: none
+          ini-values: post_max_size=110M, upload_max_filesize=10M, memory_limit=512M, date.timezone=Asia/Tokyo
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - run: composer install --no-interaction --no-progress --prefer-dist
+      - run: npm ci
+
+      - name: テスト(Pint・Larastan・ビルド・Pest)
+        run: |
+          ./vendor/bin/pint --test
+          ./vendor/bin/phpstan analyse --memory-limit=1G --no-progress
+          npm run build
+          ./vendor/bin/pest
+
+      - name: 配布用ZIPを作る(本番用の vendor とビルド済みアセット)
+        env:
+          TAG: ${{ steps.meta.outputs.tag }}
+        run: |
+          composer install --no-dev --optimize-autoloader --no-interaction --no-progress
+          npm ci
+          npm run build
+          php artisan release:build --release-version="$TAG" --output="dist/doinaka-$TAG.zip"
+          ls -l "dist/doinaka-$TAG.zip"
+
+      - name: Release を作って ZIP を添付する
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.meta.outputs.tag }}
+          BETA: ${{ steps.meta.outputs.beta }}
+        run: |
+          if [ "$BETA" = "true" ]; then
+            gh release create "$TAG" "dist/doinaka-$TAG.zip" --target "$GITHUB_SHA" --title "【BETA】$TAG" --generate-notes --prerelease
+          else
+            gh release create "$TAG" "dist/doinaka-$TAG.zip" --target "$GITHUB_SHA" --title "$TAG" --generate-notes
+          fi

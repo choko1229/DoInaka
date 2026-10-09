@@ -21,6 +21,16 @@
 - [ ] (フェーズ0)GitHub の main のブランチ保護(「ci」の成功を必須)が有効か Settings → Branches で見る(非公開リポジトリで無料プランだと設定できない。できなかった場合は decisions.md の記録を見る)
 - [ ] (フェーズ0)リリースZIP(`php artisan release:build`)を展開し、`.env`・`tests` が入っていないことを目で確かめる(自動テストでも確認済み)
 
+## フェーズ1で追加
+
+- [ ] (フェーズ1)kagoya にリリースZIPを展開し(docs/operations.md の「設置」)、`/install/` の画面だけで設置が終わる。設置キーは `storage/app/private/install.key`。動作環境の確認で memory_limit・upload_max_filesize・post_max_size・display_errors が「問題なし」になる(public/.htaccess の php_value が効いている証拠)
+- [ ] (フェーズ1)設置が終わったら `/install/` が404で、`storage/app/private/install.key` が消えている
+- [ ] (フェーズ1)cron に `schedule:run` を毎分で登録し(PHP はフルパス)、5分ほど待って、管理画面(フェーズ2のあと)に「cron が止まっています」が出ない
+- [ ] (フェーズ1・フェーズ2のあと)テスト用のベータ(GitHub の Actions → Release → Run workflow、beta ON)を出す。管理画面の「アップデート」で、ベータを受け取る設定を ON にして「今すぐ確認する」→ 新しい版が表示され、「今すぐ更新する」で更新が終わり、履歴に「成功」が出る。自動更新を ON にして次の時間帯に自動で更新される
+- [ ] (フェーズ1)わざと失敗するマイグレーションを含むリリースを出し、元の版に自動で戻り、Discord に通知が来る(履歴は「戻した」)。**DB が戻るので、本番で試す前にバックアップを確認する**
+- [ ] (フェーズ1)管理画面「アップデート」の見た目を、画面デザイン AdminUpdatePC(1440px)・AdminUpdateSP(390px)と見比べる(フェーズ2で管理画面に入れるようになってから)
+- [ ] (フェーズ1)kagoya で、アプリの1つ上のディレクトリに書き込める(`doinaka-new-…`・`doinaka-old-…` を作って名前を変えられる)こと。更新が「入れ替え」で失敗する場合は、ここが原因
+
 ## 済んでいるもの
 
 - [x] kagoya の自動バックアップの範囲と保持期間(設定済み)

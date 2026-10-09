@@ -6,6 +6,7 @@ return [
     'skip_to_main' => '本文へ移動',
     'main_nav' => 'メインメニュー',
     'admin' => '管理画面',
+    'admin_badge' => '管理',
     'admin_dashboard' => 'ダッシュボード',
     'footer_aside' => 'コンビニまで5km。でも、いいところです。',
     'theme_switch' => '配色の切り替え',
