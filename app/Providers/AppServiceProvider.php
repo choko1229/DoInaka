@@ -9,6 +9,7 @@ use App\Contracts\GoogleLogin;
 use App\Contracts\Notifier;
 use App\Contracts\ReleaseDownloader;
 use App\Contracts\ReleaseSource;
+use App\Contracts\SearchEngine;
 use App\Data\ThemeContext;
 use App\Enums\Permission;
 use App\Enums\ThemePreference;
@@ -30,6 +31,7 @@ use App\Services\Install\EnvironmentChecker;
 use App\Services\Install\Installer;
 use App\Services\Install\InstallKey;
 use App\Services\Install\InstallState;
+use App\Services\Search\MysqlSearchEngine;
 use App\Services\Security\IpHasher;
 use App\Services\Setting\AppMetaService;
 use App\Services\Setting\SettingsService;
@@ -69,6 +71,9 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(ReleaseDownloader::class, HttpReleaseDownloader::class);
         $this->app->bind(CommandRunner::class, ProcessCommandRunner::class);
         $this->app->bind(Notifier::class, DiscordNotifier::class);
+
+        // 検索(フェーズ4)
+        $this->app->bind(SearchEngine::class, MysqlSearchEngine::class);
 
         // ログイン(フェーズ2)
         $this->app->bind(GoogleLogin::class, SocialiteGoogleLogin::class);

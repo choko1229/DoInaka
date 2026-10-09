@@ -2,9 +2,15 @@
     'title' => null,
     'description' => null,
     'noindex' => false,
+    'meta' => null,
 ])
 @php
     $siteName = config('app.name');
+    if ($meta instanceof \App\Support\PageMeta) {
+        $title = $meta->title;
+        $description = $meta->description;
+        $noindex = $meta->noindex;
+    }
     $pageTitle = $title ? $title.' | '.$siteName : $siteName;
 @endphp
 <!DOCTYPE html>
@@ -19,6 +25,23 @@
     @if ($noindex)
         <meta name="robots" content="noindex, follow">
     @endif
+    @if ($meta instanceof \App\Support\PageMeta)
+        @if ($meta->canonical)
+            <link rel="canonical" href="{{ $meta->canonical }}">
+            <meta property="og:url" content="{{ $meta->canonical }}">
+        @endif
+        <meta property="og:site_name" content="{{ $siteName }}">
+        <meta property="og:type" content="{{ $meta->ogType }}">
+        <meta property="og:title" content="{{ $pageTitle }}">
+        @if ($description)<meta property="og:description" content="{{ $description }}">@endif
+        @if ($meta->image)<meta property="og:image" content="{{ $meta->image }}">@endif
+        <meta name="twitter:card" content="{{ $meta->image ? 'summary_large_image' : 'summary' }}">
+        @foreach ($meta->jsonLd as $block)
+            {{-- JSON を <script> に入れるので、</script> や <!-- で抜け出せないようにエスケープする --}}
+            <script type="application/ld+json">{!! json_encode($block, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) !!}</script>
+        @endforeach
+    @endif
+    @stack('head')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>

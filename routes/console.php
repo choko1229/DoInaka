@@ -39,3 +39,6 @@ Schedule::command('update:recover')->everyFiveMinutes()->name('update-recover');
 
 // イベント終了処理: 最終日を過ぎた開催回を「開催済み」にする(毎年開催の行事は、次回未定の下書きを作る)
 Schedule::command('events:finish')->hourly()->name('events-finish');
+
+// 祝日の取り込み(内閣府の CSV。週1回)
+Schedule::command('holidays:import')->weeklyOn(0, '3:10')->name('holidays-import');

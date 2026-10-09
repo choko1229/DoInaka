@@ -20,6 +20,8 @@
     <php>
         <env name="APP_ENV" value="testing"/>
         <env name="APP_DEBUG" value="false"/>
+        <!-- テストのクライアントは URL の末尾のスラッシュを落とすので、正規 URL への転送は、そのテストだけで有効にする -->
+        <env name="CANONICAL_REDIRECTS" value="false"/>
         <!-- テスト専用の鍵(秘密ではない。CI に .env がなくても動くように) -->
         <env name="APP_KEY" value="base64:dGVzdC1vbmx5LWtleS1kby1ub3QtdXNlLWluLXByb2Q="/>
         <env name="APP_MAINTENANCE_DRIVER" value="file"/>

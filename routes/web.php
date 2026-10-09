@@ -2,10 +2,20 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Api\EventListController;
+use App\Http\Controllers\Api\ReactionController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Install\InstallController;
+use App\Http\Controllers\Public\ArticleController;
+use App\Http\Controllers\Public\EventController;
 use App\Http\Controllers\Public\HomeController;
+use App\Http\Controllers\Public\MapController;
+use App\Http\Controllers\Public\RegionController;
+use App\Http\Controllers\Public\SeoController;
+use App\Http\Controllers\Public\SeriesController;
+use App\Http\Controllers\Public\SpotController;
 use App\Http\Middleware\EnsureNotInstalled;
+use App\Support\ReservedSlugs;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
@@ -29,4 +39,38 @@ Route::prefix('install')->name('install.')->group(function (): void {
 
     // 完了の画面は、設置した直後のセッションにだけ見せる(それ以外は 404)
     Route::get('/done', [InstallController::class, 'done'])->name('done');
+});
+
+// SEO(設計書15章)
+Route::get('/sitemap.xml', [SeoController::class, 'index'])->name('sitemap');
+Route::get('/sitemap-{kind}.xml', [SeoController::class, 'show'])->where('kind', '[a-z]+')->name('sitemap.kind');
+Route::get('/robots.txt', [SeoController::class, 'robots'])->name('robots');
+
+// API v1(絞り込みの部分更新、お気に入り、行った!)
+Route::prefix('api/v1')->name('api.')->group(function (): void {
+    Route::get('/events', EventListController::class)->middleware('throttle:60,1')->name('events');
+    Route::post('/favorites/{type}/{id}', [ReactionController::class, 'favorite'])->whereNumber('id')->middleware('throttle:60,1')->name('favorites');
+    Route::post('/visits/{type}/{id}', [ReactionController::class, 'visit'])->whereNumber('id')->middleware('throttle:60,1')->name('visits');
+});
+
+// 公開ページ(設計書6.1)。URL の先頭は県のスラッグ。予約語は県のスラッグにならない。有効でない県は 404
+$pref = '(?!(?:'.implode('|', array_filter(ReservedSlugs::WORDS, fn (string $w): bool => preg_match('/^[a-z0-9-]+$/', $w) === 1)).')(?![a-z0-9-]))[a-z0-9-]+';
+$slug = '[a-z0-9-]+';
+
+Route::prefix('{pref}')->where(['pref' => $pref, 'segment' => '[0-9]+(?:-[a-z0-9-]*)?', 'city' => $slug, 'old' => $slug, 'category' => $slug])->group(function (): void {
+    Route::get('/events', [EventController::class, 'index'])->name('events.index');
+    Route::get('/events/weekend', [EventController::class, 'index'])->defaults('mode', 'weekend')->name('events.weekend');
+    Route::get('/events/category/{category}', [EventController::class, 'index'])->name('events.category');
+    Route::get('/events/{segment}', [EventController::class, 'show'])->name('events.show');
+    Route::get('/series/{segment}', [SeriesController::class, 'show'])->name('series.show');
+    Route::get('/spots', [SpotController::class, 'index'])->name('spots.index');
+    Route::get('/spots/{segment}', [SpotController::class, 'show'])->name('spots.show');
+    Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
+    Route::get('/articles/{segment}', [ArticleController::class, 'show'])->name('articles.show');
+    Route::get('/map', [MapController::class, 'index'])->name('map');
+
+    // 地域ページ(県・市区町村・旧町村)。上のどれにも合わないものだけ
+    Route::get('/', [RegionController::class, 'show'])->name('region.pref');
+    Route::get('/{city}', [RegionController::class, 'show'])->name('region.city');
+    Route::get('/{city}/{old}', [RegionController::class, 'show'])->name('region.old');
 });
