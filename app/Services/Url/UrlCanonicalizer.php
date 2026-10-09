@@ -28,6 +28,14 @@ class UrlCanonicalizer
         return (string) (parse_url(config()->string('app.url'), PHP_URL_HOST) ?: 'localhost');
     }
 
+    /** ホスト名(開発では :8080 のようなポート付き。本番は 80/443 なので付かない) */
+    public function mainAuthority(): string
+    {
+        $port = parse_url(config()->string('app.url'), PHP_URL_PORT);
+
+        return $this->mainHost().(is_int($port) ? ':'.$port : '');
+    }
+
     public function mainScheme(): string
     {
         return (string) (parse_url(config()->string('app.url'), PHP_URL_SCHEME) ?: 'http');
@@ -47,7 +55,7 @@ class UrlCanonicalizer
     /** 正規の URL(メインのホスト)。$path は先頭が / のパス */
     public function canonicalUrl(string $path, ?string $query = null): string
     {
-        return $this->mainScheme().'://'.$this->mainHost().$path.($query === null || $query === '' ? '' : '?'.$query);
+        return $this->mainScheme().'://'.$this->mainAuthority().$path.($query === null || $query === '' ? '' : '?'.$query);
     }
 
     /**

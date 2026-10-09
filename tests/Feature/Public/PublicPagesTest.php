@@ -33,7 +33,8 @@ afterEach(function (): void {
 it('トップ・一覧・詳細が開ける', function (): void {
     ['event' => $event] = publicWorld();
 
-    $this->get('/')->assertOk()->assertSee('何もないが、ある。');
+    // 県の下の市にあるイベントも、トップに出る
+    $this->get('/')->assertOk()->assertSee('何もないが、ある。')->assertSee('獅子舞奉納');
     $this->get('/kagawa/events/')->assertOk()->assertSee('獅子舞奉納');
     $this->get("/kagawa/events/{$event->id}-shishimai/")->assertOk()->assertSee('情報元')->assertSee('自治会のお知らせ');
     $this->get('/kagawa/map/')->assertOk();
@@ -131,4 +132,13 @@ it('共有ボタンのURLは do-inaka.net、canonical はメイン', function ()
     $html = $this->get("/kagawa/events/{$event->id}-shishimai/")->getContent();
     expect($html)->toContain(urlencode('http://do-inaka.net/kagawa/events/'.$event->id.'-shishimai/'))
         ->and($html)->toContain('<link rel="canonical" href="http://localhost/kagawa/events/'.$event->id.'-shishimai/">');
+});
+
+it('トップはキャッシュを通しても(2回目も)表示できる', function (): void {
+    publicWorld();
+    // 試験中はキャッシュを使わない既定を外して、本番と同じ道を通す
+    app()->detectEnvironment(fn (): string => 'production');
+
+    $this->get('/')->assertOk()->assertSee('獅子舞奉納');
+    $this->get('/')->assertOk()->assertSee('獅子舞奉納');
 });

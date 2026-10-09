@@ -1,5 +1,20 @@
-@php($links = app(\App\Services\Url\PublicLinks::class))
+@php
+    $links = app(\App\Services\Url\PublicLinks::class);
+@endphp
 <x-layouts.public :meta="$meta" :pref="$pref" :compact="! $isPref">
+    @php
+        $resolver = app(\App\Services\Design\IllustUrlResolver::class);
+        $illust = new \App\Data\Illust($isPref ? \App\Enums\Place::Island : \App\Enums\Place::Field, $themeContext->season, $themeContext->theme);
+        $wide = $resolver->url($illust, \App\Enums\IllustVariant::Wide);
+        $card = $resolver->url($illust, \App\Enums\IllustVariant::Card);
+    @endphp
+    {{-- 県は島と海、地域は田園のイラスト(PC は横長、スマホは4:3。docs/illustrations.md) --}}
+    @if ($wide && $card)
+        <picture class="region-art" aria-hidden="true">
+            <source media="(min-width: 768px)" srcset="{{ $wide }}">
+            <img src="{{ $card }}" alt="" width="1200" height="900" decoding="async">
+        </picture>
+    @endif
     <header class="region-head">
         <h1 class="t-display">{{ $region->name }}</h1>
         @if ($region->name_kana)<p class="t-small t-muted">{{ $region->name_kana }}</p>@endif

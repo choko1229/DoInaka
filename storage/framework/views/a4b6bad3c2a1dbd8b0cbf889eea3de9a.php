@@ -32,4 +32,8 @@ unset($__defined_vars, $__key, $__value); ?>
     <a class="chip" rel="noopener" target="_blank" href="https://twitter.com/intent/tweet?<?php echo e(http_build_query(['url' => $url, 'text' => $title])); ?>">X</a>
     <a class="chip" rel="noopener" target="_blank" href="https://social-plugins.line.me/lineit/share?<?php echo e(http_build_query(['url' => $url])); ?>">LINE</a>
     <button class="chip" type="button" data-copy="<?php echo e($url); ?>"><?php echo e(__('public.copy_url')); ?></button>
+    <details class="share-qr">
+        <summary class="chip"><?php echo e(__('public.qr')); ?></summary>
+        <div class="qr" role="img" aria-label="<?php echo e(__('public.qr_label')); ?>"><?php echo \App\Support\QrCode::svg($url); ?></div>
+    </details>
 </div><?php /**PATH /var/www/html/resources/views/components/share-buttons.blade.php ENDPATH**/ ?>

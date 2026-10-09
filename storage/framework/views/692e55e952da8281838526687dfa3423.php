@@ -1,4 +1,6 @@
-<?php ($links = app(\App\Services\Url\PublicLinks::class)); ?>
+<?php
+    $links = app(\App\Services\Url\PublicLinks::class);
+?>
 <?php if (isset($component)) { $__componentOriginal8c0e86a062c1c5bb6d0e151b7076f3fd = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal8c0e86a062c1c5bb6d0e151b7076f3fd = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.layouts.public','data' => ['meta' => $meta,'pref' => $pref,'compact' => ! $isPref]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
@@ -9,6 +11,19 @@
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes(['meta' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($meta),'pref' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($pref),'compact' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(! $isPref)]); ?>
+    <?php
+        $resolver = app(\App\Services\Design\IllustUrlResolver::class);
+        $illust = new \App\Data\Illust($isPref ? \App\Enums\Place::Island : \App\Enums\Place::Field, $themeContext->season, $themeContext->theme);
+        $wide = $resolver->url($illust, \App\Enums\IllustVariant::Wide);
+        $card = $resolver->url($illust, \App\Enums\IllustVariant::Card);
+    ?>
+    
+    <?php if($wide && $card): ?>
+        <picture class="region-art" aria-hidden="true">
+            <source media="(min-width: 768px)" srcset="<?php echo e($wide); ?>">
+            <img src="<?php echo e($card); ?>" alt="" width="1200" height="900" decoding="async">
+        </picture>
+    <?php endif; ?>
     <header class="region-head">
         <h1 class="t-display"><?php echo e($region->name); ?></h1>
         <?php if($region->name_kana): ?><p class="t-small t-muted"><?php echo e($region->name_kana); ?></p><?php endif; ?>

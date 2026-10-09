@@ -147,3 +147,22 @@
 | Laravel の入れ方 | リポジトリには先に docs/・CLAUDE.md・.claude/・.env.local があるので、Laravel は一時フォルダに作ってから移し、既存のファイルを消さない |
 | デザインシステム | docs/design-system/ に写しを置く(tokens.json が色の正)。README.md のうち、フォントの配信元・写真がないときの絵・ヘッダー・FV の文字の重ね方は、あとで変わった(design-system/OVERRIDES.md) |
 | 画面デザインと図の渡し方 | docs/design/ に全80ボードの基本の画像(png/)・状態ごとの画像(states/、156枚)・元ファイル(src/)・一覧(README.md)を置く。仕様書の図5つは docs/design/diagrams/ に SVG と PNG で置き、各仕様書の図の位置から画像でリンクする。初期データの元ファイルは総務省のものと中間 JSON だけを docs/data/raw/ に置く |
+
+## 2026-10-10 フェーズ4(公開画面)で決めたこと
+
+| 項目 | 決めたこと |
+| --- | --- |
+| ルートと予約語 | 公開ページは `Route::prefix('{pref}')`。pref の正規表現から ReservedSlugs の語を除く(先頭の語の直後が英数字・ハイフンでないものを除く)。管理画面など別ルートが先に取られないため。テストで一時的に足すルートは `/_test/...` にする(`_` は県のスラッグに合わないので衝突しない) |
+| 個別ページの解決 | `{id}-{slug}` の id で引く。誤登録で消した(論理削除)ものは 410、非公開・存在しないものは 404、県やローマ字が現在の値と違えば 301(クエリは残す)。行事マスタ(series)は公開フラグがないので、公開済みの開催回が1件もなければ 404 |
+| 検索条件の検証 | 不正な値は 422 にせず黙って捨てる(画面から共有された古い URL で壊れないため)。半径は 1〜50km に丸め、距離順は位置があるときだけ。from > to は入れ替える。日付は 2000〜2100年 |
+| noindex と canonical | 掲載が `seo.index_min_items`(既定5)件未満の一覧、条件付き(q・category・tag・when・from・to・past・lat・lng・r・sort)の一覧は noindex, follow。canonical は条件を除いた固定の URL(ページ送りだけ `?page=` を残す)。今週末・カテゴリ別は固定ページとして index 対象(件数が足りるとき) |
+| 地域ページ | 紹介文は regions.intro_body など(ファクトチェック済み + 出典2件以上)が揃うまで noindex でサイトマップにも入れない。紹介文のない地域に初めてアクセスすると region_generation_queue に1件だけ入れる(unique)。設置の最後に InitialDataSeeder が全地域(47都道府県 + 香川の市町・旧町村)をキューに入れる。生成そのものはフェーズ6 |
+| 人気スコア | 閲覧(page_views、日ごと)×1 + お気に入り(list=favorite のみ。「行きたい」は数えない)×5 + 行った!×3。直近30日(設定 popularity.window_days、重みは popularity.weights)。反応がなくなったものは 0 に戻す。管理者・ボットの閲覧は数えない(TrafficFilter) |
+| トップのキャッシュ | 「今週末」「これから」「人気スポット」は10分キャッシュ。キャッシュには ID だけを入れ、表示のたびにモデルを読み直す(Laravel 13 のキャッシュはオブジェクトを復元しないため)。テスト環境ではキャッシュを使わない既定にし、本番と同じ道を通すテストを別に置く |
+| 管理者バー | `/admin/bar?url=…` を公開ページから fetch で差し込む。公開ページの HTML には空の置き場(`#admin-bar`、管理者・編集者がログイン中のときだけ)しか入れない。バーの URL は同じサイトのパスだけ解釈し、戻り先も同じサイトのパスだけ許す。公開ページの操作は「非公開にする」(POST + CSRF + audit_logs)と「紹介文を再生成」(キューに入れ直す)。「情報元を読み直す」は管理画面の編集へのリンクにして、自動の読み直しはフェーズ6で足す |
+| 海外制限 | BlockOverseas をグローバルミドルウェア(canonical 転送のあと)に置く。一覧(geo_ip_ranges)が空・判定できない・私的アドレス(Docker・自宅)は通す。クローラーは UA の名乗りだけでなく逆引き→正引きで確かめ(CrawlerVerifier、結果を1日キャッシュ)、DNS は DnsResolver に切り出してテストで差し替える。例外パスは robots.txt・sitemap*.xml・/terms/・/privacy/・/about/・/contact/。管理画面は geo.allow_admin_abroad(既定 OFF)。何かが落ちたら締め出さない(fail open) |
+| 開発環境の canonical | APP_URL にポート(`:8080`)があるときは、canonical と 301 の転送先にもポートを付ける(付けないと localhost:8080 から localhost に飛んで見られなくなる)。本番は 80/443 なので何も付かない。phpunit.xml は APP_URL=http://localhost に固定 |
+| 共有 | 共有ボタンの URL とQRコードは do-inaka.net(設定 site.share_host)の URL。QR は bacon/bacon-qr-code(2段階認証と同じ)で SVG を作る |
+| 地図 | Leaflet を npm で入れてビルドに含める(CDN を使わない)。地理院タイル(淡色)。夜の配色では CSS の filter でタイルを暗くする。ピンのタイトルは textContent で入れる(HTML として解釈しない) |
+| E2E | Playwright の設定と spec(e2e/)を置く。ブラウザのダウンロードが要るため CI には入れず、手元の `npm run e2e` で確かめる(manual-checks)。このフェーズでは同じ流れ(トップ → 検索 → 詳細 → 行った! → ログイン誘導)をアプリ内ブラウザで SP 幅に通して確かめた |
+| ルート引数の渡され方 | Laravel はルートの引数を名前でなく位置で渡す。サービスの注入と混ざって取り違えた(`/events/category/{category}` が mode に入った)ので、EventController::index は `$request->route()` から名前で読む |

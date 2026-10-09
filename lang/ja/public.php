@@ -87,6 +87,8 @@ return [
     'visited' => '行った!',
     'share' => '共有',
     'copy_url' => 'URLをコピー',
+    'qr' => 'QRコード',
+    'qr_label' => 'このページのURLのQRコード',
     'report_error' => '内容の間違いを知らせる',
     'series_all' => ':title の開催回をすべて見る',
     'other_editions' => 'ほかの開催回',
