@@ -12,6 +12,14 @@ use App\Contracts\ReleaseSource;
 use App\Data\ThemeContext;
 use App\Enums\Permission;
 use App\Enums\ThemePreference;
+use App\Models\Article;
+use App\Models\Comment;
+use App\Models\Event;
+use App\Models\EventSeries;
+use App\Models\Media;
+use App\Models\Region;
+use App\Models\Spot;
+use App\Models\Submission;
 use App\Models\User;
 use App\Services\Auth\RolePermissions;
 use App\Services\Auth\SocialiteGoogleLogin;
@@ -40,6 +48,7 @@ use App\Support\ErrorId;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Foundation\MaintenanceMode;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -107,6 +116,13 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        // ポリモーフィックな関係には、短い名前だけを保存する(クラス名を DB に入れない)
+        Relation::enforceMorphMap([
+            'event' => Event::class, 'series' => EventSeries::class, 'spot' => Spot::class, 'article' => Article::class,
+            'region' => Region::class, 'comment' => Comment::class, 'media' => Media::class, 'submission' => Submission::class,
+            'user' => User::class,
+        ]);
+
         // 権限(Permission)をそのまま Gate にする。ルートでは can:post のように使う
         foreach (Permission::cases() as $permission) {
             Gate::define($permission->value, fn (?User $user): bool => RolePermissions::allows($user, $permission));

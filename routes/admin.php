@@ -3,7 +3,11 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\Admin\ContentController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\EventAdminController;
+use App\Http\Controllers\Admin\MasterController;
+use App\Http\Controllers\Admin\RevisionController;
 use App\Http\Controllers\Admin\TwoFactorController;
 use App\Http\Controllers\Admin\UpdateController;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +36,55 @@ Route::middleware('admin')->group(function (): void {
     Route::get('/', DashboardController::class)->name('dashboard');
     Route::post('/two-factor/reset', [TwoFactorController::class, 'reset'])->name('two-factor.reset');
 
+    // 行事・開催回・スポット・記事・コメント・変更履歴(審査・コンテンツ編集は編集者も使える)
+    Route::middleware('can:review')->group(function (): void {
+        Route::get('/events', [EventAdminController::class, 'index'])->name('events');
+        Route::get('/series/create', [EventAdminController::class, 'createSeries'])->name('series.create');
+        Route::post('/series', [EventAdminController::class, 'storeSeries'])->name('series.store');
+        Route::get('/series/{series}/edit', [EventAdminController::class, 'editSeries'])->name('series.edit');
+        Route::put('/series/{series}', [EventAdminController::class, 'updateSeries'])->name('series.update');
+
+        Route::get('/events/create', [EventAdminController::class, 'createEvent'])->name('events.create');
+        Route::post('/events', [EventAdminController::class, 'storeEvent'])->name('events.store');
+        Route::get('/events/{event}/edit', [EventAdminController::class, 'editEvent'])->name('events.edit');
+        Route::put('/events/{event}', [EventAdminController::class, 'updateEvent'])->name('events.update');
+        Route::delete('/events/{event}', [EventAdminController::class, 'destroyEvent'])->name('events.destroy');
+        Route::post('/events/{event}/cancel', [EventAdminController::class, 'cancelEvent'])->name('events.cancel');
+        Route::post('/events/{event}/copy', [EventAdminController::class, 'copyEvent'])->name('events.copy');
+        Route::post('/schedules/{schedule}/cancel', [EventAdminController::class, 'cancelDay'])->name('schedules.cancel');
+        Route::post('/schedules/{schedule}/restore', [EventAdminController::class, 'restoreDay'])->name('schedules.restore');
+
+        Route::get('/contents', [ContentController::class, 'index'])->name('contents');
+        Route::get('/spots/create', [ContentController::class, 'createSpot'])->name('spots.create');
+        Route::post('/spots', [ContentController::class, 'storeSpot'])->name('spots.store');
+        Route::get('/spots/{spot}/edit', [ContentController::class, 'editSpot'])->name('spots.edit');
+        Route::put('/spots/{spot}', [ContentController::class, 'updateSpot'])->name('spots.update');
+        Route::delete('/spots/{spot}', [ContentController::class, 'destroySpot'])->name('spots.destroy');
+        Route::get('/articles/create', [ContentController::class, 'createArticle'])->name('articles.create');
+        Route::post('/articles', [ContentController::class, 'storeArticle'])->name('articles.store');
+        Route::get('/articles/{article}/edit', [ContentController::class, 'editArticle'])->name('articles.edit');
+        Route::put('/articles/{article}', [ContentController::class, 'updateArticle'])->name('articles.update');
+        Route::delete('/articles/{article}', [ContentController::class, 'destroyArticle'])->name('articles.destroy');
+        Route::post('/comments/{comment}/moderate', [ContentController::class, 'moderateComment'])->name('comments.moderate');
+
+        Route::get('/revisions/{type}/{id}', [RevisionController::class, 'index'])->whereNumber('id')->name('revisions');
+        Route::post('/revisions/{revision}/rollback', [RevisionController::class, 'rollback'])->name('revisions.rollback');
+    });
+
+    // マスタ(地域・分類・タグ・NG ワード)と会員は管理者だけ
+    Route::middleware('can:manage-masters')->prefix('masters')->name('masters')->group(function (): void {
+        Route::get('/', [MasterController::class, 'index'])->name('');
+        Route::get('/regions/{region}/edit', [MasterController::class, 'editRegion'])->name('.regions.edit');
+        Route::put('/regions/{region}', [MasterController::class, 'updateRegion'])->name('.regions.update');
+        Route::post('/regions/{region}/flags', [MasterController::class, 'updatePrefectureFlags'])->name('.regions.flags');
+        Route::post('/categories', [MasterController::class, 'storeCategory'])->name('.categories.store');
+        Route::post('/categories/{category}', [MasterController::class, 'updateCategory'])->name('.categories.update');
+        Route::delete('/categories/{category}', [MasterController::class, 'destroyCategory'])->name('.categories.destroy');
+        Route::post('/tags', [MasterController::class, 'storeTag'])->name('.tags.store');
+        Route::delete('/tags/{tag}', [MasterController::class, 'destroyTag'])->name('.tags.destroy');
+        Route::post('/ng-words', [MasterController::class, 'storeNgWord'])->name('.ng.store');
+        Route::delete('/ng-words/{ngWord}', [MasterController::class, 'destroyNgWord'])->name('.ng.destroy');
+    });
     // 設定・AI・広告・更新適用は管理者だけ(設計書5.3)
     Route::middleware('can:manage-settings')->group(function (): void {
         Route::get('/update', [UpdateController::class, 'index'])->name('update');

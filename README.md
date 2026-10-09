@@ -64,6 +64,15 @@ docker compose exec app php artisan dev:import-secrets
 
 `APP_ENV=local` のときだけ動き、値を暗号化して settings に入れます。テストと CI は外部サービスを必ずモックするので、このキーは使いません。
 
+### 初期データと見本データ
+
+テーブルを作ると、全47都道府県・全市区町村(1,741)・香川県の旧町村(184)と、分類の初期値が入ります(db:seed --class=InitialDataSeeder。インストーラーも同じものを動かします)。開発用の見本データ(架空の行事・スポット・記事を20件ずつ)は、APP_ENV=local のときだけ入れられます。
+
+`ash
+docker compose exec app php artisan migrate:fresh --seed
+docker compose exec app php artisan db:seed --class=DemoSeeder
+`
+
 ### イラスト
 
 FV と「写真がないときの代わりの画像」のイラスト64枚(場所×季節×時間帯)の元の PNG は `resources/images/illust/src/` に置きます(約200MB。Git には入れません)。
