@@ -21,7 +21,7 @@
         <p class="t-small t-muted">{{ __('users.role_help') }}</p>
         @if ($isLastAdmin)<p class="alert alert-warning" role="status">{{ __('users.refuse_last_admin') }}</p>@endif
         @if ($member->status === \App\Enums\UserStatus::Active)
-            <form method="post" action="{{ route('admin.users.suspend', $member) }}" onsubmit="return confirm(@js(__('users.suspend_confirm')))">@csrf<button class="btn" type="submit">{{ __('users.suspend') }}</button></form>
+            <form method="post" action="{{ route('admin.users.suspend', $member) }}" data-confirm="{{ __('users.suspend_confirm') }}">@csrf<button class="btn" type="submit">{{ __('users.suspend') }}</button></form>
         @else
             <form method="post" action="{{ route('admin.users.restore', $member) }}">@csrf<button class="btn" type="submit">{{ __('users.restore') }}</button></form>
         @endif

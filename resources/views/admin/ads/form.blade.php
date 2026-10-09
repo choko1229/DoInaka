@@ -15,6 +15,6 @@
         <button class="btn btn-primary" type="submit">{{ __('content.save') }}</button>
     </form>
     @if ($slot->exists)
-        <form method="post" action="{{ route('admin.ads.destroy', $slot) }}" onsubmit="return confirm(@js(__('ads.delete_confirm')))" style="margin-top:var(--space-4)">@csrf @method('DELETE')<button class="link-button" type="submit">{{ __('content.delete') }}</button></form>
+        <form method="post" action="{{ route('admin.ads.destroy', $slot) }}" data-confirm="{{ __('ads.delete_confirm') }}" style="margin-top:var(--space-4)">@csrf @method('DELETE')<button class="link-button" type="submit">{{ __('content.delete') }}</button></form>
     @endif
 </x-layouts.admin>

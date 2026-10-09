@@ -15,6 +15,6 @@
         <button class="btn btn-primary" type="submit">{{ __('content.save') }}</button>
     </form>
     @if ($source->exists)
-        <form method="post" action="{{ route('admin.sources.destroy', $source) }}" onsubmit="return confirm(@js(__('crawl.delete_confirm')))" style="margin-top:var(--space-4)">@csrf @method('DELETE')<button class="link-button" type="submit">{{ __('crawl.delete') }}</button></form>
+        <form method="post" action="{{ route('admin.sources.destroy', $source) }}" data-confirm="{{ __('crawl.delete_confirm') }}" style="margin-top:var(--space-4)">@csrf @method('DELETE')<button class="link-button" type="submit">{{ __('crawl.delete') }}</button></form>
     @endif
 </x-layouts.admin>

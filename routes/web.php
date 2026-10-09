@@ -9,11 +9,15 @@ use App\Http\Controllers\Api\RegionController as RegionApiController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Install\InstallController;
 use App\Http\Controllers\Member\MyPageController;
+use App\Http\Controllers\Member\TakedownConsentController;
 use App\Http\Controllers\Public\ArticleController;
+use App\Http\Controllers\Public\ContactController;
 use App\Http\Controllers\Public\EventController;
+use App\Http\Controllers\Public\HeldMediaController;
 use App\Http\Controllers\Public\HomeController;
 use App\Http\Controllers\Public\MapController;
 use App\Http\Controllers\Public\MediaFileController;
+use App\Http\Controllers\Public\PageController;
 use App\Http\Controllers\Public\RegionController;
 use App\Http\Controllers\Public\SeoController;
 use App\Http\Controllers\Public\SeriesController;
@@ -85,7 +89,19 @@ Route::middleware(['auth', 'can:my-page'])->prefix('mypage')->name('mypage.')->g
     Route::post('/profile', [MyPageController::class, 'updateProfile'])->name('profile.update');
     Route::get('/withdraw', [MyPageController::class, 'withdraw'])->name('withdraw');
     Route::post('/withdraw', [MyPageController::class, 'destroy'])->name('withdraw.destroy');
+    Route::get('/takedown', [TakedownConsentController::class, 'index'])->name('takedown');
+    Route::post('/takedown/{consent}', [TakedownConsentController::class, 'respond'])->whereNumber('consent')->name('takedown.respond');
 });
+
+// お問い合わせ(海外からも開ける)。削除依頼もここで受ける
+Route::get('/contact', [ContactController::class, 'show'])->name('contact');
+Route::post('/contact', [ContactController::class, 'store'])->middleware('throttle:20,1')->name('contact.store');
+Route::get('/contact/done', [ContactController::class, 'done'])->name('contact.done');
+// 確認中の写真を「タップで表示」するときの元の写真(著作権・名誉・その他の依頼だけ)
+Route::get('/storage/held/{media}', [HeldMediaController::class, 'show'])->whereNumber('media')->name('media.held');
+
+// 固定ページ(利用規約・プライバシーポリシー・掲載・投稿ポリシー・運営者情報。設計書6.1)。海外からも見られる
+Route::get('/{page}', [PageController::class, 'show'])->whereIn('page', array_keys(PageController::PAGES))->name('page');
 
 // 公開ページ(設計書6.1)。URL の先頭は県のスラッグ。予約語は県のスラッグにならない。有効でない県は 404
 $pref = '(?!(?:'.implode('|', array_filter(ReservedSlugs::WORDS, fn (string $w): bool => preg_match('/^[a-z0-9-]+$/', $w) === 1)).')(?![a-z0-9-]))[a-z0-9-]+';

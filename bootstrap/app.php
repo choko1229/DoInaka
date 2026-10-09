@@ -8,6 +8,7 @@ use App\Http\Middleware\CountPageView;
 use App\Http\Middleware\EnsureAdmin;
 use App\Http\Middleware\EnsurePermitted;
 use App\Http\Middleware\EnsureStaff;
+use App\Http\Middleware\HideHeldContent;
 use App\Http\Middleware\PrepareInstallSession;
 use App\Http\Middleware\RedirectToCanonicalUrl;
 use App\Http\Middleware\RedirectToInstaller;
@@ -39,7 +40,7 @@ return Application::configure(basePath: dirname(__DIR__))
         // 初回(.env も DB もない)は、存在しない URL でもインストーラーへ案内したいので、グローバルに置く
         $middleware->prepend([PrepareInstallSession::class, RedirectToInstaller::class, RedirectToCanonicalUrl::class, BlockOverseas::class]);
         $middleware->alias(['admin' => EnsureAdmin::class, 'staff' => EnsureStaff::class, 'permit' => EnsurePermitted::class]);
-        $middleware->web(append: [CountPageView::class]);
+        $middleware->web(append: [CountPageView::class, HideHeldContent::class]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

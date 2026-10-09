@@ -9,13 +9,6 @@ if (bar && bar.dataset.url) {
         .then((html) => {
             if (html) {
                 bar.innerHTML = html;
-                bar.querySelectorAll('form[data-confirm]').forEach((f) => {
-                    f.addEventListener('submit', (e) => {
-                        if (!window.confirm(f.dataset.confirm)) {
-                            e.preventDefault();
-                        }
-                    });
-                });
             }
         })
         .catch(() => {});

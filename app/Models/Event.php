@@ -6,8 +6,10 @@ namespace App\Models;
 
 use App\Enums\EventStatus;
 use App\Exceptions\EventSourceMissingException;
+use App\Models\Scopes\HeldContentScope;
 use Carbon\CarbonInterface;
 use Database\Factories\EventFactory;
+use Illuminate\Database\Eloquent\Attributes\ScopedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -45,6 +47,7 @@ use Illuminate\Support\Collection;
  * @property-read \Illuminate\Database\Eloquent\Collection<int, EventSchedule> $schedules
  * @property-read \Illuminate\Database\Eloquent\Collection<int, EventSource> $sources
  */
+#[ScopedBy([HeldContentScope::class])]
 class Event extends Model
 {
     /** @use HasFactory<EventFactory> */

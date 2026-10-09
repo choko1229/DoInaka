@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ContentController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DraftController;
 use App\Http\Controllers\Admin\EventAdminController;
+use App\Http\Controllers\Admin\InquiryController;
 use App\Http\Controllers\Admin\LogController;
 use App\Http\Controllers\Admin\MasterController;
 use App\Http\Controllers\Admin\RegionPageController;
@@ -130,6 +131,16 @@ Route::middleware('admin')->group(function (): void {
         Route::post('/{user}/suspend', [UserAdminController::class, 'suspend'])->whereNumber('user')->name('.suspend');
         Route::post('/{user}/restore', [UserAdminController::class, 'restore'])->whereNumber('user')->name('.restore');
         Route::post('/{user}/role', [UserAdminController::class, 'role'])->whereNumber('user')->name('.role');
+    });
+    // お問い合わせ・削除依頼(管理者だけ。メールアドレスを見る)
+    Route::middleware('can:manage-masters')->prefix('inquiries')->name('inquiries')->group(function (): void {
+        Route::get('/', [InquiryController::class, 'index'])->name('');
+        Route::get('/{inquiry}', [InquiryController::class, 'show'])->whereNumber('inquiry')->name('.show');
+        Route::post('/{inquiry}/status', [InquiryController::class, 'status'])->whereNumber('inquiry')->name('.status');
+        Route::post('/{inquiry}/reply', [InquiryController::class, 'reply'])->whereNumber('inquiry')->name('.reply');
+        Route::post('/{inquiry}/remove', [InquiryController::class, 'remove'])->whereNumber('inquiry')->name('.remove');
+        Route::post('/{inquiry}/keep', [InquiryController::class, 'keep'])->whereNumber('inquiry')->name('.keep');
+        Route::post('/replies/{reply}/retry', [InquiryController::class, 'retry'])->whereNumber('reply')->name('.retry');
     });
     // 情報源の巡回は管理者だけ(設計書6.2)
     Route::middleware('can:manage-masters')->prefix('sources')->name('sources')->group(function (): void {
