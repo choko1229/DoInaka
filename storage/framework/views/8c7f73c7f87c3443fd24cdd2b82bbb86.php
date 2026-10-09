@@ -34,17 +34,21 @@ unset($__defined_vars, $__key, $__value); ?>
     $illust = app(\App\Services\Design\IllustSelector::class)->select($item->getMorphClass().$item->id, $hints, $themeContext->theme, $themeContext->season, now());
     $status = $isEvent ? $item->displayStatus() : 'scheduled';
     $tags = $item->tags->take(3)->pluck('name')->all();
+    // 承認された写真があれば、それをカードに出す(なければイラストと「写真募集中」)
+    $firstPhoto = $item->media->first();
+    $photoUrl = $firstPhoto ? \App\Support\MediaUrl::small($firstPhoto) : null;
+    $photoAlt = $firstPhoto ? ($firstPhoto->alt ?: $item->title) : '';
 ?>
 <?php if (isset($component)) { $__componentOriginal07bdbe031a4c57e4cd3488994f94e999 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal07bdbe031a4c57e4cd3488994f94e999 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.event-card','data' => ['href' => $links->for($item),'title' => $item->title,'date' => $isEvent ? \App\Support\DateText::range($item) : null,'area' => $item->region?->name,'tags' => $tags,'status' => $status,'illust' => $illust]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.event-card','data' => ['href' => $links->for($item),'title' => $item->title,'date' => $isEvent ? \App\Support\DateText::range($item) : null,'area' => $item->region?->name,'tags' => $tags,'status' => $status,'photo' => $photoUrl,'alt' => $photoAlt,'illust' => $photoUrl ? null : $illust]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('event-card'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['href' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($links->for($item)),'title' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($item->title),'date' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($isEvent ? \App\Support\DateText::range($item) : null),'area' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($item->region?->name),'tags' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($tags),'status' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($status),'illust' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($illust)]); ?>
+<?php $component->withAttributes(['href' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($links->for($item)),'title' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($item->title),'date' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($isEvent ? \App\Support\DateText::range($item) : null),'area' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($item->region?->name),'tags' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($tags),'status' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($status),'photo' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($photoUrl),'alt' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($photoAlt),'illust' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($photoUrl ? null : $illust)]); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal07bdbe031a4c57e4cd3488994f94e999)): ?>

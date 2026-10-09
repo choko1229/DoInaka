@@ -75,6 +75,9 @@ return [
     // IP アドレスのハッシュ用の秘密鍵(設計書14章)。空なら APP_KEY を使う
     'ip_hash_secret' => env('IP_HASH_SECRET', ''),
 
+    // 利用者が同意した利用規約・プライバシーポリシーの版(submissions.terms_version に残す。文面を変えたら更新する)
+    'terms_version' => '2026-10-08',
+
     /*
     |--------------------------------------------------------------------------
     | Application Locale Configuration

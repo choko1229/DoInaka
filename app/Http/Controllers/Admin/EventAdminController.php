@@ -9,6 +9,7 @@ use App\Enums\CategoryTarget;
 use App\Enums\EventSourceKind;
 use App\Enums\EventStatus;
 use App\Enums\Recurrence;
+use App\Enums\SubmissionType;
 use App\Exceptions\EventSourceMissingException;
 use App\Http\Controllers\Controller;
 use App\Http\Support\FormInput;
@@ -17,6 +18,8 @@ use App\Models\Event;
 use App\Models\EventSchedule;
 use App\Models\EventSeries;
 use App\Models\EventSource;
+use App\Models\Media;
+use App\Models\Submission;
 use App\Models\User;
 use App\Services\Audit\AuditLogger;
 use App\Services\Content\ContentService;
@@ -129,7 +132,16 @@ final class EventAdminController extends Controller
         $series = EventSeries::query()->findOrFail($request->integer('series'));
         $event = new Event(['series_id' => $series->id, 'title' => $series->title, 'region_id' => $series->region_id, 'category_id' => $series->category_id, 'status' => EventStatus::Scheduled]);
 
-        return view('admin.events.event-form', $this->eventFormData($event, $series, new EloquentCollection, new EloquentCollection));
+        // 情報提供から下書きを作るときは、送られた情報元(URL・隠した写真)を入れておく
+        $sources = new EloquentCollection;
+        $tip = $request->integer('tip') > 0 ? Submission::query()->where('type', SubmissionType::Tip)->find($request->integer('tip')) : null;
+        if ($tip !== null) {
+            foreach ($this->tipSources($tip) as $source) {
+                $sources->push($source);
+            }
+        }
+
+        return view('admin.events.event-form', $this->eventFormData($event, $series, new EloquentCollection, $sources));
     }
 
     public function storeEvent(Request $request): RedirectResponse
@@ -220,6 +232,7 @@ final class EventAdminController extends Controller
             'sources.*.url' => ['nullable', 'url', 'max:500'],
             'sources.*.title' => ['nullable', 'string', 'max:200'],
             'sources.*.checked_at' => ['nullable', 'date_format:Y-m-d'],
+            'sources.*.media_id' => ['nullable', 'integer', Rule::exists('media', 'id')],
         ]);
         $input = new FormInput($request);
 
@@ -228,12 +241,18 @@ final class EventAdminController extends Controller
             $row['is_official'] = filter_var($row['is_official'] ?? false, FILTER_VALIDATE_BOOLEAN);
 
             return $row;
-        }, $input->rows('sources', ['kind', 'url', 'title', 'checked_at', 'is_official'], 'kind'));
+        }, $input->rows('sources', ['kind', 'url', 'title', 'checked_at', 'is_official', 'media_id'], 'kind'));
 
-        // Webページの情報元は URL が要る
+        // Webページの情報元は URL が要る。チラシの情報元は、個人情報を隠したあとの(公開用ができている)写真が要る
         foreach ($sources as $source) {
             if ($source['kind'] === EventSourceKind::Url->value && ($source['url'] ?? null) === null) {
                 return back()->withInput()->withErrors(['sources' => __('content.source_url_required')]);
+            }
+            if ($source['kind'] === EventSourceKind::Flyer->value) {
+                $media = is_numeric($source['media_id'] ?? null) ? Media::query()->find((int) $source['media_id']) : null;
+                if ($media === null || ! $media->isProcessed()) {
+                    return back()->withInput()->withErrors(['sources' => __('submission.flyer_needs_masked')]);
+                }
             }
         }
 
@@ -317,6 +336,28 @@ final class EventAdminController extends Controller
     private function eventCategories(): EloquentCollection
     {
         return Category::query()->where('target', CategoryTarget::Event->value)->where('is_active', true)->orderBy('sort_order')->get();
+    }
+
+    /**
+     * 情報提供の情報元を、イベントの情報元の行にする(まだ保存しない)。
+     *
+     * @return list<EventSource>
+     */
+    private function tipSources(Submission $tip): array
+    {
+        $rows = [];
+        $url = $tip->text('source_url');
+        if ($url !== null) {
+            $rows[] = new EventSource(['kind' => EventSourceKind::Url, 'url' => $url, 'title' => (string) parse_url($url, PHP_URL_HOST), 'checked_at' => now()->toDateString()]);
+        }
+        foreach ($tip->media as $media) {
+            // 個人情報を隠した画像が登録されている写真だけを、情報元にできる
+            if ($media->isProcessed()) {
+                $rows[] = new EventSource(['kind' => EventSourceKind::Flyer, 'title' => __('submission.flyer_title'), 'media_id' => $media->id, 'checked_at' => now()->toDateString()]);
+            }
+        }
+
+        return $rows;
     }
 
     private function user(Request $request): User

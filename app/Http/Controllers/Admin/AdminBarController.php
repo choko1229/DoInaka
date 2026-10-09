@@ -32,8 +32,8 @@ final class AdminBarController extends Controller
         $target = is_string($url) ? $this->target($url) : null;
 
         return view('admin.bar', [
-            'pendingSubmissions' => DB::table('submissions')->where('status', 'pending')->count(),
-            'pendingCorrections' => DB::table('corrections')->join('submissions', 'submissions.id', '=', 'corrections.submission_id')->where('submissions.status', 'pending')->count(),
+            'pendingSubmissions' => DB::table('submissions')->where('status', 'in_review')->count(),
+            'pendingCorrections' => DB::table('corrections')->join('submissions', 'submissions.id', '=', 'corrections.submission_id')->where('submissions.status', 'in_review')->count(),
             'aiToday' => DB::table('ai_calls')->where('created_at', '>=', now()->startOfDay())->count(),
             'target' => $target,
             'targetType' => $target === null ? null : $target->getMorphClass(),

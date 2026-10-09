@@ -42,3 +42,6 @@ Schedule::command('events:finish')->hourly()->name('events-finish');
 
 // 祝日の取り込み(内閣府の CSV。週1回)
 Schedule::command('holidays:import')->weeklyOn(0, '3:10')->name('holidays-import');
+
+// 却下ボックス(90日)と元画像(60日)の物理削除
+Schedule::command('submissions:prune')->dailyAt('4:10')->name('submissions-prune');

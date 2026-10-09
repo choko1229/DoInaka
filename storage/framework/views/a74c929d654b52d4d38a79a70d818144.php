@@ -4,7 +4,7 @@
         'end_time' => $s->end_time ? substr($s->end_time, 0, 5) : null, 'note' => $s->note, 'is_cancelled' => $s->is_cancelled,
     ])->all();
     $sourceRows = old('sources') ?? $sources->map(fn ($s) => [
-        'kind' => $s->kind->value, 'url' => $s->url, 'title' => $s->title, 'checked_at' => $s->checked_at?->toDateString(), 'is_official' => $s->is_official,
+        'kind' => $s->kind->value, 'url' => $s->url, 'title' => $s->title, 'checked_at' => $s->checked_at?->toDateString(), 'is_official' => $s->is_official, 'media_id' => $s->media_id,
     ])->all();
     if ($scheduleRows === []) { $scheduleRows = [['date' => null]]; }
     $state = old('state', $event->exists ? ($event->is_published ? 'published' : 'draft') : 'draft');

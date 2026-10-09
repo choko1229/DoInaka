@@ -26,6 +26,9 @@
                             @else
                                 <span>{{ $source->title ?: $source->kind->label() }}</span>
                             @endif
+                            @if ($source->kind === \App\Enums\EventSourceKind::Flyer && $source->media && $source->media->isProcessed())
+                                <a href="{{ \App\Support\MediaUrl::large($source->media) }}" target="_blank" rel="noopener"><img class="source-flyer" src="{{ \App\Support\MediaUrl::small($source->media) }}" alt="{{ $source->title ?: __('public.flyer_alt') }}" loading="lazy"></a>
+                            @endif
                             @if ($source->checked_at)<span class="t-small t-muted">{{ __('public.checked_at', ['date' => $source->checked_at->format('Y-m-d')]) }}</span>@endif
                         </li>
                     @endforeach
@@ -77,7 +80,8 @@
 
                 <section class="card">
                     <h2 class="t-h2">{{ __('public.photos') }}</h2>
-                    <p class="t-muted">{{ __('illust.wanted') }} — <a href="/post/">{{ __('public.post_photo') }}</a></p>
+                    <x-media-gallery :media="$event->media" :title="$event->title" />
+                    <p class="t-muted">@if ($event->media->isEmpty()){{ __('illust.wanted') }} — @endif<a href="/post/photo/event/{{ $event->id }}/">{{ __('public.post_photo') }}</a></p>
                 </section>
 
                 <section class="card" id="comments">
@@ -90,6 +94,7 @@
                     @empty
                         <p class="t-muted">{{ __('public.no_comments') }}</p>
                     @endforelse
+                    <x-comment-form type="event" :id="$event->id" />
                 </section>
             </div>
 

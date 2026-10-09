@@ -9,6 +9,10 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * 送信前フィルタの NG ワード。
+ *
+ * @property int $id
+ * @property string $word
+ * @property MatchType $match_type
  */
 class NgWord extends Model
 {

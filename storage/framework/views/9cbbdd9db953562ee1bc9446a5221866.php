@@ -28,6 +28,26 @@
                         <div class="map" data-map data-lat="<?php echo e($spot->lat); ?>" data-lng="<?php echo e($spot->lng); ?>" data-title="<?php echo e($spot->title); ?>" role="img" aria-label="<?php echo e(__('public.map_of', ['name' => $spot->title])); ?>"></div>
                     <?php endif; ?>
                 </section>
+                <?php if($spot->media->isNotEmpty()): ?><section class="card"><?php if (isset($component)) { $__componentOriginal57c28f5ad6af257e8b535dfbe6900ca5 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal57c28f5ad6af257e8b535dfbe6900ca5 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.media-gallery','data' => ['media' => $spot->media,'title' => $spot->title]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('media-gallery'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['media' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($spot->media),'title' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($spot->title)]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal57c28f5ad6af257e8b535dfbe6900ca5)): ?>
+<?php $attributes = $__attributesOriginal57c28f5ad6af257e8b535dfbe6900ca5; ?>
+<?php unset($__attributesOriginal57c28f5ad6af257e8b535dfbe6900ca5); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal57c28f5ad6af257e8b535dfbe6900ca5)): ?>
+<?php $component = $__componentOriginal57c28f5ad6af257e8b535dfbe6900ca5; ?>
+<?php unset($__componentOriginal57c28f5ad6af257e8b535dfbe6900ca5); ?>
+<?php endif; ?></section><?php endif; ?>
                 <?php if($spot->body): ?><section class="card prose"><p><?php echo nl2br(e($spot->body)); ?></p></section><?php endif; ?>
                 <?php if($spot->tags->isNotEmpty()): ?>
                     <p class="tags"><?php $__currentLoopData = $spot->tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><a class="chip" href="/<?php echo e($pref); ?>/spots/?tag=<?php echo e(urlencode($tag->name)); ?>"><?php echo e($tag->name); ?></a><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?></p>
@@ -39,6 +59,26 @@
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                         <p class="t-muted"><?php echo e(__('public.no_comments')); ?></p>
                     <?php endif; ?>
+                    <?php if (isset($component)) { $__componentOriginal1a6e5077f335bc664c1e6423ce0001f6 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal1a6e5077f335bc664c1e6423ce0001f6 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.comment-form','data' => ['type' => 'spot','id' => $spot->id]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('comment-form'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['type' => 'spot','id' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($spot->id)]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal1a6e5077f335bc664c1e6423ce0001f6)): ?>
+<?php $attributes = $__attributesOriginal1a6e5077f335bc664c1e6423ce0001f6; ?>
+<?php unset($__attributesOriginal1a6e5077f335bc664c1e6423ce0001f6); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal1a6e5077f335bc664c1e6423ce0001f6)): ?>
+<?php $component = $__componentOriginal1a6e5077f335bc664c1e6423ce0001f6; ?>
+<?php unset($__componentOriginal1a6e5077f335bc664c1e6423ce0001f6); ?>
+<?php endif; ?>
                 </section>
             </div>
             <aside class="detail-side">
@@ -83,6 +123,7 @@
 <?php unset($__componentOriginale74326542b72aa0b690ae5e4be9fcbaf); ?>
 <?php endif; ?>
                 <p class="t-small"><a href="/report/spot/<?php echo e($spot->id); ?>/"><?php echo e(__('public.report_error')); ?></a></p>
+                <p class="t-small"><a href="/post/photo/spot/<?php echo e($spot->id); ?>/"><?php echo e(__('public.post_photo')); ?></a></p>
             </aside>
         </div>
         <?php if($nearbyEvents->isNotEmpty()): ?>

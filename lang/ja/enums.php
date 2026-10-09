@@ -15,4 +15,6 @@ return [
     'user_status' => ['active' => '利用中', 'suspended' => '停止中'],
     'update_status' => ['running' => '実行中', 'success' => '成功', 'rolled_back' => '戻した', 'rollback_failed' => '戻せなかった', 'failed' => '中止'],
     'update_trigger' => ['auto' => '自動', 'manual' => '手動'],
+    'submission_status' => ['received' => '受付', 'processing' => '画像処理中', 'ai_pending' => 'AI判定待ち', 'ai_deferred' => '翌日へ延期', 'in_review' => '審査待ち', 'approved' => '承認', 'rejected' => '却下', 'auto_rejected' => '自動却下'],
+    'submission_type' => ['tip' => 'イベントの情報提供', 'event' => 'イベント(下書き)', 'spot' => 'スポット', 'article' => '記事・体験談', 'correction' => '修正依頼', 'comment' => 'コメント', 'visit_photo' => '行った!の写真'],
 ];

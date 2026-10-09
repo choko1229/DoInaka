@@ -35,6 +35,9 @@
                             <?php else: ?>
                                 <span><?php echo e($source->title ?: $source->kind->label()); ?></span>
                             <?php endif; ?>
+                            <?php if($source->kind === \App\Enums\EventSourceKind::Flyer && $source->media && $source->media->isProcessed()): ?>
+                                <a href="<?php echo e(\App\Support\MediaUrl::large($source->media)); ?>" target="_blank" rel="noopener"><img class="source-flyer" src="<?php echo e(\App\Support\MediaUrl::small($source->media)); ?>" alt="<?php echo e($source->title ?: __('public.flyer_alt')); ?>" loading="lazy"></a>
+                            <?php endif; ?>
                             <?php if($source->checked_at): ?><span class="t-small t-muted"><?php echo e(__('public.checked_at', ['date' => $source->checked_at->format('Y-m-d')])); ?></span><?php endif; ?>
                         </li>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -87,7 +90,27 @@
 
                 <section class="card">
                     <h2 class="t-h2"><?php echo e(__('public.photos')); ?></h2>
-                    <p class="t-muted"><?php echo e(__('illust.wanted')); ?> — <a href="/post/"><?php echo e(__('public.post_photo')); ?></a></p>
+                    <?php if (isset($component)) { $__componentOriginal57c28f5ad6af257e8b535dfbe6900ca5 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal57c28f5ad6af257e8b535dfbe6900ca5 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.media-gallery','data' => ['media' => $event->media,'title' => $event->title]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('media-gallery'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['media' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($event->media),'title' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($event->title)]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal57c28f5ad6af257e8b535dfbe6900ca5)): ?>
+<?php $attributes = $__attributesOriginal57c28f5ad6af257e8b535dfbe6900ca5; ?>
+<?php unset($__attributesOriginal57c28f5ad6af257e8b535dfbe6900ca5); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal57c28f5ad6af257e8b535dfbe6900ca5)): ?>
+<?php $component = $__componentOriginal57c28f5ad6af257e8b535dfbe6900ca5; ?>
+<?php unset($__componentOriginal57c28f5ad6af257e8b535dfbe6900ca5); ?>
+<?php endif; ?>
+                    <p class="t-muted"><?php if($event->media->isEmpty()): ?><?php echo e(__('illust.wanted')); ?> — <?php endif; ?><a href="/post/photo/event/<?php echo e($event->id); ?>/"><?php echo e(__('public.post_photo')); ?></a></p>
                 </section>
 
                 <section class="card" id="comments">
@@ -100,6 +123,26 @@
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                         <p class="t-muted"><?php echo e(__('public.no_comments')); ?></p>
                     <?php endif; ?>
+                    <?php if (isset($component)) { $__componentOriginal1a6e5077f335bc664c1e6423ce0001f6 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal1a6e5077f335bc664c1e6423ce0001f6 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.comment-form','data' => ['type' => 'event','id' => $event->id]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('comment-form'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['type' => 'event','id' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($event->id)]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal1a6e5077f335bc664c1e6423ce0001f6)): ?>
+<?php $attributes = $__attributesOriginal1a6e5077f335bc664c1e6423ce0001f6; ?>
+<?php unset($__attributesOriginal1a6e5077f335bc664c1e6423ce0001f6); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal1a6e5077f335bc664c1e6423ce0001f6)): ?>
+<?php $component = $__componentOriginal1a6e5077f335bc664c1e6423ce0001f6; ?>
+<?php unset($__componentOriginal1a6e5077f335bc664c1e6423ce0001f6); ?>
+<?php endif; ?>
                 </section>
             </div>
 

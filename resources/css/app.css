@@ -472,3 +472,13 @@ textarea { width: 100%; min-height: 160px; padding: var(--space-3); border: 2px 
 .admin-bar-menu[open] { background: #2c3a32; border-radius: var(--radius-sm); }
 .admin-bar-logout { margin: 0 0 0 auto; }.region-art { display: block; margin-bottom: var(--space-4); border-radius: var(--radius-md); overflow: hidden; background: var(--surface-sunken); }
 .region-art img { display: block; width: 100%; height: auto; max-height: 240px; object-fit: cover; }
+/* ---- 投稿・修正依頼(フェーズ5) ---- */
+.consent { margin: var(--space-4) 0; padding: var(--space-3) var(--space-4); border-radius: var(--radius-md); background: var(--surface-sunken); }
+.receipt { font-size: 28px; letter-spacing: 0.08em; margin: var(--space-2) 0 var(--space-4); }
+.post-choices .card { margin-top: 0; color: inherit; text-decoration: none; }
+.post-choices .card:hover h2 { text-decoration: underline; }
+.comment-form { display: grid; gap: var(--space-2); margin-top: var(--space-4); }
+.gallery { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+.gallery figure { margin: 0; }
+.gallery img { display: block; width: 100%; height: auto; border-radius: var(--radius-sm); background: var(--surface-sunken); }
+.source-flyer { display: block; max-width: 160px; margin-top: var(--space-2); border-radius: var(--radius-sm); }

@@ -28,7 +28,7 @@ final class RelatedContent
     {
         return Event::query()
             ->where('series_id', $event->series_id)->where('id', '!=', $event->id)->where('is_published', true)
-            ->with(['schedules', 'region.parent'])
+            ->with(['schedules', 'region.parent', 'tags', 'media'])
             ->get()
             ->sortByDesc(fn (Event $e) => $e->firstDate()?->toDateString() ?? '')
             ->values();
