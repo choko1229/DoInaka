@@ -8,8 +8,11 @@ use App\Enums\SettingKey;
 use App\Exceptions\InvalidSettingValueException;
 use App\Models\Setting;
 use Illuminate\Contracts\Cache\Repository as CacheRepository;
+use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Contracts\Encryption\Encrypter;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
+use JsonException;
 
 /**
  * settings テーブルを型付きで読み書きする。
@@ -166,8 +169,13 @@ class SettingsService
                 continue;
             }
 
-            $json = $row->is_secret ? $this->encrypter->decryptString($row->value) : $row->value;
-            $values[$row->key] = json_decode($json, true, 512, JSON_THROW_ON_ERROR);
+            try {
+                $json = $row->is_secret ? $this->encrypter->decryptString($row->value) : $row->value;
+                $values[$row->key] = json_decode($json, true, 512, JSON_THROW_ON_ERROR);
+            } catch (DecryptException|JsonException) {
+                // APP_KEY を変えたあとなどで読めない値は、未設定として扱う(サイト全体を止めない)。値は出さない
+                Log::channel('app')->error('設定の値を読めませんでした。', ['key' => $row->key]);
+            }
         }
 
         return $values;

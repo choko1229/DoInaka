@@ -128,3 +128,14 @@ it('設定のキーは重複がなく、すべて初期値が型に合ってい�
         expect($key->type()->accepts($default))->toBeTrue("{$key->value} の初期値の型が合っていません");
     }
 });
+
+it('復号できない秘密の値(APP_KEY を変えたあとなど)は未設定として扱い、サイトを止めない', function (): void {
+    Setting::query()->create(['key' => SettingKey::AiApiKey->value, 'value' => 'これは暗号文ではない', 'is_secret' => true]);
+    $this->settings->set(SettingKey::SiteName, '読める設定');
+    Setting::query()->where('key', SettingKey::SiteName->value)->first();
+
+    $this->settings->flush();
+
+    expect($this->settings->string(SettingKey::AiApiKey))->toBe('')
+        ->and($this->settings->string(SettingKey::SiteName))->toBe('読める設定');
+});
