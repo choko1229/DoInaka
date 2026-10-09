@@ -27,7 +27,11 @@ final class TakedownDeadlines extends Command
             ->whereHas('inquiry', fn ($q) => $q->whereNull('result'))
             ->with('inquiry')
             ->each(function (TakedownConsent $consent) use ($notifier, &$count): void {
-                $notifier->send(__('inquiry.discord_deadline', ['receipt' => $consent->inquiry->receipt_no]));
+                $inquiry = $consent->inquiry;
+                if ($inquiry === null) {
+                    return;
+                }
+                $notifier->send(__('inquiry.discord_deadline', ['receipt' => $inquiry->receipt_no]));
                 $consent->forceFill(['notified_at' => now()])->save();
                 $count++;
             });
