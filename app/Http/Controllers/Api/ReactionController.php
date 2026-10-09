@@ -82,7 +82,10 @@ final class ReactionController extends Controller
 
     private function loginRequired(Request $request): JsonResponse|RedirectResponse
     {
-        $request->session()->put('url.intended', url()->previous());
+        // 戻り先は同じサイトのパスだけ(Referer は送り手が決められるので、外部の URL を戻り先にしない)
+        $previous = parse_url(url()->previous());
+        $path = is_array($previous) && is_string($previous['path'] ?? null) && str_starts_with($previous['path'], '/') && ! str_starts_with($previous['path'], '//') ? $previous['path'] : '/';
+        $request->session()->put('url.intended', $path);
 
         if ($request->expectsJson()) {
             return response()->json(['login_required' => true, 'login_url' => url('/login/')], 401);

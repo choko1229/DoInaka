@@ -55,3 +55,11 @@ it('絞り込みの部分更新はHTMLを返し、不正な県は404', function 
     $this->getJson('/api/v1/events?pref=nowhere')->assertNotFound();
     $this->getJson('/api/v1/events')->assertNotFound();
 });
+
+it('未ログインの戻り先は、Referer が外部でも同じサイトのパスだけ', function (): void {
+    $event = reactionEvent();
+
+    $this->withHeader('referer', 'https://evil.example/steal?x=1')->post("/api/v1/visits/event/{$event->id}")->assertRedirect('/login/');
+
+    expect(session('url.intended'))->toBe('/steal');
+});

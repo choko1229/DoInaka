@@ -67,7 +67,7 @@ final class HomeController extends Controller
         $load = static fn (): array => collect($resolve())->map(fn (mixed $m): mixed => $m instanceof Model ? $m->getKey() : null)->filter()->values()->all();
 
         // テスト中は毎回引く(キャッシュが別のテストの結果を返さないように)
-        $ids = app()->environment('testing') ? $load() : Cache::remember("top:{$name}:".($pref->id ?? 0).':'.now()->format('YmdHi'), 600, $load);
+        $ids = app()->environment('testing') ? $load() : Cache::remember("top:{$name}:".($pref->id ?? 0).':'.now()->format('YmdH').intdiv((int) now()->format('i'), 10), 600, $load);
         if ($ids === []) {
             return [];
         }
