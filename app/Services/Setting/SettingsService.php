@@ -9,7 +9,7 @@ use App\Exceptions\InvalidSettingValueException;
 use App\Models\Setting;
 use Illuminate\Contracts\Cache\Repository as CacheRepository;
 use Illuminate\Contracts\Encryption\DecryptException;
-use Illuminate\Contracts\Encryption\Encrypter;
+use Illuminate\Contracts\Encryption\StringEncrypter;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use JsonException;
@@ -25,7 +25,7 @@ class SettingsService
 {
     public const CACHE_KEY = 'settings.all';
 
-    public function __construct(private readonly Encrypter $encrypter) {}
+    public function __construct(private readonly StringEncrypter $encrypter) {}
 
     public function get(SettingKey $key): mixed
     {
