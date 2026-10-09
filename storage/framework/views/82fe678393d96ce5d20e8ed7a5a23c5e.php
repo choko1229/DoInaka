@@ -74,6 +74,13 @@ unset($__defined_vars, $__key, $__value); ?>
                 <li><a href="<?php echo e(route('admin.dashboard')); ?>" <?php if($current === 'dashboard'): ?> aria-current="page" <?php endif; ?>><?php echo e(__('layout.admin_dashboard')); ?></a></li>
                 <li><a href="<?php echo e(route('admin.update')); ?>" <?php if($current === 'update'): ?> aria-current="page" <?php endif; ?>><?php echo e(__('admin.update')); ?></a></li>
             </ul>
+            <?php if(auth()->guard()->check()): ?>
+                <div class="admin-account">
+                    <p class="t-small t-muted" style="margin:0"><?php echo e(auth()->user()?->name); ?></p>
+                    <form method="post" action="<?php echo e(route('logout')); ?>"><?php echo csrf_field(); ?><button type="submit" class="link-button"><?php echo e(__('auth.account_logout')); ?></button></form>
+                    <form method="post" action="<?php echo e(route('admin.two-factor.reset')); ?>" onsubmit="return confirm(<?php echo \Illuminate\Support\Js::from(__('auth.account_reset_confirm'))->toHtml() ?>)"><?php echo csrf_field(); ?><button type="submit" class="link-button"><?php echo e(__('auth.account_reset_two_factor')); ?></button></form>
+                </div>
+            <?php endif; ?>
         </nav>
         <main id="main" class="admin-main">
             <?php if(session('status')): ?>

@@ -5,11 +5,16 @@ declare(strict_types=1);
 namespace App\Providers;
 
 use App\Contracts\CommandRunner;
+use App\Contracts\GoogleLogin;
 use App\Contracts\Notifier;
 use App\Contracts\ReleaseDownloader;
 use App\Contracts\ReleaseSource;
 use App\Data\ThemeContext;
+use App\Enums\Permission;
 use App\Enums\ThemePreference;
+use App\Models\User;
+use App\Services\Auth\RolePermissions;
+use App\Services\Auth\SocialiteGoogleLogin;
 use App\Services\Design\IllustUrlResolver;
 use App\Services\Design\ThemeResolver;
 use App\Services\Install\EnvFileWriter;
@@ -38,6 +43,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\View as ViewFacade;
 use Illuminate\Support\ServiceProvider;
 
@@ -54,6 +60,9 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(ReleaseDownloader::class, HttpReleaseDownloader::class);
         $this->app->bind(CommandRunner::class, ProcessCommandRunner::class);
         $this->app->bind(Notifier::class, DiscordNotifier::class);
+
+        // ログイン(フェーズ2)
+        $this->app->bind(GoogleLogin::class, SocialiteGoogleLogin::class);
 
         $this->app->singleton(IpHasher::class, fn (): IpHasher => new IpHasher(config()->string('app.ip_hash_secret') ?: config()->string('app.key')));
 
@@ -98,6 +107,11 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        // 権限(Permission)をそのまま Gate にする。ルートでは can:post のように使う
+        foreach (Permission::cases() as $permission) {
+            Gate::define($permission->value, fn (?User $user): bool => RolePermissions::allows($user, $permission));
+        }
+
         // すべての画面に、いまの配色(時間帯・季節・利用者の選択)を渡す
         ViewFacade::composer('*', function (View $view): void {
             if (array_key_exists('themeContext', $view->getData())) {

@@ -35,6 +35,12 @@ class UserFactory extends Factory
         return $this->state(['role' => UserRole::Admin]);
     }
 
+    /** 2段階認証を設定済み(秘密鍵は固定。テストで時刻から正しいコードを作れる) */
+    public function twoFactor(): static
+    {
+        return $this->state(['totp_secret' => 'JBSWY3DPEHPK3PXP', 'totp_confirmed_at' => now()]);
+    }
+
     public function suspended(): static
     {
         return $this->state(['status' => UserStatus::Suspended]);

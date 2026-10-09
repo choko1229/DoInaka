@@ -2,12 +2,19 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Install\InstallController;
 use App\Http\Controllers\Public\HomeController;
 use App\Http\Middleware\EnsureNotInstalled;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
+
+// ログイン(会員も管理者も Google。管理画面のログインは routes/admin.php)
+Route::get('/login', [LoginController::class, 'show'])->name('login');
+Route::get('/auth/google', [LoginController::class, 'redirect'])->middleware('throttle:20,1')->name('auth.google');
+Route::get('/auth/google/callback', [LoginController::class, 'callback'])->middleware('throttle:20,1')->name('auth.google.callback');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Web インストーラー(設計書6.3)。設置済みなら done 以外はすべて 404
 Route::prefix('install')->name('install.')->group(function (): void {
