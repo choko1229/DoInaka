@@ -4,7 +4,7 @@
 
 ## 今のフェーズ
 
-フェーズ0〜8 すべて完了(最終確認と【BETA】プレリリースの作成が残っている)
+フェーズ0〜8 すべて完了。【BETA】v26.10.1 のプレリリースを作成済み(人の確認は docs/manual-checks.md)
 
 ## 終わったフェーズ
 
@@ -22,9 +22,9 @@
 
 ## 次にやること
 
-1. 最終の確認: main の CI、コンテナでの Pint・Larastan・Pest、manual-checks の整理
-2. 【BETA】プレリリース(release.yml を workflow_dispatch で beta=true。正式版は作らない)。ZIP の中身(.env・tests・開発用ファイルがない。resources/prompts・resources/legal が入っている)を確かめる
-3. 最終報告(PR の一覧、decisions の要約、manual-checks をフェーズ順に)
+- docs/manual-checks.md の「フェーズ8で追加」を中心に、人の確認を進める(バックアップの復元、SPF/DKIM、外部サービスの表と実物の照合、GA4・AdSense・Search Console、HTTPS の 301 など)
+- プレリリース【BETA】v26.10.1(https://github.com/choko1229/DoInaka/releases/tag/v26.10.1)を、テスト用の環境に置いて、確認する。問題がなければ、正式版は人がタグ(vYY.M.N)を push して作る(Claude Code は作らない)
+- Dependabot の PR(#2〜#4)の扱いを決める
 
 ## 環境メモ
 
