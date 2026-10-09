@@ -51,6 +51,7 @@ jobs:
           extensions: pdo_mysql, mbstring, intl, gd, imagick, zip, bcmath, exif, fileinfo
           tools: composer:v2
           coverage: none
+          ini-values: post_max_size=110M, upload_max_filesize=10M, memory_limit=512M, date.timezone=Asia/Tokyo
 
       - name: Composer のキャッシュ
         uses: actions/cache@v4

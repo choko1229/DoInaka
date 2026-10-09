@@ -16,4 +16,5 @@ enum AppMetaKey: string
     case UpdateWindowHour = 'update_window_hour';
     case CrawlWindowHour = 'crawl_window_hour';
     case LastUpdateCheck = 'last_update_check';
+    case LastNotifiedVersion = 'last_notified_version';
 }

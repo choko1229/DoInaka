@@ -8,28 +8,28 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table): void {
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_ja_0900_as_cs_ks';
+
             $table->id();
             $table->string('name');
+            // メールアドレスは管理者だけが見る。公開ページ・API・ログには出さない
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            // Google のアカウント ID。最初の管理者は、初回の Google ログインで結び付ける(フェーズ2)
+            $table->string('google_sub')->nullable()->unique();
+            $table->string('role', 20)->default('member');
+            $table->string('status', 20)->default('active');
             $table->rememberToken();
             $table->timestamps();
         });
 
-        Schema::create('password_reset_tokens', function (Blueprint $table) {
-            $table->string('email')->primary();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
-        });
+        Schema::create('sessions', function (Blueprint $table): void {
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_ja_0900_as_cs_ks';
 
-        Schema::create('sessions', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->foreignId('user_id')->nullable()->index();
             $table->string('ip_address', 45)->nullable();
@@ -39,13 +39,9 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('users');
-        Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
     }
 };
