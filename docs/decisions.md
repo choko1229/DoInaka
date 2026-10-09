@@ -246,3 +246,4 @@
 | cron の点検 | 設計書10.2の一覧のうち、**`popularity:calculate`(1時間ごと)と `geo:import`(週1回)が登録されていなかった**ので足した。`tests/Feature/Console/ScheduleTest.php` が、名前と頻度の一覧を完全に突き合わせる(増やしたらこの表も直す)。サイトマップは、その場で作る(キャッシュしない)ので、常に最新=「1時間ごとの再生成」を満たす |
 | cron の停止の通知 | `WatchCron`(Web の応答のあと、1分に1回)が `CronWatcher` を呼ぶ。5分以上動いていなければ Discord に1回だけ「止まっている」、動き出したら1回だけ「再開」(状態は app_meta の cron_alert_state)。一度も動いていなければ「まだ一度も動いていない」。設置前は何もしない。ダッシュボードの警告は従来どおり。`CRON_WATCH=false` で切れる(phpunit では切ってある) |
 | 通しのテスト | `FullFlowTest`: 投稿 → AI の判定(モック)→ 審査 → 公開 → 検索で見つかる → サイトマップに載る → 削除依頼でぼかされ検索・サイトマップから外れる → 残すと戻る。テストは1つのトランザクションなので、全文インデックス(コミット後に見える)の代わりに LIKE で探す(本番の ngram 全文は SearchEngineTest 側と manual-checks) |
+| リリースZIPの中身(フェーズ8の自己レビューで発見) | ReleaseBuilder が esources/prompts(AI のプロンプト)を入れておらず、ZIP から入れた本番では AI の判定・下書き・照合がすべて失敗する状態だった。esources/prompts と、新しい esources/legal(固定ページの文面)を入れ、ZIP のテストに加えた |

@@ -22,7 +22,7 @@ use ZipArchive;
 final class ReleaseBuilder
 {
     /** ZIP に入れるディレクトリ(ルートからの相対パス) */
-    private const INCLUDE_DIRS = ['app', 'bootstrap', 'config', 'database', 'lang', 'public', 'resources/views', 'routes', 'vendor'];
+    private const INCLUDE_DIRS = ['app', 'bootstrap', 'config', 'database', 'lang', 'public', 'resources/views', 'resources/prompts', 'resources/legal', 'routes', 'vendor'];
 
     /** ZIP に入れるファイル */
     private const INCLUDE_FILES = ['artisan', 'composer.json', 'composer.lock'];
