@@ -12,6 +12,7 @@ use App\Models\User;
 use App\Services\Setting\AppMetaService;
 use App\Services\Setting\SettingsService;
 use App\Services\Update\CurrentVersion;
+use Database\Seeders\InitialDataSeeder;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -96,6 +97,12 @@ class Installer
         DB::purge('mysql');
 
         $code = Artisan::call('migrate', ['--force' => true, '--no-interaction' => true]);
+        if ($code !== 0) {
+            throw new RuntimeException(__('install.migrate_failed'));
+        }
+
+        // 初期データ(地域・分類)。すでに入っていれば何もしない
+        $code = Artisan::call('db:seed', ['--class' => InitialDataSeeder::class, '--force' => true, '--no-interaction' => true]);
         if ($code !== 0) {
             throw new RuntimeException(__('install.migrate_failed'));
         }

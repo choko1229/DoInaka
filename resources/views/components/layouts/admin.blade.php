@@ -13,7 +13,18 @@
             <ul>
                 {{-- 項目は各フェーズの画面を作るときに足す --}}
                 <li><a href="{{ route('admin.dashboard') }}" @if ($current === 'dashboard') aria-current="page" @endif>{{ __('layout.admin_dashboard') }}</a></li>
-                <li><a href="{{ route('admin.update') }}" @if ($current === 'update') aria-current="page" @endif>{{ __('admin.update') }}</a></li>
+                @can('review')
+                    <li class="nav-group">{{ __('layout.nav_content') }}</li>
+                    <li><a href="{{ route('admin.events') }}" @if ($current === 'events') aria-current="page" @endif>{{ __('content.events_title') }}</a></li>
+                    <li><a href="{{ route('admin.contents') }}" @if ($current === 'contents') aria-current="page" @endif>{{ __('content.contents_title') }}</a></li>
+                @endcan
+                @can('manage-masters')
+                    <li class="nav-group">{{ __('layout.nav_operation') }}</li>
+                    <li><a href="{{ route('admin.masters') }}" @if ($current === 'masters') aria-current="page" @endif>{{ __('masters.title') }}</a></li>
+                @endcan
+                @can('manage-settings')
+                    <li><a href="{{ route('admin.update') }}" @if ($current === 'update') aria-current="page" @endif>{{ __('admin.update') }}</a></li>
+                @endcan
             </ul>
             @auth
                 <div class="admin-account">

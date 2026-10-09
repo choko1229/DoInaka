@@ -88,6 +88,9 @@ jobs:
       - run: composer install --no-interaction --no-progress --prefer-dist
       - run: npm ci
 
+      - name: DB のトリガー作成を許可(情報元のトリガーのため)
+        run: mysql -h127.0.0.1 -uroot -proot -e "SET GLOBAL log_bin_trust_function_creators = 1"
+
       - name: テスト(Pint・Larastan・ビルド・Pest)
         run: |
           ./vendor/bin/pint --test

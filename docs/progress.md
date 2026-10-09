@@ -4,7 +4,7 @@
 
 ## 今のフェーズ
 
-フェーズ2(ログインと2段階認証)— PR 作成前
+フェーズ3(データと管理のコンテンツ)— PR 作成前
 
 ## 終わったフェーズ
 
@@ -12,6 +12,7 @@
 | --- | --- | --- |
 | 0 土台 | [#1](https://github.com/choko1229/DoInaka/pull/1) | Docker・CI・設定・配色・エラー画面・イラスト・リリースZIP |
 | 1 インストーラーと自動アップデート | [#5](https://github.com/choko1229/DoInaka/pull/5) | /install/・更新の適用と戻し・時間帯・リリースワークフロー |
+| 2 ログインと2段階認証 | [#6](https://github.com/choko1229/DoInaka/pull/6) | Google ログイン・TOTP・回復コード・端末を覚える・権限 |
 
 ## 次にやること
 

@@ -36,3 +36,6 @@ Schedule::command('update:run-scheduled')
 
 // 更新の途中で残ったメンテナンス表示の解除
 Schedule::command('update:recover')->everyFiveMinutes()->name('update-recover');
+
+// イベント終了処理: 最終日を過ぎた開催回を「開催済み」にする(毎年開催の行事は、次回未定の下書きを作る)
+Schedule::command('events:finish')->hourly()->name('events-finish');

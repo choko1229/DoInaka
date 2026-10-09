@@ -141,7 +141,7 @@ it('スケジューラが動くたびに最終実行時刻を書き、5分以上
 it('定期処理(cron の1行から動く)が登録されている', function (): void {
     $names = collect(app(Schedule::class)->events())->map(fn ($e) => $e->description)->filter()->all();
 
-    expect($names)->toContain('cron-heartbeat', 'queue-work', 'pageviews-flush', 'update-recalculate-window', 'update-run', 'update-recover');
+    expect($names)->toContain('cron-heartbeat', 'queue-work', 'pageviews-flush', 'update-recalculate-window', 'update-run', 'update-recover', 'events-finish');
 });
 
 it('heartbeat の定期処理を動かすと app_meta に最終実行時刻が入る', function (): void {
