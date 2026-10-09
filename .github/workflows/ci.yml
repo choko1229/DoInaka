@@ -83,4 +83,4 @@ jobs:
         run: npm run build
 
       - name: テスト(Pest)
-        run: ./vendor/bin/pest
+        run: ./vendor/bin/pest --display-warnings
