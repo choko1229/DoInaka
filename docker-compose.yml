@@ -1,0 +1,68 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/app/Dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+      # Windows のフォルダを直接マウントすると遅いので、vendor は名前付きボリュームに置く
+      - vendor:/var/www/html/vendor
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_HOST: db
+      MAIL_HOST: mailpit
+
+  db:
+    image: mysql:8.0.46
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_ja_0900_as_cs_ks
+      - --default-time-zone=+09:00
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: doinaka
+      MYSQL_USER: doinaka
+      MYSQL_PASSWORD: doinaka
+    volumes:
+      - dbdata:/var/lib/mysql
+      # テスト用のデータベース(doinaka_test)を最初に作る
+      - ./docker/db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-proot"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  mailpit:
+    image: axllent/mailpit:latest
+    ports:
+      - "8025:8025"
+
+  node:
+    image: node:22-bookworm
+    working_dir: /var/www/html
+    volumes:
+      - .:/var/www/html
+      # node_modules も名前付きボリュームに置く
+      - node_modules:/var/www/html/node_modules
+      # ウイルス対策が HTTPS を検査する PC 用の証明書(無ければ何も起きない)
+      - ./docker/certs:/certs:ro
+    ports:
+      - "5173:5173"
+    environment:
+      NODE_EXTRA_CA_CERTS: /certs/local-av-root.crt
+      # Windows のマウントでは変更通知が届かないのでポーリングで検知する
+      CHOKIDAR_USEPOLLING: "true"
+    command: sh -c "npm install && npm run dev -- --host 0.0.0.0"
+    profiles: ["dev"]
+
+volumes:
+  vendor:
+  node_modules:
+  dbdata:

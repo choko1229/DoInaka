@@ -1,0 +1,81 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ブランチ保護の「必須のチェック」はこのジョブ名(ci)。Pint・Larastan(max)・Pest・ビルドをまとめて確かめる
+  ci:
+    name: ci
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    services:
+      mysql:
+        image: mysql:8.0.46
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: doinaka_test
+        ports:
+          - 3306:3306
+        # 本番(kagoya)と同じ照合順序・時刻にする。サーバーの既定に頼らないことも、アプリ側のテストで確かめている
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -uroot -proot"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=20
+
+    env:
+      DB_CONNECTION: mysql
+      DB_HOST: 127.0.0.1
+      DB_PORT: 3306
+      DB_DATABASE: doinaka_test
+      DB_USERNAME: root
+      DB_PASSWORD: root
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: pdo_mysql, mbstring, intl, gd, imagick, zip, bcmath, exif, fileinfo
+          tools: composer:v2
+          coverage: none
+
+      - name: Composer のキャッシュ
+        uses: actions/cache@v4
+        with:
+          path: ~/.composer/cache
+          key: composer-${{ hashFiles('composer.lock') }}
+          restore-keys: composer-
+
+      - run: composer install --no-interaction --no-progress --prefer-dist
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - run: npm ci
+
+      - name: 整形(Pint)
+        run: ./vendor/bin/pint --test
+
+      - name: 静的解析(Larastan レベル max)
+        run: ./vendor/bin/phpstan analyse --memory-limit=1G --no-progress
+
+      - name: アセットのビルド
+        run: npm run build
+
+      - name: テスト(Pest)
+        run: ./vendor/bin/pest

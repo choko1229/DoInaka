@@ -1,0 +1,175 @@
+rows by era: {'heisei': 34, 'showa': 150}  total: 184
+kind by era: Counter({('showa', '村'): 130, ('heisei', '町'): 32, ('showa', '町'): 20, ('heisei', '市'): 2})
+merger_type by era: Counter({('showa', '新設合併'): 110, ('showa', '編入'): 40, ('heisei', '新設合併'): 28, ('heisei', '編入'): 6})
+confidence: Counter({'medium': 150, 'high': 34})  by era: Counter({('showa', 'medium'): 150, ('heisei', 'high'): 34})
+fact/read/cur conf: Counter({'high': 184}) Counter({'medium': 150, 'high': 34}) Counter({'high': 180, 'medium': 4})
+current_city_code not in File1: []
+duplicate (former_name, abolished_on): []
+showa rows whose chain passes a heisei abolition: 101  missing parent: []
+showa rows without parent: 49 Counter({'高松市': 19, '土庄町': 7, '三木町': 6, '善通寺市': 5, '多度津町': 5, '坂出市': 3, '琴平町': 2, '坂出市;宇多津町': 1, '善通寺市;琴平町': 1})
+heisei new-merger successors: 8 ['さぬき市', 'まんのう町', '三豊市', '丸亀市', '小豆島町', '東かがわ市', '綾川町', '観音寺市']
+43 - 17 + successors = 34  heisei rows = 34
+only_in_wiki: []
+only_in_uub: []
+heisei_only_in_wiki: []  heisei_only_in_mic: []
+mismatches:
+   {'name': '竜川村', 'date': '1954-03-31', 'chain_now': ['善通寺市'], 'infobox_now': ['善通寺市', '丸亀市']}
+   {'name': '川津村', 'date': '1955-01-01', 'chain_now': ['坂出市', '丸亀市', '宇多津町'], 'infobox_now': ['坂出市', '宇多津町']}
+   {'name': '神野村', 'date': '1955-04-01', 'chain_now': ['まんのう町'], 'infobox_now': ['まんのう町', '琴平町']}
+   {'name': '井戸村', 'date': '1956-09-30', 'chain_now': ['三木町'], 'infobox_now': ['三木町', 'さぬき市']}
+multi-valued rows:
+   67 川津村 1955-01-01 坂出市;飯野村 坂出市;宇多津町 
+   129 紀伊村 1955-04-10 観音寺市;大野原町 観音寺市 14;13
+   133 飯野村 1955-05-03 丸亀市;宇多津町 丸亀市;宇多津町 9
+   180 象郷村 1958-03-31 善通寺市;琴平町 善通寺市;琴平町 
+non-high rows:
+   35 showa 与北村 1954-03-31 medium | fact high read medium cur high | よぎたそん
+   36 showa 吉原村 1954-03-31 medium | fact high read medium cur high | よしわらむら
+   37 showa 善通寺町 1954-03-31 medium | fact high read medium cur high | ぜんつうじちょう
+   38 showa 川西村 1954-03-31 medium | fact high read medium cur high | かわにしむら
+   39 showa 本島村 1954-03-31 medium | fact high read medium cur high | ほんじまそん
+   40 showa 竜川村 1954-03-31 medium | fact high read medium cur medium | たつかわむら
+   41 showa 筆岡村 1954-03-31 medium | fact high read medium cur high | ふでおかむら
+   42 showa 丹生村 1954-04-01 medium | fact high read medium cur high | にぶそん
+   43 showa 山田村 1954-04-01 medium | fact high read medium cur high | やまだむら
+   44 showa 府中村 1954-04-01 medium | fact high read medium cur high | ふちゅうむら
+   45 showa 昭和村 1954-04-01 medium | fact high read medium cur high | しょうわむら
+   46 showa 枌所村 1954-04-01 medium | fact high read medium cur high | そぎしょそん
+   47 showa 滝宮村 1954-04-01 medium | fact high read medium cur high | たきのみやむら
+   48 showa 羽床上村 1954-04-01 medium | fact high read medium cur high | はゆかかみむら
+   49 showa 羽床村 1954-04-01 medium | fact high read medium cur high | はゆかむら
+   50 showa 西分村 1954-04-01 medium | fact high read medium cur high | にしぶんそん
+   51 showa 誉水村 1954-04-01 medium | fact high read medium cur high | よみずむら
+   52 showa 陶村 1954-04-01 medium | fact high read medium cur high | すえむら
+   53 showa 四箇村 1954-05-03 medium | fact high read medium cur high | しかむら
+   54 showa 土器村 1954-05-03 medium | fact high read medium cur high | どきむら
+   55 showa 多度津町 1954-05-03 medium | fact high read medium cur high | たどつちょう
+   56 showa 白方村 1954-05-03 medium | fact high read medium cur high | しらかたむら
+   57 showa 三都村 1954-10-01 medium | fact high read medium cur high | みとそん
+   58 showa 下高岡村 1954-10-01 medium | fact high read medium cur high | しもたかおかむら
+   59 showa 二生村 1954-10-01 medium | fact high read medium cur high | にぶそん
+   60 showa 平井町 1954-10-01 medium | fact high read medium cur high | ひらいちょう
+   61 showa 氷上村 1954-10-01 medium | fact high read medium cur high | ひかみむら
+   62 showa 池田町 1954-10-01 medium | fact high read medium cur high | いけだちょう
+   63 showa 田中村 1954-10-01 medium | fact high read medium cur high | たなかむら
+   64 showa 神山村 1954-10-01 medium | fact high read medium cur high | かみやまむら
+   65 showa 郡家村 1954-10-17 medium | fact high read medium cur high | ぐんげそん
+   66 showa 小田村 1955-01-01 medium | fact high read medium cur high | おだむら
+   67 showa 川津村 1955-01-01 medium | fact high read medium cur medium | かわつむら
+   68 showa 常磐村 1955-01-01 medium | fact high read medium cur high | ときわむら
+   69 showa 志度町 1955-01-01 medium | fact high read medium cur high | しどちょう
+   70 showa 柞田村 1955-01-01 medium | fact high read medium cur high | くにたむら
+   71 showa 観音寺町 1955-01-01 medium | fact high read medium cur high | かんおんじちょう
+   72 showa 高室村 1955-01-01 medium | fact high read medium cur high | たかむろそん
+   73 showa 鴨庄村 1955-01-01 medium | fact high read medium cur high | かもしょうむら
+   74 showa 五郷村 1955-02-11 medium | fact high read medium cur high | ごごうそん
+   75 showa 大野原村 1955-02-11 medium | fact high read medium cur high | おおのはらむら
+   76 showa 萩原村 1955-02-11 medium | fact high read medium cur high | はぎはらむら
+   77 showa 三本松町 1955-03-15 medium | fact high read medium cur high | さんぼんまつちょう
+   78 showa 大内町 1955-03-15 medium | fact high read medium cur high | おおちちょう
+   79 showa 山内村 1955-03-20 medium | fact high read medium cur high | やまのうちそん
+   80 showa 端岡村 1955-03-20 medium | fact high read medium cur high | はしおかむら
+   81 showa 上高瀬村 1955-03-31 medium | fact high read medium cur high | かみたかせむら
+   82 showa 上高野村 1955-03-31 medium | fact high read medium cur high | かみだかのむら
+   83 showa 二ノ宮村 1955-03-31 medium | fact high read medium cur high | にのみやむら
+   84 showa 勝間村 1955-03-31 medium | fact high read medium cur high | かつまむら
+   85 showa 本山村 1955-03-31 medium | fact high read medium cur high | もとやまむら
+   86 showa 桑山村 1955-03-31 medium | fact high read medium cur high | くわやまむら
+   87 showa 比地二村 1955-03-31 medium | fact high read medium cur high | ひじふたむら
+   88 showa 比地大村 1955-03-31 medium | fact high read medium cur high | ひじだいむら
+   89 showa 笠田村 1955-03-31 medium | fact high read medium cur high | かさだむら
+   90 showa 麻村 1955-03-31 medium | fact high read medium cur high | あさむら
+   91 showa 七箇村 1955-04-01 medium | fact high read medium cur high | しちかむら
+   92 showa 下高瀬村 1955-04-01 medium | fact high read medium cur high | しもたかせむら
+   93 showa 北浦村 1955-04-01 medium | fact high read medium cur high | きたうらそん
+   94 showa 十河村 1955-04-01 medium | fact high read medium cur high | そがわむら
+   95 showa 十郷村 1955-04-01 medium | fact high read medium cur high | そごうそん
+   96 showa 吉津村 1955-04-01 medium | fact high read medium cur high | よしづむら
+   97 showa 吉野村 1955-04-01 medium | fact high read medium cur high | よしのむら
+   98 showa 和田村 1955-04-01 medium | fact high read medium cur high | わだむら
+   99 showa 四条村 1955-04-01 medium | fact high read medium cur high | しじょうむら
+   100 showa 四海村 1955-04-01 medium | fact high read medium cur high | しかいそん
+   101 showa 土庄町 1955-04-01 medium | fact high read medium cur high | とのしょうちょう
+   102 showa 多和村 1955-04-01 medium | fact high read medium cur high | たわむら
+   103 showa 大見村 1955-04-01 medium | fact high read medium cur high | おおみむら
+   104 showa 大野村 1955-04-01 medium | fact high read medium cur high | おおのむら
+   105 showa 大鐸村 1955-04-01 medium | fact high read medium cur high | おおぬでそん
+   106 showa 小海村 1955-04-01 medium | fact high read medium cur high | おうみそん
+   107 showa 川島町 1955-04-01 medium | fact high read medium cur high | かわしまちょう
+   108 showa 川東村 1955-04-01 medium | fact high read medium cur high | かわひがしむら
+   109 showa 引田町 1955-04-01 medium | fact high read medium cur high | ひけたちょう
+   110 showa 東植田村 1955-04-01 medium | fact high read medium cur high | ひがしうえたむら
+   111 showa 榎井村 1955-04-01 medium | fact high read medium cur high | えないむら
+   112 showa 河内村 1955-04-01 medium | fact high read medium cur high | こうちむら
+   113 showa 浅野村 1955-04-01 medium | fact high read medium cur high | あさのむら
+   114 showa 淵崎村 1955-04-01 medium | fact high read medium cur high | ふちざきそん
+   115 showa 琴平町 1955-04-01 medium | fact high read medium cur high | ことひらちょう
+   116 showa 相生村 1955-04-01 medium | fact high read medium cur high | あいおいむら
+   117 showa 神田村 1955-04-01 medium | fact high read medium cur high | こうだむら
+   118 showa 神野村 1955-04-01 medium | fact high read medium cur medium | かんのそん
+   119 showa 粟島村 1955-04-01 medium | fact high read medium cur high | あわしまむら
+   120 showa 荘内村 1955-04-01 medium | fact high read medium cur high | しょうないむら
+   121 showa 西植田村 1955-04-01 medium | fact high read medium cur high | にしうえたむら
+   122 showa 詫間町 1955-04-01 medium | fact high read medium cur high | たくまちょう
+   123 showa 豊島村 1955-04-01 medium | fact high read medium cur high | てしまそん
+   124 showa 豊浜町 1955-04-01 medium | fact high read medium cur high | とよはまちょう
+   125 showa 財田大野村 1955-04-01 medium | fact high read medium cur high | さいたおおのむら
+   126 showa 辻村 1955-04-01 medium | fact high read medium cur high | つじむら
+   127 showa 長尾町 1955-04-01 medium | fact high read medium cur high | ながおちょう
+   128 showa 粟井村 1955-04-10 medium | fact high read medium cur high | あわいむら
+   129 showa 紀伊村 1955-04-10 medium | fact high read medium cur high | きいむら
+   130 showa 豊田村 1955-04-10 medium | fact high read medium cur high | とよたむら
+   131 showa 富田村 1955-04-15 medium | fact high read medium cur high | とみだむら
+   132 showa 松尾村 1955-04-15 medium | fact high read medium cur high | まつおそん
+   133 showa 飯野村 1955-05-03 medium | fact high read medium cur high | いいのむら
+   134 showa 五名村 1955-07-01 medium | fact high read medium cur high | ごみょうむら
+   135 showa 白鳥本町 1955-07-01 medium | fact high read medium cur high | しろとりほんちょう
+   136 showa 白鳥村 1955-07-01 medium | fact high read medium cur high | しろとりむら
+   137 showa 石田村 1955-07-01 medium | fact high read medium cur high | いしだそん
+   138 showa 神前村 1955-07-01 medium | fact high read medium cur high | かんざきそん
+   139 showa 福栄村 1955-07-01 medium | fact high read medium cur high | ふくえむら
+   140 showa 高篠村 1955-07-01 medium | fact high read medium cur high | たかしのむら
+   141 showa 松山村 1956-07-01 medium | fact high read medium cur high | まつやまむら
+   142 showa 王越村 1956-07-01 medium | fact high read medium cur high | おうごしむら
+   143 showa 坂本村 1956-08-01 medium | fact high read medium cur high | さかもとむら
+   144 showa 法勲寺村 1956-08-01 medium | fact high read medium cur high | ほうくんじむら
+   145 showa 津田町 1956-09-08 medium | fact high read medium cur high | つだちょう
+   146 showa 鶴羽村 1956-09-08 medium | fact high read medium cur high | つるわむら
+   147 showa 造田村 1956-09-16 medium | fact high read medium cur high | ぞうたそん
+   148 showa 長尾町 1956-09-16 medium | fact high read medium cur high | ながおちょう
+   149 showa 美合村 1956-09-29 medium | fact high read medium cur high | みあいむら
+   150 showa 造田村 1956-09-29 medium | fact high read medium cur high | そうだむら
+   151 showa 一ノ谷村 1956-09-30 medium | fact high read medium cur high | いちのたにむら
+   152 showa 一宮村 1956-09-30 medium | fact high read medium cur high | いちのみやむら
+   153 showa 三谷村 1956-09-30 medium | fact high read medium cur high | みたにむら
+   154 showa 上笠居村 1956-09-30 medium | fact high read medium cur high | かみかさいむら
+   155 showa 上西村 1956-09-30 medium | fact high read medium cur high | かみにしむら
+   156 showa 下笠居村 1956-09-30 medium | fact high read medium cur high | しもかさいむら
+   157 showa 井戸村 1956-09-30 medium | fact high read medium cur medium | いどむら
+   158 showa 仏生山町 1956-09-30 medium | fact high read medium cur high | ぶっしょうざんちょう
+   159 showa 伊吹村 1956-09-30 medium | fact high read medium cur high | いぶきむら
+   160 showa 佐柳島村 1956-09-30 medium | fact high read medium cur high | さなぎしまむら
+   161 showa 円座村 1956-09-30 medium | fact high read medium cur high | えんざむら
+   162 showa 前田村 1956-09-30 medium | fact high read medium cur high | まえだむら
+   163 showa 塩江村 1956-09-30 medium | fact high read medium cur high | しおのえむら
+   164 showa 多肥村 1956-09-30 medium | fact high read medium cur high | たひむら
+   165 showa 安原村 1956-09-30 medium | fact high read medium cur high | やすはらむら
+   166 showa 川岡村 1956-09-30 medium | fact high read medium cur high | かわおかむら
+   167 showa 川添村 1956-09-30 medium | fact high read medium cur high | かわぞえむら
+   168 showa 弦打村 1956-09-30 medium | fact high read medium cur high | つるうちむら
+   169 showa 林村 1956-09-30 medium | fact high read medium cur high | はやしむら
+   170 showa 檀紙村 1956-09-30 medium | fact high read medium cur high | だんしむら
+   171 showa 池西村 1956-09-30 medium | fact high read medium cur high | いけにしむら
+   172 showa 由佐村 1956-09-30 medium | fact high read medium cur high | ゆさむら
+   173 showa 長炭村 1956-09-30 medium | fact high read medium cur high | ながすみむら
+   174 showa 雌雄島村 1956-09-30 medium | fact high read medium cur high | しゆうじまむら
+   175 showa 香西町 1956-09-30 medium | fact high read medium cur high | こうざいちょう
+   176 showa 高見島村 1956-09-30 medium | fact high read medium cur high | たかみしまむら
+   177 showa 鴨部村 1956-09-30 medium | fact high read medium cur high | かべむら
+   178 showa 福田村 1957-03-31 medium | fact high read medium cur high | ふくだそん
+   179 showa 大部村 1957-07-01 medium | fact high read medium cur high | おおべそん
+   180 showa 象郷村 1958-03-31 medium | fact high read medium cur high | ぞうごうむら
+   181 showa 垂水村 1958-05-01 medium | fact high read medium cur high | たるみむら
+   182 showa 広島村 1958-05-01 medium | fact high read medium cur high | ひろしまむら
+   183 showa 久万玉村 1959-04-01 medium | fact high read medium cur high | くまたまむら
+   184 showa 岡田村 1959-04-01 medium | fact high read medium cur high | おかだむら

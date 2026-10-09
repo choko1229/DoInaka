@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>管理: 行事・開催回(スマホ)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&amp;family=Yomogi&amp;family=Yusei+Magic&amp;family=Zen+Maru+Gothic:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.t-day{--bg:#fbf8ee;--surface:#ffffff;--sunken:#f2eedf;--ink:#26261c;--muted:#5a5a48;--line:#ddd7c2;--strong:#7d775e;--on:#ffffff;--ok:#2b7048;--warn:#7a5200;--ng:#a8241c}
+.s-autumn{--accent:#b24a0c}
+a{color:var(--accent)}a:hover{color:var(--ink)}
+</style>
+</helmet>
+<div class="t-day s-autumn" style="width: 390px; min-height: 1400px; box-sizing: border-box; background: var(--bg); color: var(--ink); font-family: 'BIZ UDPGothic', sans-serif; font-size: 15px; line-height: 24px;">
+<header style="background: var(--surface); border-bottom: 1px solid var(--line); padding: 10px 16px; display: flex; justify-content: space-between; align-items: center;">
+  <a href="AdminSP.dc.html" style="display: inline-flex; align-items: center; gap: 8px; color: var(--ink); text-decoration: none; font-size: 20px; line-height: 24px;"><span style="font-family: 'Yusei Magic', sans-serif;">ド田舎</span><span style="font-family: 'Yusei Magic', sans-serif; color: var(--accent); font-size: 15px; margin-left: -6px;">.net</span><span style="font: 700 12px/18px 'BIZ UDPGothic', sans-serif; border: 1px solid var(--strong); border-radius: 6px; padding: 0 6px;">管理</span></a>
+  <button aria-label="管理メニュー" style="width: 44px; height: 44px; border-radius: 999px; border: 0; background: transparent; color: var(--ink); display: grid; place-items: center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
+</header>
+<main style="padding: 16px; display: flex; flex-direction: column; gap: 16px;">
+  <h1 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 22px; line-height: 30px;">行事・開催回</h1>
+  <label for="eq2" style="position: absolute; width: 1px; height: 1px; overflow: hidden;">行事名で探す</label><input id="eq2" type="search" placeholder="行事名・地域で探す" style="height: 44px; box-sizing: border-box; padding: 0 14px; border: 2px solid var(--strong); border-radius: 6px; background: var(--surface); color: var(--ink); font: inherit;">
+  <div style="display: flex; gap: 8px; overflow-x: auto; margin: 0 -16px; padding: 0 16px 4px;"><button aria-pressed="true" style="flex: 0 0 auto; height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--accent); background: var(--surface); color: var(--accent); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">すべて 86</button><button aria-pressed="false" style="flex: 0 0 auto; height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">これから 41</button><button aria-pressed="false" style="flex: 0 0 auto; height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">来年分なし 7</button><button aria-pressed="false" style="flex: 0 0 auto; height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">非公開 3</button></div>
+    <div style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 14px 16px; display: flex; flex-direction: column; gap: 8px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px;"><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--ok); border: 1px solid var(--ok); border-radius: 6px; padding: 0 6px; white-space: nowrap;">公開</span><span style="font-size: 12px; color: var(--muted);">開催回 3回</span></div>
+      <b>[集落名]の獅子舞奉納</b>
+      <span style="font-size: 12px; color: var(--muted);">塩江町 ・ 祭り・行事</span>
+      <span style="font-size: 14px;">次の開催: <b>10/11(土) 宵宮</b></span>
+      <div style="display: flex; gap: 8px;"><a href="AdminEventEditSP.dc.html" style="display: inline-flex; align-items: center; text-decoration: none; height: 44px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">編集</a><button style="height: 44px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">開催回を追加</button></div>
+    </div>
+    <div style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 14px 16px; display: flex; flex-direction: column; gap: 8px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px;"><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--ok); border: 1px solid var(--ok); border-radius: 6px; padding: 0 6px; white-space: nowrap;">公開</span><span style="font-size: 12px; color: var(--muted);">開催回 24回</span></div>
+      <b>島の朝市</b>
+      <span style="font-size: 12px; color: var(--muted);">直島町 ・ 毎週日曜</span>
+      <span style="font-size: 14px;">次の開催: <b>10/12(日)</b></span>
+      <div style="display: flex; gap: 8px;"><a href="AdminEventEditSP.dc.html" style="display: inline-flex; align-items: center; text-decoration: none; height: 44px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">編集</a><button style="height: 44px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">開催回を追加</button></div>
+    </div>
+    <div style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 14px 16px; display: flex; flex-direction: column; gap: 8px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px;"><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--warn); border: 1px solid var(--warn); border-radius: 6px; padding: 0 6px; white-space: nowrap;">修正依頼あり</span><span style="font-size: 12px; color: var(--muted);">開催回 1回</span></div>
+      <b>秋季例大祭 太鼓台の宮入り</b>
+      <span style="font-size: 12px; color: var(--muted);">観音寺市 ・ 祭り・行事</span>
+      <span style="font-size: 14px;">次の開催: <b>10/18(土)</b></span>
+      <div style="display: flex; gap: 8px;"><a href="AdminEventEditSP.dc.html" style="display: inline-flex; align-items: center; text-decoration: none; height: 44px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">編集</a><button style="height: 44px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">開催回を追加</button></div>
+    </div>
+    <div style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 14px 16px; display: flex; flex-direction: column; gap: 8px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px;"><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--warn); border: 1px solid var(--warn); border-radius: 6px; padding: 0 6px; white-space: nowrap;">来年分なし</span><span style="font-size: 12px; color: var(--muted);">開催回 2回</span></div>
+      <b>棚田の稲刈り体験</b>
+      <span style="font-size: 12px; color: var(--muted);">まんのう町 ・ 体験</span>
+      <span style="font-size: 14px;">次の開催: <b>未定</b></span>
+      <div style="display: flex; gap: 8px;"><a href="AdminEventEditSP.dc.html" style="display: inline-flex; align-items: center; text-decoration: none; height: 44px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">編集</a><button style="height: 44px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">来年の回を作る</button></div>
+    </div>
+  <button style="height: 48px; padding: 0 14px; border: 0; border-radius: 999px; background: var(--accent); color: var(--on); font: 700 15px/1 'BIZ UDPGothic', sans-serif;">行事を追加する</button>
+  <p style="margin: 0; font-size: 13px; color: var(--muted);">開催回の編集・中止は、行事の「編集」から行います。</p>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1400}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

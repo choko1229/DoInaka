@@ -1,0 +1,37 @@
+# 秘密の値
+.env
+.env.local
+.env.*.local
+.env.backup
+.env.production
+/auth.json
+/storage/*.key
+
+# 依存(Docker では名前付きボリュームに置く)
+/vendor/
+/node_modules/
+
+# ビルド生成物
+/public/build/
+/public/hot
+/public/storage
+/dist/
+
+# イラストの元 PNG(64枚・約200MB)は Git に入れない。illust:build で作る WebP はコミットする
+/resources/images/illust/src/
+
+# 開発用の証明書(ウイルス対策が HTTPS を検査する PC 用。docker/certs/.gitkeep だけ入れる)
+/docker/certs/*
+!/docker/certs/.gitkeep
+
+# エディタ・OS
+.claude/settings.local.json
+.DS_Store
+Thumbs.db
+/.idea
+/.vscode
+/.phpunit.cache
+.phpunit.result.cache
+/storage/pail
+_ide_helper.php
+*.log

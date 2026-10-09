@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>管理: スポット・記事・コメント(スマホ)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&amp;family=Yomogi&amp;family=Yusei+Magic&amp;family=Zen+Maru+Gothic:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.t-day{--bg:#fbf8ee;--surface:#ffffff;--sunken:#f2eedf;--ink:#26261c;--muted:#5a5a48;--line:#ddd7c2;--strong:#7d775e;--on:#ffffff;--ok:#2b7048;--warn:#7a5200;--ng:#a8241c}
+.s-autumn{--accent:#b24a0c}
+a{color:var(--accent)}a:hover{color:var(--ink)}
+</style>
+</helmet>
+<div class="t-day s-autumn" style="width: 390px; min-height: 1200px; box-sizing: border-box; background: var(--bg); color: var(--ink); font-family: 'BIZ UDPGothic', sans-serif; font-size: 15px; line-height: 24px;">
+<header style="background: var(--surface); border-bottom: 1px solid var(--line); padding: 10px 16px; display: flex; justify-content: space-between; align-items: center;">
+  <a href="AdminSP.dc.html" style="display: inline-flex; align-items: center; gap: 8px; color: var(--ink); text-decoration: none; font-size: 20px; line-height: 24px;"><span style="font-family: 'Yusei Magic', sans-serif;">ド田舎</span><span style="font-family: 'Yusei Magic', sans-serif; color: var(--accent); font-size: 15px; margin-left: -6px;">.net</span><span style="font: 700 12px/18px 'BIZ UDPGothic', sans-serif; border: 1px solid var(--strong); border-radius: 6px; padding: 0 6px;">管理</span></a>
+  <button aria-label="管理メニュー" style="width: 44px; height: 44px; border-radius: 999px; border: 0; background: transparent; color: var(--ink); display: grid; place-items: center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
+</header>
+<main style="padding: 16px; display: flex; flex-direction: column; gap: 16px;">
+  <h1 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 22px; line-height: 30px;">スポット・記事・コメント</h1>
+  <div role="tablist" aria-label="種類" style="display: flex; gap: 8px; overflow-x: auto; margin: 0 -16px; padding: 0 16px 4px;">
+    <sc-for list="{{tabs}}" as="t" hint-placeholder-count="3">
+      <button role="tab" aria-selected="{{t.selected}}" onClick="{{t.pick}}" style="{{t.style}}">{{t.label}}</button>
+    </sc-for>
+  </div>
+  <label for="cq2" style="position: absolute; width: 1px; height: 1px; overflow: hidden;">探す</label><input id="cq2" type="search" placeholder="探す" style="height: 44px; box-sizing: border-box; padding: 0 14px; border: 2px solid var(--strong); border-radius: 6px; background: var(--surface); color: var(--ink); font: inherit;">
+  <ul style="margin: 0; padding: 0; list-style: none; background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line);">
+    <sc-for list="{{rows}}" as="r" hint-placeholder-count="4">
+      <li style="padding: 12px 16px; border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 4px;">
+        <div style="display: flex; justify-content: space-between; gap: 8px; align-items: center;"><span style="{{r.chipStyle}}">{{r.chip}}</span><span style="font-size: 12px; color: var(--muted);">{{r.when}}</span></div>
+        <b>{{r.title}}</b>
+        <span style="font-size: 14px; color: var(--muted);">{{r.sub}}</span>
+        <div style="display: flex; gap: 8px;"><button style="height: 44px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 13px/1 'BIZ UDPGothic', sans-serif;">{{r.op}}</button><button style="height: 44px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 13px/1 'BIZ UDPGothic', sans-serif;">履歴</button></div>
+      </li>
+    </sc-for>
+  </ul>
+  <sc-if value="{{hasAdd}}" hint-placeholder-val="{{true}}"><button style="height: 48px; padding: 0 14px; border: 0; border-radius: 999px; background: var(--accent); color: var(--on); font: 700 15px/1 'BIZ UDPGothic', sans-serif;">{{add}}</button></sc-if>
+  <p style="margin: 0; font-size: 13px; color: var(--muted);">{{note}}</p>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1200}}'>
+class Component extends DCLogic {
+renderVals() {
+const tab = (this.state && this.state.tab) || 'spot';
+const base = 'flex: 0 0 auto; height: 36px; padding: 0 14px; border-radius: 999px; font: 700 14px/1 BIZ UDPGothic, sans-serif; cursor: pointer; ';
+const tabs = [['spot','スポット 52'],['article','記事 18'],['comment','コメント 340']];
+const chip = (k) => 'display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--' + k + '); border: 1px solid var(--' + k + '); border-radius: 6px; padding: 0 6px; white-space: nowrap;';
+const data = {
+spot: { cols: ['スポット', '地域・分類', '更新', '状態'], add: 'スポットを追加する', note: 'お休みや営業時間が古いスポットは、1年更新がないと「要確認」になります。', rows: [
+ ['峠の無人販売所', '塩江町 ・ 買う', '昨日(修正依頼で反映)', 'ok', '公開', '編集'],
+ ['[地名]の棚田', 'まんのう町 ・ 景色', '3か月前', 'ok', '公開', '編集'],
+ ['海辺の小さな駄菓子屋', '三豊市 ・ 買う', '1年2か月前', 'warn', '要確認', '編集'],
+ ['廃校のカフェ', '綾川町 ・ 食べる', '半年前', 'ng', '非公開', '編集']
+]},
+article: { cols: ['記事', '書いた人', '更新', '状態'], add: '記事を書く', note: '記事は管理者が書くもの(特集・まとめ)です。投稿された情報は「審査」から入ります。', rows: [
+ ['この秋、香川の山あいで見られる獅子舞まとめ', 'shikoku_taro', '今日', 'ok', '公開', '編集'],
+ ['無人販売所のまわり方(小銭を忘れずに)', 'shikoku_taro', '2週間前', 'ok', '公開', '編集'],
+ ['[町名]の冬の行事カレンダー', 'shikoku_taro', '下書き', 'warn', '下書き', '編集'],
+ ['AI下書き: 島の朝市の紹介', 'AI下書き', '昨日', 'warn', '下書き', '編集']
+]},
+comment: { cols: ['コメント', '対象', '投稿', '状態'], add: '', note: '通報が3件たまると自動で非公開になり、ここで「通報あり」として残ります。', rows: [
+ ['駐車場は神社の裏にありました', '獅子舞奉納', '会員 ・ 2時間前', 'ok', '公開', '非公開にする'],
+ ['今年も行きます!', '島の朝市', '匿名 ・ 昨日', 'ok', '公開', '非公開にする'],
+ ['[外部サイトへの誘導文]', '峠の無人販売所', '匿名 ・ 2日前', 'ng', '通報あり 3', '公開に戻す'],
+ ['道が細いので軽自動車がおすすめ', '[地名]の棚田', '会員 ・ 5日前', 'ok', '公開', '非公開にする']
+]}
+};
+const d = data[tab];
+return {
+tabs: tabs.map(([id, label]) => ({
+ label: label,
+ selected: tab === id ? 'true' : 'false',
+ style: tab === id ? base + 'background: var(--surface); border: 2px solid var(--accent); color: var(--accent);' : base + 'background: var(--surface); border: 2px solid var(--strong); color: var(--ink);',
+ pick: () => this.setState({ tab: id })
+})),
+c1: d.cols[0], c2: d.cols[1], c3: d.cols[2], c4: d.cols[3],
+hasAdd: !!d.add, add: d.add, note: d.note,
+rows: d.rows.map(r => ({ title: r[0], sub: r[1], when: r[2], chipStyle: chip(r[3]), chip: r[4], op: r[5] }))
+};
+}
+}
+</script>
+</body>
+</html>

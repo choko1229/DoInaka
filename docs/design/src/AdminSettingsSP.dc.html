@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>管理: 設定(スマホ)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&amp;family=Yomogi&amp;family=Yusei+Magic&amp;family=Zen+Maru+Gothic:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.t-day{--bg:#fbf8ee;--surface:#ffffff;--sunken:#f2eedf;--ink:#26261c;--muted:#5a5a48;--line:#ddd7c2;--strong:#7d775e;--on:#ffffff;--ok:#2b7048;--warn:#7a5200;--ng:#a8241c}
+.s-autumn{--accent:#b24a0c}
+a{color:var(--accent)}a:hover{color:var(--ink)}
+</style>
+</helmet>
+<div class="t-day s-autumn" style="width: 390px; min-height: 1900px; box-sizing: border-box; background: var(--bg); color: var(--ink); font-family: 'BIZ UDPGothic', sans-serif; font-size: 15px; line-height: 24px;">
+
+<header style="background: var(--surface); border-bottom: 1px solid var(--line); padding: 10px 16px; display: flex; justify-content: space-between; align-items: center;">
+  <a href="AdminSP.dc.html" style="display: inline-flex; align-items: center; gap: 8px; color: var(--ink); text-decoration: none; font-size: 20px; line-height: 24px;"><span style="font-family: 'Yusei Magic', sans-serif;">ド田舎</span><span style="font-family: 'Yusei Magic', sans-serif; color: var(--accent); font-size: 15px; margin-left: -6px;">.net</span><span style="font: 700 12px/18px 'BIZ UDPGothic', sans-serif; border: 1px solid var(--strong); border-radius: 6px; padding: 0 6px;">管理</span></a>
+  <button aria-label="管理メニュー" style="width: 44px; height: 44px; border-radius: 999px; border: 0; background: transparent; color: var(--ink); display: grid; place-items: center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
+</header>
+
+<main style="padding: 16px; display: flex; flex-direction: column; gap: 16px;">
+  <h1 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 22px; line-height: 30px;">設定</h1>
+  <div role="tablist" aria-label="設定の区分" style="display: flex; gap: 8px; overflow-x: auto; margin: 0 -16px; padding: 0 16px 4px;">
+    <sc-for list="{{tabs}}" as="t" hint-placeholder-count="5">
+      <button role="tab" aria-selected="{{t.selected}}" onClick="{{t.pick}}" style="{{t.style}}">{{t.label}}</button>
+    </sc-for>
+  </div>
+
+  <sc-if value="{{isAi}}" hint-placeholder-val="{{true}}">
+    <section style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 16px; display: flex; flex-direction: column; gap: 14px;">
+      <label style="display: flex; align-items: center; gap: 10px; min-height: 44px;"><input type="checkbox" checked style="width: 20px; height: 20px; accent-color: var(--accent);"><span><b>AIを使う</b><br><span style="font-size: 13px; color: var(--muted);">オフにすると全件を人が審査</span></span></label>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <label for="k" style="font-weight: 700;">APIキー</label>
+        <input id="k" value="sk-or-••••••••a9f2" readonly style="height: 44px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--muted); font: inherit;">
+        <div style="display: flex; gap: 8px;"><button style="flex: 1; height: 44px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">変更する</button><button style="flex: 1; height: 44px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">接続テスト</button></div>
+        <span style="font-size: 13px; color: var(--ok); font-weight: 700;">接続できています</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 0;">
+        <span style="font-weight: 700; padding-bottom: 6px;">用途ごとのモデル</span>
+        <a href="#" style="display: flex; justify-content: space-between; align-items: center; min-height: 52px; border-top: 1px solid var(--line); color: var(--ink); text-decoration: none;"><span>投稿の判定・整形<br><span style="font-size: 12px; color: var(--muted);">[無料モデルA]、[無料モデルB]</span></span><span style="color: var(--muted);">›</span></a>
+        <a href="#" style="display: flex; justify-content: space-between; align-items: center; min-height: 52px; border-top: 1px solid var(--line); color: var(--ink); text-decoration: none;"><span>画像チェック<br><span style="font-size: 12px; color: var(--warn); font-weight: 700;">使える無料モデルなし</span></span><span style="color: var(--muted);">›</span></a>
+        <a href="#" style="display: flex; justify-content: space-between; align-items: center; min-height: 52px; border-top: 1px solid var(--line); color: var(--ink); text-decoration: none;"><span>URLから下書き<br><span style="font-size: 12px; color: var(--muted);">[無料モデルA]</span></span><span style="color: var(--muted);">›</span></a>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;">
+        <div style="grid-column: 1 / -1; display: flex; flex-direction: column; gap: 4px;"><span style="font-weight: 700;">AIを使う量</span><span style="font-size: 14px; line-height: 22px;">上限は決めず、OpenRouter の無料枠で制限エラーが出るまで使います。エラーが出たら、その種類の処理は回復時刻(日本時間9時ごろ)まで止めて翌日にまわします。</span><span style="font-weight: 700; margin-top: 6px;">使う順番(混んだときに先に回すもの)</span><ol style="margin: 4px 0 0; padding-left: 22px; font-size: 14px; line-height: 22px;"><li>管理者の操作(下書き作成・再生成など)</li><li>投稿・コメント・修正依頼の判定</li><li>情報提供の読み取り</li><li>情報源の巡回</li><li>地域ページの紹介文</li></ol></div>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{isReview}}" hint-placeholder-val="{{false}}">
+    <section style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 16px; display: flex; flex-direction: column; gap: 14px;">
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;">
+        <div style="display: flex; flex-direction: column; gap: 4px;"><label for="a1" style="font-weight: 700; font-size: 14px;">承認実績(件以上)</label><input id="a1" type="number" value="5" style="height: 44px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit;"></div>
+        <div style="display: flex; flex-direction: column; gap: 4px;"><label for="a2" style="font-weight: 700; font-size: 14px;">承認スコア(以上)</label><input id="a2" value="0.90" style="height: 44px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit;"></div>
+        <div style="display: flex; flex-direction: column; gap: 4px;"><label for="a3" style="font-weight: 700; font-size: 14px;">却下スコア(以下)</label><input id="a3" value="0.05" style="height: 44px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit;"></div>
+        <div style="display: flex; flex-direction: column; gap: 4px;"><label for="a4" style="font-weight: 700; font-size: 14px;">却下の保持(日)</label><input id="a4" type="number" value="90" style="height: 44px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit;"></div>
+        <div style="display: flex; flex-direction: column; gap: 4px;"><label for="a5" style="font-weight: 700; font-size: 14px;">却下を試す期間(日)</label><input id="a5" type="number" value="14" style="height: 44px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit;"></div>
+      </div>
+      <fieldset style="margin: 0; padding: 0; border: 0; display: flex; flex-direction: column;">
+        <legend style="font-weight: 700; padding: 0 0 4px;">自動承認を使う対象</legend>
+        <label style="display: flex; align-items: center; gap: 8px; min-height: 44px;"><input type="checkbox" checked style="width: 20px; height: 20px; accent-color: var(--accent);">投稿</label>
+        <label style="display: flex; align-items: center; gap: 8px; min-height: 44px;"><input type="checkbox" checked style="width: 20px; height: 20px; accent-color: var(--accent);">コメント</label>
+        <label style="display: flex; align-items: center; gap: 8px; min-height: 44px;"><input type="checkbox" checked style="width: 20px; height: 20px; accent-color: var(--accent);">修正依頼(情報元URLあり)</label>
+      </fieldset>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{isOther}}" hint-placeholder-val="{{false}}">
+    <section style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 16px; display: flex; flex-direction: column; gap: 8px;">
+      <h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 18px; line-height: 26px;">{{otherTitle}}</h2>
+      <p style="margin: 0; color: var(--muted);">{{otherBody}}</p>
+    </section>
+  </sc-if>
+
+  <button style="height: 48px; border: 0; border-radius: 999px; background: var(--accent); color: var(--on); font: 700 16px/1 'BIZ UDPGothic', sans-serif;">保存する</button>
+  <span style="font-size: 12px; line-height: 18px; color: var(--muted); text-align: center;">変更は操作ログに残ります</span>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1900}}'>
+class Component extends DCLogic {
+renderVals() {
+const tab = (this.state && this.state.tab) || 'ai';
+const base = 'flex: 0 0 auto; height: 36px; padding: 0 14px; border-radius: 999px; font: 700 14px/1 BIZ UDPGothic, sans-serif; cursor: pointer; ';
+const list = [['ai','AI'],['review','審査'],['spam','投稿・スパム'],['display','表示'],['ads','広告・解析'],['external','外部連携'],['mail','メール'],['access','アクセス制限'],['site','サイト'],['logs','ログ']];
+const others = {
+mail: ['メール', '送信元 contact@do-inaka.net。SMTP のホスト・ポート・ユーザー・パスワード(暗号化して保存し、伏せて表示)。「テスト送信」で自分あてに送れます。送れなかったメールは3回まで送り直し、ダッシュボードに出します。'],
+access: ['アクセス制限', '海外からのアクセスを制限する(オン)。管理画面も海外からは入れない(オン)。日本のIPアドレス一覧の最終更新日と件数(週1回、APNIC から取得)。検索エンジンのクローラーと、規約・ポリシー・運営者情報・お問い合わせは制限しません。'],
+spam: ['投稿・画像・スパム', '画像1枚10MB、記事10枚・その他5枚、元画像60日、投稿は1IP1時間5件、本文のURL3個まで、IPハッシュ90日。'],
+display: ['表示・人気順', '人気順の重み(閲覧1・お気に入り5・行った!3)、集計30日、検索方式、配色の切り替え時刻。'],
+ads: ['広告・アクセス解析', 'AdSenseのクライアントID、広告のON/OFF、GA4の測定ID。'],
+external: ['外部連携', 'Googleログインのクライアント情報、Turnstileのキー。秘密の値は伏せて表示。'],
+site: ['サイト情報', 'サイト名、説明、運営者情報、問い合わせ先。'],
+logs: ['ログの保持', '操作ログ365日、AI呼び出しログ90日。']
+};
+const o = others[tab] || ['', ''];
+return {
+tabs: list.map(([id, label]) => ({
+label: label,
+selected: tab === id ? 'true' : 'false',
+style: tab === id ? base + 'background: var(--surface); border: 2px solid var(--accent); color: var(--accent);' : base + 'background: var(--surface); border: 2px solid var(--strong); color: var(--ink);',
+pick: () => this.setState({ tab: id })
+})),
+isAi: tab === 'ai',
+isReview: tab === 'review',
+isOther: !!others[tab],
+otherTitle: o[0],
+otherBody: o[1]
+};
+}
+}
+</script>
+</body>
+</html>

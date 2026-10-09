@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>イベントの情報提供(PC)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&amp;family=Yomogi&amp;family=Yusei+Magic&amp;family=Zen+Maru+Gothic:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.t-morning{--bg:#f3f8f7;--surface:#ffffff;--sunken:#e6f0ee;--ink:#1e2b2a;--muted:#4f615f;--line:#cddcd9;--strong:#6a7f7c;--sky1:#cde8ef;--sky2:#f3f8f7;--hill:#a8c98d;--on:#ffffff}
+.s-autumn{--accent:#b24a0c}
+a{color:var(--accent)}a:hover{color:var(--ink)}
+</style>
+</helmet>
+<div class="t-morning s-autumn" style="min-height: 1300px; background: var(--bg); color: var(--ink); font-family: 'BIZ UDPGothic', sans-serif; font-size: 16px; line-height: 28px;">
+
+<header style="position: relative; background: linear-gradient(var(--sky1), var(--sky2)); overflow: hidden;">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 16px 32px 56px; position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+    <a href="TopPC.dc.html" style="display: inline-flex; align-items: center; gap: 8px; color: var(--ink); text-decoration: none; font-size: 28px; line-height: 32px;"><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><path d="M3 26 L12 13 L17 19 L21 14 L29 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path><path d="M24 5 V26 M20 8 H28 M21 11 H27" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"></path></svg><span style="font-family: 'Yusei Magic', sans-serif;">ド田舎</span><span style="font-family: 'Yusei Magic', sans-serif; color: var(--accent); font-size: 20px; margin-left: -6px;">.net</span></a>
+    <nav style="display: flex; gap: 24px; align-items: center; flex-wrap: wrap; font-weight: 700;"><a href="EventsPC.dc.html" style="color: var(--ink); text-decoration: none;">イベント</a><a href="#" style="color: var(--ink); text-decoration: none;">スポット</a><a href="#" style="color: var(--ink); text-decoration: none;">記事</a><a href="MapPC.dc.html" style="color: var(--ink); text-decoration: none;">地図</a><a href="MyPagePC.dc.html" style="color: var(--ink); text-decoration: none;">ログイン</a></nav>
+  </div>
+  <svg viewBox="0 0 1280 56" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; left: 0; bottom: -1px; width: 100%; height: 56px;"><path d="M0 34 Q260 6 560 28 T1280 24 V56 H0Z" style="fill: var(--hill);"></path><path d="M0 46 Q640 38 1280 46 V56 H0Z" style="fill: var(--bg);"></path></svg>
+</header>
+
+<main style="max-width: 1200px; margin: 0 auto; padding: 8px 32px 48px; display: flex; flex-direction: column; gap: 20px;">
+  <div style="display: flex; flex-direction: column; gap: 4px;">
+    <h1 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 36px; line-height: 44px;">イベントの情報を教える</h1>
+    <p style="margin: 0; color: var(--muted);">教えてもらった情報をもとに、ド田舎.net がページを作ります。ページには情報元を必ず載せます。ログインなしで送れます。</p>
+  </div>
+  <div style="display: flex; flex-wrap: wrap; gap: 32px; align-items: flex-start;">
+    <form style="flex: 999 1 560px; max-width: 760px; min-width: 0; background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 28px 32px; display: flex; flex-direction: column; gap: 22px;">
+      <fieldset style="margin: 0; min-width: 0; padding: 0; border: 0; display: flex; flex-direction: column; gap: 10px;">
+        <legend style="font-weight: 700; padding: 0 0 6px;">情報元 <span style="font-size: 12px; color: var(--accent);">必須</span></legend>
+        <div role="group" aria-label="情報元の種類" style="display: flex; gap: 8px;">
+          <sc-for list="{{modes}}" as="m" hint-placeholder-count="2">
+            <button type="button" aria-pressed="{{m.pressed}}" onClick="{{m.pick}}" style="{{m.style}}">{{m.label}}</button>
+          </sc-for>
+        </div>
+        <sc-if value="{{isWeb}}" hint-placeholder-val="{{true}}">
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+            <label for="srcurl" style="font-size: 14px;">情報元のURL</label>
+            <input id="srcurl" type="url" placeholder="主催者・自治会・市町・観光協会のページなど" style="height: 48px; box-sizing: border-box; padding: 0 16px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit; width: 100%;">
+            <span style="font-size: 13px; line-height: 20px; color: var(--muted);">このページを読み取って、日時や場所を確認します。SNS の投稿は読み取れないので、Webページか写真で送ってください。</span>
+          </div>
+        </sc-if>
+        <sc-if value="{{isPhoto}}" hint-placeholder-val="{{false}}">
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+            <label for="flyer" style="min-height: 112px; border: 2px dashed var(--strong); border-radius: 14px; background: var(--sunken); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; cursor: pointer; text-align: center; padding: 12px;"><b>チラシや回覧板を撮った写真を選ぶ</b><span style="font-size: 13px; line-height: 20px; color: var(--muted);">3枚まで ・ 1枚10MBまで</span></label>
+            <input id="flyer" type="file" accept="image/*" multiple style="position: absolute; width: 1px; height: 1px; opacity: 0;">
+            <span style="font-size: 13px; line-height: 20px; color: var(--muted);">写真は情報元としてページに載ります。個人の名前や電話番号は、確認のときに隠します。</span>
+            <label style="display: flex; align-items: flex-start; gap: 8px; font-size: 14px; line-height: 22px;"><input type="checkbox" style="width: 20px; height: 20px; margin-top: 1px; flex: 0 0 auto; accent-color: var(--accent);">掲示・配布されているもので、ほかの人に知らせてよい内容です。</label>
+          </div>
+        </sc-if>
+      </fieldset>
+      <fieldset style="margin: 0; min-width: 0; padding: 0; border: 0; display: flex; flex-direction: column; gap: 6px;">
+        <legend style="font-weight: 700; padding: 0 0 6px;">地域</legend>
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;">
+          <div style="display: flex; flex-direction: column; gap: 4px;"><label for="pref" style="font-size: 14px;">都道府県</label><select id="pref" style="height: 48px; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit; width: 100%; box-sizing: border-box;"><option>北海道</option><option>…</option><option selected>香川県</option><option>…</option><option>沖縄県</option></select></div>
+          <div style="display: flex; flex-direction: column; gap: 4px;"><label for="city" style="font-size: 14px;">市区町村</label><select id="city" style="height: 48px; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit; width: 100%; box-sizing: border-box;"><option>わからない</option><option selected>高松市(塩江町)</option><option>丸亀市</option></select></div>
+        </div>
+        <span style="font-size: 13px; line-height: 20px; color: var(--muted);">全国どこの行事でも送れます。情報元から分かれば、こちらで直します。</span>
+      </fieldset>
+      <div style="display: flex; flex-direction: column; gap: 6px;"><label for="note" style="font-weight: 700;">ひとこと(任意)</label><textarea id="note" rows="4" placeholder="情報元に書いていないこと(駐車場、雨の日のこと など)" style="box-sizing: border-box; padding: 12px 16px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit; resize: vertical;"></textarea><span style="font-size: 13px; line-height: 20px; color: var(--muted);">ひとことは確認のために読みます。ページにはそのまま載せません。</span></div>
+      <div style="height: 65px; max-width: 300px; border-radius: 6px; border: 1px solid var(--line); background: var(--surface); display: flex; align-items: center; padding: 0 16px; font-size: 12px; color: var(--muted);">[Cloudflare Turnstile]</div>
+      <div data-consent="1" style="display: flex; flex-direction: column; gap: 6px;">
+        <label style="display: flex; gap: 10px; align-items: flex-start; font-size: 14px; line-height: 22px;"><input type="checkbox" style="width: 20px; height: 20px; margin: 1px 0 0; flex: 0 0 auto; accent-color: var(--accent);"><span>AIで内容を確かめるため、送った内容を外国(米国など)の事業者に送ることに同意します(<a href="LegalPC.dc.html">プライバシーポリシー 5</a>)<span style="font-size: 12px; font-weight: 700; color: var(--accent); margin-left: 6px;">必須</span></span></label>
+        <p style="margin: 0; font-size: 13px; line-height: 20px; color: var(--muted);">送信すると、<a href="LegalPC.dc.html">利用規約</a>と<a href="LegalPC.dc.html">プライバシーポリシー</a>に同意したことになります。</p>
+      </div>
+      <button type="submit" style="align-self: flex-start; padding: 0 40px; height: 52px; border: 0; border-radius: 999px; background: var(--accent); color: var(--on); font: 700 16px/1 'BIZ UDPGothic', sans-serif;">情報を送る</button>
+    </form>
+    <aside style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 16px;">
+      <section style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 20px; display: flex; flex-direction: column; gap: 10px;">
+        <h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 20px; line-height: 28px;">このあとの流れ</h2>
+        <ol style="margin: 0; padding-left: 22px; font-size: 14px; line-height: 22px; display: flex; flex-direction: column; gap: 6px;">
+          <li>情報を受け取ります</li>
+          <li>情報元を読み取ります(Webページなら翌朝までに)</li>
+          <li>ド田舎.net が内容を確かめて、ページを作ります</li>
+          <li>情報元を付けて公開します</li>
+        </ol>
+        <span style="font-size: 13px; line-height: 20px; color: var(--muted);">ログインしていれば、マイページで進み具合を見られます。</span>
+      </section>
+      <section style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 20px; display: flex; flex-direction: column; gap: 8px;">
+        <h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 20px; line-height: 28px;">場所や体験は写真つきで</h2>
+        <p style="margin: 0; font-size: 14px; line-height: 22px;">おすすめの場所(スポット)や体験談は、今まで通り写真つきで投稿できます。行事に行った写真は、そのイベントのページの「行った!」から足せます。</p>
+        <a href="#" style="font-weight: 700; font-size: 14px;">スポット・体験談を投稿する</a>
+      </section>
+    </aside>
+  </div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":1300}}'>
+class Component extends DCLogic {
+renderVals() {
+const mode = (this.state && this.state.mode) || 'web';
+const base = 'flex: 1 1 0; min-width: 0; height: 44px; padding: 0 12px; border-radius: 999px; font: 700 14px/1 BIZ UDPGothic, sans-serif; cursor: pointer; ';
+const list = [['web', 'Webページ'], ['photo', 'チラシ・回覧板の写真']];
+return {
+modes: list.map(([id, label]) => ({
+ label: label,
+ pressed: mode === id ? 'true' : 'false',
+ style: mode === id ? base + 'background: var(--surface); border: 2px solid var(--accent); color: var(--accent);' : base + 'background: var(--surface); border: 2px solid var(--strong); color: var(--ink);',
+ pick: () => this.setState({ mode: id })
+})),
+isWeb: mode === 'web',
+isPhoto: mode === 'photo'
+};
+}
+}
+</script>
+</body>
+</html>

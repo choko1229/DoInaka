@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>ド田舎.net トップ(PC)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&amp;family=Yomogi&amp;family=Yusei+Magic&amp;family=Zen+Maru+Gothic:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.t-day{--bg:#fbf8ee;--surface:#ffffff;--sunken:#f2eedf;--ink:#26261c;--muted:#5a5a48;--line:#ddd7c2;--strong:#7d775e;--sky1:#9cd3ec;--sky2:#e8f4e1;--hill:#8fb86b;--on:#ffffff}
+.t-morning{--bg:#f3f8f7;--surface:#ffffff;--sunken:#e6f0ee;--ink:#1e2b2a;--muted:#4f615f;--line:#cddcd9;--strong:#6a7f7c;--sky1:#cde8ef;--sky2:#f3f8f7;--hill:#a8c98d;--on:#ffffff}
+.t-evening{--bg:#fbf1e6;--surface:#fffdf9;--sunken:#f4e3d2;--ink:#2e211a;--muted:#6a5246;--line:#e8d2bd;--strong:#8a6e5e;--sky1:#f2a65a;--sky2:#f9dcc0;--hill:#7c8a52;--on:#ffffff}
+.t-night{--bg:#141b2b;--surface:#1d2638;--sunken:#0f1522;--ink:#eceff5;--muted:#a9b3c6;--line:#2c3850;--strong:#7d8aa3;--sky1:#0e1424;--sky2:#24304a;--hill:#1a2a2a;--on:#141b2b}
+.s-spring{--accent:#b8325f}.s-summer{--accent:#1b7352}.s-autumn{--accent:#b24a0c}.s-winter{--accent:#2d5a99}
+.t-night.s-spring{--accent:#f48fb5}.t-night.s-summer{--accent:#6fd3a6}.t-night.s-autumn{--accent:#f4a261}.t-night.s-winter{--accent:#8db4f0}
+a{color:var(--accent)}a:hover{color:var(--ink)}
+</style>
+</helmet>
+<div class="t-evening s-autumn" style="min-height: 1720px; background: var(--bg); color: var(--ink); font-family: 'BIZ UDPGothic', sans-serif; font-size: 16px; line-height: 28px;">
+
+<header data-illust="1" style="position: relative; background: linear-gradient(90deg, color-mix(in srgb, var(--bg) 86%, transparent) 0%, color-mix(in srgb, var(--bg) 55%, transparent) 42%, transparent 70%), linear-gradient(180deg, color-mix(in srgb, var(--bg) 75%, transparent) 0, transparent 110px), var(--sky1) url(illust/wide/field-autumn-evening.webp) center 40% / cover no-repeat; overflow: hidden;">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 20px 32px 140px; position: relative; z-index: 1; display: flex; flex-direction: column; gap: 40px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+      <a href="#" style="display: inline-flex; align-items: center; gap: 8px; color: var(--ink); text-decoration: none; font-size: 32px; line-height: 36px;">
+        <svg width="36" height="36" viewBox="0 0 32 32" aria-hidden="true"><path d="M3 26 L12 13 L17 19 L21 14 L29 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path><path d="M24 5 V26 M20 8 H28 M21 11 H27" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"></path></svg>
+        <span style="font-family: 'Yusei Magic', sans-serif;">ド田舎</span><span style="font-family: 'Yusei Magic', sans-serif; color: var(--accent); font-size: 23px; margin-left: -6px;">.net</span>
+      </a>
+      <nav style="display: flex; gap: 24px; align-items: center; flex-wrap: wrap; font-weight: 700;">
+        <a href="#" style="color: var(--ink); text-decoration: none;">イベント</a>
+        <a href="#" style="color: var(--ink); text-decoration: none;">スポット</a>
+        <a href="#" style="color: var(--ink); text-decoration: none;">記事</a>
+        <a href="#" style="color: var(--ink); text-decoration: none;">地図</a>
+        <a href="#" style="color: var(--ink); text-decoration: none;">ログイン</a>
+        <a href="#" style="height: 44px; padding: 0 20px; border-radius: 999px; background: var(--accent); color: var(--on); display: inline-flex; align-items: center; text-decoration: none;">投稿する</a>
+      </nav>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 16px; max-width: 640px;">
+      <h1 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 48px; line-height: 56px;">何もないが、ある。</h1>
+      <p style="margin: 0; font-family: 'Yomogi', sans-serif; font-size: 20px; line-height: 28px; color: var(--muted);">香川のいなかの、今日と今週末。夕焼けの時間です。</p>
+      <form style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px;">
+        <label for="qpc" style="position: absolute; width: 1px; height: 1px; overflow: hidden;">キーワード</label>
+        <input id="qpc" type="search" placeholder="獅子舞、棚田、うどん以外…" style="flex: 1 1 320px; min-width: 0; height: 52px; box-sizing: border-box; padding: 0 20px; border: 2px solid var(--strong); border-radius: 6px; background: var(--surface); color: var(--ink); font: inherit;">
+        <button type="submit" style="height: 52px; padding: 0 28px; border: 0; border-radius: 999px; background: var(--accent); color: var(--on); font: 700 16px/1 'BIZ UDPGothic', sans-serif;">探す</button>
+      </form>
+      <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+        <a href="#" style="height: 36px; padding: 0 16px; border-radius: 999px; background: var(--surface); border: 2px solid var(--strong); color: var(--ink); font-weight: 700; font-size: 14px; display: inline-flex; align-items: center; text-decoration: none;">今日</a>
+        <a href="#" style="height: 36px; padding: 0 16px; border-radius: 999px; background: var(--surface); border: 2px solid var(--accent); color: var(--accent); font-weight: 700; font-size: 14px; display: inline-flex; align-items: center; text-decoration: none;">今週末</a>
+        <a href="#" style="height: 36px; padding: 0 16px; border-radius: 999px; background: var(--surface); border: 2px solid var(--strong); color: var(--ink); font-weight: 700; font-size: 14px; display: inline-flex; align-items: center; text-decoration: none;">近くで</a>
+      </div>
+    </div>
+  </div>
+  <svg viewBox="0 0 1280 140" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; left: 0; bottom: -1px; width: 100%; height: 140px;"><path d="M0 112 Q640 96 1280 112 V140 H0Z" style="fill: var(--bg);"></path></svg>
+</header>
+
+<main style="max-width: 1200px; margin: 0 auto; padding: 16px 32px 48px; display: flex; flex-direction: column; gap: 48px;">
+  <section style="display: flex; flex-direction: column; gap: 16px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+      <h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 28px; line-height: 36px;">今週末のイベント</h2>
+      <a href="#" style="font-weight: 700;">すべて見る</a>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px;">
+      <a href="#" style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); overflow: hidden; color: inherit; text-decoration: none;"><div data-illust="1" role="img" aria-label="イラスト(写真がまだありません)" style="position: relative; aspect-ratio: 4 / 3; background: var(--sunken) url(illust/card/village-autumn-evening.webp) center / cover no-repeat;"><span style="position: absolute; left: 8px; bottom: 8px; padding: 2px 8px; border-radius: 999px; background: color-mix(in srgb, var(--surface) 88%, transparent); color: var(--ink); font-size: 11px; line-height: 18px; font-weight: 700;">写真募集中</span></div><div style="padding: 12px 16px 16px; display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 14px; line-height: 22px; font-weight: 700; color: var(--accent);">10月11日(土)・12日(日)</span><span style="font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 17px; line-height: 24px;">[集落名]の獅子舞奉納</span><span style="font-size: 14px; line-height: 22px; color: var(--muted);">高松市 塩江町</span></div></a>
+      <a href="#" style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); overflow: hidden; color: inherit; text-decoration: none;"><div data-illust="1" role="img" aria-label="イラスト(写真がまだありません)" style="position: relative; aspect-ratio: 4 / 3; background: var(--sunken) url(illust/card/mountain-autumn-evening.webp) center / cover no-repeat;"><span style="position: absolute; left: 8px; bottom: 8px; padding: 2px 8px; border-radius: 999px; background: color-mix(in srgb, var(--surface) 88%, transparent); color: var(--ink); font-size: 11px; line-height: 18px; font-weight: 700;">写真募集中</span></div><div style="padding: 12px 16px 16px; display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 14px; line-height: 22px; font-weight: 700; color: var(--accent);">10月12日(日) 10:00〜</span><span style="font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 17px; line-height: 24px;">棚田の稲刈り体験</span><span style="font-size: 14px; line-height: 22px; color: var(--muted);">まんのう町</span></div></a>
+      <a href="#" style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); overflow: hidden; color: inherit; text-decoration: none;"><div data-illust="1" role="img" aria-label="イラスト(写真がまだありません)" style="position: relative; aspect-ratio: 4 / 3; background: var(--sunken) url(illust/card/village-autumn-evening.webp) center / cover no-repeat;"><span style="position: absolute; left: 8px; bottom: 8px; padding: 2px 8px; border-radius: 999px; background: color-mix(in srgb, var(--surface) 88%, transparent); color: var(--ink); font-size: 11px; line-height: 18px; font-weight: 700;">写真募集中</span></div><div style="padding: 12px 16px 16px; display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 14px; line-height: 22px; font-weight: 700; color: var(--accent);">10月18日(土) 13:00〜</span><span style="font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 17px; line-height: 24px;">秋季例大祭 太鼓台の宮入り</span><span style="font-size: 14px; line-height: 22px; color: var(--muted);">観音寺市</span></div></a>
+      <a href="#" style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); overflow: hidden; color: inherit; text-decoration: none;"><div data-illust="1" role="img" aria-label="イラスト(写真がまだありません)" style="position: relative; aspect-ratio: 4 / 3; background: var(--sunken) url(illust/card/island-autumn-evening.webp) center / cover no-repeat;"><span style="position: absolute; left: 8px; bottom: 8px; padding: 2px 8px; border-radius: 999px; background: color-mix(in srgb, var(--surface) 88%, transparent); color: var(--ink); font-size: 11px; line-height: 18px; font-weight: 700;">写真募集中</span></div><div style="padding: 12px 16px 16px; display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 14px; line-height: 22px; font-weight: 700; color: var(--accent);">10月19日(日)</span><span style="font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 17px; line-height: 24px;">島の朝市</span><span style="font-size: 14px; line-height: 22px; color: var(--muted);">三豊市 粟島</span></div></a>
+    </div>
+  </section>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 32px;">
+    <section style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 12px; background: var(--surface); border-radius: 14px; padding: 24px; box-shadow: 0 1px 0 var(--line);">
+      <div style="display: flex; align-items: center; gap: 8px;"><span style="height: 28px; padding: 0 12px; border-radius: 999px; background: var(--accent); color: var(--on); font-size: 14px; font-weight: 700; display: inline-flex; align-items: center;">秋</span><h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 22px; line-height: 30px;">いまの季節のおすすめ</h2></div>
+      <ul style="margin: 0; padding: 0; list-style: none;">
+        <li style="border-top: 1px solid var(--line);"><a href="#" style="display: flex; justify-content: space-between; min-height: 52px; align-items: center; color: var(--ink); text-decoration: none;"><span>秋祭り・獅子舞</span><span style="font-size: 14px; color: var(--muted);">24件</span></a></li>
+        <li style="border-top: 1px solid var(--line);"><a href="#" style="display: flex; justify-content: space-between; min-height: 52px; align-items: center; color: var(--ink); text-decoration: none;"><span>稲刈り・収穫体験</span><span style="font-size: 14px; color: var(--muted);">8件</span></a></li>
+        <li style="border-top: 1px solid var(--line);"><a href="#" style="display: flex; justify-content: space-between; min-height: 52px; align-items: center; color: var(--ink); text-decoration: none;"><span>紅葉と渓谷</span><span style="font-size: 14px; color: var(--muted);">12件</span></a></li>
+      </ul>
+    </section>
+    <section style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 12px;">
+      <h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 22px; line-height: 30px;">エリアから探す</h2>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px;">
+        <a href="#" style="min-height: 64px; padding: 8px 16px; background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); color: var(--ink); text-decoration: none; display: flex; flex-direction: column; justify-content: center; line-height: 22px;"><b>小豆島</b><span style="font-size: 12px; color: var(--muted);">島</span></a>
+        <a href="#" style="min-height: 64px; padding: 8px 16px; background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); color: var(--ink); text-decoration: none; display: flex; flex-direction: column; justify-content: center; line-height: 22px;"><b>塩江</b><span style="font-size: 12px; color: var(--muted);">高松市・山あい</span></a>
+        <a href="#" style="min-height: 64px; padding: 8px 16px; background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); color: var(--ink); text-decoration: none; display: flex; flex-direction: column; justify-content: center; line-height: 22px;"><b>まんのう</b><span style="font-size: 12px; color: var(--muted);">ため池と棚田</span></a>
+        <a href="#" style="min-height: 64px; padding: 8px 16px; background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); color: var(--ink); text-decoration: none; display: flex; flex-direction: column; justify-content: center; line-height: 22px;"><b>粟島・志々島</b><span style="font-size: 12px; color: var(--muted);">三豊市の島</span></a>
+        <a href="#" style="min-height: 64px; padding: 8px 16px; background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); color: var(--ink); text-decoration: none; display: flex; flex-direction: column; justify-content: center; line-height: 22px;"><b>男木島・女木島</b><span style="font-size: 12px; color: var(--muted);">高松市の島</span></a>
+        <a href="#" style="min-height: 64px; padding: 8px 16px; background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); color: var(--ink); text-decoration: none; display: flex; flex-direction: column; justify-content: center; line-height: 22px;"><b>すべて</b><span style="font-size: 12px; color: var(--muted);">17市町</span></a>
+      </div>
+    </section>
+  </div>
+
+  <section style="background: var(--sunken); border-radius: 14px; padding: 32px; display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: center; justify-content: space-between;">
+    <div style="display: flex; flex-direction: column; gap: 4px; max-width: 640px;">
+      <h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 24px; line-height: 32px;">地元の「あるある」、教えてください</h2>
+      <p style="margin: 0; color: var(--muted);">集落の行事や、知る人ぞ知る景色。名前なしでも投稿できます。</p>
+    </div>
+    <a href="#" style="height: 52px; padding: 0 28px; border-radius: 999px; background: var(--accent); color: var(--on); font-weight: 700; display: inline-flex; align-items: center; text-decoration: none;">投稿する</a>
+  </section>
+</main>
+
+<footer style="border-top: 1px solid var(--line);">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 32px; display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: flex-end;">
+    <div style="display: flex; flex-direction: column; gap: 8px;">
+      <nav style="display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 14px; line-height: 22px;"><a href="AboutPC.dc.html">運営者情報</a><a href="LegalPC.dc.html">利用規約</a><a href="LegalPC.dc.html">プライバシーポリシー</a><a href="ContactPC.dc.html">お問い合わせ</a><a href="ContactPC.dc.html">掲載のご相談</a></nav>
+      <p style="margin: 0; font-family: 'Yomogi', sans-serif; font-size: 16px; line-height: 24px; color: var(--muted);">コンビニまで5km。でも、いいところです。</p>
+    </div>
+    <div role="group" aria-label="空の色" style="display: inline-flex; gap: 4px; padding: 4px; background: var(--sunken); border-radius: 999px;">
+      <button aria-pressed="true" style="height: 36px; padding: 0 14px; border: 0; border-radius: 999px; background: var(--surface); box-shadow: inset 0 0 0 2px var(--accent); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">自動(いまの空)</button>
+      <button aria-pressed="false" style="height: 36px; padding: 0 14px; border: 0; border-radius: 999px; background: transparent; color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">昼</button>
+      <button aria-pressed="false" style="height: 36px; padding: 0 14px; border: 0; border-radius: 999px; background: transparent; color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">夜</button>
+    </div>
+  </div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":1720}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

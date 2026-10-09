@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>管理: 審査詳細(スマホ)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&amp;family=Yomogi&amp;family=Yusei+Magic&amp;family=Zen+Maru+Gothic:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.t-day{--bg:#fbf8ee;--surface:#ffffff;--sunken:#f2eedf;--ink:#26261c;--muted:#5a5a48;--line:#ddd7c2;--strong:#7d775e;--on:#ffffff;--ok:#2b7048;--warn:#7a5200;--ng:#a8241c}
+.s-autumn{--accent:#b24a0c}
+a{color:var(--accent)}a:hover{color:var(--ink)}
+</style>
+</helmet>
+<div class="t-day s-autumn" style="width: 390px; min-height: 1900px; box-sizing: border-box; background: var(--bg); color: var(--ink); font-family: 'BIZ UDPGothic', sans-serif; font-size: 15px; line-height: 24px;">
+
+<header style="background: var(--surface); border-bottom: 1px solid var(--line); padding: 6px 8px; display: flex; justify-content: space-between; align-items: center;">
+  <a href="AdminSP.dc.html" style="min-height: 44px; padding: 0 8px; display: inline-flex; align-items: center; gap: 4px; font-weight: 700; text-decoration: none;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg>審査一覧</a>
+  <span style="font-size: 13px; color: var(--muted); padding-right: 8px;">3件目 / 7件</span>
+</header>
+
+<main style="padding: 16px; display: flex; flex-direction: column; gap: 16px;">
+  <div style="display: flex; flex-direction: column; gap: 2px;">
+    <span style="font-size: 12px; line-height: 18px; color: var(--muted);">イベント(新規) ・ 匿名 ・ 20261006-K7Q2MX ・ 2時間前</span>
+    <h1 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 22px; line-height: 30px;">[地区名]秋祭り 子ども獅子</h1>
+  </div>
+
+  <section style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 14px 16px; display: flex; flex-direction: column; gap: 6px;">
+    <span style="display: flex; justify-content: space-between; align-items: center;"><b style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 17px;">AIの判定</b><b style="color: var(--ok);">安全 0.96</b></span>
+    <span style="display: flex; gap: 6px; flex-wrap: wrap; font-size: 12px;"><span style="color: var(--warn); border: 1px solid var(--warn); border-radius: 6px; padding: 0 6px; font-weight: 700;">顔あり</span><span style="color: var(--warn); border: 1px solid var(--warn); border-radius: 6px; padding: 0 6px; font-weight: 700;">重複候補 1</span><span style="background: var(--sunken); border-radius: 6px; padding: 0 6px;">スパムではない</span></span>
+    <span style="font-size: 13px; line-height: 20px; color: var(--muted);">顔の写る画像があるため、自動承認の対象外です。</span>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 8px;">
+    <h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 18px; line-height: 26px;">項目ごとに選ぶ</h2>
+    <fieldset style="margin: 0; border: 0; padding: 12px 14px; border-radius: 14px; background: var(--surface); box-shadow: 0 1px 0 var(--line); display: flex; flex-direction: column; gap: 6px;">
+      <legend style="float: left; width: 100%; padding: 0; font-weight: 700;">タイトル</legend>
+      <label style="display: flex; gap: 8px; align-items: flex-start; font-size: 14px; line-height: 22px;"><input type="radio" name="t" style="width: 20px; height: 20px; margin-top: 1px; accent-color: var(--accent);"><span><span style="font-size: 12px; color: var(--muted);">投稿のまま</span><br>[地区名]秋祭り こども獅子 ※雨天中止</span></label>
+      <label style="display: flex; gap: 8px; align-items: flex-start; font-size: 14px; line-height: 22px; background: var(--sunken); border-radius: 8px; padding: 6px;"><input type="radio" name="t" checked style="width: 20px; height: 20px; margin-top: 1px; accent-color: var(--accent);"><span><span style="font-size: 12px; color: var(--muted);">AIの案</span><br>[地区名]秋祭り 子ども獅子</span></label>
+    </fieldset>
+    <fieldset style="margin: 0; border: 0; padding: 12px 14px; border-radius: 14px; background: var(--surface); box-shadow: 0 1px 0 var(--line); display: flex; flex-direction: column; gap: 6px;">
+      <legend style="float: left; width: 100%; padding: 0; font-weight: 700;">日程</legend>
+      <label style="display: flex; gap: 8px; align-items: flex-start; font-size: 14px; line-height: 22px;"><input type="radio" name="d" style="width: 20px; height: 20px; margin-top: 1px; accent-color: var(--accent);"><span><span style="font-size: 12px; color: var(--muted);">投稿のまま</span><br>10/19 9時〜昼すぎ</span></label>
+      <label style="display: flex; gap: 8px; align-items: flex-start; font-size: 14px; line-height: 22px; background: var(--sunken); border-radius: 8px; padding: 6px;"><input type="radio" name="d" checked style="width: 20px; height: 20px; margin-top: 1px; accent-color: var(--accent);"><span><span style="font-size: 12px; color: var(--muted);">AIの案</span><br>10月19日(日) 9:00〜(終了時刻なし)</span></label>
+    </fieldset>
+    <fieldset style="margin: 0; border: 0; padding: 12px 14px; border-radius: 14px; background: var(--surface); box-shadow: 0 1px 0 var(--line); display: flex; flex-direction: column; gap: 6px;">
+      <legend style="float: left; width: 100%; padding: 0; font-weight: 700;">場所</legend>
+      <label style="display: flex; gap: 8px; align-items: flex-start; font-size: 14px; line-height: 22px;"><input type="radio" name="p" checked style="width: 20px; height: 20px; margin-top: 1px; accent-color: var(--accent);"><span><span style="font-size: 12px; color: var(--muted);">投稿のまま</span><br>[地区]の公民館あたり</span></label>
+      <label style="display: flex; gap: 8px; align-items: flex-start; font-size: 14px; line-height: 22px; background: var(--sunken); border-radius: 8px; padding: 6px;"><input type="radio" name="p" style="width: 20px; height: 20px; margin-top: 1px; accent-color: var(--accent);"><span><span style="font-size: 12px; color: var(--muted);">AIの案</span><br>[地区]公民館(さぬき市) <a href="#">地図で確認</a></span></label>
+    </fieldset>
+    <a href="#" style="font-size: 14px; font-weight: 700;">本文・分類・URLの比較を開く(3項目)</a>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 8px;">
+    <h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 18px; line-height: 26px;">画像 3枚</h2>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px;">
+      <div style="display: flex; flex-direction: column; gap: 4px;"><div style="aspect-ratio: 1; border-radius: 8px; background: var(--sunken); outline: 2px solid var(--warn); outline-offset: -2px;"></div><span style="font-size: 11px; line-height: 16px; color: var(--warn); font-weight: 700;">顔あり 4人</span></div>
+      <div style="display: flex; flex-direction: column; gap: 4px;"><div style="aspect-ratio: 1; border-radius: 8px; background: var(--sunken);"></div><span style="font-size: 11px; line-height: 16px; color: var(--ok); font-weight: 700;">問題なし</span></div>
+      <div style="display: flex; flex-direction: column; gap: 4px;"><div style="aspect-ratio: 1; border-radius: 8px; background: var(--sunken);"></div><span style="font-size: 11px; line-height: 16px; color: var(--ok); font-weight: 700;">問題なし</span></div>
+    </div>
+    <label style="display: flex; align-items: center; gap: 8px; min-height: 44px; font-size: 14px;"><input type="checkbox" style="width: 20px; height: 20px; accent-color: var(--accent);">1枚目は公開しない</label>
+  </section>
+
+  <section style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 14px 16px; display: flex; flex-direction: column; gap: 8px;">
+    <b style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 17px;">重複かもしれないもの</b>
+    <a href="#" style="color: var(--ink); text-decoration: none; background: var(--sunken); border-radius: 10px; padding: 8px 12px; display: flex; flex-direction: column;"><b>同じ行事の2025年の開催回</b><span style="font-size: 13px; color: var(--muted);">0.2km</span></a>
+    <label style="display: flex; align-items: center; gap: 8px; min-height: 44px; font-size: 14px;"><input type="checkbox" checked style="width: 20px; height: 20px; accent-color: var(--accent);">同じ行事の今年の回として登録する</label>
+  </section>
+
+  <section style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 14px 16px; display: flex; flex-direction: column; gap: 10px;">
+    <button style="height: 48px; border: 0; border-radius: 999px; background: var(--accent); color: var(--on); font: 700 16px/1 'BIZ UDPGothic', sans-serif;">選んだ内容で承認して公開</button>
+    <label for="rs" style="font-size: 13px; color: var(--muted);">却下の理由</label>
+    <select id="rs" style="height: 44px; padding: 0 10px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit;"><option>理由を選ぶ</option><option>情報が不足している</option><option>私有地・立入禁止</option><option>権利の確認ができない</option></select>
+    <button style="height: 44px; border-radius: 999px; border: 2px solid var(--ng); background: var(--surface); color: var(--ng); font: 700 15px/1 'BIZ UDPGothic', sans-serif;">却下する</button>
+    <span style="font-size: 12px; line-height: 18px; color: var(--muted);">匿名投稿は差し戻せません。</span>
+  </section>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1900}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

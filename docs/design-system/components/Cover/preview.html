@@ -1,0 +1,42 @@
+<!-- @dsCard height=300 -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Yusei+Magic&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body)}
+.cover{position:relative;width:960px;height:300px;overflow:hidden}
+svg{position:absolute;left:0;top:0}
+.sky{fill:var(--sky-top)}
+.sky2{fill:var(--sky-bottom)}
+.sun{fill:var(--accent)}
+.hill{fill:var(--hill)}
+.ta{fill:var(--line-strong)}
+.tb{fill:var(--surface-sunken)}
+.tile{rx:var(--radius-sm)}
+.glow{fill:var(--glow);opacity:0}
+[data-theme="night"] .glow{opacity:1}
+.name{position:absolute;left:48px;bottom:72px;margin:0;font-family:var(--font-logo);font-weight:400;font-size:80px;line-height:.95;max-width:440px;white-space:nowrap}
+.name i{font-style:normal;color:var(--accent);font-size:.72em}
+.tag{position:absolute;left:50px;bottom:40px;margin:0;font-size:14px;color:var(--ink-muted);max-width:440px}
+</style>
+<div class="cover">
+<svg width="960" height="300" viewBox="0 0 960 300" aria-hidden="true">
+<!--
+blocks: sky-top 480x152 (bleeds top/right), sky-bottom band 480x40, accent sun r40 (radius-pill disc), hill arc 480 wide; tiles line-strong / surface-sunken
+arrangement: a landscape stacked in horizontal strips right of x=480 — sky, sun, hill, paddies
+pattern: paddy-field tiles 48x24 on an 8px (space-2) gap, corners radius-sm — the 田 of ド田舎, rice fields seen from above
+scales: space-2 8px gap, space-4 16px inset, radius-sm 6px tiles, radius-pill sun
+-->
+<rect class="sky" x="480" y="0" width="480" height="152"/>
+<rect class="sky2" x="480" y="152" width="480" height="40"/>
+<circle class="sun" cx="840" cy="88" r="40"/>
+<circle class="glow" cx="560" cy="40" r="2.5"/><circle class="glow" cx="640" cy="104" r="2"/><circle class="glow" cx="720" cy="30" r="2"/>
+<path class="hill" d="M480 192 Q600 120 720 170 Q840 130 960 160 V204 H480Z"/>
+<g>
+<rect class="tile ta" x="496" y="212" width="48" height="24"/><rect class="tile tb" x="552" y="212" width="48" height="24"/><rect class="tile ta" x="608" y="212" width="48" height="24"/><rect class="tile ta" x="664" y="212" width="48" height="24"/><rect class="tile tb" x="720" y="212" width="48" height="24"/><rect class="tile ta" x="776" y="212" width="48" height="24"/><rect class="tile tb" x="832" y="212" width="48" height="24"/><rect class="tile ta" x="888" y="212" width="48" height="24"/>
+<rect class="tile tb" x="496" y="244" width="48" height="24"/><rect class="tile ta" x="552" y="244" width="104" height="24"/><rect class="tile tb" x="664" y="244" width="48" height="24"/><rect class="tile ta" x="720" y="244" width="48" height="24"/><rect class="tile ta" x="776" y="244" width="104" height="24"/><rect class="tile tb" x="888" y="244" width="48" height="24"/>
+<rect class="tile ta" x="496" y="276" width="104" height="24"/><rect class="tile tb" x="608" y="276" width="48" height="24"/><rect class="tile ta" x="664" y="276" width="48" height="24"/><rect class="tile tb" x="720" y="276" width="104" height="24"/><rect class="tile ta" x="832" y="276" width="48" height="24"/><rect class="tile tb" x="888" y="276" width="48" height="24"/>
+</g>
+</svg>
+<p class="name">ド田舎<i>.net</i></p>
+<p class="tag">何もないが、ある。時間と季節で色が変わる、いなかのポータル。</p>
+</div>

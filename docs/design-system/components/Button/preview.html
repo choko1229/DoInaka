@@ -1,0 +1,19 @@
+<!-- @dsCard group="操作" height=150 subtitle="主・副・小。すべて丸いピル型" -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Yomogi&family=Yusei+Magic&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:var(--font-body);background:var(--bg);color:var(--ink)}
+.row{display:flex;gap:12px;align-items:center;padding:24px;flex-wrap:wrap}
+.btn{font:700 16px/1 var(--font-body);height:48px;padding:0 24px;border-radius:var(--radius-pill);border:2px solid transparent;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.btn:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.primary{background:var(--accent);color:var(--on-accent)}
+.secondary{background:var(--surface);color:var(--ink);border-color:var(--line-strong)}
+.small{height:36px;padding:0 16px;font-size:14px}
+.visited{background:var(--surface);color:var(--accent);border-color:var(--accent)}
+.aside{font-family:var(--font-hand);color:var(--ink-muted);font-size:15px}
+</style>
+<div class="row">
+  <button class="btn primary">投稿する</button>
+  <button class="btn secondary">地図で見る</button>
+  <button class="btn small secondary">今週末</button>
+  <button class="btn small visited" aria-pressed="true">行った! 12</button><span class="aside">おつかれさまでした</span>
+</div>

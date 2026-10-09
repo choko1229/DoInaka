@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>管理: マスタの編集(PC)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&amp;family=Yomogi&amp;family=Yusei+Magic&amp;family=Zen+Maru+Gothic:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.t-day{--bg:#fbf8ee;--surface:#ffffff;--sunken:#f2eedf;--ink:#26261c;--muted:#5a5a48;--line:#ddd7c2;--strong:#7d775e;--on:#ffffff;--ok:#2b7048;--warn:#7a5200;--ng:#a8241c}
+.s-autumn{--accent:#b24a0c}
+a{color:var(--accent)}a:hover{color:var(--ink)}
+</style>
+</helmet>
+<div class="t-day s-autumn" style="min-height: 1400px; background: var(--bg); color: var(--ink); font-family: 'BIZ UDPGothic', sans-serif; font-size: 15px; line-height: 24px; display: flex; flex-wrap: wrap; align-items: stretch;">
+<nav aria-label="管理メニュー" style="flex: 1 1 240px; max-width: 280px; min-width: 0; background: var(--surface); border-right: 1px solid var(--line); padding: 16px 12px; display: flex; flex-direction: column; gap: 4px; box-sizing: border-box;">
+  <a href="AdminPC.dc.html" style="display: inline-flex; align-items: center; gap: 8px; color: var(--ink); text-decoration: none; font-size: 22px; line-height: 28px; padding: 4px 8px 16px;"><span style="font-family: 'Yusei Magic', sans-serif;">ド田舎</span><span style="font-family: 'Yusei Magic', sans-serif; color: var(--accent); font-size: 16px; margin-left: -6px;">.net</span><span style="font: 700 12px/18px 'BIZ UDPGothic', sans-serif; border: 1px solid var(--strong); border-radius: 6px; padding: 0 6px;">管理</span></a>
+  <a href="AdminPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">ダッシュボード</a>
+  <a href="AdminReviewPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">審査</a>
+  <a href="AdminTipsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">情報提供</a>
+  <a href="AdminCorrectionsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">修正依頼</a>
+  <a href="AdminRejectedPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">却下ボックス</a>
+  <a href="AdminInquiriesPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">お問い合わせ</a>
+  <span style="font-size: 12px; line-height: 18px; color: var(--muted); padding: 16px 12px 4px;">コンテンツ</span>
+  <a href="AdminEventsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">行事・開催回</a>
+  <a href="AdminContentsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">スポット・記事・コメント</a>
+  <a href="AdminRegionsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">地域ページ</a>
+  <a href="AdminDraftPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">AI下書き作成</a>
+  <a href="AdminSourcesPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">情報源の巡回</a>
+  <span style="font-size: 12px; line-height: 18px; color: var(--muted); padding: 16px 12px 4px;">運営</span>
+  <a href="AdminMastersPC.dc.html" aria-current="page" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; background: var(--sunken); color: var(--ink); font-weight: 700; text-decoration: none;">マスタ</a>
+  <a href="AdminUsersPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">会員</a>
+  <a href="AdminAdsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">広告枠</a>
+  <a href="AdminSettingsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">設定</a>
+  <a href="AdminLogsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">ログ</a>
+  <a href="AdminUpdatePC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">アップデート</a>
+</nav>
+<main style="flex: 999 1 640px; min-width: 0; padding: 24px 32px 40px; display: flex; flex-direction: column; gap: 20px; box-sizing: border-box;">
+  <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px;"><h1 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 28px; line-height: 36px;">マスタの編集</h1><span style="font-size: 13px; color: var(--muted);">地域・分類・タグ。使われているものは削除できません</span></div>
+  <nav aria-label="パンくず" style="font-size: 14px; line-height: 22px; color: var(--muted);"><a href="AdminMastersPC.dc.html">マスタ</a> / 編集</nav>
+  <div role="group" aria-label="デザイン確認用の種類" style="display: flex; gap: 8px; flex-wrap: wrap;">
+    <span style="align-self: center; font-size: 13px; color: var(--muted); flex: 0 0 auto;">デザイン確認用:</span>
+    <sc-for list="{{kinds}}" as="o" hint-placeholder-count="2">
+      <button aria-pressed="{{o.pressed}}" onClick="{{o.pick}}" style="{{o.style}}">{{o.label}}</button>
+    </sc-for>
+  </div>
+  <div style="display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap;">
+    <div style="flex: 999 1 640px; min-width: 0; display: flex; flex-direction: column; gap: 16px;">
+<div style="display: flex; flex-direction: column; gap: 16px;">  <sc-if value="{{is_category}}" hint-placeholder-val="{{false}}">
+  <section style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 18px 20px; display: flex; flex-direction: column; gap: 14px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px;"><h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 20px; line-height: 28px;">分類の編集</h2></div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 16px;"><div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><label for="mc-name" style="font-weight: 700;">名前<span style="font-size: 12px; font-weight: 700; color: var(--ng); margin-left: 6px;">必須</span></label><input id="mc-name" value="祭り・行事" placeholder="" style="width: 100%; height: 44px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit;"></div><div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><label for="mc-slug" style="font-weight: 700;">URL の英字部分<span style="font-size: 12px; font-weight: 700; color: var(--ng); margin-left: 6px;">必須</span></label><input id="mc-slug" value="matsuri" placeholder="" style="width: 100%; height: 44px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit;"><span style="font-size: 12px; line-height: 18px; color: var(--muted);">/kagawa/events/category/matsuri/</span></div></div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 16px;"><fieldset style="margin: 0; padding: 0; border: 0; min-width: 0;"><legend style="font-weight: 700; padding: 0;">使う場所</legend><div style="display: flex; flex-wrap: wrap; gap: 0 8px;"><label style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding-right: 12px;"><input type="radio" name="mc-t0" checked style="width: 20px; height: 20px; accent-color: var(--accent); margin: 0;">イベント</label><label style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding-right: 12px;"><input type="radio" name="mc-t0" style="width: 20px; height: 20px; accent-color: var(--accent); margin: 0;">スポット</label></div></fieldset><div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><label for="mc-order" style="font-weight: 700;">並び順<span style="font-size: 12px; font-weight: 700; color: var(--muted); margin-left: 6px;">任意</span></label><input id="mc-order" value="1" placeholder="" style="width: 100%; height: 44px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit;"></div></div>
+<div style="display: flex; flex-direction: column; gap: 6px;"><span style="font-weight: 700;">アイコン</span><div style="display: flex; gap: 8px; flex-wrap: wrap;"><span style="display: grid; place-items: center; width: 44px; height: 44px; border-radius: 10px; border: 2px solid var(--accent); font-size: 12px;">祭</span><span style="display: grid; place-items: center; width: 44px; height: 44px; border-radius: 10px; border: 2px solid var(--line); font-size: 12px;">体</span><span style="display: grid; place-items: center; width: 44px; height: 44px; border-radius: 10px; border: 2px solid var(--line); font-size: 12px;">食</span><span style="display: grid; place-items: center; width: 44px; height: 44px; border-radius: 10px; border: 2px solid var(--line); font-size: 12px;">芸</span><span style="display: grid; place-items: center; width: 44px; height: 44px; border-radius: 10px; border: 2px solid var(--line); font-size: 12px;">花</span><span style="display: grid; place-items: center; width: 44px; height: 44px; border-radius: 10px; border: 2px solid var(--line); font-size: 12px;">山</span></div></div>
+<div style="background: var(--sunken); border-radius: 10px; padding: 10px 14px; font-size: 14px;">行事 41件で使っているため、削除できません。名前は変えられます(URL は変えると古いURLから301で転送)。</div>
+  </section>
+  </sc-if>
+  <sc-if value="{{is_tag}}" hint-placeholder-val="{{false}}">
+  <section style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 18px 20px; display: flex; flex-direction: column; gap: 14px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px;"><h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 20px; line-height: 28px;">タグの編集</h2></div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 16px;"><div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><label for="mt-name" style="font-weight: 700;">名前<span style="font-size: 12px; font-weight: 700; color: var(--ng); margin-left: 6px;">必須</span></label><input id="mt-name" value="獅子舞" placeholder="" style="width: 100%; height: 44px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit;"></div><div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><label for="mt-slug" style="font-weight: 700;">URL の英字部分<span style="font-size: 12px; font-weight: 700; color: var(--ng); margin-left: 6px;">必須</span></label><input id="mt-slug" value="shishimai" placeholder="" style="width: 100%; height: 44px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit;"></div></div>
+<div style="display: flex; flex-direction: column; gap: 6px;"><span style="font-weight: 700;">同じ意味の言葉(検索で同じものとして扱う)</span><div style="display: flex; gap: 8px; flex-wrap: wrap;"><span style="display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--strong); font-size: 14px;">ししまい</span><span style="display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--strong); font-size: 14px;">獅子舞い</span><span style="display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--strong); font-size: 14px;">獅子</span><button style="height: 32px; padding: 0 12px; border-radius: 999px; border: 1px dashed var(--strong); background: transparent; color: var(--ink); font: inherit; font-size: 14px;">+ 追加</button></div></div>
+<span style="font-size: 12px; color: var(--muted);">行事 12件・記事 3件で使用中。別のタグにまとめると、使っているものも付け替えます。</span>
+<div><button style="height: 40px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">別のタグにまとめる</button></div>
+  </section>
+  </sc-if>
+  <sc-if value="{{is_region}}" hint-placeholder-val="{{true}}">
+  <section style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 18px 20px; display: flex; flex-direction: column; gap: 14px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px;"><h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 20px; line-height: 28px;">地域の編集</h2></div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 16px;"><div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><label for="mr-kind" style="font-weight: 700;">種類<span style="font-size: 12px; font-weight: 700; color: var(--ng); margin-left: 6px;">必須</span></label><select id="mr-kind" style="width: 100%; height: 44px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit;"><option>都道府県</option><option>市区町村</option><option selected>旧町村</option></select></div><div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><label for="mr-name" style="font-weight: 700;">名前<span style="font-size: 12px; font-weight: 700; color: var(--ng); margin-left: 6px;">必須</span></label><input id="mr-name" value="上西村" placeholder="" style="width: 100%; height: 44px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit;"></div><div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><label for="mr-kana" style="font-weight: 700;">よみ<span style="font-size: 12px; font-weight: 700; color: var(--ng); margin-left: 6px;">必須</span></label><input id="mr-kana" value="かみにしむら" placeholder="" style="width: 100%; height: 44px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit;"></div></div>
+<fieldset style="margin: 0; padding: 0; border: 0; min-width: 0;"><legend style="font-weight: 700; padding: 0;">時代のタグ</legend><div style="display: flex; flex-wrap: wrap; gap: 0 8px;"><label style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding-right: 12px;"><input type="radio" name="mr-era0" style="width: 20px; height: 20px; accent-color: var(--accent); margin: 0;">平成の合併前</label><label style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding-right: 12px;"><input type="radio" name="mr-era0" checked style="width: 20px; height: 20px; accent-color: var(--accent); margin: 0;">昭和の合併前</label></div></fieldset>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 16px;"><div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><label for="mr-parent" style="font-weight: 700;">親(URL の上の階層)<span style="font-size: 12px; font-weight: 700; color: var(--ng); margin-left: 6px;">必須</span></label><select id="mr-parent" style="width: 100%; height: 44px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit;"><option selected>塩江町(平成の合併前)</option><option>高松市</option></select><span style="font-size: 12px; line-height: 18px; color: var(--muted);">https://ド田舎.net/kagawa/takamatsu/shionoe/kaminishi-mura/</span></div><div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><label for="mr-slug" style="font-weight: 700;">URL の英字部分<span style="font-size: 12px; font-weight: 700; color: var(--ng); margin-left: 6px;">必須</span></label><input id="mr-slug" value="kaminishi-mura" placeholder="" style="width: 100%; height: 44px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit;"><span style="font-size: 12px; line-height: 18px; color: var(--muted);">同じ市町の中で重なると -mura / -cho を付ける</span></div></div>
+<dl style="margin: 0; display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 4px 12px; font-size: 14px; line-height: 22px; background: var(--sunken); border-radius: 10px; padding: 12px 14px;">
+          <dt style="color: var(--muted);">なくなった日</dt><dd style="margin: 0 0 0px;">1956/09/30(新設合併)</dd>
+          <dt style="color: var(--muted);">合併先</dt><dd style="margin: 0 0 0px;">塩江町 → 今の高松市</dd>
+          <dt style="color: var(--muted);">ほかの市町に入った部分</dt><dd style="margin: 0 0 0px;"><span style="color: var(--muted);">なし</span></dd>
+          <dt style="color: var(--muted);">出典</dt><dd style="margin: 0; overflow-wrap: anywhere;"><a href="#">Wikipedia 香川県の廃止市町村一覧</a>ほか 4件 <span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--warn); border: 1px solid var(--warn); border-radius: 6px; padding: 0 6px; white-space: nowrap;">確かさ: 中(1つの出典)</span></dd>
+        </dl>
+<span style="font-size: 12px; color: var(--muted);">初期データ(docs/data/kagawa_former_municipalities.csv)から入れた値です。直すと変更履歴に残ります。投稿の受付と巡回のON/OFFは、種類が「都道府県」のときだけ出ます。</span>
+  </section>
+  </sc-if></div>
+    </div>
+  <aside style="flex: 1 1 280px; max-width: 320px; position: sticky; top: 16px; background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 18px 20px; display: flex; flex-direction: column; gap: 14px;">
+    <h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 18px; line-height: 26px;">公開と保存</h2>
+<fieldset style="margin: 0; padding: 0; border: 0; min-width: 0;"><legend style="font-weight: 700; padding: 0;">状態</legend><div style="display: flex; flex-wrap: wrap; gap: 0 8px;"><label style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding-right: 12px;"><input type="radio" name="st0" checked style="width: 20px; height: 20px; accent-color: var(--accent); margin: 0;">公開</label><label style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding-right: 12px;"><input type="radio" name="st0" style="width: 20px; height: 20px; accent-color: var(--accent); margin: 0;">非公開</label><label style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding-right: 12px;"><input type="radio" name="st0" style="width: 20px; height: 20px; accent-color: var(--accent); margin: 0;">下書き</label></div></fieldset><div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><label for="why0" style="font-weight: 700;">変更の理由<span style="font-size: 12px; font-weight: 700; color: var(--muted); margin-left: 6px;">任意</span></label><input id="why0" placeholder="例: 主催者の連絡で時間を変更" style="width: 100%; height: 44px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit;"><span style="font-size: 12px; line-height: 18px; color: var(--muted);">変更履歴に残ります</span></div><div style="display: flex; gap: 8px; flex-wrap: wrap;"><button style="height: 48px; padding: 0 14px; border: 0; border-radius: 999px; background: var(--accent); color: var(--on); font: 700 15px/1 'BIZ UDPGothic', sans-serif;">保存する</button><button style="height: 48px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 15px/1 'BIZ UDPGothic', sans-serif;">プレビュー</button></div><span style="font-size: 12px; color: var(--muted);">最終更新 10/8 9:12 初期データ</span><div style="display: flex; flex-direction: column; gap: 4px; font-size: 14px;"><a href="#">変更履歴(1)</a><a href="RegionPC.dc.html">公開ページを見る</a></div><div style="border-top: 1px solid var(--line); padding-top: 12px; display: flex; flex-direction: column; gap: 6px;"><button style="height: 40px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--ng); background: var(--surface); color: var(--ng); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">削除する</button><span style="font-size: 12px; color: var(--muted);">誤って登録したものだけ。公開ページは「410 削除済み」になります。終わった行事は消さずに残します。</span></div>
+  </aside>
+  </div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1400}}'>
+class Component extends DCLogic {
+renderVals() {
+const kind = (this.state && this.state.kind) || 'region';
+const base = 'flex: 0 0 auto; min-height: 40px; padding: 0 16px; border-radius: 999px; font: 700 14px/1 BIZ UDPGothic, sans-serif; cursor: pointer; ';
+const list = [['region', '地域(旧町村)'], ['category', '分類'], ['tag', 'タグ']];
+return {
+kinds: list.map(([id, label]) => ({
+ label: label,
+ pressed: kind === id ? 'true' : 'false',
+ style: kind === id ? base + 'background: var(--surface); border: 2px solid var(--accent); color: var(--accent);' : base + 'background: var(--surface); border: 2px solid var(--strong); color: var(--ink);',
+ pick: () => this.setState({ kind: id })
+})),
+is_region: kind === 'region',
+is_category: kind === 'category',
+is_tag: kind === 'tag'
+};
+}
+}
+</script>
+</body>
+</html>

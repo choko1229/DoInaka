@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>管理: 情報提供(PC)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&amp;family=Yomogi&amp;family=Yusei+Magic&amp;family=Zen+Maru+Gothic:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.t-day{--bg:#fbf8ee;--surface:#ffffff;--sunken:#f2eedf;--ink:#26261c;--muted:#5a5a48;--line:#ddd7c2;--strong:#7d775e;--on:#ffffff;--ok:#2b7048;--warn:#7a5200;--ng:#a8241c}
+.s-autumn{--accent:#b24a0c}
+a{color:var(--accent)}a:hover{color:var(--ink)}
+</style>
+</helmet>
+<div class="t-day s-autumn" style="min-height: 1460px; background: var(--bg); color: var(--ink); font-family: 'BIZ UDPGothic', sans-serif; font-size: 15px; line-height: 24px; display: flex; flex-wrap: wrap; align-items: stretch;">
+<nav aria-label="管理メニュー" style="flex: 1 1 240px; max-width: 280px; min-width: 0; background: var(--surface); border-right: 1px solid var(--line); padding: 16px 12px; display: flex; flex-direction: column; gap: 4px; box-sizing: border-box;">
+  <a href="AdminPC.dc.html" style="display: inline-flex; align-items: center; gap: 8px; color: var(--ink); text-decoration: none; font-size: 22px; line-height: 28px; padding: 4px 8px 16px;"><span style="font-family: 'Yusei Magic', sans-serif;">ド田舎</span><span style="font-family: 'Yusei Magic', sans-serif; color: var(--accent); font-size: 16px; margin-left: -6px;">.net</span><span style="font: 700 12px/18px 'BIZ UDPGothic', sans-serif; border: 1px solid var(--strong); border-radius: 6px; padding: 0 6px;">管理</span></a>
+  <a href="AdminPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">ダッシュボード</a>
+  <a href="AdminReviewPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">審査</a>
+  <a href="#" aria-current="page" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; background: var(--sunken); color: var(--ink); font-weight: 700; text-decoration: none;">情報提供</a>
+  <a href="AdminCorrectionsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">修正依頼</a>
+  <a href="AdminRejectedPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">却下ボックス</a>
+  <a href="AdminInquiriesPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">お問い合わせ</a>
+  <span style="font-size: 12px; line-height: 18px; color: var(--muted); padding: 16px 12px 4px;">コンテンツ</span>
+  <a href="AdminEventsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">行事・開催回</a>
+  <a href="AdminContentsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">スポット・記事・コメント</a>
+  <a href="AdminRegionsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">地域ページ</a>
+  <a href="AdminDraftPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">AI下書き作成</a>
+  <a href="AdminSourcesPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">情報源の巡回</a>
+  <span style="font-size: 12px; line-height: 18px; color: var(--muted); padding: 16px 12px 4px;">運営</span>
+  <a href="AdminMastersPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">マスタ</a>
+  <a href="AdminUsersPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">会員</a>
+  <a href="AdminAdsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">広告枠</a>
+  <a href="AdminSettingsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">設定</a>
+  <a href="AdminLogsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">ログ</a>
+  <a href="AdminUpdatePC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">アップデート</a>
+</nav>
+<main style="flex: 999 1 640px; min-width: 0; padding: 24px 32px 40px; display: flex; flex-direction: column; gap: 20px; box-sizing: border-box;">
+  <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px;"><h1 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 28px; line-height: 36px;">情報提供</h1><span style="font-size: 13px; color: var(--muted);">利用者から届いたイベントの情報です。AIの下書きを確かめてから公開します</span></div>
+  <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px;"><div style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 14px 18px; display: flex; flex-direction: column; gap: 2px; min-width: 0;"><span style="font-size: 12px; color: var(--muted);">確認待ち</span><b style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 24px; line-height: 1.3;">4件</b><span style="font-size: 12px; color: var(--muted);">URL 3 ・ 写真 1</span></div><div style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 14px 18px; display: flex; flex-direction: column; gap: 2px; min-width: 0;"><span style="font-size: 12px; color: var(--muted);">読み取り待ち</span><b style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 24px; line-height: 1.3;">1件</b><span style="font-size: 12px; color: var(--muted);">AIのリセット後</span></div><div style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 14px 18px; display: flex; flex-direction: column; gap: 2px; min-width: 0;"><span style="font-size: 12px; color: var(--muted);">今月公開</span><b style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 24px; line-height: 1.3;">12件</b><span style="font-size: 12px; color: var(--muted);">情報提供から</span></div><div style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 14px 18px; display: flex; flex-direction: column; gap: 2px; min-width: 0;"><span style="font-size: 12px; color: var(--muted);">見送り</span><b style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 24px; line-height: 1.3;">3件</b><span style="font-size: 12px; color: var(--muted);">今月</span></div></div>
+  <div style="display: flex; gap: 8px; flex-wrap: wrap;"><button aria-pressed="true" style="flex: 0 0 auto; height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--accent); background: var(--surface); color: var(--accent); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">すべて 5</button><button aria-pressed="false" style="flex: 0 0 auto; height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">URL 4</button><button aria-pressed="false" style="flex: 0 0 auto; height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">写真 1</button><button aria-pressed="false" style="flex: 0 0 auto; height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">香川県外 1</button><button aria-pressed="false" style="flex: 0 0 auto; height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">同じ行事あり 1</button></div>
+  <div style="display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap;">
+    <div role="list" aria-label="届いた情報" style="flex: 1 1 280px; max-width: 340px; display: flex; flex-direction: column; gap: 8px;">
+      <button onClick="{{pick_a}}" aria-pressed="{{cur_a}}" style="{{style_a}}">
+        <span style="display: flex; justify-content: space-between; gap: 8px; align-items: center;"><span style="font-size: 12px; color: var(--muted);">URL ・ 高松市 塩江町</span><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--ok); border: 1px solid var(--ok); border-radius: 6px; padding: 0 6px; white-space: nowrap;">AI下書きあり</span></span>
+        <b style="font-size: 15px; line-height: 22px;">[地区名]のかかし祭り</b>
+        <span style="font-size: 12px; color: var(--muted);">10/8 9:12 ・ 匿名</span>
+      </button>
+      <button onClick="{{pick_b}}" aria-pressed="{{cur_b}}" style="{{style_b}}">
+        <span style="display: flex; justify-content: space-between; gap: 8px; align-items: center;"><span style="font-size: 12px; color: var(--muted);">写真 ・ 三豊市</span><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--warn); border: 1px solid var(--warn); border-radius: 6px; padding: 0 6px; white-space: nowrap;">個人情報を隠す前</span></span>
+        <b style="font-size: 15px; line-height: 22px;">回覧板の写真</b>
+        <span style="font-size: 12px; color: var(--muted);">10/8 8:40 ・ 会員</span>
+      </button>
+      <button onClick="{{pick_c}}" aria-pressed="{{cur_c}}" style="{{style_c}}">
+        <span style="display: flex; justify-content: space-between; gap: 8px; align-items: center;"><span style="font-size: 12px; color: var(--muted);">URL ・ 高知県 [町名]</span><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--muted); border: 1px solid var(--muted); border-radius: 6px; padding: 0 6px; white-space: nowrap;">香川県外</span></span>
+        <b style="font-size: 15px; line-height: 22px;">[町名]の秋祭り</b>
+        <span style="font-size: 12px; color: var(--muted);">10/7 21:05 ・ 匿名</span>
+      </button>
+      <button onClick="{{pick_d}}" aria-pressed="{{cur_d}}" style="{{style_d}}">
+        <span style="display: flex; justify-content: space-between; gap: 8px; align-items: center;"><span style="font-size: 12px; color: var(--muted);">URL ・ まんのう町</span><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--warn); border: 1px solid var(--warn); border-radius: 6px; padding: 0 6px; white-space: nowrap;">同じ行事あり</span></span>
+        <b style="font-size: 15px; line-height: 22px;">棚田の稲刈り体験</b>
+        <span style="font-size: 12px; color: var(--muted);">10/7 18:30 ・ 会員</span>
+      </button>
+      <button onClick="{{pick_e}}" aria-pressed="{{cur_e}}" style="{{style_e}}">
+        <span style="display: flex; justify-content: space-between; gap: 8px; align-items: center;"><span style="font-size: 12px; color: var(--muted);">URL ・ 坂出市</span><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--muted); border: 1px solid var(--muted); border-radius: 6px; padding: 0 6px; white-space: nowrap;">読み取り待ち</span></span>
+        <b style="font-size: 15px; line-height: 22px;">(読み取り前)</b>
+        <span style="font-size: 12px; color: var(--muted);">10/8 10:02 ・ 匿名</span>
+      </button>
+    </div>
+    <div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column;">
+  <sc-if value="{{is_a}}" hint-placeholder-val="{{true}}">
+      <section style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 20px; display: flex; flex-direction: column; gap: 16px;">
+        <div style="display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; align-items: baseline;"><h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 20px; line-height: 28px;">[地区名]のかかし祭り</h2><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--ok); border: 1px solid var(--ok); border-radius: 6px; padding: 0 6px; white-space: nowrap;">AI下書きあり</span></div>
+        <dl style="margin: 0; display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 6px 12px; font-size: 14px; line-height: 22px;"><dt style="color: var(--muted);">送られたURL</dt><dd style="margin: 0; min-width: 0; overflow-wrap: anywhere;"><a href="#">[地区名]自治会のお知らせページ</a></dd><dt style="color: var(--muted);">地域</dt><dd style="margin: 0; min-width: 0; overflow-wrap: anywhere;">香川県 高松市 塩江町</dd><dt style="color: var(--muted);">ひとこと</dt><dd style="margin: 0; min-width: 0; overflow-wrap: anywhere;">毎年やってます。今年は日曜だけらしい</dd><dt style="color: var(--muted);">受付番号</dt><dd style="margin: 0; min-width: 0; overflow-wrap: anywhere;">20261008-K7Q2MX ・ 匿名</dd></dl>
+        <h3 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px;">AIの下書き(このページだけ読みました)</h3>
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;">
+          <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><label for="an" style="font-size: 13px; font-weight: 700; line-height: 20px;">行事名</label><input id="an" value="[地区名]かかし祭り" style="width: 100%; height: 40px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--surface); color: var(--ink); font: inherit;"></div>
+          <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><label for="aw" style="font-size: 13px; font-weight: 700; line-height: 20px;">日時<span style="font-size: 12px; color: var(--muted); font-weight: 400;"> 確信度 0.94</span></label><input id="aw" value="10月19日(日) 10:00〜15:00" style="width: 100%; height: 40px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--surface); color: var(--ink); font: inherit;"></div>
+          <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><label for="ap" style="font-size: 13px; font-weight: 700; line-height: 20px;">場所</label><input id="ap" value="[地区名]公民館の周り(高松市塩江町)" style="width: 100%; height: 40px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--surface); color: var(--ink); font: inherit;"></div>
+          <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><label for="ao" style="font-size: 13px; font-weight: 700; line-height: 20px;">主催</label><input id="ao" value="[地区名]自治会" style="width: 100%; height: 40px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--surface); color: var(--ink); font: inherit;"></div>
+          <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><label for="af" style="font-size: 13px; font-weight: 700; line-height: 20px;">料金</label><input id="af" value="無料" style="width: 100%; height: 40px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--surface); color: var(--ink); font: inherit;"></div>
+          <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><span style="font-size: 13px; font-weight: 700; line-height: 20px;">情報元(公開ページに出す)</span><span style="min-height: 40px; display: flex; align-items: center; font-size: 14px;">Webページ ・ 送られたURL(10/8 取得)</span></div>
+        </div>
+        <p style="margin: 0; padding: 10px 14px; border-radius: 10px; background: var(--sunken); font-size: 14px; line-height: 22px;">同じ行事は見つかりませんでした。公開すると新しい行事と開催回ができます。紹介文はこのあとAIが下書きします(情報元の文章は使いません)。</p>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;"><button style="height: 40px; padding: 0 14px; border: 0; border-radius: 999px; background: var(--accent); color: var(--on); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">公開する</button><button style="height: 40px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">下書きとして保存</button><button style="height: 40px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--ng); background: var(--surface); color: var(--ng); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">見送る</button></div>
+      </section>
+    </sc-if>
+  <sc-if value="{{is_b}}" hint-placeholder-val="{{false}}">
+      <section style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 20px; display: flex; flex-direction: column; gap: 16px;">
+        <div style="display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; align-items: baseline;"><h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 20px; line-height: 28px;">回覧板の写真</h2><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--warn); border: 1px solid var(--warn); border-radius: 6px; padding: 0 6px; white-space: nowrap;">個人情報を隠す前</span></div>
+        <dl style="margin: 0; display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 6px 12px; font-size: 14px; line-height: 22px;"><dt style="color: var(--muted);">地域</dt><dd style="margin: 0; min-width: 0; overflow-wrap: anywhere;">香川県 三豊市</dd><dt style="color: var(--muted);">ひとこと</dt><dd style="margin: 0; min-width: 0; overflow-wrap: anywhere;">回覧板で回ってきました</dd><dt style="color: var(--muted);">受付番号</dt><dd style="margin: 0; min-width: 0; overflow-wrap: anywhere;">20261008-P3W9TD ・ 会員(実績2)</dd></dl>
+        <h3 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px;">1. 個人の名前・電話番号・住所を隠す</h3>
+        <div style="position: relative; border-radius: 10px; background: var(--sunken); padding: 16px; display: flex; justify-content: center;">
+          <div style="width: 300px; aspect-ratio: 3 / 4; background: var(--surface); box-shadow: 0 1px 4px rgba(0,0,0,.15); padding: 20px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; position: relative;">
+            <span style="font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 18px; text-align: center;">[地区名] 秋のお祭り</span>
+            <span style="height: 8px; background: var(--line); border-radius: 4px;"></span><span style="height: 8px; width: 80%; background: var(--line); border-radius: 4px;"></span><span style="height: 8px; width: 90%; background: var(--line); border-radius: 4px;"></span>
+            <span style="margin-top: auto; display: flex; align-items: center; gap: 8px; font-size: 12px;">連絡先 <span style="flex: 1; height: 18px; background: var(--ink); border-radius: 3px;" aria-label="隠した部分"></span></span>
+            <span style="display: flex; align-items: center; gap: 8px; font-size: 12px;">班長 <span style="flex: 1; height: 18px; border: 2px dashed var(--accent); border-radius: 3px;" aria-label="これから隠す部分"></span></span>
+          </div>
+        </div>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;"><button style="height: 40px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">隠す範囲を描く</button><button style="height: 40px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">1つ戻す</button><button style="height: 40px; padding: 0 14px; border: 0; border-radius: 999px; background: var(--accent); color: var(--on); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">隠した写真を保存</button></div>
+        <span style="font-size: 12px; color: var(--muted);">隠す前の写真は公開しません。保存した写真は情報元として公開ページに出ます。</span>
+        <h3 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px;">2. 写真を見て下書きを作る</h3>
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;">
+          <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><label for="bn" style="font-size: 13px; font-weight: 700; line-height: 20px;">行事名</label><input id="bn" value="" style="width: 100%; height: 40px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--surface); color: var(--ink); font: inherit;"></div>
+          <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><label for="bw" style="font-size: 13px; font-weight: 700; line-height: 20px;">日時</label><input id="bw" value="" style="width: 100%; height: 40px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--surface); color: var(--ink); font: inherit;"></div>
+          <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><label for="bp" style="font-size: 13px; font-weight: 700; line-height: 20px;">場所</label><input id="bp" value="" style="width: 100%; height: 40px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--surface); color: var(--ink); font: inherit;"></div>
+          <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><label for="bo" style="font-size: 13px; font-weight: 700; line-height: 20px;">主催</label><input id="bo" value="" style="width: 100%; height: 40px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--surface); color: var(--ink); font: inherit;"></div>
+          <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><label for="bf" style="font-size: 13px; font-weight: 700; line-height: 20px;">料金</label><input id="bf" value="" style="width: 100%; height: 40px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--surface); color: var(--ink); font: inherit;"></div>
+          <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><span style="font-size: 13px; font-weight: 700; line-height: 20px;">情報元(公開ページに出す)</span><span style="min-height: 40px; display: flex; align-items: center; font-size: 14px;">チラシ・回覧板の写真(隠したもの)</span></div>
+        </div>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;"><button style="height: 40px; padding: 0 14px; border: 0; border-radius: 999px; background: var(--accent); color: var(--on); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">公開する</button><button style="height: 40px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">下書きとして保存</button><button style="height: 40px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--ng); background: var(--surface); color: var(--ng); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">見送る</button></div>
+      </section>
+    </sc-if>
+  <sc-if value="{{is_c}}" hint-placeholder-val="{{false}}">
+      <section style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 20px; display: flex; flex-direction: column; gap: 16px;">
+        <div style="display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; align-items: baseline;"><h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 20px; line-height: 28px;">[町名]の秋祭り</h2><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--muted); border: 1px solid var(--muted); border-radius: 6px; padding: 0 6px; white-space: nowrap;">香川県外</span></div>
+        <dl style="margin: 0; display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 6px 12px; font-size: 14px; line-height: 22px;"><dt style="color: var(--muted);">送られたURL</dt><dd style="margin: 0; min-width: 0; overflow-wrap: anywhere;"><a href="#">[町名]観光協会のイベントページ</a></dd><dt style="color: var(--muted);">地域</dt><dd style="margin: 0; min-width: 0; overflow-wrap: anywhere;">高知県 [町名]</dd><dt style="color: var(--muted);">受付番号</dt><dd style="margin: 0; min-width: 0; overflow-wrap: anywhere;">20261007-R2M8LC ・ 匿名</dd></dl>
+        <p style="margin: 0; padding: 10px 14px; border-radius: 10px; background: var(--sunken); font-size: 14px; line-height: 22px;">香川県の外なので、送られたこの1ページだけ読みました。このサイトは定期巡回の候補には入れません。</p>
+        <h3 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px;">AIの下書き</h3>
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;">
+          <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><label for="cn" style="font-size: 13px; font-weight: 700; line-height: 20px;">行事名</label><input id="cn" value="[町名]秋祭り" style="width: 100%; height: 40px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--surface); color: var(--ink); font: inherit;"></div>
+          <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><label for="cw" style="font-size: 13px; font-weight: 700; line-height: 20px;">日時<span style="font-size: 12px; color: var(--muted); font-weight: 400;"> 確信度 0.91</span></label><input id="cw" value="10月25日(土)〜26日(日)" style="width: 100%; height: 40px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--surface); color: var(--ink); font: inherit;"></div>
+          <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><label for="cp" style="font-size: 13px; font-weight: 700; line-height: 20px;">場所</label><input id="cp" value="[神社名](高知県[町名])" style="width: 100%; height: 40px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--surface); color: var(--ink); font: inherit;"></div>
+          <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><label for="co" style="font-size: 13px; font-weight: 700; line-height: 20px;">主催</label><input id="co" value="[町名]観光協会" style="width: 100%; height: 40px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--surface); color: var(--ink); font: inherit;"></div>
+          <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><label for="cf" style="font-size: 13px; font-weight: 700; line-height: 20px;">料金</label><input id="cf" value="無料" style="width: 100%; height: 40px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--surface); color: var(--ink); font: inherit;"></div>
+          <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><span style="font-size: 13px; font-weight: 700; line-height: 20px;">情報元(公開ページに出す)</span><span style="min-height: 40px; display: flex; align-items: center; font-size: 14px;">Webページ ・ 送られたURL(10/8 取得)</span></div>
+        </div>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;"><button style="height: 40px; padding: 0 14px; border: 0; border-radius: 999px; background: var(--accent); color: var(--on); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">公開する</button><button style="height: 40px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">下書きとして保存</button><button style="height: 40px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--ng); background: var(--surface); color: var(--ng); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">見送る</button></div>
+      </section>
+    </sc-if>
+  <sc-if value="{{is_d}}" hint-placeholder-val="{{false}}">
+      <section style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 20px; display: flex; flex-direction: column; gap: 16px;">
+        <div style="display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; align-items: baseline;"><h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 20px; line-height: 28px;">棚田の稲刈り体験</h2><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--warn); border: 1px solid var(--warn); border-radius: 6px; padding: 0 6px; white-space: nowrap;">同じ行事あり</span></div>
+        <dl style="margin: 0; display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 6px 12px; font-size: 14px; line-height: 22px;"><dt style="color: var(--muted);">送られたURL</dt><dd style="margin: 0; min-width: 0; overflow-wrap: anywhere;"><a href="#">まんのう町 公式サイトのお知らせ</a></dd><dt style="color: var(--muted);">地域</dt><dd style="margin: 0; min-width: 0; overflow-wrap: anywhere;">香川県 まんのう町</dd><dt style="color: var(--muted);">受付番号</dt><dd style="margin: 0; min-width: 0; overflow-wrap: anywhere;">20261007-H5N2QA ・ 会員(実績6)</dd></dl>
+        <div style="border: 2px solid var(--warn); border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;">
+          <b>すでに載っている行事と同じようです</b>
+          <span style="font-size: 14px; line-height: 22px;"><a href="#">棚田の稲刈り体験(まんのう町)</a>の今年の回と、日付が違います。</span>
+          <span style="font-size: 14px; line-height: 22px;">日付: <s style="color: var(--muted);">10月12日(日)</s> → <b>10月19日(日)</b>(公式サイトの値)</span>
+          <span style="font-size: 12px; color: var(--muted);">公式サイトの情報なので、修正依頼として回すことをおすすめします。新しい行事は作りません。</span>
+        </div>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;"><button style="height: 40px; padding: 0 14px; border: 0; border-radius: 999px; background: var(--accent); color: var(--on); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">修正依頼として回す</button><button style="height: 40px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">別の行事として作る</button><button style="height: 40px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--ng); background: var(--surface); color: var(--ng); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">見送る</button></div>
+      </section>
+    </sc-if>
+  <sc-if value="{{is_e}}" hint-placeholder-val="{{false}}">
+      <section style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 20px; display: flex; flex-direction: column; gap: 16px;">
+        <div style="display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; align-items: baseline;"><h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 20px; line-height: 28px;">(読み取り前)</h2><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--muted); border: 1px solid var(--muted); border-radius: 6px; padding: 0 6px; white-space: nowrap;">読み取り待ち</span></div>
+        <dl style="margin: 0; display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 6px 12px; font-size: 14px; line-height: 22px;"><dt style="color: var(--muted);">送られたURL</dt><dd style="margin: 0; min-width: 0; overflow-wrap: anywhere;"><a href="#">[商店街名]のブログ記事</a></dd><dt style="color: var(--muted);">地域</dt><dd style="margin: 0; min-width: 0; overflow-wrap: anywhere;">香川県 坂出市</dd><dt style="color: var(--muted);">受付番号</dt><dd style="margin: 0; min-width: 0; overflow-wrap: anywhere;">20261008-T6B4ZE ・ 匿名</dd></dl>
+        <p style="margin: 0; padding: 10px 14px; border-radius: 10px; background: var(--sunken); font-size: 14px; line-height: 22px;">AIの無料枠が制限エラーになったため、日本時間9時のリセット後に読み取ります(使う順番は3番目)。急ぐときは、ページを開いて手で下書きを作れます。</p>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;"><button style="height: 40px; padding: 0 14px; border: 0; border-radius: 999px; background: var(--accent); color: var(--on); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">手で下書きを作る</button><button style="height: 40px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">いますぐAIで読む</button><button style="height: 40px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--ng); background: var(--surface); color: var(--ng); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">見送る</button></div>
+        <span style="font-size: 12px; color: var(--muted);">「いますぐAIで読む」は管理者の操作として一番先に試します。制限エラー中は失敗することがあります。</span>
+      </section>
+    </sc-if>
+    </div>
+  </div>
+  <p style="margin: 0; font-size: 13px; color: var(--muted);">情報元(URLか写真)がないものは届きません。SNSのURLは送信時に断っています。公開したイベントには情報元が必ず表示されます。</p>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1460}}'>
+class Component extends DCLogic {
+renderVals() {
+const sel = (this.state && this.state.sel) || 'a';
+const base = 'width: 100%; text-align: left; display: flex; flex-direction: column; gap: 2px; padding: 12px 14px; border-radius: 12px; cursor: pointer; font: 400 14px/20px BIZ UDPGothic, sans-serif; color: var(--ink); ';
+const on = base + 'background: var(--surface); border: 2px solid var(--accent);';
+const off = base + 'background: var(--surface); border: 2px solid transparent; box-shadow: 0 1px 0 var(--line);';
+const v = {};
+['a', 'b', 'c', 'd', 'e'].forEach((k) => {
+  v['pick_' + k] = () => this.setState({ sel: k });
+  v['style_' + k] = sel === k ? on : off;
+  v['cur_' + k] = sel === k ? 'true' : 'false';
+  v['is_' + k] = sel === k;
+});
+return v;
+}
+}
+</script>
+</body>
+</html>

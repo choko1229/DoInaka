@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>管理: お問い合わせ(PC)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&amp;family=Yomogi&amp;family=Yusei+Magic&amp;family=Zen+Maru+Gothic:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.t-day{--bg:#fbf8ee;--surface:#ffffff;--sunken:#f2eedf;--ink:#26261c;--muted:#5a5a48;--line:#ddd7c2;--strong:#7d775e;--on:#ffffff;--ok:#2b7048;--warn:#7a5200;--ng:#a8241c}
+.s-autumn{--accent:#b24a0c}
+a{color:var(--accent)}a:hover{color:var(--ink)}
+</style>
+</helmet>
+<div class="t-day s-autumn" style="min-height: 1190px; background: var(--bg); color: var(--ink); font-family: 'BIZ UDPGothic', sans-serif; font-size: 15px; line-height: 24px; display: flex; flex-wrap: wrap; align-items: stretch;">
+<nav aria-label="管理メニュー" style="flex: 1 1 240px; max-width: 280px; min-width: 0; background: var(--surface); border-right: 1px solid var(--line); padding: 16px 12px; display: flex; flex-direction: column; gap: 4px; box-sizing: border-box;">
+  <a href="AdminPC.dc.html" style="display: inline-flex; align-items: center; gap: 8px; color: var(--ink); text-decoration: none; font-size: 22px; line-height: 28px; padding: 4px 8px 16px;"><span style="font-family: 'Yusei Magic', sans-serif;">ド田舎</span><span style="font-family: 'Yusei Magic', sans-serif; color: var(--accent); font-size: 16px; margin-left: -6px;">.net</span><span style="font: 700 12px/18px 'BIZ UDPGothic', sans-serif; border: 1px solid var(--strong); border-radius: 6px; padding: 0 6px;">管理</span></a>
+  <a href="AdminPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">ダッシュボード</a>
+  <a href="AdminReviewPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">審査</a>
+  <a href="AdminTipsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">情報提供</a>
+  <a href="AdminCorrectionsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">修正依頼</a>
+  <a href="AdminRejectedPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">却下ボックス</a>
+  <a href="#" aria-current="page" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; background: var(--sunken); color: var(--ink); font-weight: 700; text-decoration: none;">お問い合わせ</a>
+  <span style="font-size: 12px; line-height: 18px; color: var(--muted); padding: 16px 12px 4px;">コンテンツ</span>
+  <a href="AdminEventsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">行事・開催回</a>
+  <a href="AdminContentsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">スポット・記事・コメント</a>
+  <a href="AdminRegionsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">地域ページ</a>
+  <a href="AdminDraftPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">AI下書き作成</a>
+  <a href="AdminSourcesPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">情報源の巡回</a>
+  <span style="font-size: 12px; line-height: 18px; color: var(--muted); padding: 16px 12px 4px;">運営</span>
+  <a href="AdminMastersPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">マスタ</a>
+  <a href="AdminUsersPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">会員</a>
+  <a href="AdminAdsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">広告枠</a>
+  <a href="AdminSettingsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">設定</a>
+  <a href="AdminLogsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">ログ</a>
+  <a href="AdminUpdatePC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">アップデート</a>
+</nav>
+<main style="flex: 999 1 640px; min-width: 0; padding: 24px 32px 40px; display: flex; flex-direction: column; gap: 20px; box-sizing: border-box;">
+  <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px;"><h1 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 28px; line-height: 36px;">お問い合わせ</h1><span style="font-size: 13px; color: var(--muted);">フォームから届いたもの。削除依頼の対象は、確認が終わるまでぼかして「確認中」と表示します</span></div>
+  <div style="display: flex; gap: 8px; flex-wrap: wrap;"><button aria-pressed="true" style="flex: 0 0 auto; height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--accent); background: var(--surface); color: var(--accent); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">未対応 3</button><button aria-pressed="false" style="flex: 0 0 auto; height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">すべて 5</button><button aria-pressed="false" style="flex: 0 0 auto; height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">削除依頼 1</button><button aria-pressed="false" style="flex: 0 0 auto; height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">掲載・修正 1</button><button aria-pressed="false" style="flex: 0 0 auto; height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">広告 1</button><button aria-pressed="false" style="flex: 0 0 auto; height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">個人情報 1</button></div>
+  <div style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); overflow-x: auto;">
+      <table style="width: 100%; min-width: 900px; border-collapse: collapse;">
+        <thead><tr style="text-align: left; font-size: 13px; color: var(--muted);"><th scope="col" style="padding: 10px 16px;">受付番号</th><th scope="col" style="padding: 10px 16px;">種類</th><th scope="col" style="padding: 10px 16px;">内容</th><th scope="col" style="padding: 10px 16px;">メール</th><th scope="col" style="padding: 10px 16px;">状態</th></tr></thead>
+        <tbody>
+          <tr style="border-top: 1px solid var(--line); background: var(--sunken);"><td style="padding: 12px 16px; font-variant-numeric: tabular-nums; white-space: nowrap;">20261008-K7Q2MX<br><span style="font-size: 12px; color: var(--muted);">10/8 10:12</span></td><td style="padding: 12px 16px;"><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--warn); border: 1px solid var(--warn); border-radius: 6px; padding: 0 6px; white-space: nowrap;">削除依頼</span></td><td style="padding: 12px 16px;">急ぎ ・ 写っているのは自分の子どもです。写真を消してください</td><td style="padding: 12px 16px;">あり</td><td style="padding: 12px 16px;"><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--warn); border: 1px solid var(--warn); border-radius: 6px; padding: 0 6px; white-space: nowrap;">ぼかして確認中</span></td></tr>
+          <tr style="border-top: 1px solid var(--line);"><td style="padding: 12px 16px; font-variant-numeric: tabular-nums; white-space: nowrap;">20261007-A2D9PL<br><span style="font-size: 12px; color: var(--muted);">10/7 16:40</span></td><td style="padding: 12px 16px;"><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--ok); border: 1px solid var(--ok); border-radius: 6px; padding: 0 6px; white-space: nowrap;">掲載・修正の依頼</span></td><td style="padding: 12px 16px;">[町名]商工会です。秋祭りの時間が変わりました</td><td style="padding: 12px 16px;">あり</td><td style="padding: 12px 16px;"><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--ng); border: 1px solid var(--ng); border-radius: 6px; padding: 0 6px; white-space: nowrap;">未対応</span></td></tr>
+          <tr style="border-top: 1px solid var(--line);"><td style="padding: 12px 16px; font-variant-numeric: tabular-nums; white-space: nowrap;">20261007-Q8N3VB<br><span style="font-size: 12px; color: var(--muted);">10/7 9:05</span></td><td style="padding: 12px 16px;"><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--muted); border: 1px solid var(--muted); border-radius: 6px; padding: 0 6px; white-space: nowrap;">一般の質問・不具合</span></td><td style="padding: 12px 16px;">地図が表示されません(iPhone)</td><td style="padding: 12px 16px;">なし</td><td style="padding: 12px 16px;"><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--ng); border: 1px solid var(--ng); border-radius: 6px; padding: 0 6px; white-space: nowrap;">未対応</span></td></tr>
+          <tr style="border-top: 1px solid var(--line);"><td style="padding: 12px 16px; font-variant-numeric: tabular-nums; white-space: nowrap;">20261006-M4T7HC<br><span style="font-size: 12px; color: var(--muted);">10/6 20:31</span></td><td style="padding: 12px 16px;"><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--muted); border: 1px solid var(--muted); border-radius: 6px; padding: 0 6px; white-space: nowrap;">広告・掲載枠の相談</span></td><td style="padding: 12px 16px;">産直市のPR枠について</td><td style="padding: 12px 16px;">あり</td><td style="padding: 12px 16px;"><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--ok); border: 1px solid var(--ok); border-radius: 6px; padding: 0 6px; white-space: nowrap;">返信済み</span></td></tr>
+          <tr style="border-top: 1px solid var(--line);"><td style="padding: 12px 16px; font-variant-numeric: tabular-nums; white-space: nowrap;">20261005-Z1R6YE<br><span style="font-size: 12px; color: var(--muted);">10/5 11:18</span></td><td style="padding: 12px 16px;"><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--muted); border: 1px solid var(--muted); border-radius: 6px; padding: 0 6px; white-space: nowrap;">個人情報について</span></td><td style="padding: 12px 16px;">退会前の投稿の削除</td><td style="padding: 12px 16px;">あり</td><td style="padding: 12px 16px;"><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--muted); border: 1px solid var(--muted); border-radius: 6px; padding: 0 6px; white-space: nowrap;">完了</span></td></tr>
+        </tbody>
+      </table>
+  </div>
+  <section style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 18px 20px; display: flex; flex-direction: column; gap: 12px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px;"><h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 20px; line-height: 28px;">20261008-K7Q2MX ・ 削除依頼</h2><span style="font-size: 12px; color: var(--muted);">10/8 10:12 ・ 匿名 ・ メールあり</span></div>
+    <dl style="margin: 0; display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 6px 12px; font-size: 14px; line-height: 22px;">
+      <dt style="color: var(--muted);">対象</dt><dd style="margin: 0;"><a href="EventDetailPC.dc.html">[集落名]の獅子舞奉納</a> の「行った人の写真」3枚目</dd>
+      <dt style="color: var(--muted);">権利</dt><dd style="margin: 0;">肖像権(写っている人)</dd>
+      <dt style="color: var(--muted);">内容</dt><dd style="margin: 0;">写っているのは自分の子どもです。写真を消してください。</dd>
+      <dt style="color: var(--muted);">投稿した人</dt><dd style="margin: 0;">会員 [表示名] ・ 削除への同意を照会中(10/15 まで。いまのところ反対なし)</dd>
+    </dl>
+    <div style="border: 2px solid var(--warn); border-radius: 10px; padding: 10px 14px; font-size: 14px; line-height: 22px;">対象の写真をぼかして「確認中」と表示しています(10/8 10:12 から)。肖像権の依頼なので急ぎで Discord に通知しました。</div>
+    <div style="background: var(--sunken); border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 4px; font-size: 14px; line-height: 22px;">
+      <b>AIの照合: 妥当そう(確信度 0.86)</b><span style="color: var(--muted); font-size: 13px;">記録・学習しない提供元で照合しました</span>
+      <span>対象の写真には、子どもと見られる人物の顔が正面から大きく写っています。投稿者は匿名で、写っている人の同意を確認できる記述はありません。</span>
+      <span style="color: var(--muted); font-size: 13px;">AIの照合は参考です。削除するかどうかは管理者が決めます。</span>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 6px;"><label for="rp" style="font-weight: 700;">返信 <span style="font-weight: 400; font-size: 13px; color: var(--muted);">contact@do-inaka.net から送信</span></label><textarea id="rp" rows="3" style="width: 100%; box-sizing: border-box; padding: 10px 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--surface); color: var(--ink); font: inherit;">ご連絡ありがとうございます。該当の写真を削除しました。</textarea></div>
+    <div style="display: flex; gap: 8px; flex-wrap: wrap;"><button style="height: 40px; padding: 0 14px; border: 0; border-radius: 999px; background: var(--accent); color: var(--on); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">写真を削除して返信</button><button style="height: 40px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">ぼかしを外して残す</button><button style="height: 40px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">対応済みにする</button></div>
+  </section>
+  <p style="margin: 0; font-size: 13px; color: var(--muted);">届いたら Discord に通知します(内容は送らず、受付番号と種類だけ)。メールアドレスは返信のためだけに使い、ログには出しません。</p>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1190}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

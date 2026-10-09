@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>管理: 修正依頼(PC)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&amp;family=Yusei+Magic&amp;family=Zen+Maru+Gothic:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.t-day{--bg:#fbf8ee;--surface:#ffffff;--sunken:#f2eedf;--ink:#26261c;--muted:#5a5a48;--line:#ddd7c2;--strong:#7d775e;--on:#ffffff;--ok:#2b7048;--warn:#7a5200;--ng:#a8241c}
+.s-autumn{--accent:#b24a0c}
+a{color:var(--accent)}a:hover{color:var(--ink)}
+</style>
+</helmet>
+<div class="t-day s-autumn" style="min-height: 1000px; background: var(--bg); color: var(--ink); font-family: 'BIZ UDPGothic', sans-serif; font-size: 15px; line-height: 24px; display: flex; flex-wrap: wrap; align-items: stretch;">
+<nav aria-label="管理メニュー" style="flex: 1 1 240px; max-width: 280px; min-width: 0; background: var(--surface); border-right: 1px solid var(--line); padding: 16px 12px; display: flex; flex-direction: column; gap: 4px; box-sizing: border-box;">
+  <a href="AdminPC.dc.html" style="display: inline-flex; align-items: center; gap: 8px; color: var(--ink); text-decoration: none; font-size: 22px; line-height: 28px; padding: 4px 8px 16px;"><span style="font-family: 'Yusei Magic', sans-serif;">ド田舎</span><span style="font-family: 'Yusei Magic', sans-serif; color: var(--accent); font-size: 16px; margin-left: -6px;">.net</span><span style="font: 700 12px/18px 'BIZ UDPGothic', sans-serif; border: 1px solid var(--strong); border-radius: 6px; padding: 0 6px;">管理</span></a>
+  <a href="AdminPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">ダッシュボード</a>
+  <a href="AdminReviewPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">審査</a>
+  <a href="AdminTipsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">情報提供</a>
+  <a href="#" aria-current="page" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; background: var(--sunken); color: var(--ink); font-weight: 700; text-decoration: none;">修正依頼</a>
+  <a href="AdminRejectedPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">却下ボックス</a>
+  <a href="AdminInquiriesPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">お問い合わせ</a>
+  <span style="font-size: 12px; line-height: 18px; color: var(--muted); padding: 16px 12px 4px;">コンテンツ</span>
+  <a href="AdminEventsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">行事・開催回</a>
+  <a href="AdminContentsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">スポット・記事・コメント</a>
+  <a href="AdminRegionsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">地域ページ</a>
+  <a href="AdminDraftPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">AI下書き作成</a>
+  <a href="AdminSourcesPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">情報源の巡回</a>
+  <span style="font-size: 12px; line-height: 18px; color: var(--muted); padding: 16px 12px 4px;">運営</span>
+  <a href="AdminMastersPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">マスタ</a>
+  <a href="AdminUsersPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">会員</a>
+  <a href="AdminAdsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">広告枠</a>
+  <a href="AdminSettingsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">設定</a>
+  <a href="AdminLogsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">ログ</a>
+  <a href="AdminUpdatePC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">アップデート</a>
+</nav>
+<main style="flex: 999 1 640px; min-width: 0; padding: 24px 32px 40px; display: flex; flex-direction: column; gap: 20px; box-sizing: border-box;">
+  <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px;"><h1 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 28px; line-height: 36px;">修正依頼</h1><span style="font-size: 13px; color: var(--muted);">修正依頼は公開されません</span></div>
+
+  <section style="display: flex; flex-direction: column; gap: 10px;">
+    <h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 20px; line-height: 28px;">AIが自動で反映したもの(要確認 2件)</h2>
+    <div style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); overflow-x: auto;">
+      <table style="width: 100%; min-width: 820px; border-collapse: collapse;">
+        <thead><tr style="text-align: left; font-size: 13px; color: var(--muted);"><th scope="col" style="padding: 10px 16px;">対象</th><th scope="col" style="padding: 10px 16px;">項目</th><th scope="col" style="padding: 10px 16px;">変更</th><th scope="col" style="padding: 10px 16px;">根拠</th><th scope="col" style="padding: 10px 16px;"><span style="position: absolute; width: 1px; height: 1px; overflow: hidden;">操作</span></th></tr></thead>
+        <tbody>
+          <tr style="border-top: 1px solid var(--line);"><td style="padding: 12px 16px;"><a href="#" style="font-weight: 700;">島の朝市</a><br><span style="font-size: 12px; color: var(--muted);">会員(実績8) ・ 3時間前</span></td><td style="padding: 12px 16px;">開始時刻</td><td style="padding: 12px 16px;"><s style="color: var(--muted);">8:00</s> → <b>7:00</b></td><td style="padding: 12px 16px;"><a href="#">主催者のSNS</a></td><td style="padding: 12px 16px; white-space: nowrap;"><button style="height: 36px; padding: 0 14px; border: 0; border-radius: 999px; background: var(--accent); color: var(--on); font: 700 13px/1 'BIZ UDPGothic', sans-serif;">確認済みにする</button> <button style="height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 13px/1 'BIZ UDPGothic', sans-serif;">元に戻す</button></td></tr>
+          <tr style="border-top: 1px solid var(--line);"><td style="padding: 12px 16px;"><a href="#" style="font-weight: 700;">峠の無人販売所</a><br><span style="font-size: 12px; color: var(--muted);">会員(実績5) ・ 昨日</span></td><td style="padding: 12px 16px;">お休み</td><td style="padding: 12px 16px;"><s style="color: var(--muted);">不定休</s> → <b>12〜2月は休み</b></td><td style="padding: 12px 16px;"><a href="#">現地の張り紙の写真</a></td><td style="padding: 12px 16px; white-space: nowrap;"><button style="height: 36px; padding: 0 14px; border: 0; border-radius: 999px; background: var(--accent); color: var(--on); font: 700 13px/1 'BIZ UDPGothic', sans-serif;">確認済みにする</button> <button style="height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 13px/1 'BIZ UDPGothic', sans-serif;">元に戻す</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 10px;">
+    <h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 20px; line-height: 28px;">手動で確認するもの(1件)</h2>
+    <div style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 16px 20px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center;">
+      <div style="flex: 1 1 400px; display: flex; flex-direction: column; gap: 4px;">
+        <span style="font-size: 12px; color: var(--muted);">匿名 ・ 昨日 ・ 情報元URLなしのため手動</span>
+        <b>秋季例大祭 太鼓台の宮入り: 開始時刻 13:00 → 14:00</b>
+        <span style="font-size: 14px; color: var(--muted);">「今年は14時からと地区の回覧で見ました」</span>
+      </div>
+      <div style="display: flex; gap: 8px; flex-wrap: wrap;"><button style="height: 40px; padding: 0 16px; border: 0; border-radius: 999px; background: var(--accent); color: var(--on); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">反映する</button><button style="height: 40px; padding: 0 16px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">編集して反映</button><button style="height: 40px; padding: 0 16px; border-radius: 999px; border: 2px solid var(--ng); background: var(--surface); color: var(--ng); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">見送る</button></div>
+    </div>
+  </section>
+  <p style="margin: 0; font-size: 13px; color: var(--muted);">反映した変更はすべて変更履歴に残り、各コンテンツの「履歴」からいつでも戻せます。</p>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1000}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>お問い合わせ(スマホ)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&amp;family=Yomogi&amp;family=Yusei+Magic&amp;family=Zen+Maru+Gothic:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.t-day{--bg:#fbf8ee;--surface:#ffffff;--sunken:#f2eedf;--ink:#26261c;--muted:#5a5a48;--line:#ddd7c2;--strong:#7d775e;--sky1:#9cd3ec;--sky2:#e8f4e1;--hill:#8fb86b;--on:#ffffff}
+.t-morning{--bg:#f3f8f7;--surface:#ffffff;--sunken:#e6f0ee;--ink:#1e2b2a;--muted:#4f615f;--line:#cddcd9;--strong:#6a7f7c;--sky1:#cde8ef;--sky2:#f3f8f7;--hill:#a8c98d;--on:#ffffff}
+.t-evening{--bg:#fbf1e6;--surface:#fffdf9;--sunken:#f4e3d2;--ink:#2e211a;--muted:#6a5246;--line:#e8d2bd;--strong:#8a6e5e;--sky1:#f2a65a;--sky2:#f9dcc0;--hill:#7c8a52;--on:#ffffff}
+.t-night{--bg:#141b2b;--surface:#1d2638;--sunken:#0f1522;--ink:#eceff5;--muted:#a9b3c6;--line:#2c3850;--strong:#7d8aa3;--sky1:#0e1424;--sky2:#24304a;--hill:#1a2a2a;--on:#141b2b}
+.s-spring{--accent:#b8325f}.s-summer{--accent:#1b7352}.s-autumn{--accent:#b24a0c}.s-winter{--accent:#2d5a99}
+.t-night.s-spring{--accent:#f48fb5}.t-night.s-summer{--accent:#6fd3a6}.t-night.s-autumn{--accent:#f4a261}.t-night.s-winter{--accent:#8db4f0}
+a{color:var(--accent)}a:hover{color:var(--ink)}
+</style>
+</helmet>
+<div class="t-morning s-autumn" style="width: 390px; min-height: 2000px; box-sizing: border-box; background: var(--bg); color: var(--ink); font-family: 'BIZ UDPGothic', sans-serif; font-size: 16px; line-height: 28px;">
+
+<header style="position: relative; background: linear-gradient(var(--sky1), var(--sky2)); padding: 14px 16px 40px; overflow: hidden;">
+  <div style="display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1;">
+    <a href="Main.dc.html" style="display: inline-flex; align-items: center; gap: 8px; color: var(--ink); text-decoration: none; font-size: 22px; line-height: 28px;">
+      <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><path d="M3 26 L12 13 L17 19 L21 14 L29 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path><path d="M24 5 V26 M20 8 H28 M21 11 H27" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"></path></svg>
+      <span style="font-family: 'Yusei Magic', sans-serif;">ド田舎</span><span style="font-family: 'Yusei Magic', sans-serif; color: var(--accent); font-size: 16px; margin-left: -6px;">.net</span>
+    </a>
+    <button aria-label="メニュー" style="width: 44px; height: 44px; border-radius: 999px; border: 0; background: transparent; color: var(--ink); display: grid; place-items: center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
+  </div>
+  <svg viewBox="0 0 390 40" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; left: 0; bottom: -1px; width: 100%; height: 40px;"><path d="M0 26 Q90 8 190 22 T390 18 V40 H0Z" style="fill: var(--hill);"></path><path d="M0 32 Q195 26 390 32 V40 H0Z" style="fill: var(--bg);"></path></svg>
+</header>
+
+<main style="padding: 8px 16px 32px; display: flex; flex-direction: column; gap: 18px;">
+  <nav aria-label="パンくず" style="font-size: 12px; line-height: 22px; color: var(--muted);"><a href="Main.dc.html">トップ</a> / お問い合わせ</nav>
+  <h1 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 26px; line-height: 1.3;">お問い合わせ</h1>
+  <p style="margin: 0; font-size: 15px; line-height: 26px; max-width: 680px;">ド田舎.net へのご意見・ご依頼は、こちらからお送りください。返信が必要な場合は、メールアドレスを入れてください。</p>
+  <sc-if value="{{isForm}}" hint-placeholder-val="{{true}}">
+    <form style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 16px; display: flex; flex-direction: column; gap: 20px;">
+      <fieldset style="margin: 0; padding: 0; border: 0; min-width: 0; display: flex; flex-direction: column; gap: 10px;">
+        <legend style="font-weight: 700; font-size: 15px; line-height: 22px; padding: 0; margin-bottom: 10px;">お問い合わせの種類<span style="font-size: 12px; font-weight: 700; color: var(--accent); margin-left: 6px;">必須</span></legend>
+        <div role="group" aria-label="お問い合わせの種類" style="display: flex; flex-direction: column; gap: 8px;">
+    <sc-for list="{{kinds}}" as="o" hint-placeholder-count="2">
+      <button aria-pressed="{{o.pressed}}" onClick="{{o.pick}}" style="{{o.style}}">{{o.label}}</button>
+    </sc-for>
+  </div>
+      </fieldset>
+      <sc-if value="{{is_takedown}}" hint-placeholder-val="{{true}}">
+        <div style="display: flex; flex-direction: column; gap: 16px; padding: 16px; border-radius: 12px; border: 2px solid var(--accent);">
+          <p style="margin: 0; font-size: 14px; line-height: 22px;">受け付けたら、対象をぼかして「確認中」と表示します。内容を確かめるまで削除はしません。住所・電話番号・名前や、人の写り込み(肖像権)の依頼は急ぎで確認します。</p>
+          <div style="display: flex; flex-direction: column; gap: 6px; min-width: 0;"><span style="font-weight: 700; font-size: 15px; line-height: 22px;">対象のページのURL<span style="font-size: 12px; font-weight: 700; color: var(--accent); margin-left: 6px;">必須</span></span><input type="url" aria-label="対象のページのURL" placeholder="https://ド田舎.net/kagawa/events/…" style="width: 100%; height: 48px; box-sizing: border-box; padding: 0 14px; border: 2px solid var(--strong); border-radius: 8px; background: var(--surface); color: var(--ink); font: inherit;"></div>
+          <div style="display: flex; flex-direction: column; gap: 6px; min-width: 0;"><span style="font-weight: 700; font-size: 15px; line-height: 22px;">侵害されている権利<span style="font-size: 12px; font-weight: 700; color: var(--accent); margin-left: 6px;">必須</span></span><select aria-label="侵害されている権利" style="width: 100%; height: 48px; box-sizing: border-box; padding: 0 14px; border: 2px solid var(--strong); border-radius: 8px; background: var(--surface); color: var(--ink); font: inherit;"><option>選んでください</option><option>著作権(写真・文章)</option><option>肖像権(写っている人)</option><option>プライバシー(住所・名前など)</option><option>名誉</option><option>その他</option></select></div>
+        </div>
+      </sc-if>
+      <sc-if value="{{is_organizer}}" hint-placeholder-val="{{false}}">
+        <div style="display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px;">
+          <div style="display: flex; flex-direction: column; gap: 6px; min-width: 0;"><span style="font-weight: 700; font-size: 15px; line-height: 22px;">対象のページのURL<span style="font-size: 12px; font-weight: 700; color: var(--muted); margin-left: 6px;">任意</span></span><input type="url" aria-label="対象のページのURL" style="width: 100%; height: 48px; box-sizing: border-box; padding: 0 14px; border: 2px solid var(--strong); border-radius: 8px; background: var(--surface); color: var(--ink); font: inherit;"></div>
+          <div style="display: flex; flex-direction: column; gap: 6px; min-width: 0;"><span style="font-weight: 700; font-size: 15px; line-height: 22px;">主催者名<span style="font-size: 12px; font-weight: 700; color: var(--accent); margin-left: 6px;">必須</span></span><input aria-label="主催者名" style="width: 100%; height: 48px; box-sizing: border-box; padding: 0 14px; border: 2px solid var(--strong); border-radius: 8px; background: var(--surface); color: var(--ink); font: inherit;"></div>
+        </div>
+        <p style="margin: 0; font-size: 13px; line-height: 20px; color: var(--muted);">公式の情報として優先して反映します。巡回を止めてほしい場合もこちらからどうぞ。</p>
+      </sc-if>
+      <sc-if value="{{is_ad}}" hint-placeholder-val="{{false}}">
+        <div style="display: flex; flex-direction: column; gap: 6px; min-width: 0;"><span style="font-weight: 700; font-size: 15px; line-height: 22px;">事業者名<span style="font-size: 12px; font-weight: 700; color: var(--accent); margin-left: 6px;">必須</span></span><input aria-label="事業者名" style="width: 100%; height: 48px; box-sizing: border-box; padding: 0 14px; border: 2px solid var(--strong); border-radius: 8px; background: var(--surface); color: var(--ink); font: inherit;"></div>
+      </sc-if>
+      <sc-if value="{{is_privacy}}" hint-placeholder-val="{{false}}">
+        <p style="margin: 0; font-size: 14px; line-height: 22px;">開示・訂正・削除・利用停止の請求を受け付けます。ご本人であることを確かめるため、メールでやりとりします。手数料はかかりません。</p>
+      </sc-if>
+      <sc-if value="{{is_general}}" hint-placeholder-val="{{false}}">
+        <div style="display: flex; flex-direction: column; gap: 6px; min-width: 0;"><span style="font-weight: 700; font-size: 15px; line-height: 22px;">対象のページのURL<span style="font-size: 12px; font-weight: 700; color: var(--muted); margin-left: 6px;">任意</span></span><input type="url" aria-label="対象のページのURL" style="width: 100%; height: 48px; box-sizing: border-box; padding: 0 14px; border: 2px solid var(--strong); border-radius: 8px; background: var(--surface); color: var(--ink); font: inherit;"></div>
+      </sc-if>
+      <div style="display: flex; flex-direction: column; gap: 6px;"><label for="cb" style="font-weight: 700; font-size: 15px; line-height: 22px;">内容<span style="font-size: 12px; font-weight: 700; color: var(--accent); margin-left: 6px;">必須</span></label><textarea id="cb" rows="6" style="width: 100%; height: 48px; box-sizing: border-box; padding: 0 14px; border: 2px solid var(--strong); border-radius: 8px; background: var(--surface); color: var(--ink); font: inherit; height: auto; padding: 12px 14px; line-height: 24px;"></textarea></div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <label for="cm" style="font-weight: 700; font-size: 15px; line-height: 22px;">メールアドレス<sc-if value="{{mailReq}}" hint-placeholder-val="{{false}}"><span style="font-size: 12px; font-weight: 700; color: var(--accent); margin-left: 6px;">必須</span></sc-if><sc-if value="{{mailOpt}}" hint-placeholder-val="{{true}}"><span style="font-size: 12px; font-weight: 700; color: var(--muted); margin-left: 6px;">任意</span></sc-if></label>
+        <input id="cm" type="email" autocomplete="email" style="width: 100%; height: 48px; box-sizing: border-box; padding: 0 14px; border: 2px solid var(--strong); border-radius: 8px; background: var(--surface); color: var(--ink); font: inherit;">
+        <span style="font-size: 13px; line-height: 20px; color: var(--muted);">返信が必要なときだけ入れてください。返信は contact@do-inaka.net からお送りします。返信以外には使わず、公開もしません。</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; width: 300px; max-width: 100%; height: 64px; box-sizing: border-box; padding: 0 14px; border: 1px solid var(--line); border-radius: 6px; background: var(--sunken); font-size: 13px;"><span style="width: 24px; height: 24px; border-radius: 4px; border: 2px solid var(--strong);"></span>Turnstile(ロボットでないことの確認)</div>
+      <label style="display: flex; gap: 10px; align-items: flex-start; font-size: 14px; line-height: 22px;"><input type="checkbox" style="width: 20px; height: 20px; margin: 1px 0 0; flex: 0 0 auto;"><span>AIで内容を確かめるため、送った内容を外国(米国など)の事業者に送ることに同意します(<a href="LegalSP.dc.html">プライバシーポリシー 5</a>)<span style="font-size: 12px; font-weight: 700; color: var(--accent); margin-left: 6px;">必須</span></span></label>
+      <p style="margin: 0; font-size: 13px; line-height: 20px; color: var(--muted);">送信すると、<a href="LegalSP.dc.html">利用規約</a>と<a href="LegalSP.dc.html">プライバシーポリシー</a>に同意したことになります。</p>
+      <button type="button" onClick="{{send}}" style="height: 52px; border: 0; border-radius: 999px; background: var(--accent); color: var(--on); font: 700 16px/1 'BIZ UDPGothic', sans-serif; cursor: pointer; width: 100%;">送信する</button>
+    </form>
+  </sc-if>
+  <sc-if value="{{isDone}}" hint-placeholder-val="{{false}}">
+    <section style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 20px; display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+      <h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 20px; line-height: 1.4;">受け付けました</h2>
+      <p style="margin: 0; font-size: 15px; line-height: 26px;">受付番号 <b style="font-size: 20px; letter-spacing: 0.04em;">20261008-K7Q2MX</b></p>
+      <p style="margin: 0; font-size: 15px; line-height: 26px;">削除依頼の対象は、確認が終わるまでぼかして「確認中」と表示します。メールアドレスを入れた場合は、結果をお知らせします(数日かかることがあります)。</p>
+      <p style="margin: 0; font-size: 13px; line-height: 20px; color: var(--muted);">問い合わせのときは、この番号を書いてください。</p>
+      <button type="button" onClick="{{back}}" style="height: 44px; padding: 0 18px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif; cursor: pointer;">入力画面に戻る(デザイン確認用)</button>
+    </section>
+  </sc-if>
+  <aside style=" display: flex; flex-direction: column; gap: 12px;">
+    <div style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 18px 20px; display: flex; flex-direction: column; gap: 8px;">
+      <b>こちらの方が早く届きます</b>
+      <a href="Post.dc.html" style="font-weight: 700;">イベントの情報を教える</a>
+      <span style="font-size: 13px; line-height: 20px; color: var(--muted);">URLかチラシの写真を送ると、運営者がページを作ります。</span>
+      <span style="font-weight: 700; color: var(--accent);">載っている情報の誤り → 各ページの「修正を依頼する」</span>
+    </div>
+    <div style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 18px 20px; display: flex; flex-direction: column; gap: 6px;">
+      <b>返信について</b>
+      <span style="font-size: 14px; line-height: 22px;">個人で運営しているため、返信まで数日かかることがあります。電話とメールでの受付はしていません。</span>
+    </div>
+  </aside>
+</main>
+<footer style="border-top: 1px solid var(--line); padding: 20px 16px 28px; display: flex; flex-direction: column; gap: 10px;"><nav aria-label="サイトの情報" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 16px; font-size: 14px; line-height: 32px;"><a href="AboutSP.dc.html">運営者情報</a><a href="LegalSP.dc.html">利用規約</a><a href="LegalSP.dc.html">プライバシーポリシー</a><a href="ContactSP.dc.html">お問い合わせ</a></nav><span style="font-family: 'Yomogi', sans-serif; font-size: 15px; color: var(--muted);">コンビニまで5km。でも、いいところです。</span></footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":2000}}'>
+class Component extends DCLogic {
+renderVals() {
+const kind = (this.state && this.state.kind) || 'takedown';
+const done = (this.state && this.state.done) || false;
+const base = 'flex: 0 0 auto; height: 40px; padding: 0 16px; border-radius: 999px; font: 700 14px/1 BIZ UDPGothic, sans-serif; cursor: pointer; ';
+const list = [['general', '一般の質問・不具合'], ['takedown', '削除依頼'], ['organizer', '掲載・修正の依頼(主催者)'], ['ad', '広告・掲載枠の相談'], ['privacy', '個人情報について']];
+return {
+isForm: !done,
+isDone: done,
+send: () => this.setState({ done: true }),
+back: () => this.setState({ done: false }),
+mailReq: kind === 'ad' || kind === 'privacy',
+mailOpt: !(kind === 'ad' || kind === 'privacy'),
+kinds: list.map(([id, label]) => ({
+ label: label,
+ pressed: kind === id ? 'true' : 'false',
+ style: kind === id ? base + 'background: var(--surface); border: 2px solid var(--accent); color: var(--accent);' : base + 'background: var(--surface); border: 2px solid var(--strong); color: var(--ink);',
+ pick: () => this.setState({ kind: id })
+})),
+is_general: kind === 'general',
+is_takedown: kind === 'takedown',
+is_organizer: kind === 'organizer',
+is_ad: kind === 'ad',
+is_privacy: kind === 'privacy'
+};
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>管理: AI下書き作成(PC)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&amp;family=Yomogi&amp;family=Yusei+Magic&amp;family=Zen+Maru+Gothic:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.t-day{--bg:#fbf8ee;--surface:#ffffff;--sunken:#f2eedf;--ink:#26261c;--muted:#5a5a48;--line:#ddd7c2;--strong:#7d775e;--on:#ffffff;--ok:#2b7048;--warn:#7a5200;--ng:#a8241c}
+.s-autumn{--accent:#b24a0c}
+a{color:var(--accent)}a:hover{color:var(--ink)}
+</style>
+</helmet>
+<div class="t-day s-autumn" style="min-height: 1150px; background: var(--bg); color: var(--ink); font-family: 'BIZ UDPGothic', sans-serif; font-size: 15px; line-height: 24px; display: flex; flex-wrap: wrap; align-items: stretch;">
+
+<nav aria-label="管理メニュー" style="flex: 1 1 240px; max-width: 280px; min-width: 0; background: var(--surface); border-right: 1px solid var(--line); padding: 16px 12px; display: flex; flex-direction: column; gap: 4px; box-sizing: border-box;">
+  <a href="AdminPC.dc.html" style="display: inline-flex; align-items: center; gap: 8px; color: var(--ink); text-decoration: none; font-size: 22px; line-height: 28px; padding: 4px 8px 16px;"><span style="font-family: 'Yusei Magic', sans-serif;">ド田舎</span><span style="font-family: 'Yusei Magic', sans-serif; color: var(--accent); font-size: 16px; margin-left: -6px;">.net</span><span style="font: 700 12px/18px 'BIZ UDPGothic', sans-serif; border: 1px solid var(--strong); border-radius: 6px; padding: 0 6px;">管理</span></a>
+  <a href="AdminPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">ダッシュボード</a>
+  <a href="AdminReviewPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; color: var(--ink); text-decoration: none;">審査<span style="min-width: 24px; height: 22px; padding: 0 6px; border-radius: 999px; background: var(--accent); color: var(--on); font-size: 12px; font-weight: 700; display: grid; place-items: center; box-sizing: border-box;">7</span></a>
+  <a href="AdminTipsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">情報提供</a>
+  <a href="AdminCorrectionsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">修正依頼</a>
+  <a href="AdminRejectedPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">却下ボックス</a>
+  <a href="AdminInquiriesPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">お問い合わせ</a>
+  <span style="font-size: 12px; line-height: 18px; color: var(--muted); padding: 16px 12px 4px;">コンテンツ</span>
+  <a href="AdminEventsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">行事・開催回</a>
+  <a href="AdminContentsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">スポット・記事・コメント</a>
+  <a href="AdminRegionsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">地域ページ</a>
+  <a href="#" aria-current="page" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; background: var(--sunken); color: var(--ink); font-weight: 700; text-decoration: none;">AI下書き作成</a>
+  <a href="AdminSourcesPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">情報源の巡回</a>
+  <span style="font-size: 12px; line-height: 18px; color: var(--muted); padding: 16px 12px 4px;">運営</span>
+  <a href="AdminMastersPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">マスタ</a>
+  <a href="#" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">会員</a>
+  <a href="#" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">広告枠</a>
+  <a href="AdminSettingsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">設定</a>
+  <a href="#" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">ログ</a>
+</nav>
+
+<main style="flex: 999 1 640px; min-width: 0; padding: 24px 32px 40px; display: flex; flex-direction: column; gap: 20px; box-sizing: border-box;">
+  <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px;">
+    <h1 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 28px; line-height: 36px;">AI下書き作成</h1>
+    <span style="font-size: 14px;">今日のAI <b>31回</b> ・ 管理者の操作は最優先</span>
+  </div>
+
+  <form style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 20px 24px; display: flex; flex-direction: column; gap: 12px;">
+    <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-end;">
+      <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 4px;"><label for="url" style="font-weight: 700;">情報元のURL</label><input id="url" type="url" value="https://www.example-town.jp/kankou/event/2026aki.html" style="height: 48px; box-sizing: border-box; padding: 0 14px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit;"></div>
+      <div style="display: flex; flex-direction: column; gap: 4px;"><label for="kind" style="font-weight: 700;">作るもの</label><select id="kind" style="height: 48px; padding: 0 10px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit;"><option>イベント</option><option>スポット</option></select></div>
+      <button type="submit" style="height: 48px; padding: 0 24px; border: 0; border-radius: 999px; background: var(--accent); color: var(--on); font: 700 16px/1 'BIZ UDPGothic', sans-serif;">下書きを作る</button>
+    </div>
+    <span style="font-size: 13px; line-height: 20px; color: var(--muted);">ページから取り出すのは日時・場所・料金などの事実だけです。説明文や写真は取り込みません。社内ネットワークなどのURLは取得できません。</span>
+  </form>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start;">
+    <section style="flex: 999 1 520px; min-width: 0; background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 20px 24px; display: flex; flex-direction: column; gap: 14px;">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px;">
+        <h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 20px; line-height: 28px;">取り出した内容</h2>
+        <span style="font-size: 13px; color: var(--ok); font-weight: 700;">取得 10月6日 15:04 ・ 4.2秒</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 4px;"><label for="dt" style="font-weight: 700;">タイトル</label><input id="dt" value="[町名]秋祭り 太鼓台奉納" style="height: 44px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit;"></div>
+      <div style="display: flex; flex-direction: column; gap: 4px;">
+        <span style="font-weight: 700;">日程</span>
+        <div style="display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 8px;"><input aria-label="日付1" type="date" value="2026-10-17" style="height: 44px; min-width: 0; box-sizing: border-box; padding: 0 8px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit;"><input aria-label="開始1" type="time" value="18:00" style="height: 44px; min-width: 0; box-sizing: border-box; padding: 0 8px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit;"><input aria-label="終了1" type="time" value="21:00" style="height: 44px; min-width: 0; box-sizing: border-box; padding: 0 8px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit;"></div>
+        <div style="display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 8px;"><input aria-label="日付2" type="date" value="2026-10-18" style="height: 44px; min-width: 0; box-sizing: border-box; padding: 0 8px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit;"><input aria-label="開始2" type="time" value="09:00" style="height: 44px; min-width: 0; box-sizing: border-box; padding: 0 8px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit;"><input aria-label="終了2" type="time" style="height: 44px; min-width: 0; box-sizing: border-box; padding: 0 8px; border: 2px solid var(--warn); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit;"></div>
+        <span style="font-size: 13px; color: var(--warn); font-weight: 700;">2日目の終了時刻はページに書かれていませんでした</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px;">
+        <div style="display: flex; flex-direction: column; gap: 4px;"><label for="dv" style="font-weight: 700;">会場</label><input id="dv" value="[神社名]" style="height: 44px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit;"></div>
+        <div style="display: flex; flex-direction: column; gap: 4px;"><label for="da" style="font-weight: 700;">住所</label><input id="da" value="[住所]" style="height: 44px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit;"></div>
+        <div style="display: flex; flex-direction: column; gap: 4px;"><label for="df" style="font-weight: 700;">料金</label><input id="df" value="無料" style="height: 44px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit;"></div>
+        <div style="display: flex; flex-direction: column; gap: 4px;"><label for="do" style="font-weight: 700;">主催</label><input id="do" value="[町名]自治会" style="height: 44px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit;"></div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 4px;"><label for="db" style="font-weight: 700;">説明文(自分の言葉で)</label><textarea id="db" rows="4" placeholder="情報元の文章はコピーしないでください" style="box-sizing: border-box; padding: 10px 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit;"></textarea></div>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+        <button style="height: 48px; padding: 0 24px; border: 0; border-radius: 999px; background: var(--accent); color: var(--on); font: 700 16px/1 'BIZ UDPGothic', sans-serif;">下書きとして保存</button>
+        <button style="height: 48px; padding: 0 20px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 15px/1 'BIZ UDPGothic', sans-serif;">そのまま公開する</button>
+        <span style="font-size: 13px; color: var(--muted);">情報元URLと取得日時は自動で記録されます</span>
+      </div>
+    </section>
+
+    <aside style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 16px;">
+      <section style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 16px 20px; display: flex; flex-direction: column; gap: 8px;">
+        <h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 18px; line-height: 26px;">似た掲載がすでにあります</h2>
+        <a href="#" style="background: var(--sunken); border-radius: 10px; padding: 8px 12px; color: var(--ink); text-decoration: none; display: flex; flex-direction: column;"><b>[町名]秋祭り(2025年)</b><span style="font-size: 13px; color: var(--muted);">毎年開催 ・ 次回は日程未入力</span></a>
+        <button style="height: 40px; border-radius: 999px; border: 2px solid var(--accent); background: var(--surface); color: var(--accent); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">この行事の次回分として入れる</button>
+      </section>
+      <section style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 16px 20px; display: flex; flex-direction: column; gap: 4px;">
+        <h2 style="margin: 0 0 4px; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 18px; line-height: 26px;">最近の下書き</h2>
+        <a href="#" style="display: flex; justify-content: space-between; min-height: 44px; align-items: center; border-top: 1px solid var(--line); color: var(--ink); text-decoration: none;"><span>島の朝市</span><span style="font-size: 12px; color: var(--muted);">昨日</span></a>
+        <a href="#" style="display: flex; justify-content: space-between; min-height: 44px; align-items: center; border-top: 1px solid var(--line); color: var(--ink); text-decoration: none;"><span>棚田の稲刈り体験</span><span style="font-size: 12px; color: var(--muted);">3日前</span></a>
+        <span style="display: flex; justify-content: space-between; min-height: 44px; align-items: center; border-top: 1px solid var(--line);"><span style="color: var(--ng);">取得できず</span><span style="font-size: 12px; color: var(--muted);">ログイン必須のページ</span></span>
+      </section>
+    </aside>
+  </div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1150}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

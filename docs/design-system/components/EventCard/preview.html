@@ -1,0 +1,21 @@
+<!-- @dsCard group="コンテンツ" height=420 subtitle="一覧のカード。写真あり・写真なし(線画で埋める)" -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Yomogi&family=Yusei+Magic&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:var(--font-body);background:var(--bg);color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;padding:24px}
+.card{background:var(--surface);border-radius:var(--radius-md);box-shadow:var(--shadow-card);overflow:hidden;text-decoration:none;color:inherit;display:block}
+.card:hover h3{text-decoration:underline}
+.ph{aspect-ratio:4/3;background:var(--surface-sunken);display:grid;place-items:center;color:var(--line-strong)}
+.ph.photo{background:linear-gradient(160deg,#c9a46a,#7a8f4e 60%,#4d6b3b)}
+.body{padding:var(--space-4);display:grid;gap:6px}
+.date{font:700 14px/22px var(--font-body);color:var(--accent)}
+h3{font:700 17px/24px var(--font-heading);margin:0}
+.meta{font:400 14px/22px var(--font-body);color:var(--ink-muted)}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:12px;line-height:18px;background:var(--surface-sunken);color:var(--ink);padding:2px 8px;border-radius:var(--radius-sm)}
+.ended{font-size:12px;border:1px solid var(--ink-muted);color:var(--ink-muted);border-radius:var(--radius-sm);padding:0 6px;margin-left:6px}
+</style>
+<div class="grid">
+  <a class="card" href="#"><div class="ph photo" role="img" aria-label="獅子舞の写真"></div><div class="body"><div class="date">10月12日(日) 9:00〜</div><h3>西植田の獅子舞奉納</h3><div class="meta">高松市 西植田町</div><div class="tags"><span class="tag">祭り・行事</span><span class="tag">無料</span></div></div></a>
+  <a class="card" href="#"><div class="ph"><svg width="96" height="72" viewBox="0 0 96 72" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 64 H92"/><path d="M20 64 V18 M12 22 H28 M14 27 H26"/><path d="M28 22 Q52 30 80 20"/><path d="M62 64 V44 H78 V64 M60 44 L70 36 L80 44"/><path d="M8 64 Q14 54 20 64 M40 64 Q46 52 52 64"/></svg></div><div class="body"><div class="date">10月19日(日)<span class="ended">終了</span></div><h3>無人販売所めぐりウォーク</h3><div class="meta">三豊市 財田町</div><div class="tags"><span class="tag">体験</span></div></div></a>
+</div>

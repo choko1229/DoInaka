@@ -1,0 +1,764 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "AdminAdsPC.dc.html": {
+      "expand": "fill",
+      "h": 1100,
+      "title": "管理: 広告枠(PC)",
+      "w": 1440,
+      "x": 35190,
+      "y": 3920
+    },
+    "AdminAdsSP.dc.html": {
+      "h": 1300,
+      "title": "管理: 広告枠(スマホ)",
+      "w": 390,
+      "x": 36710,
+      "y": 3920
+    },
+    "AdminCorrectionsPC.dc.html": {
+      "expand": "fill",
+      "h": 1000,
+      "title": "管理: 修正依頼(PC)",
+      "w": 1440,
+      "x": 8280,
+      "y": 3920
+    },
+    "AdminCorrectionsSP.dc.html": {
+      "h": 1300,
+      "title": "管理: 修正依頼(スマホ)",
+      "w": 390,
+      "x": 9800,
+      "y": 3920
+    },
+    "AdminDraftPC.dc.html": {
+      "expand": "fill",
+      "h": 1150,
+      "title": "管理: AI下書き作成(PC)",
+      "w": 1440,
+      "x": 24840,
+      "y": 3920
+    },
+    "AdminDraftSP.dc.html": {
+      "h": 1600,
+      "title": "管理: AI下書き作成(スマホ)",
+      "w": 390,
+      "x": 26360,
+      "y": 3920
+    },
+    "AdminLogsPC.dc.html": {
+      "expand": "fill",
+      "h": 1000,
+      "is_interactive": true,
+      "title": "管理: ログ(PC)",
+      "w": 1440,
+      "x": 39330,
+      "y": 3920
+    },
+    "AdminLogsSP.dc.html": {
+      "h": 1200,
+      "is_interactive": true,
+      "title": "管理: ログ(スマホ)",
+      "w": 390,
+      "x": 40850,
+      "y": 3920
+    },
+    "AdminMastersPC.dc.html": {
+      "expand": "fill",
+      "h": 1100,
+      "is_interactive": true,
+      "title": "管理: マスタ(PC)",
+      "w": 1440,
+      "x": 28980,
+      "y": 3920
+    },
+    "AdminMastersSP.dc.html": {
+      "h": 1300,
+      "is_interactive": true,
+      "title": "管理: マスタ(スマホ)",
+      "w": 390,
+      "x": 30500,
+      "y": 3920
+    },
+    "AdminPC.dc.html": {
+      "expand": "fill",
+      "h": 1160,
+      "title": "管理: ダッシュボード(PC)",
+      "w": 1440,
+      "x": 2070,
+      "y": 3920
+    },
+    "AdminRejectedPC.dc.html": {
+      "expand": "fill",
+      "h": 1000,
+      "title": "管理: 却下ボックス(PC)",
+      "w": 1440,
+      "x": 10350,
+      "y": 3920
+    },
+    "AdminRejectedSP.dc.html": {
+      "h": 1200,
+      "title": "管理: 却下ボックス(スマホ)",
+      "w": 390,
+      "x": 11870,
+      "y": 3920
+    },
+    "AdminReviewPC.dc.html": {
+      "expand": "fill",
+      "h": 1300,
+      "title": "管理: 審査詳細(PC)",
+      "w": 1440,
+      "x": 4140,
+      "y": 3920
+    },
+    "AdminReviewSP.dc.html": {
+      "h": 1900,
+      "title": "管理: 審査詳細(スマホ)",
+      "w": 390,
+      "x": 5660,
+      "y": 3920
+    },
+    "AdminSP.dc.html": {
+      "h": 1500,
+      "title": "管理: ダッシュボード(スマホ)",
+      "w": 390,
+      "x": 3590,
+      "y": 3920
+    },
+    "AdminSettingsPC.dc.html": {
+      "expand": "fill",
+      "h": 1080,
+      "is_interactive": true,
+      "title": "管理: 設定(PC)",
+      "w": 1440,
+      "x": 37260,
+      "y": 3920
+    },
+    "AdminSettingsSP.dc.html": {
+      "h": 1040,
+      "is_interactive": true,
+      "title": "管理: 設定(スマホ)",
+      "w": 390,
+      "x": 38780,
+      "y": 3920
+    },
+    "AdminUpdatePC.dc.html": {
+      "expand": "fill",
+      "h": 1780,
+      "title": "管理: アップデート(PC)",
+      "w": 1440,
+      "x": 41400,
+      "y": 3920,
+      "is_interactive": true
+    },
+    "AdminUpdateSP.dc.html": {
+      "h": 3000,
+      "title": "管理: アップデート(スマホ)",
+      "w": 390,
+      "x": 42920,
+      "y": 3920,
+      "is_interactive": true
+    },
+    "AdminUsersPC.dc.html": {
+      "expand": "fill",
+      "h": 1000,
+      "title": "管理: 会員(PC)",
+      "w": 1440,
+      "x": 33120,
+      "y": 3920
+    },
+    "AdminUsersSP.dc.html": {
+      "h": 1200,
+      "title": "管理: 会員(スマホ)",
+      "w": 390,
+      "x": 34640,
+      "y": 3920
+    },
+    "Error.dc.html": {
+      "h": 844,
+      "title": "404(スマホ・夜・冬)",
+      "w": 390,
+      "x": 33830,
+      "y": 0
+    },
+    "ErrorPC.dc.html": {
+      "expand": "fill",
+      "h": 800,
+      "title": "404(PC・夜・冬)",
+      "w": 1280,
+      "x": 32470,
+      "y": 0
+    },
+    "EventDetail.dc.html": {
+      "h": 2590,
+      "is_interactive": true,
+      "title": "イベント詳細(スマホ・昼・秋)",
+      "w": 390,
+      "x": 9000,
+      "y": 0
+    },
+    "EventDetailPC.dc.html": {
+      "expand": "fill",
+      "h": 1880,
+      "is_interactive": true,
+      "title": "イベント詳細(PC・昼・秋)",
+      "w": 1280,
+      "x": 7640,
+      "y": 0
+    },
+    "Events.dc.html": {
+      "h": 1760,
+      "is_interactive": true,
+      "title": "イベント一覧・検索(スマホ・夕・秋)",
+      "w": 390,
+      "x": 7090,
+      "y": 0
+    },
+    "EventsPC.dc.html": {
+      "expand": "fill",
+      "h": 1500,
+      "is_interactive": true,
+      "title": "イベント一覧・検索(PC・夕・秋)",
+      "w": 1280,
+      "x": 5730,
+      "y": 0
+    },
+    "Main.dc.html": {
+      "h": 2100,
+      "title": "トップ(スマホ・昼・秋)",
+      "w": 390,
+      "x": 1360,
+      "y": 0
+    },
+    "Map.dc.html": {
+      "h": 844,
+      "title": "地図(スマホ・夜・秋)",
+      "w": 390,
+      "x": 12820,
+      "y": 0
+    },
+    "MapPC.dc.html": {
+      "h": 800,
+      "title": "地図(PC・夜・秋)",
+      "w": 1280,
+      "x": 11460,
+      "y": 0
+    },
+    "MyPagePC.dc.html": {
+      "expand": "fill",
+      "h": 1240,
+      "is_interactive": true,
+      "title": "マイページ(PC・昼・秋)",
+      "w": 1280,
+      "x": 15280,
+      "y": 0
+    },
+    "MyPageSP.dc.html": {
+      "h": 1500,
+      "is_interactive": true,
+      "title": "マイページ(スマホ・朝・秋)",
+      "w": 390,
+      "x": 16640,
+      "y": 0
+    },
+    "Post.dc.html": {
+      "h": 1780,
+      "title": "イベントの情報提供(スマホ・朝・秋)",
+      "w": 390,
+      "x": 14730,
+      "y": 0
+    },
+    "PostPC.dc.html": {
+      "expand": "fill",
+      "h": 1140,
+      "title": "イベントの情報提供(PC・朝・秋)",
+      "w": 1280,
+      "x": 13370,
+      "y": 0
+    },
+    "SpotPC.dc.html": {
+      "expand": "fill",
+      "h": 1560,
+      "title": "スポット詳細(PC・夕・秋)",
+      "w": 1280,
+      "x": 9550,
+      "y": 0
+    },
+    "SpotSP.dc.html": {
+      "h": 1900,
+      "title": "スポット詳細(スマホ・昼・秋)",
+      "w": 390,
+      "x": 10910,
+      "y": 0
+    },
+    "Themes.dc.html": {
+      "h": 620,
+      "title": "時間帯×季節の見え方",
+      "w": 1720,
+      "x": 0,
+      "y": 9140
+    },
+    "TopPC.dc.html": {
+      "expand": "fill",
+      "h": 1720,
+      "title": "トップ(PC・夕・秋)",
+      "w": 1280,
+      "x": 0,
+      "y": 0
+    },
+    "LoginPC.dc.html": {
+      "w": 1280,
+      "h": 900,
+      "title": "ログイン(PC・昼・秋)",
+      "expand": "fill",
+      "x": 19100,
+      "y": 0
+    },
+    "LoginSP.dc.html": {
+      "w": 390,
+      "h": 844,
+      "title": "ログイン(スマホ・昼・秋)",
+      "x": 20460,
+      "y": 0
+    },
+    "AdminLoginPC.dc.html": {
+      "w": 1440,
+      "h": 900,
+      "title": "管理: ログイン・2段階認証(PC)",
+      "expand": "fill",
+      "is_interactive": true,
+      "x": 0,
+      "y": 3920
+    },
+    "AdminLoginSP.dc.html": {
+      "w": 390,
+      "h": 844,
+      "title": "管理: ログイン・2段階認証(スマホ)",
+      "is_interactive": true,
+      "x": 1520,
+      "y": 3920
+    },
+    "AdminEventsPC.dc.html": {
+      "w": 1440,
+      "h": 1100,
+      "title": "管理: 行事・開催回(PC)",
+      "expand": "fill",
+      "x": 14490,
+      "y": 3920
+    },
+    "AdminEventsSP.dc.html": {
+      "w": 390,
+      "h": 1400,
+      "title": "管理: 行事・開催回(スマホ)",
+      "x": 16010,
+      "y": 3920
+    },
+    "AdminContentsPC.dc.html": {
+      "w": 1440,
+      "h": 1000,
+      "title": "管理: スポット・記事・コメント(PC)",
+      "expand": "fill",
+      "is_interactive": true,
+      "x": 18630,
+      "y": 3920
+    },
+    "AdminContentsSP.dc.html": {
+      "w": 390,
+      "h": 1200,
+      "title": "管理: スポット・記事・コメント(スマホ)",
+      "is_interactive": true,
+      "x": 20150,
+      "y": 3920
+    },
+    "AdminSourcesPC.dc.html": {
+      "w": 1440,
+      "h": 1300,
+      "title": "管理: 情報源の巡回(PC)",
+      "expand": "fill",
+      "is_interactive": true,
+      "x": 26910,
+      "y": 3920
+    },
+    "AdminSourcesSP.dc.html": {
+      "w": 390,
+      "h": 1700,
+      "title": "管理: 情報源の巡回(スマホ)",
+      "is_interactive": true,
+      "x": 28430,
+      "y": 3920
+    },
+    "RegionPC.dc.html": {
+      "w": 1280,
+      "h": 1530,
+      "title": "地域ページ: 丸亀市(PC・昼・秋)",
+      "expand": "fill",
+      "is_interactive": true,
+      "x": 3820,
+      "y": 0
+    },
+    "RegionSP.dc.html": {
+      "w": 390,
+      "h": 2640,
+      "title": "地域ページ: 丸亀市(スマホ・昼・秋)",
+      "is_interactive": true,
+      "x": 5180,
+      "y": 0
+    },
+    "AdminRegionsPC.dc.html": {
+      "w": 1440,
+      "h": 1250,
+      "title": "管理: 地域ページ(PC)",
+      "expand": "fill",
+      "x": 22770,
+      "y": 3920
+    },
+    "AdminRegionsSP.dc.html": {
+      "w": 390,
+      "h": 1700,
+      "title": "管理: 地域ページ(スマホ)",
+      "x": 24290,
+      "y": 3920
+    },
+    "PrefPC.dc.html": {
+      "w": 1280,
+      "h": 1960,
+      "title": "県ページ: 香川県(PC・昼・秋)",
+      "expand": "fill",
+      "is_interactive": true,
+      "x": 1910,
+      "y": 0
+    },
+    "PrefSP.dc.html": {
+      "w": 390,
+      "h": 3320,
+      "title": "県ページ: 香川県(スマホ・昼・秋)",
+      "is_interactive": true,
+      "x": 3270,
+      "y": 0
+    },
+    "AdminTipsPC.dc.html": {
+      "w": 1440,
+      "h": 1460,
+      "title": "管理: 情報提供(PC)",
+      "expand": "fill",
+      "is_interactive": true,
+      "x": 6210,
+      "y": 3920
+    },
+    "AdminTipsSP.dc.html": {
+      "w": 390,
+      "h": 2360,
+      "title": "管理: 情報提供(スマホ)",
+      "is_interactive": true,
+      "x": 7730,
+      "y": 3920
+    },
+    "LegalPC.dc.html": {
+      "w": 1280,
+      "h": 1780,
+      "title": "利用規約・プライバシーポリシー(PC)",
+      "expand": "fill",
+      "is_interactive": true,
+      "x": 21010,
+      "y": 0
+    },
+    "LegalSP.dc.html": {
+      "w": 390,
+      "h": 2400,
+      "title": "利用規約・プライバシーポリシー(スマホ)",
+      "is_interactive": true,
+      "x": 22370,
+      "y": 0
+    },
+    "AboutPC.dc.html": {
+      "w": 1280,
+      "h": 1060,
+      "title": "運営者情報(PC)",
+      "expand": "fill",
+      "x": 22920,
+      "y": 0
+    },
+    "AboutSP.dc.html": {
+      "w": 390,
+      "h": 1640,
+      "title": "運営者情報(スマホ)",
+      "x": 24280,
+      "y": 0
+    },
+    "ContactPC.dc.html": {
+      "w": 1280,
+      "h": 1480,
+      "title": "お問い合わせ(PC)",
+      "expand": "fill",
+      "is_interactive": true,
+      "x": 24830,
+      "y": 0
+    },
+    "ContactSP.dc.html": {
+      "w": 390,
+      "h": 2040,
+      "title": "お問い合わせ(スマホ)",
+      "is_interactive": true,
+      "x": 26190,
+      "y": 0
+    },
+    "AdminInquiriesPC.dc.html": {
+      "w": 1440,
+      "h": 1240,
+      "title": "管理: お問い合わせ(PC)",
+      "expand": "fill",
+      "x": 12420,
+      "y": 3920
+    },
+    "AdminInquiriesSP.dc.html": {
+      "w": 390,
+      "h": 900,
+      "title": "管理: お問い合わせ(スマホ)",
+      "x": 13940,
+      "y": 3920
+    },
+    "ReviewNoticePC.dc.html": {
+      "w": 1280,
+      "h": 920,
+      "title": "削除依頼を受けたページ(確認中・PC)",
+      "expand": "fill",
+      "is_interactive": true,
+      "x": 26740,
+      "y": 0
+    },
+    "ReviewNoticeSP.dc.html": {
+      "w": 390,
+      "h": 1280,
+      "title": "削除依頼を受けたページ(確認中・スマホ)",
+      "is_interactive": true,
+      "x": 28100,
+      "y": 0
+    },
+    "BlockedPC.dc.html": {
+      "w": 1280,
+      "h": 800,
+      "title": "海外からのアクセス制限(PC)",
+      "expand": "fill",
+      "x": 30560,
+      "y": 0
+    },
+    "BlockedSP.dc.html": {
+      "w": 390,
+      "h": 1040,
+      "title": "海外からのアクセス制限(スマホ)",
+      "x": 31920,
+      "y": 0
+    },
+    "CookieBannerPC.dc.html": {
+      "w": 1280,
+      "h": 1180,
+      "title": "Cookie の同意バナー(PC)",
+      "expand": "fill",
+      "is_interactive": true,
+      "x": 28650,
+      "y": 0
+    },
+    "CookieBannerSP.dc.html": {
+      "w": 390,
+      "h": 1600,
+      "title": "Cookie の同意バナー(スマホ)",
+      "is_interactive": true,
+      "x": 30010,
+      "y": 0
+    },
+    "TakedownConsentPC.dc.html": {
+      "w": 1280,
+      "h": 1340,
+      "title": "マイページ: 削除への同意照会(PC)",
+      "expand": "fill",
+      "is_interactive": true,
+      "x": 17190,
+      "y": 0
+    },
+    "TakedownConsentSP.dc.html": {
+      "w": 390,
+      "h": 1700,
+      "title": "マイページ: 削除への同意照会(スマホ)",
+      "is_interactive": true,
+      "x": 18550,
+      "y": 0
+    },
+    "AdminEventEditPC.dc.html": {
+      "w": 1440,
+      "h": 2940,
+      "title": "管理: 行事の編集(PC)",
+      "expand": "fill",
+      "is_interactive": true,
+      "x": 16560,
+      "y": 3920
+    },
+    "AdminEventEditSP.dc.html": {
+      "w": 390,
+      "h": 4620,
+      "title": "管理: 行事の編集(スマホ)",
+      "is_interactive": true,
+      "x": 18080,
+      "y": 3920
+    },
+    "AdminSpotEditPC.dc.html": {
+      "w": 1440,
+      "h": 2100,
+      "title": "管理: スポット・記事の編集(PC)",
+      "expand": "fill",
+      "is_interactive": true,
+      "x": 20700,
+      "y": 3920
+    },
+    "AdminSpotEditSP.dc.html": {
+      "w": 390,
+      "h": 3180,
+      "title": "管理: スポット・記事の編集(スマホ)",
+      "is_interactive": true,
+      "x": 22220,
+      "y": 3920
+    },
+    "AdminMasterEditPC.dc.html": {
+      "w": 1440,
+      "h": 940,
+      "title": "管理: マスタの編集(PC)",
+      "expand": "fill",
+      "is_interactive": true,
+      "x": 31050,
+      "y": 3920
+    },
+    "AdminMasterEditSP.dc.html": {
+      "w": 390,
+      "h": 1840,
+      "title": "管理: マスタの編集(スマホ)",
+      "is_interactive": true,
+      "x": 32570,
+      "y": 3920
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-10-06T06:20:00Z",
+    "v": 1
+  },
+  "designSystems": [
+    {
+      "artifact": "https://claude.ai/artifact/LBmhhLYKdAFTpb4r1nyksN",
+      "copiedAt": "2026-10-06T06:20:00Z",
+      "namespace": "doinaka",
+      "title": "ド田舎.net",
+      "version": "1791267370-4990"
+    }
+  ],
+  "launch": {
+    "view": "canvas"
+  },
+  "notes": {
+    "admin": {
+      "kind": "title1",
+      "maxW": 8000,
+      "text": "管理画面(各ペア 左:PC / 右:スマホ)",
+      "w": 240,
+      "x": 0,
+      "y": 3620
+    },
+    "public": {
+      "kind": "title1",
+      "maxW": 8000,
+      "text": "公開画面(各ペア 左:PC / 右:スマホ)",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    },
+    "themes": {
+      "kind": "title1",
+      "maxW": 1720,
+      "text": "配色の見え方",
+      "w": 240,
+      "x": 0,
+      "y": 8840
+    }
+  },
+  "order": [
+    "TopPC.dc.html",
+    "Main.dc.html",
+    "PrefPC.dc.html",
+    "PrefSP.dc.html",
+    "RegionPC.dc.html",
+    "RegionSP.dc.html",
+    "EventsPC.dc.html",
+    "Events.dc.html",
+    "EventDetailPC.dc.html",
+    "EventDetail.dc.html",
+    "SpotPC.dc.html",
+    "SpotSP.dc.html",
+    "MapPC.dc.html",
+    "Map.dc.html",
+    "PostPC.dc.html",
+    "Post.dc.html",
+    "MyPagePC.dc.html",
+    "MyPageSP.dc.html",
+    "TakedownConsentPC.dc.html",
+    "TakedownConsentSP.dc.html",
+    "LoginPC.dc.html",
+    "LoginSP.dc.html",
+    "LegalPC.dc.html",
+    "LegalSP.dc.html",
+    "AboutPC.dc.html",
+    "AboutSP.dc.html",
+    "ContactPC.dc.html",
+    "ContactSP.dc.html",
+    "ReviewNoticePC.dc.html",
+    "ReviewNoticeSP.dc.html",
+    "CookieBannerPC.dc.html",
+    "CookieBannerSP.dc.html",
+    "BlockedPC.dc.html",
+    "BlockedSP.dc.html",
+    "ErrorPC.dc.html",
+    "Error.dc.html",
+    "AdminLoginPC.dc.html",
+    "AdminLoginSP.dc.html",
+    "AdminPC.dc.html",
+    "AdminSP.dc.html",
+    "AdminReviewPC.dc.html",
+    "AdminReviewSP.dc.html",
+    "AdminTipsPC.dc.html",
+    "AdminTipsSP.dc.html",
+    "AdminCorrectionsPC.dc.html",
+    "AdminCorrectionsSP.dc.html",
+    "AdminRejectedPC.dc.html",
+    "AdminRejectedSP.dc.html",
+    "AdminInquiriesPC.dc.html",
+    "AdminInquiriesSP.dc.html",
+    "AdminEventsPC.dc.html",
+    "AdminEventsSP.dc.html",
+    "AdminEventEditPC.dc.html",
+    "AdminEventEditSP.dc.html",
+    "AdminContentsPC.dc.html",
+    "AdminContentsSP.dc.html",
+    "AdminSpotEditPC.dc.html",
+    "AdminSpotEditSP.dc.html",
+    "AdminRegionsPC.dc.html",
+    "AdminRegionsSP.dc.html",
+    "AdminDraftPC.dc.html",
+    "AdminDraftSP.dc.html",
+    "AdminSourcesPC.dc.html",
+    "AdminSourcesSP.dc.html",
+    "AdminMastersPC.dc.html",
+    "AdminMastersSP.dc.html",
+    "AdminMasterEditPC.dc.html",
+    "AdminMasterEditSP.dc.html",
+    "AdminUsersPC.dc.html",
+    "AdminUsersSP.dc.html",
+    "AdminAdsPC.dc.html",
+    "AdminAdsSP.dc.html",
+    "AdminSettingsPC.dc.html",
+    "AdminSettingsSP.dc.html",
+    "AdminLogsPC.dc.html",
+    "AdminLogsSP.dc.html",
+    "AdminUpdatePC.dc.html",
+    "AdminUpdateSP.dc.html",
+    "Themes.dc.html"
+  ],
+  "pages": [],
+  "title": "ド田舎.net 画面デザイン"
+}

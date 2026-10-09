@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>Cookie の同意バナー(PC)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&amp;family=Yomogi&amp;family=Yusei+Magic&amp;family=Zen+Maru+Gothic:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.t-morning{--bg:#f3f8f7;--surface:#ffffff;--sunken:#e6f0ee;--ink:#1e2b2a;--muted:#4f615f;--line:#cddcd9;--strong:#6a7f7c;--sky1:#cde8ef;--sky2:#f3f8f7;--hill:#a8c98d;--on:#ffffff}
+.s-autumn{--accent:#b24a0c}
+a{color:var(--accent)}a:hover{color:var(--ink)}
+</style>
+</helmet>
+<div class="t-morning s-autumn" style="min-height: 900px; background: var(--bg); color: var(--ink); font-family: 'BIZ UDPGothic', sans-serif; font-size: 16px; line-height: 28px;">
+
+<header style="position: relative; background: linear-gradient(var(--sky1), var(--sky2)); overflow: hidden;">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 16px 32px 56px; position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+    <a href="TopPC.dc.html" style="display: inline-flex; align-items: center; gap: 8px; color: var(--ink); text-decoration: none; font-size: 28px; line-height: 32px;"><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><path d="M3 26 L12 13 L17 19 L21 14 L29 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path><path d="M24 5 V26 M20 8 H28 M21 11 H27" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"></path></svg><span style="font-family: 'Yusei Magic', sans-serif;">ド田舎</span><span style="font-family: 'Yusei Magic', sans-serif; color: var(--accent); font-size: 20px; margin-left: -6px;">.net</span></a>
+    <nav style="display: flex; gap: 24px; align-items: center; flex-wrap: wrap; font-weight: 700;"><a href="EventsPC.dc.html" style="color: var(--ink); text-decoration: none;">イベント</a><a href="#" style="color: var(--ink); text-decoration: none;">スポット</a><a href="#" style="color: var(--ink); text-decoration: none;">記事</a><a href="MapPC.dc.html" style="color: var(--ink); text-decoration: none;">地図</a><a href="MyPagePC.dc.html" style="color: var(--ink); text-decoration: none;">ログイン</a></nav>
+  </div>
+  <svg viewBox="0 0 1280 56" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; left: 0; bottom: -1px; width: 100%; height: 56px;"><path d="M0 34 Q260 6 560 28 T1280 24 V56 H0Z" style="fill: var(--hill);"></path><path d="M0 46 Q640 38 1280 46 V56 H0Z" style="fill: var(--bg);"></path></svg>
+</header>
+
+<main style="max-width: 1200px; margin: 0 auto; padding: 8px 32px 24px; display: flex; flex-direction: column; gap: 18px;"><div role="group" aria-label="デザイン確認用の表示" style="display: flex; gap: 8px; flex-wrap: wrap;"><span style="align-self: center; font-size: 13px; color: var(--muted); flex: 0 0 auto;">デザイン確認用:</span><sc-for list="{{views}}" as="o" hint-placeholder-count="2"><button aria-pressed="{{o.pressed}}" onClick="{{o.pick}}" style="{{o.style}}">{{o.label}}</button></sc-for></div><div aria-hidden="true" style="display: flex; flex-direction: column; gap: 16px; opacity: .45;">
+      <div style="height: 200px; border-radius: 16px; background: linear-gradient(180deg, var(--sunken), var(--line));"></div>
+      <div style="height: 28px; width: 50%; border-radius: 8px; background: var(--line);"></div>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px;"><div style="height: 160px; border-radius: 14px; background: var(--surface); box-shadow: 0 1px 0 var(--line);"></div><div style="height: 160px; border-radius: 14px; background: var(--surface); box-shadow: 0 1px 0 var(--line);"></div><div style="height: 160px; border-radius: 14px; background: var(--surface); box-shadow: 0 1px 0 var(--line);"></div></div>
+    </div><sc-if value="{{is_detail}}" hint-placeholder-val="{{false}}">
+      <section role="dialog" aria-label="Cookie の設定" style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); box-shadow: 0 8px 24px rgba(0,0,0,.16); padding: 24px; display: flex; flex-direction: column; gap: 4px; max-width: 640px; margin: 0 auto;">
+        <h2 style="margin: 0 0 8px; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 20px; line-height: 28px;">Cookie の設定</h2>
+        <div style="display: flex; gap: 12px; align-items: center; justify-content: space-between; border-top: 1px solid var(--line); padding: 12px 0;"><div style="min-width: 0;"><b>サイトの動作に必要なもの</b><br><span style="font-size: 13px; line-height: 20px; color: var(--muted);">ログイン、フォームのスパム防止、「行った!」の重複防止、この設定の記録</span></div><span style="font-size: 13px; font-weight: 700; color: var(--muted); white-space: nowrap;">常にオン</span></div>
+        <div style="display: flex; gap: 12px; align-items: center; justify-content: space-between; border-top: 1px solid var(--line); padding: 12px 0;"><div style="min-width: 0;"><b>アクセスの分析(Google アナリティクス)</b><br><span style="font-size: 13px; line-height: 20px; color: var(--muted);">どのページがよく見られているかを数えます。オフにすると読み込みません</span></div><label style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; white-space: nowrap; font-weight: 700;"><input type="checkbox" style="width: 22px; height: 22px; accent-color: var(--accent);">オフ</label></div>
+        <div style="display: flex; gap: 12px; align-items: center; justify-content: space-between; border-top: 1px solid var(--line); padding: 12px 0;"><div style="min-width: 0;"><b>閲覧履歴に応じた広告(Google AdSense)</b><br><span style="font-size: 13px; line-height: 20px; color: var(--muted);">オフでも広告は出ます。閲覧履歴を使わない広告になります</span></div><label style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; white-space: nowrap; font-weight: 700;"><input type="checkbox" style="width: 22px; height: 22px; accent-color: var(--accent);">オフ</label></div>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; padding-top: 12px;">
+          <button style="height: 48px; padding: 0 22px; border: 0; border-radius: 999px; background: var(--accent); color: var(--on); font: 700 15px/1 'BIZ UDPGothic', sans-serif;">この設定で保存する</button>
+          <button style="height: 48px; padding: 0 22px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 15px/1 'BIZ UDPGothic', sans-serif;">すべて同意する</button>
+        </div>
+        <span style="font-size: 13px; line-height: 20px; color: var(--muted); padding-top: 8px;">選んだ内容は1年間このブラウザに記録します。あとからページの下の「Cookie の設定」で変えられます。</span>
+      </section>
+    </sc-if><sc-if value="{{is_bar}}" hint-placeholder-val="{{true}}">
+      <section role="region" aria-label="Cookie の利用について" style="position: sticky; bottom: 0; background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); box-shadow: 0 -2px 0 var(--line), 0 8px 24px rgba(0,0,0,.12); padding: 20px; display: flex; align-items: center; gap: 20px;">
+        <p style="margin: 0; flex: 1 1 auto; font-size: 14px; line-height: 22px;">ド田舎.net は、アクセスの分析(Google アナリティクス)と広告(Google AdSense)に Cookie を使います。選ぶまでは使いません。くわしくは<a href="LegalPC.dc.html">プライバシーポリシー 4</a>へ。</p>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; flex: 0 0 auto;">
+          <button style="height: 48px; padding: 0 22px; border: 0; border-radius: 999px; background: var(--accent); color: var(--on); font: 700 15px/1 'BIZ UDPGothic', sans-serif;">同意する</button>
+          <button style="height: 48px; padding: 0 22px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 15px/1 'BIZ UDPGothic', sans-serif;">拒否する</button>
+          <button style="height: 48px; padding: 0 12px; border: 0; background: transparent; color: var(--accent); text-decoration: underline; font: 700 15px/1 'BIZ UDPGothic', sans-serif;">設定を選ぶ</button>
+        </div>
+      </section>
+    </sc-if></main>
+<footer style="border-top: 1px solid var(--line);"><div style="max-width: 1200px; margin: 0 auto; padding: 24px 32px; display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between;"><nav aria-label="サイトの情報" style="display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 14px; line-height: 22px;"><a href="AboutPC.dc.html">運営者情報</a><a href="LegalPC.dc.html">利用規約</a><a href="LegalPC.dc.html">プライバシーポリシー</a><a href="ContactPC.dc.html">お問い合わせ</a><a href="CookieBannerPC.dc.html">Cookie の設定</a></nav><span style="font-family: 'Yomogi', sans-serif; font-size: 16px; color: var(--muted);">コンビニまで5km。でも、いいところです。</span></div></footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":900}}'>
+class Component extends DCLogic {
+renderVals() {
+const view = (this.state && this.state.view) || 'bar';
+const base = 'flex: 0 0 auto; min-height: 40px; padding: 0 16px; border-radius: 999px; font: 700 14px/1 BIZ UDPGothic, sans-serif; cursor: pointer; ';
+const list = [['bar', '最初の帯'], ['detail', '設定を選ぶ']];
+return {
+views: list.map(([id, label]) => ({
+ label: label,
+ pressed: view === id ? 'true' : 'false',
+ style: view === id ? base + 'background: var(--surface); border: 2px solid var(--accent); color: var(--accent);' : base + 'background: var(--surface); border: 2px solid var(--strong); color: var(--ink);',
+ pick: () => this.setState({ view: id })
+})),
+is_bar: view === 'bar',
+is_detail: view === 'detail'
+};
+}
+}
+</script>
+</body>
+</html>
