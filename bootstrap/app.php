@@ -5,6 +5,7 @@ declare(strict_types=1);
 use App\Enums\ThemePreference;
 use App\Http\Middleware\CountPageView;
 use App\Http\Middleware\EnsureAdmin;
+use App\Http\Middleware\EnsureStaff;
 use App\Http\Middleware\PrepareInstallSession;
 use App\Http\Middleware\RedirectToInstaller;
 use App\Services\Install\InstallEnvironment;
@@ -34,7 +35,7 @@ return Application::configure(basePath: dirname(__DIR__))
         // インストーラーのセッションは StartSession より前に file へ切り替える
         // 初回(.env も DB もない)は、存在しない URL でもインストーラーへ案内したいので、グローバルに置く
         $middleware->prepend([PrepareInstallSession::class, RedirectToInstaller::class]);
-        $middleware->alias(['admin' => EnsureAdmin::class]);
+        $middleware->alias(['admin' => EnsureAdmin::class, 'staff' => EnsureStaff::class]);
         $middleware->web(append: [CountPageView::class]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
