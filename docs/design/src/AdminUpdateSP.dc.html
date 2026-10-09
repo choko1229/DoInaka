@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>管理: アップデート(スマホ)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&amp;family=Yomogi&amp;family=Yusei+Magic&amp;family=Zen+Maru+Gothic:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.t-day{--bg:#fbf8ee;--surface:#ffffff;--sunken:#f2eedf;--ink:#26261c;--muted:#5a5a48;--line:#ddd7c2;--strong:#7d775e;--on:#ffffff;--ok:#2b7048;--warn:#7a5200;--ng:#a8241c}
+.s-autumn{--accent:#b24a0c}
+a{color:var(--accent)}a:hover{color:var(--ink)}
+</style>
+</helmet>
+<div class="t-day s-autumn" style="width: 390px; min-height: 2950px; box-sizing: border-box; background: var(--bg); color: var(--ink); font-family: 'BIZ UDPGothic', sans-serif; font-size: 15px; line-height: 24px;">
+<header style="background: var(--surface); border-bottom: 1px solid var(--line); padding: 10px 16px; display: flex; justify-content: space-between; align-items: center;">
+  <a href="AdminSP.dc.html" style="display: inline-flex; align-items: center; gap: 8px; color: var(--ink); text-decoration: none; font-size: 20px; line-height: 24px;"><span style="font-family: 'Yusei Magic', sans-serif;">ド田舎</span><span style="font-family: 'Yusei Magic', sans-serif; color: var(--accent); font-size: 15px; margin-left: -6px;">.net</span><span style="font: 700 12px/18px 'BIZ UDPGothic', sans-serif; border: 1px solid var(--strong); border-radius: 6px; padding: 0 6px;">管理</span></a>
+  <button aria-label="管理メニュー" style="width: 44px; height: 44px; border-radius: 999px; border: 0; background: transparent; color: var(--ink); display: grid; place-items: center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
+</header>
+<main style="padding: 16px; display: flex; flex-direction: column; gap: 16px;">
+  <h1 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 22px; line-height: 30px;">アップデート</h1>
+  <div role="alert" style="background: var(--surface); border: 2px solid var(--ng); border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; gap: 4px;">
+    <b style="color: var(--ng);">APP_DEBUG が true になっています</b>
+    <span style="font-size: 14px; color: var(--muted);">エラーの中身が閲覧者に見えてしまいます。.env の APP_DEBUG を false にしてください。</span>
+  </div>
+  <section style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 16px; display: flex; flex-direction: column; gap: 12px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap;"><h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 18px; line-height: 26px;">バージョン</h2><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--warn); border: 1px solid var(--warn); border-radius: 6px; padding: 0 6px; white-space: nowrap;">新しい版があります</span></div>
+      <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+        <div><span style="font-size: 12px; color: var(--muted);">今の版</span><br><b style="font-size: 20px; line-height: 1.3; font-family: 'Zen Maru Gothic', sans-serif;">v26.10.1</b></div>
+        <span aria-hidden="true" style="font-size: 16px; color: var(--muted);">→</span>
+        <div><span style="font-size: 12px; color: var(--muted);">最新(10/7 公開)</span><br><b style="font-size: 20px; line-height: 1.3; font-family: 'Zen Maru Gothic', sans-serif; color: var(--accent);">v26.10.3</b></div>
+      </div>
+      <div style="background: var(--sunken); border-radius: 10px; padding: 10px 14px; font-size: 14px; line-height: 22px;">
+        <b>変更点</b>
+        <ul style="margin: 4px 0 0; padding-left: 20px;">
+          <li>地図でピンが重なると押せない問題を直しました</li>
+          <li>検索に「近い順」の並び替えを追加しました</li>
+        </ul>
+        <a href="#" style="font-size: 13px;">GitHubでリリースを見る</a>
+      </div>
+      <span style="font-size: 12px; color: var(--muted);">ベータ版 【BETA】v26.10.2(10/5)は、受け取らない設定のため表示していません</span>
+      <div style="display: flex; flex-direction: column; gap: 8px;"><button style="height: 48px; padding: 0 14px; border: 0; border-radius: 999px; background: var(--accent); color: var(--on); font: 700 16px/1 'BIZ UDPGothic', sans-serif;">今すぐ更新する</button><button style="height: 44px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 15px/1 'BIZ UDPGothic', sans-serif;">今すぐ確認する</button></div>
+      <span style="font-size: 12px; color: var(--muted);">最後の確認: 今日 3:00(成功)・ GitHub: choko1229/doinaka</span>
+    </section>
+  <section style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 16px; display: flex; flex-direction: column; gap: 12px;">
+      <h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 18px; line-height: 26px;">自動アップデート</h2>
+      <label style="display: flex; align-items: center; gap: 10px; min-height: 44px;"><input type="checkbox" checked style="width: 20px; height: 20px; accent-color: var(--accent);"><span><b>新しい版が出たら自動で更新する</b><br><span style="font-size: 13px; color: var(--muted);">オフにすると知らせるだけになり、「今すぐ更新する」で更新します</span></span></label>
+      <label style="display: flex; align-items: center; gap: 10px; min-height: 44px;"><input type="checkbox" style="width: 20px; height: 20px; accent-color: var(--accent);"><span><b>ベータ版(【BETA】)も受け取る</b><br><span style="font-size: 13px; color: var(--muted);">試験中の版です。ふだんはオフのままにしてください</span></span></label>
+      <span style="font-weight: 700;">更新する時間帯</span>
+      <div role="group" aria-label="時間帯の決め方" style="display: flex; gap: 8px; flex-wrap: wrap;">
+        <sc-for list="{{modes}}" as="m" hint-placeholder-count="2">
+          <button aria-pressed="{{m.pressed}}" onClick="{{m.pick}}" style="{{m.style}}">{{m.label}}</button>
+        </sc-for>
+      </div>
+      <sc-if value="{{isAuto}}" hint-placeholder-val="{{true}}">
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <svg viewBox="0 0 326 132" width="100%" role="img" aria-label="時間帯ごとの平均アクセス数。3時台がいちばん少ない" style="display: block; max-width: 326px;"><rect x="10.5" y="83.3" width="8.0" height="22.7" rx="2" style="fill: var(--line);"></rect><rect x="23.4" y="94.2" width="8.0" height="11.8" rx="2" style="fill: var(--line);"></rect><rect x="36.3" y="99.3" width="8.0" height="6.7" rx="2" style="fill: var(--line);"></rect><rect x="49.2" y="101.1" width="8.0" height="4.9" rx="2" style="fill: var(--accent);"></rect><rect x="62.1" y="100.4" width="8.0" height="5.6" rx="2" style="fill: var(--line);"></rect><rect x="75.0" y="95.3" width="8.0" height="10.7" rx="2" style="fill: var(--line);"></rect><rect x="88.0" y="83.5" width="8.0" height="22.5" rx="2" style="fill: var(--line);"></rect><rect x="100.9" y="70.7" width="8.0" height="35.3" rx="2" style="fill: var(--line);"></rect><rect x="113.8" y="63.3" width="8.0" height="42.7" rx="2" style="fill: var(--line);"></rect><rect x="126.7" y="57.3" width="8.0" height="48.7" rx="2" style="fill: var(--line);"></rect><rect x="139.6" y="51.5" width="8.0" height="54.5" rx="2" style="fill: var(--line);"></rect><rect x="152.5" y="48.5" width="8.0" height="57.5" rx="2" style="fill: var(--line);"></rect><rect x="165.5" y="36.2" width="8.0" height="69.8" rx="2" style="fill: var(--line);"></rect><rect x="178.4" y="45.2" width="8.0" height="60.8" rx="2" style="fill: var(--line);"></rect><rect x="191.3" y="50.5" width="8.0" height="55.5" rx="2" style="fill: var(--line);"></rect><rect x="204.2" y="54.0" width="8.0" height="52.0" rx="2" style="fill: var(--line);"></rect><rect x="217.1" y="52.6" width="8.0" height="53.4" rx="2" style="fill: var(--line);"></rect><rect x="230.0" y="46.1" width="8.0" height="59.9" rx="2" style="fill: var(--line);"></rect><rect x="243.0" y="37.5" width="8.0" height="68.5" rx="2" style="fill: var(--line);"></rect><rect x="255.9" y="27.8" width="8.0" height="78.2" rx="2" style="fill: var(--line);"></rect><rect x="268.8" y="22.0" width="8.0" height="84.0" rx="2" style="fill: var(--line);"></rect><rect x="281.7" y="27.1" width="8.0" height="78.9" rx="2" style="fill: var(--line);"></rect><rect x="294.6" y="45.4" width="8.0" height="60.6" rx="2" style="fill: var(--line);"></rect><rect x="307.5" y="67.0" width="8.0" height="39.0" rx="2" style="fill: var(--line);"></rect><text x="14.5" y="124" text-anchor="middle" style="font: 400 11px BIZ UDPGothic, sans-serif; fill: var(--muted);">0時</text><text x="53.2" y="124" text-anchor="middle" style="font: 700 11px BIZ UDPGothic, sans-serif; fill: var(--ink);">3時</text><text x="92.0" y="124" text-anchor="middle" style="font: 400 11px BIZ UDPGothic, sans-serif; fill: var(--muted);">6時</text><text x="130.7" y="124" text-anchor="middle" style="font: 400 11px BIZ UDPGothic, sans-serif; fill: var(--muted);">9時</text><text x="169.5" y="124" text-anchor="middle" style="font: 400 11px BIZ UDPGothic, sans-serif; fill: var(--muted);">12時</text><text x="208.2" y="124" text-anchor="middle" style="font: 400 11px BIZ UDPGothic, sans-serif; fill: var(--muted);">15時</text><text x="247.0" y="124" text-anchor="middle" style="font: 400 11px BIZ UDPGothic, sans-serif; fill: var(--muted);">18時</text><text x="285.7" y="124" text-anchor="middle" style="font: 400 11px BIZ UDPGothic, sans-serif; fill: var(--muted);">21時</text><text x="53.2" y="95.1" text-anchor="middle" style="font: 700 11px BIZ UDPGothic, sans-serif; fill: var(--accent);">ここ</text><line x1="8" x2="318" y1="106" y2="106" style="stroke: var(--strong); stroke-width: 1;"></line></svg>
+          <span style="font-size: 14px;">過去28日でいちばんアクセスが少ないのは <b>3時台</b>(1時間の平均 2.1回)です。毎週月曜に計算し直します。</span>
+          <span style="font-size: 12px; color: var(--muted);">28日分のデータがたまるまでは 4時台を使います</span>
+        </div>
+      </sc-if>
+      <sc-if value="{{isFixed}}" hint-placeholder-val="{{false}}">
+        <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;"><label for="fixed1" style="font-weight: 700;">時刻</label><select id="fixed1" style="height: 44px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit; width: 120px;"><option>3:00</option><option selected>4:00</option><option>5:00</option></select><span style="font-size: 12px; color: var(--muted);">日本時間</span></div>
+      </sc-if>
+      <div style="background: var(--sunken); border-radius: 10px; padding: 10px 14px; font-size: 14px;">次の自動更新: <b>{{nextRun}}</b><br><span style="font-size: 12px; color: var(--muted);">新しい版がなければ確認だけで終わります</span></div>
+    </section>
+  <section style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 14px 16px; display: flex; flex-direction: column; gap: 10px;">
+      <h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 18px; line-height: 26px;">更新の流れ</h2>
+      <ol style="margin: 0; padding: 0; list-style: none; font-size: 14px;"><li style="padding: 6px 0; border-top: 1px solid var(--line);">1. バックアップ</li><li style="padding: 6px 0; border-top: 1px solid var(--line);">2. ダウンロードと照合</li><li style="padding: 6px 0; border-top: 1px solid var(--line);">3. メンテナンス表示</li><li style="padding: 6px 0; border-top: 1px solid var(--line);">4. 入れ替え</li><li style="padding: 6px 0; border-top: 1px solid var(--line);">5. DBの更新</li><li style="padding: 6px 0; border-top: 1px solid var(--line);">6. 動作確認</li><li style="padding: 6px 0; border-top: 1px solid var(--line);">7. 公開</li></ol>
+      <span style="font-size: 14px;">途中で失敗したら、コードとDBを更新前に<b>自動で戻し</b>、Discord に知らせます。</span>
+    </section>
+  <section style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 4px 16px 8px;">
+    <h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 18px; line-height: 26px; padding: 12px 0 4px;">更新の履歴</h2>
+    <ul style="margin: 0; padding: 0; list-style: none;">
+    <li style="padding: 12px 0; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 2px;"><div style="display: flex; justify-content: space-between; align-items: center; gap: 8px;"><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--ok); border: 1px solid var(--ok); border-radius: 6px; padding: 0 6px; white-space: nowrap;">成功</span><span style="font-size: 12px; color: var(--muted);">10/01 3:02 ・ 自動</span></div><b>v26.9.3 → v26.10.1</b><span style="font-size: 14px; color: var(--muted);">52秒</span></li>
+    <li style="padding: 12px 0; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 2px;"><div style="display: flex; justify-content: space-between; align-items: center; gap: 8px;"><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--warn); border: 1px solid var(--warn); border-radius: 6px; padding: 0 6px; white-space: nowrap;">戻した</span><span style="font-size: 12px; color: var(--muted);">09/24 3:01 ・ 自動</span></div><b>v26.9.2 → v26.9.3</b><span style="font-size: 14px; color: var(--muted);">動作確認で検索ページが500 → v26.9.2 に戻しました</span></li>
+    <li style="padding: 12px 0; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 2px;"><div style="display: flex; justify-content: space-between; align-items: center; gap: 8px;"><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--ok); border: 1px solid var(--ok); border-radius: 6px; padding: 0 6px; white-space: nowrap;">成功</span><span style="font-size: 12px; color: var(--muted);">09/20 14:12 ・ 手動(shikoku_taro)</span></div><b>v26.9.1 → v26.9.2</b><span style="font-size: 14px; color: var(--muted);">47秒</span></li>
+    </ul>
+  </section>
+  <section style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 14px 16px; display: flex; flex-direction: column; gap: 6px;">
+      <h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 18px; line-height: 26px;">更新前のバックアップ(直近3世代)</h2>
+      <ul style="margin: 0; padding: 0; list-style: none;"><li style="display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line);"><span><b>v26.9.3</b> <span style="font-size: 12px; color: var(--muted);">10/01 3:02</span></span><span style="font-size: 12px; color: var(--muted); white-space: nowrap;">DB 18MB ・ コード 41MB</span></li><li style="display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line);"><span><b>v26.9.2</b> <span style="font-size: 12px; color: var(--muted);">09/24 3:01</span></span><span style="font-size: 12px; color: var(--muted); white-space: nowrap;">DB 17MB ・ コード 41MB</span></li><li style="display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line);"><span><b>v26.9.1</b> <span style="font-size: 12px; color: var(--muted);">09/20 14:12</span></span><span style="font-size: 12px; color: var(--muted); white-space: nowrap;">DB 17MB ・ コード 40MB</span></li></ul>
+      <span style="font-size: 12px; color: var(--muted);">保存先は storage/app/private/backups(Webからは見えません)。投稿画像は kagoya の自動バックアップで守ります。</span>
+    </section>
+  <section style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 14px 16px; display: flex; flex-direction: column; gap: 12px;">
+      <h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 18px; line-height: 26px;">接続と通知</h2>
+      <div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-weight: 700;">GitHub リポジトリ</span><span>choko1229/doinaka <span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--ok); border: 1px solid var(--ok); border-radius: 6px; padding: 0 6px; white-space: nowrap;">公開</span></span></div>
+      <div style="display: flex; flex-direction: column; gap: 6px;"><label for="tok1" style="font-weight: 700;">GitHub トークン(任意)</label><input id="tok1" placeholder="未設定" style="height: 44px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit;"><span style="font-size: 12px; color: var(--muted);">公開リポジトリなら不要です。共用サーバーのIPで GitHub の回数制限に当たったときだけ、読み取り専用のトークンを入れます。</span></div>
+      <div style="display: flex; flex-direction: column; gap: 6px;"><label for="wh1" style="font-weight: 700;">Discord Webhook</label><input id="wh1" value="https://discord.com/api/webhooks/••••••" readonly style="height: 44px; box-sizing: border-box; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit; color: var(--muted);"><div style="display: flex; gap: 8px;"><button style="height: 40px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">変更する</button><button style="height: 40px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">テスト送信</button></div></div>
+    </section>
+  <p style="margin: 0; font-size: 13px; color: var(--muted);">戻すのにも失敗したときは、FTP で storage/framework/down を消してメンテナンス表示を解除し、バックアップから戻します。</p>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":2950}}'>
+class Component extends DCLogic {
+renderVals() {
+const mode = (this.state && this.state.mode) || 'auto';
+const base = 'height: 36px; padding: 0 14px; border-radius: 999px; font: 700 13px/1 BIZ UDPGothic, sans-serif; cursor: pointer; ';
+const list = [['auto', 'アクセスが少ない時間に自動で決める'], ['fixed', '時刻を指定する']];
+return {
+modes: list.map(([id, label]) => ({
+ label: label,
+ pressed: mode === id ? 'true' : 'false',
+ style: mode === id ? base + 'background: var(--surface); border: 2px solid var(--accent); color: var(--accent);' : base + 'background: var(--surface); border: 2px solid var(--strong); color: var(--ink);',
+ pick: () => this.setState({ mode: id })
+})),
+isAuto: mode === 'auto',
+isFixed: mode === 'fixed',
+nextRun: mode === 'auto' ? '10/9(金) 3:00〜3:30' : '10/9(金) 4:00〜4:30'
+};
+}
+}
+</script>
+</body>
+</html>

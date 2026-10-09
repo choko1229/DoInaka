@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>地域ページ: 丸亀市</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&amp;family=Yomogi&amp;family=Yusei+Magic&amp;family=Zen+Maru+Gothic:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.t-day{--bg:#fbf8ee;--surface:#ffffff;--sunken:#f2eedf;--ink:#26261c;--muted:#5a5a48;--line:#ddd7c2;--strong:#7d775e;--sky1:#9cd3ec;--sky2:#e8f4e1;--hill:#8fb86b;--on:#ffffff}
+.t-morning{--bg:#f3f8f7;--surface:#ffffff;--sunken:#e6f0ee;--ink:#1e2b2a;--muted:#4f615f;--line:#cddcd9;--strong:#6a7f7c;--sky1:#cde8ef;--sky2:#f3f8f7;--hill:#a8c98d;--on:#ffffff}
+.t-evening{--bg:#fbf1e6;--surface:#fffdf9;--sunken:#f4e3d2;--ink:#2e211a;--muted:#6a5246;--line:#e8d2bd;--strong:#8a6e5e;--sky1:#f2a65a;--sky2:#f9dcc0;--hill:#7c8a52;--on:#ffffff}
+.t-night{--bg:#141b2b;--surface:#1d2638;--sunken:#0f1522;--ink:#eceff5;--muted:#a9b3c6;--line:#2c3850;--strong:#7d8aa3;--sky1:#0e1424;--sky2:#24304a;--hill:#1a2a2a;--on:#141b2b}
+.s-spring{--accent:#b8325f}.s-summer{--accent:#1b7352}.s-autumn{--accent:#b24a0c}.s-winter{--accent:#2d5a99}
+.t-night.s-spring{--accent:#f48fb5}.t-night.s-summer{--accent:#6fd3a6}.t-night.s-autumn{--accent:#f4a261}.t-night.s-winter{--accent:#8db4f0}
+a{color:var(--accent)}a:hover{color:var(--ink)}
+</style>
+</helmet>
+<div class="t-day s-autumn" style="width: 390px; min-height: 2640px; box-sizing: border-box; background: var(--bg); color: var(--ink); font-family: 'BIZ UDPGothic', sans-serif; font-size: 16px; line-height: 28px;">
+<sc-if value="{{isAdmin}}" hint-placeholder-val="{{true}}">
+<div role="region" aria-label="管理者バー" style="position: sticky; top: 0; z-index: 10; background: #26261c; color: #fbf8ee; font: 700 13px/1 'BIZ UDPGothic', sans-serif;">
+  <div style="display: flex; align-items: center; height: 44px; padding: 0 4px;">
+    <a href="AdminSP.dc.html" style="display: inline-flex; align-items: center; gap: 6px; height: 40px; padding: 0 10px; color: #fbf8ee; text-decoration: none; white-space: nowrap; height: 44px;">管理画面</a>
+    <a href="AdminReviewSP.dc.html" style="display: inline-flex; align-items: center; gap: 6px; height: 40px; padding: 0 10px; color: #fbf8ee; text-decoration: none; white-space: nowrap; height: 44px;">審査 <span style="display: inline-block; min-width: 18px; padding: 0 5px; border-radius: 999px; background: #f4a261; color: #141b2b; font-size: 11px; line-height: 18px; text-align: center;">3</span></a>
+    <span style="flex: 1;"></span>
+    <button aria-expanded="true" aria-controls="adminbar-page" style="height: 36px; padding: 0 12px; margin-right: 6px; border-radius: 999px; border: 1px solid #6a6650; background: transparent; color: #fbf8ee; font: 700 13px/1 'BIZ UDPGothic', sans-serif;">このページ ▴</button>
+  </div>
+  <ul id="adminbar-page" style="margin: 0; padding: 0 0 4px; list-style: none; font-weight: 400; font-size: 14px;"><li><a href="#" style="display: flex; align-items: center; min-height: 44px; padding: 0 16px; color: #fbf8ee; text-decoration: none; border-top: 1px solid #3a3828;">紹介文を再生成</a></li><li><a href="#" style="display: flex; align-items: center; min-height: 44px; padding: 0 16px; color: #fbf8ee; text-decoration: none; border-top: 1px solid #3a3828;">編集</a></li><li><a href="#" style="display: flex; align-items: center; min-height: 44px; padding: 0 16px; color: #fbf8ee; text-decoration: none; border-top: 1px solid #3a3828;">履歴</a></li><li><a href="#" style="display: flex; align-items: center; min-height: 44px; padding: 0 16px; color: #fbf8ee; text-decoration: none; border-top: 1px solid #3a3828;">検索に公開中</a></li></ul>
+</div>
+</sc-if>
+
+
+
+<header data-illust="1" style="position: relative; background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 90%, transparent) 0%, color-mix(in srgb, var(--bg) 78%, transparent) 42%, transparent 70%), var(--sky1) url(illust/card/field-autumn-day.webp) center 38% / cover no-repeat; padding: 14px 16px 110px; overflow: hidden;">
+  <div style="display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1;">
+    <a href="Main.dc.html" style="display: inline-flex; align-items: center; gap: 8px; color: var(--ink); text-decoration: none; font-size: 22px; line-height: 28px;">
+      <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><path d="M3 26 L12 13 L17 19 L21 14 L29 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path><path d="M24 5 V26 M20 8 H28 M21 11 H27" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"></path></svg>
+      <span style="font-family: 'Yusei Magic', sans-serif;">ド田舎</span><span style="font-family: 'Yusei Magic', sans-serif; color: var(--accent); font-size: 16px; margin-left: -6px;">.net</span>
+    </a>
+    <button aria-label="メニュー" style="width: 44px; height: 44px; border-radius: 999px; border: 0; background: transparent; color: var(--ink); display: grid; place-items: center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
+  </div>
+  <svg viewBox="0 0 390 40" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; left: 0; bottom: -1px; width: 100%; height: 40px;"><path d="M0 32 Q195 26 390 32 V40 H0Z" style="fill: var(--bg);"></path></svg>
+</header>
+
+<main style="padding: 8px 16px 32px; display: flex; flex-direction: column; gap: 24px;">
+  <div style="display: flex; gap: 8px 24px; flex-wrap: wrap;"><div role="group" aria-label="デザイン確認用: 紹介文の状態" style="display: flex; gap: 6px; flex-wrap: wrap; align-items: center;">
+    <span style="font-size: 12px; color: var(--muted);">デザイン確認用:</span>
+    <sc-for list="{{states}}" as="s" hint-placeholder-count="2">
+      <button aria-pressed="{{s.pressed}}" onClick="{{s.pick}}" style="{{s.style}}">{{s.label}}</button>
+    </sc-for>
+  </div><div role="group" aria-label="デザイン確認用: 見ている人" style="display: flex; gap: 6px; flex-wrap: wrap; align-items: center;">
+    <span style="font-size: 12px; color: var(--muted);">見ている人:</span>
+    <sc-for list="{{views}}" as="v" hint-placeholder-count="2">
+      <button aria-pressed="{{v.pressed}}" onClick="{{v.pick}}" style="{{v.style}}">{{v.label}}</button>
+    </sc-for>
+  </div></div>
+  <nav aria-label="パンくず" style="font-size: 12px; line-height: 22px; color: var(--muted);"><a href="Main.dc.html">トップ</a> / <a href="#">香川県</a> / 丸亀市</nav>
+  <div style="display: flex; flex-direction: column; gap: 6px;">
+        <span style="display: flex; gap: 6px; flex-wrap: wrap;"><span style="font-size: 12px; line-height: 18px; background: var(--sunken); padding: 2px 8px; border-radius: 6px;">市</span><span style="font-size: 12px; line-height: 18px; background: var(--sunken); padding: 2px 8px; border-radius: 6px;">香川県</span></span>
+        <h1 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 28px; line-height: 1.3;">丸亀市 <span style="font-size: 15px; color: var(--muted); font-weight: 500;">まるがめし</span></h1>
+      </div>
+  <section style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 16px; display: flex; flex-direction: column; gap: 10px;">
+        <h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 20px; line-height: 1.4;">基本情報</h2>
+        <dl style="margin: 0; display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 8px 12px; font-size: 14px; line-height: 22px;">
+          <dt style="color: var(--muted);">読み</dt><dd style="margin: 0;">まるがめし</dd>
+          <dt style="color: var(--muted);">人口</dt><dd style="margin: 0;">[人数]人(2020年 国勢調査)</dd>
+          <dt style="color: var(--muted);">面積</dt><dd style="margin: 0;">[面積] km²(国土地理院)</dd>
+          <dt style="color: var(--muted);">合併</dt><dd style="margin: 0;">2005年3月22日<br><span style="color: var(--muted);">丸亀市・綾歌町・飯山町</span></dd>
+        </dl>
+        <div style="height: 180px; border-radius: 10px; background: var(--sunken); position: relative; overflow: hidden;">
+          <svg width="100%" height="100%" viewBox="0 0 320 200" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; inset: 0;"><path d="M40 60 L120 30 L210 50 L280 40 L260 120 L200 170 L110 160 L60 120 Z" style="fill: var(--surface); stroke: var(--accent); stroke-width: 2;"></path><path d="M150 40 L170 100 L130 160" style="fill: none; stroke: var(--strong); stroke-width: 1; stroke-dasharray: 4 4;"></path><path d="M170 100 L250 110" style="fill: none; stroke: var(--strong); stroke-width: 1; stroke-dasharray: 4 4;"></path></svg>
+          <span style="position: absolute; left: 8px; bottom: 6px; font-size: 10px; line-height: 14px; color: var(--muted);">点線は合併前の町の境 ・ 国土数値情報(行政区域)</span>
+        </div>
+        <span style="font-size: 13px; line-height: 20px; color: var(--muted);">数字は統計から自動で入れています。</span>
+      </section>
+  <sc-if value="{{isReady}}" hint-placeholder-val="{{true}}">
+      <section style="display: flex; flex-direction: column; gap: 12px;">
+        <h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 20px; line-height: 1.4;">丸亀市のなりたち</h2>
+        <p style="margin: 0; max-width: 680px;">[城下町として発展した経緯]<sup style="font-size: 11px;"><a href="#src1">[1]</a></sup>。[港町としての役割と、金刀比羅宮への参詣道の入口だったこと]<sup style="font-size: 11px;"><a href="#src1">[1]</a></sup>。</p>
+        <p style="margin: 0; max-width: 680px;">2005年3月22日、丸亀市・綾歌町・飯山町が合併して、いまの丸亀市になりました<sup style="font-size: 11px;"><a href="#src2">[2]</a></sup>。</p>
+        <h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 20px; line-height: 1.4;">いまの丸亀市</h2>
+        <p style="margin: 0; max-width: 680px;">[うちわの生産、丸亀城、島しょ部などの特徴]<sup style="font-size: 11px;"><a href="#src1">[1]</a></sup><sup style="font-size: 11px;"><a href="#src3">[3]</a></sup>。</p>
+        <div style="display: flex; gap: 8px 16px; flex-wrap: wrap; align-items: center; padding: 10px 14px; border-radius: 10px; background: var(--sunken); font-size: 13px; line-height: 20px; color: var(--muted);">
+          <span>AIが情報元をもとに作成し、出典と照らし合わせて確認しました(10月8日)</span>
+          <a href="#">内容の違いを知らせる</a>
+        </div>
+      </section>
+    </sc-if>
+    <sc-if value="{{isPending}}" hint-placeholder-val="{{false}}">
+      <section style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 20px; display: flex; flex-direction: column; gap: 8px;">
+        <h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 16px; line-height: 1.4;">紹介文を準備中です</h2>
+        <p style="margin: 0; font-size: 15px; line-height: 24px;">このページへのアクセスがあったので、成り立ちや特徴の紹介文を作っています。公開まで数日かかることがあります。</p>
+        <p style="margin: 0; font-family: 'Yomogi', sans-serif; font-size: 16px; color: var(--muted);">のんびり書いてます。田舎なので。</p>
+        <a href="#" style="font-size: 14px; font-weight: 700;">この地域のことを教える</a>
+      </section>
+    </sc-if>
+  <section style="display: flex; flex-direction: column; gap: 12px;">
+        <h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 20px; line-height: 1.4;">丸亀市の地域(合併前の町)</h2>
+        <div style="display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px;"><a href="#" style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 14px 16px; display: flex; flex-direction: column; gap: 2px; color: inherit; text-decoration: none;"><span style="font-size: 13px; line-height: 20px; color: var(--muted);">まるがめ ・ 旧 丸亀市</span><b style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 18px; line-height: 26px;">丸亀</b><span style="font-size: 13px; line-height: 20px; color: var(--muted);">/kagawa/marugame/marugame/ ・ イベント 12件</span></a><a href="#" style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 14px 16px; display: flex; flex-direction: column; gap: 2px; color: inherit; text-decoration: none;"><span style="font-size: 13px; line-height: 20px; color: var(--muted);">あやうた ・ 旧 綾歌町</span><b style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 18px; line-height: 26px;">綾歌</b><span style="font-size: 13px; line-height: 20px; color: var(--muted);">/kagawa/marugame/ayauta/ ・ イベント 4件</span></a><a href="#" style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 14px 16px; display: flex; flex-direction: column; gap: 2px; color: inherit; text-decoration: none;"><span style="font-size: 13px; line-height: 20px; color: var(--muted);">はんざん ・ 旧 飯山町</span><b style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 18px; line-height: 26px;">飯山</b><span style="font-size: 13px; line-height: 20px; color: var(--muted);">/kagawa/marugame/hanzan/ ・ イベント 3件</span></a></div>
+      </section>
+  <section style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline;"><h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 20px; line-height: 1.4;">丸亀市のイベントとスポット</h2><a href="#" style="font-size: 14px; font-weight: 700;">すべて見る</a></div>
+        <div style="display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px;"><a href="#" style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); overflow: hidden; color: inherit; text-decoration: none; display: flex; gap: 12px; align-items: center;"><div style="flex: 0 0 96px; height: 72px; background: var(--sunken);"></div><div style="padding: 8px 12px 8px 0; display: flex; flex-direction: column;"><span style="font-size: 14px; font-weight: 700; color: var(--accent); line-height: 22px;">今週末</span><b style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 16px; line-height: 22px;">[地区名]の秋祭り</b><span style="font-size: 14px; color: var(--muted); line-height: 22px;">飯山町 ・ 10月11日(土)</span></div></a><a href="#" style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); overflow: hidden; color: inherit; text-decoration: none; display: flex; gap: 12px; align-items: center;"><div style="flex: 0 0 96px; height: 72px; background: var(--sunken);"></div><div style="padding: 8px 12px 8px 0; display: flex; flex-direction: column;"><span style="font-size: 14px; font-weight: 700; color: var(--accent); line-height: 22px;">スポット</span><b style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 16px; line-height: 22px;">[城の名前]</b><span style="font-size: 14px; color: var(--muted); line-height: 22px;">丸亀 ・ 見る</span></div></a><a href="#" style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); overflow: hidden; color: inherit; text-decoration: none; display: flex; gap: 12px; align-items: center;"><div style="flex: 0 0 96px; height: 72px; background: var(--sunken);"></div><div style="padding: 8px 12px 8px 0; display: flex; flex-direction: column;"><span style="font-size: 14px; font-weight: 700; color: var(--accent); line-height: 22px;">10月18日(土)</span><b style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 16px; line-height: 22px;">[港の朝市]</b><span style="font-size: 14px; color: var(--muted); line-height: 22px;">丸亀 ・ 食べる</span></div></a></div>
+      </section>
+  <section id="sources" style="display: flex; flex-direction: column; gap: 8px;">
+        <h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 20px; line-height: 1.4;">出典</h2>
+        <ol style="margin: 0; padding-left: 22px; font-size: 14px; line-height: 22px; display: flex; flex-direction: column; gap: 4px;">
+          <li id="src1"><a href="#">[丸亀市 公式サイト「市の概要・沿革」]</a> 10月8日に確認</li>
+          <li id="src2"><a href="#">[総務省「市町村合併資料」]</a> 10月8日に確認</li>
+          <li id="src3"><a href="#">[伝統的工芸品の公的な紹介ページ]</a> 10月8日に確認</li>
+        </ol>
+      </section>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":2640}}'>
+class Component extends DCLogic {
+renderVals() {
+const st = (this.state && this.state.st) || 'ready';
+const view = (this.state && this.state.view) || 'admin';
+const vbase = 'height: 32px; padding: 0 12px; border-radius: 999px; font: 700 13px/1 BIZ UDPGothic, sans-serif; cursor: pointer; ';
+const base = 'height: 32px; padding: 0 12px; border-radius: 999px; font: 700 13px/1 BIZ UDPGothic, sans-serif; cursor: pointer; ';
+const list = [['ready', '紹介文あり'], ['pending', '紹介文を準備中']];
+return {
+states: list.map(([id, label]) => ({
+ label: label,
+ pressed: st === id ? 'true' : 'false',
+ style: st === id ? base + 'background: var(--surface); border: 2px solid var(--accent); color: var(--accent);' : base + 'background: var(--surface); border: 2px solid var(--strong); color: var(--ink);',
+ pick: () => this.setState({ st: id })
+})),
+views: [['public', '一般の人'], ['admin', '管理者']].map(([id, label]) => ({
+ label: label,
+ pressed: view === id ? 'true' : 'false',
+ style: view === id ? vbase + 'background: var(--surface); border: 2px solid var(--accent); color: var(--accent);' : vbase + 'background: var(--surface); border: 2px solid var(--strong); color: var(--ink);',
+ pick: () => this.setState({ view: id })
+})),
+isAdmin: view === 'admin',
+isReady: st === 'ready',
+isPending: st === 'pending'
+};
+}
+}
+</script>
+</body>
+</html>

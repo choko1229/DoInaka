@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>管理: 行事・開催回(PC)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&amp;family=Yomogi&amp;family=Yusei+Magic&amp;family=Zen+Maru+Gothic:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.t-day{--bg:#fbf8ee;--surface:#ffffff;--sunken:#f2eedf;--ink:#26261c;--muted:#5a5a48;--line:#ddd7c2;--strong:#7d775e;--on:#ffffff;--ok:#2b7048;--warn:#7a5200;--ng:#a8241c}
+.s-autumn{--accent:#b24a0c}
+a{color:var(--accent)}a:hover{color:var(--ink)}
+</style>
+</helmet>
+<div class="t-day s-autumn" style="min-height: 1100px; background: var(--bg); color: var(--ink); font-family: 'BIZ UDPGothic', sans-serif; font-size: 15px; line-height: 24px; display: flex; flex-wrap: wrap; align-items: stretch;">
+<nav aria-label="管理メニュー" style="flex: 1 1 240px; max-width: 280px; min-width: 0; background: var(--surface); border-right: 1px solid var(--line); padding: 16px 12px; display: flex; flex-direction: column; gap: 4px; box-sizing: border-box;">
+  <a href="AdminPC.dc.html" style="display: inline-flex; align-items: center; gap: 8px; color: var(--ink); text-decoration: none; font-size: 22px; line-height: 28px; padding: 4px 8px 16px;"><span style="font-family: 'Yusei Magic', sans-serif;">ド田舎</span><span style="font-family: 'Yusei Magic', sans-serif; color: var(--accent); font-size: 16px; margin-left: -6px;">.net</span><span style="font: 700 12px/18px 'BIZ UDPGothic', sans-serif; border: 1px solid var(--strong); border-radius: 6px; padding: 0 6px;">管理</span></a>
+  <a href="AdminPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">ダッシュボード</a>
+  <a href="AdminReviewPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">審査</a>
+  <a href="AdminTipsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">情報提供</a>
+  <a href="AdminCorrectionsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">修正依頼</a>
+  <a href="AdminRejectedPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">却下ボックス</a>
+  <a href="AdminInquiriesPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">お問い合わせ</a>
+  <span style="font-size: 12px; line-height: 18px; color: var(--muted); padding: 16px 12px 4px;">コンテンツ</span>
+  <a href="#" aria-current="page" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; background: var(--sunken); color: var(--ink); font-weight: 700; text-decoration: none;">行事・開催回</a>
+  <a href="AdminContentsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">スポット・記事・コメント</a>
+  <a href="AdminRegionsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">地域ページ</a>
+  <a href="AdminDraftPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">AI下書き作成</a>
+  <a href="AdminSourcesPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">情報源の巡回</a>
+  <span style="font-size: 12px; line-height: 18px; color: var(--muted); padding: 16px 12px 4px;">運営</span>
+  <a href="AdminMastersPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">マスタ</a>
+  <a href="AdminUsersPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">会員</a>
+  <a href="AdminAdsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">広告枠</a>
+  <a href="AdminSettingsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">設定</a>
+  <a href="AdminLogsPC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">ログ</a>
+  <a href="AdminUpdatePC.dc.html" style="min-height: 40px; padding: 0 12px; border-radius: 8px; display: flex; align-items: center; color: var(--ink); text-decoration: none;">アップデート</a>
+</nav>
+<main style="flex: 999 1 640px; min-width: 0; padding: 24px 32px 40px; display: flex; flex-direction: column; gap: 20px; box-sizing: border-box;">
+  <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px;"><h1 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 28px; line-height: 36px;">行事・開催回</h1><span style="font-size: 13px; color: var(--muted);">行事(毎年・毎週の催し)の下に、日ごとの開催回をぶら下げます</span></div>
+  <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center; justify-content: space-between;">
+    <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+      <label for="eq" style="position: absolute; width: 1px; height: 1px; overflow: hidden;">行事名で探す</label><input id="eq" type="search" placeholder="行事名・地域で探す" style="width: 280px; height: 44px; box-sizing: border-box; padding: 0 14px; border: 2px solid var(--strong); border-radius: 6px; background: var(--surface); color: var(--ink); font: inherit;">
+      <button aria-pressed="true" style="flex: 0 0 auto; height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--accent); background: var(--surface); color: var(--accent); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">すべて 86</button><button aria-pressed="false" style="flex: 0 0 auto; height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">これから開催 41</button><button aria-pressed="false" style="flex: 0 0 auto; height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">来年分なし 7</button><button aria-pressed="false" style="flex: 0 0 auto; height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">修正依頼あり 1</button><button aria-pressed="false" style="flex: 0 0 auto; height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">非公開 3</button>
+    </div>
+    <button style="height: 44px; padding: 0 14px; border: 0; border-radius: 999px; background: var(--accent); color: var(--on); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">行事を追加する</button>
+  </div>
+  <section style="display: flex; flex-direction: column; gap: 10px;">
+    <h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 20px; line-height: 28px;">行事の一覧</h2>
+    <div style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); overflow-x: auto;">
+      <table style="width: 100%; min-width: 920px; border-collapse: collapse;">
+        <thead><tr style="text-align: left; font-size: 13px; color: var(--muted);"><th scope="col" style="padding: 10px 16px;">行事</th><th scope="col" style="padding: 10px 16px;">次の開催</th><th scope="col" style="padding: 10px 16px;">開催回</th><th scope="col" style="padding: 10px 16px;">状態</th><th scope="col" style="padding: 10px 16px;"><span style="position: absolute; width: 1px; height: 1px; overflow: hidden;">操作</span></th></tr></thead>
+        <tbody>
+          <tr style="border-top: 1px solid var(--line);"><td style="padding: 12px 16px;"><b>[集落名]の獅子舞奉納</b><br><span style="font-size: 12px; color: var(--muted);">塩江町 ・ 祭り・行事 ・ 毎年</span></td><td style="padding: 12px 16px;">10/11(土) 宵宮</td><td style="padding: 12px 16px;">3回(うち今年 2)</td><td style="padding: 12px 16px;"><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--ok); border: 1px solid var(--ok); border-radius: 6px; padding: 0 6px; white-space: nowrap;">公開</span></td><td style="padding: 12px 16px; white-space: nowrap;"><a href="AdminEventEditPC.dc.html" style="display: inline-flex; align-items: center; text-decoration: none; height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 13px/1 'BIZ UDPGothic', sans-serif;">編集</a> <button style="height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 13px/1 'BIZ UDPGothic', sans-serif;">開催回を追加</button></td></tr>
+          <tr style="border-top: 1px solid var(--line);"><td style="padding: 12px 16px;"><b>島の朝市</b><br><span style="font-size: 12px; color: var(--muted);">直島町 ・ 市・マルシェ ・ 毎週日曜</span></td><td style="padding: 12px 16px;">10/12(日)</td><td style="padding: 12px 16px;">24回</td><td style="padding: 12px 16px;"><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--ok); border: 1px solid var(--ok); border-radius: 6px; padding: 0 6px; white-space: nowrap;">公開</span></td><td style="padding: 12px 16px; white-space: nowrap;"><a href="AdminEventEditPC.dc.html" style="display: inline-flex; align-items: center; text-decoration: none; height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 13px/1 'BIZ UDPGothic', sans-serif;">編集</a> <button style="height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 13px/1 'BIZ UDPGothic', sans-serif;">開催回を追加</button></td></tr>
+          <tr style="border-top: 1px solid var(--line);"><td style="padding: 12px 16px;"><b>秋季例大祭 太鼓台の宮入り</b><br><span style="font-size: 12px; color: var(--muted);">観音寺市 ・ 祭り・行事 ・ 毎年</span></td><td style="padding: 12px 16px;">10/18(土)</td><td style="padding: 12px 16px;">1回</td><td style="padding: 12px 16px;"><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--warn); border: 1px solid var(--warn); border-radius: 6px; padding: 0 6px; white-space: nowrap;">修正依頼あり</span></td><td style="padding: 12px 16px; white-space: nowrap;"><a href="AdminEventEditPC.dc.html" style="display: inline-flex; align-items: center; text-decoration: none; height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 13px/1 'BIZ UDPGothic', sans-serif;">編集</a> <button style="height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 13px/1 'BIZ UDPGothic', sans-serif;">開催回を追加</button></td></tr>
+          <tr style="border-top: 1px solid var(--line);"><td style="padding: 12px 16px;"><b>棚田の稲刈り体験</b><br><span style="font-size: 12px; color: var(--muted);">まんのう町 ・ 体験 ・ 毎年</span></td><td style="padding: 12px 16px;">未定</td><td style="padding: 12px 16px;">2回(すべて開催済み)</td><td style="padding: 12px 16px;"><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--warn); border: 1px solid var(--warn); border-radius: 6px; padding: 0 6px; white-space: nowrap;">来年分なし</span></td><td style="padding: 12px 16px; white-space: nowrap;"><a href="AdminEventEditPC.dc.html" style="display: inline-flex; align-items: center; text-decoration: none; height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 13px/1 'BIZ UDPGothic', sans-serif;">編集</a> <button style="height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 13px/1 'BIZ UDPGothic', sans-serif;">来年の回を作る</button></td></tr>
+          <tr style="border-top: 1px solid var(--line);"><td style="padding: 12px 16px;"><b>[地区名] 夏の盆踊り</b><br><span style="font-size: 12px; color: var(--muted);">三豊市 ・ 祭り・行事</span></td><td style="padding: 12px 16px;">—</td><td style="padding: 12px 16px;">1回</td><td style="padding: 12px 16px;"><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--ng); border: 1px solid var(--ng); border-radius: 6px; padding: 0 6px; white-space: nowrap;">非公開</span></td><td style="padding: 12px 16px; white-space: nowrap;"><a href="AdminEventEditPC.dc.html" style="display: inline-flex; align-items: center; text-decoration: none; height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 13px/1 'BIZ UDPGothic', sans-serif;">編集</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <section style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 18px 20px; display: flex; flex-direction: column; gap: 10px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px;">
+      <h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 20px; line-height: 28px;">[集落名]の獅子舞奉納 の開催回</h2>
+      <a href="EventDetailPC.dc.html" style="font-size: 14px;">公開ページを見る</a>
+    </div>
+    <div style="overflow-x: auto;">
+      <table style="width: 100%; min-width: 760px; border-collapse: collapse;">
+        <thead><tr style="text-align: left; font-size: 13px; color: var(--muted);"><th scope="col" style="padding: 10px 16px;">日付</th><th scope="col" style="padding: 10px 16px;">時間</th><th scope="col" style="padding: 10px 16px;">内容</th><th scope="col" style="padding: 10px 16px;">状態</th><th scope="col" style="padding: 10px 16px;"><span style="position: absolute; width: 1px; height: 1px; overflow: hidden;">操作</span></th></tr></thead>
+        <tbody>
+          <tr style="border-top: 1px solid var(--line);"><td style="padding: 12px 16px; font-variant-numeric: tabular-nums;">2026/10/11(土)</td><td style="padding: 12px 16px;">18:00〜21:00</td><td style="padding: 12px 16px;">宵宮</td><td style="padding: 12px 16px;"><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--ok); border: 1px solid var(--ok); border-radius: 6px; padding: 0 6px; white-space: nowrap;">予定</span></td><td style="padding: 12px 16px; white-space: nowrap;"><a href="AdminEventEditPC.dc.html" style="display: inline-flex; align-items: center; text-decoration: none; height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 13px/1 'BIZ UDPGothic', sans-serif;">編集</a> <button style="height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--ng); background: var(--surface); color: var(--ng); font: 700 13px/1 'BIZ UDPGothic', sans-serif;">中止にする</button></td></tr>
+          <tr style="border-top: 1px solid var(--line);"><td style="padding: 12px 16px; font-variant-numeric: tabular-nums;">2026/10/12(日)</td><td style="padding: 12px 16px;">9:00〜15:00</td><td style="padding: 12px 16px;">本宮・奉納</td><td style="padding: 12px 16px;"><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--ok); border: 1px solid var(--ok); border-radius: 6px; padding: 0 6px; white-space: nowrap;">予定</span></td><td style="padding: 12px 16px; white-space: nowrap;"><a href="AdminEventEditPC.dc.html" style="display: inline-flex; align-items: center; text-decoration: none; height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 13px/1 'BIZ UDPGothic', sans-serif;">編集</a> <button style="height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--ng); background: var(--surface); color: var(--ng); font: 700 13px/1 'BIZ UDPGothic', sans-serif;">中止にする</button></td></tr>
+          <tr style="border-top: 1px solid var(--line);"><td style="padding: 12px 16px; font-variant-numeric: tabular-nums;">2025/10/12(日)</td><td style="padding: 12px 16px;">9:00〜15:00</td><td style="padding: 12px 16px;">本宮・奉納</td><td style="padding: 12px 16px;"><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--muted); border: 1px solid var(--muted); border-radius: 6px; padding: 0 6px; white-space: nowrap;">開催済み</span></td><td style="padding: 12px 16px; white-space: nowrap;"><a href="AdminEventEditPC.dc.html" style="display: inline-flex; align-items: center; text-decoration: none; height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 13px/1 'BIZ UDPGothic', sans-serif;">編集</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="display: flex; gap: 8px; flex-wrap: wrap;"><button style="height: 40px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">開催回を追加</button><button style="height: 40px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">去年の回をコピーして来年分を作る</button></div>
+  </section>
+  <p style="margin: 0; font-size: 13px; color: var(--muted);">「中止にする」は開催回を消さずに「中止」と表示します。延期は日付を変えると「延期」と自動で表示されます。</p>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1100}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

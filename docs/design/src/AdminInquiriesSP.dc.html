@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>管理: お問い合わせ(スマホ)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&amp;family=Yomogi&amp;family=Yusei+Magic&amp;family=Zen+Maru+Gothic:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.t-day{--bg:#fbf8ee;--surface:#ffffff;--sunken:#f2eedf;--ink:#26261c;--muted:#5a5a48;--line:#ddd7c2;--strong:#7d775e;--on:#ffffff;--ok:#2b7048;--warn:#7a5200;--ng:#a8241c}
+.s-autumn{--accent:#b24a0c}
+a{color:var(--accent)}a:hover{color:var(--ink)}
+</style>
+</helmet>
+<div class="t-day s-autumn" style="width: 390px; min-height: 900px; box-sizing: border-box; background: var(--bg); color: var(--ink); font-family: 'BIZ UDPGothic', sans-serif; font-size: 15px; line-height: 24px;">
+<header style="background: var(--surface); border-bottom: 1px solid var(--line); padding: 10px 16px; display: flex; justify-content: space-between; align-items: center;">
+  <a href="AdminSP.dc.html" style="display: inline-flex; align-items: center; gap: 8px; color: var(--ink); text-decoration: none; font-size: 20px; line-height: 24px;"><span style="font-family: 'Yusei Magic', sans-serif;">ド田舎</span><span style="font-family: 'Yusei Magic', sans-serif; color: var(--accent); font-size: 15px; margin-left: -6px;">.net</span><span style="font: 700 12px/18px 'BIZ UDPGothic', sans-serif; border: 1px solid var(--strong); border-radius: 6px; padding: 0 6px;">管理</span></a>
+  <button aria-label="管理メニュー" style="width: 44px; height: 44px; border-radius: 999px; border: 0; background: transparent; color: var(--ink); display: grid; place-items: center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
+</header>
+<main style="padding: 16px; display: flex; flex-direction: column; gap: 16px;">
+  <h1 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 22px; line-height: 30px;">お問い合わせ</h1>
+  <div style="display: flex; gap: 8px; overflow-x: auto; margin: 0 -16px; padding: 0 16px 4px;"><button aria-pressed="true" style="flex: 0 0 auto; height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--accent); background: var(--surface); color: var(--accent); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">未対応 3</button><button aria-pressed="false" style="flex: 0 0 auto; height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">すべて 5</button><button aria-pressed="false" style="flex: 0 0 auto; height: 36px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">削除依頼 1</button></div>
+    <div style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 14px 16px; display: flex; flex-direction: column; gap: 4px;">
+      <div style="display: flex; justify-content: space-between; gap: 8px; align-items: center;"><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--warn); border: 1px solid var(--warn); border-radius: 6px; padding: 0 6px; white-space: nowrap;">削除依頼</span><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--warn); border: 1px solid var(--warn); border-radius: 6px; padding: 0 6px; white-space: nowrap;">ぼかして確認中</span></div>
+      <b style="font-size: 15px;">急ぎ ・ 写っているのは自分の子どもです。写真を消してください</b>
+      <span style="font-size: 12px; color: var(--muted);">20261008-K7Q2MX ・ 10/8 10:12 ・ メールあり</span>
+    </div>
+    <div style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 14px 16px; display: flex; flex-direction: column; gap: 4px;">
+      <div style="display: flex; justify-content: space-between; gap: 8px; align-items: center;"><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--ok); border: 1px solid var(--ok); border-radius: 6px; padding: 0 6px; white-space: nowrap;">掲載・修正の依頼</span><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--ng); border: 1px solid var(--ng); border-radius: 6px; padding: 0 6px; white-space: nowrap;">未対応</span></div>
+      <b style="font-size: 15px;">[町名]商工会です。秋祭りの時間が変わりました</b>
+      <span style="font-size: 12px; color: var(--muted);">20261007-A2D9PL ・ 10/7 16:40 ・ メールあり</span>
+    </div>
+    <div style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 14px 16px; display: flex; flex-direction: column; gap: 4px;">
+      <div style="display: flex; justify-content: space-between; gap: 8px; align-items: center;"><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--muted); border: 1px solid var(--muted); border-radius: 6px; padding: 0 6px; white-space: nowrap;">一般の質問・不具合</span><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--ng); border: 1px solid var(--ng); border-radius: 6px; padding: 0 6px; white-space: nowrap;">未対応</span></div>
+      <b style="font-size: 15px;">地図が表示されません(iPhone)</b>
+      <span style="font-size: 12px; color: var(--muted);">20261007-Q8N3VB ・ 10/7 9:05 ・ メールなし</span>
+    </div>
+    <div style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 14px 16px; display: flex; flex-direction: column; gap: 4px;">
+      <div style="display: flex; justify-content: space-between; gap: 8px; align-items: center;"><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--muted); border: 1px solid var(--muted); border-radius: 6px; padding: 0 6px; white-space: nowrap;">広告・掲載枠の相談</span><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--ok); border: 1px solid var(--ok); border-radius: 6px; padding: 0 6px; white-space: nowrap;">返信済み</span></div>
+      <b style="font-size: 15px;">産直市のPR枠について</b>
+      <span style="font-size: 12px; color: var(--muted);">20261006-M4T7HC ・ 10/6 20:31 ・ メールあり</span>
+    </div>
+    <div style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 14px 16px; display: flex; flex-direction: column; gap: 4px;">
+      <div style="display: flex; justify-content: space-between; gap: 8px; align-items: center;"><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--muted); border: 1px solid var(--muted); border-radius: 6px; padding: 0 6px; white-space: nowrap;">個人情報について</span><span style="display: inline-block; font-size: 12px; line-height: 18px; font-weight: 700; color: var(--muted); border: 1px solid var(--muted); border-radius: 6px; padding: 0 6px; white-space: nowrap;">完了</span></div>
+      <b style="font-size: 15px;">退会前の投稿の削除</b>
+      <span style="font-size: 12px; color: var(--muted);">20261005-Z1R6YE ・ 10/5 11:18 ・ メールあり</span>
+    </div>
+  <p style="margin: 0; font-size: 13px; color: var(--muted);">削除依頼の対象は、確認が終わるまでぼかして表示します。AIの照合を見て、削除するかは管理者が決めます。</p>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":900}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

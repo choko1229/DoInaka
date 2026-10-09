@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>利用規約・プライバシーポリシー(PC)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&amp;family=Yomogi&amp;family=Yusei+Magic&amp;family=Zen+Maru+Gothic:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.t-morning{--bg:#f3f8f7;--surface:#ffffff;--sunken:#e6f0ee;--ink:#1e2b2a;--muted:#4f615f;--line:#cddcd9;--strong:#6a7f7c;--sky1:#cde8ef;--sky2:#f3f8f7;--hill:#a8c98d;--on:#ffffff}
+.s-autumn{--accent:#b24a0c}
+a{color:var(--accent)}a:hover{color:var(--ink)}
+</style>
+</helmet>
+<div class="t-morning s-autumn" style="min-height: 1700px; background: var(--bg); color: var(--ink); font-family: 'BIZ UDPGothic', sans-serif; font-size: 16px; line-height: 28px;">
+
+<header style="position: relative; background: linear-gradient(var(--sky1), var(--sky2)); overflow: hidden;">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 16px 32px 56px; position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+    <a href="TopPC.dc.html" style="display: inline-flex; align-items: center; gap: 8px; color: var(--ink); text-decoration: none; font-size: 28px; line-height: 32px;"><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><path d="M3 26 L12 13 L17 19 L21 14 L29 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path><path d="M24 5 V26 M20 8 H28 M21 11 H27" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"></path></svg><span style="font-family: 'Yusei Magic', sans-serif;">ド田舎</span><span style="font-family: 'Yusei Magic', sans-serif; color: var(--accent); font-size: 20px; margin-left: -6px;">.net</span></a>
+    <nav style="display: flex; gap: 24px; align-items: center; flex-wrap: wrap; font-weight: 700;"><a href="EventsPC.dc.html" style="color: var(--ink); text-decoration: none;">イベント</a><a href="#" style="color: var(--ink); text-decoration: none;">スポット</a><a href="#" style="color: var(--ink); text-decoration: none;">記事</a><a href="MapPC.dc.html" style="color: var(--ink); text-decoration: none;">地図</a><a href="MyPagePC.dc.html" style="color: var(--ink); text-decoration: none;">ログイン</a></nav>
+  </div>
+  <svg viewBox="0 0 1280 56" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; left: 0; bottom: -1px; width: 100%; height: 56px;"><path d="M0 34 Q260 6 560 28 T1280 24 V56 H0Z" style="fill: var(--hill);"></path><path d="M0 46 Q640 38 1280 46 V56 H0Z" style="fill: var(--bg);"></path></svg>
+</header>
+
+<main style="max-width: 1100px; margin: 0 auto; padding: 8px 32px 56px; display: flex; flex-direction: column; gap: 20px;">
+  <nav aria-label="パンくず" style="font-size: 14px; line-height: 22px; color: var(--muted);"><a href="TopPC.dc.html">トップ</a> / 利用規約・プライバシーポリシー</nav>
+  <div role="group" aria-label="表示する文書" style="display: flex; gap: 8px; flex-wrap: wrap;">
+    <sc-for list="{{docs}}" as="o" hint-placeholder-count="2">
+      <button aria-pressed="{{o.pressed}}" onClick="{{o.pick}}" style="{{o.style}}">{{o.label}}</button>
+    </sc-for>
+  </div>
+  <div style="display: flex; gap: 40px; align-items: flex-start; flex-wrap: wrap;">
+    <aside style="flex: 1 1 260px; max-width: 300px; position: sticky; top: 16px; background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 16px 18px; display: flex; flex-direction: column; gap: 6px;">
+      <b>目次</b>
+      <sc-if value="{{is_terms}}" hint-placeholder-val="{{true}}"><ol style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 30px;"><li><a href="#t0" style="color: var(--ink); text-decoration: none;">第1条 言葉の意味</a></li><li><a href="#t1" style="color: var(--ink); text-decoration: none;">第2条 会員登録</a></li><li><a href="#t2" style="color: var(--ink); text-decoration: none;">第3条 投稿と情報提供</a></li><li><a href="#t3" style="color: var(--ink); text-decoration: none;">第4条 投稿の権利</a></li><li><a href="#t4" style="color: var(--ink); text-decoration: none;">第5条 禁止すること</a></li><li><a href="#t5" style="color: var(--ink); text-decoration: none;">第6条 非公開・削除・利用の停止</a></li><li><a href="#t6" style="color: var(--ink); text-decoration: none;">第7条 掲載する情報</a></li><li><a href="#t7" style="color: var(--ink); text-decoration: none;">第8条 退会</a></li><li><a href="#t8" style="color: var(--ink); text-decoration: none;">第9〜12条</a></li></ol></sc-if>
+      <sc-if value="{{is_privacy}}" hint-placeholder-val="{{false}}"><ol style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 30px;"><li><a href="#p0" style="color: var(--ink); text-decoration: none;">1. いただく情報と保存期間</a></li><li><a href="#p1" style="color: var(--ink); text-decoration: none;">2. 使う目的</a></li><li><a href="#p2" style="color: var(--ink); text-decoration: none;">3. 第三者への提供</a></li><li><a href="#p3" style="color: var(--ink); text-decoration: none;">4. 外部サービスへの送信</a></li><li><a href="#p4" style="color: var(--ink); text-decoration: none;">5. AIサービスの利用</a></li><li><a href="#p5" style="color: var(--ink); text-decoration: none;">6. 広告について</a></li><li><a href="#p6" style="color: var(--ink); text-decoration: none;">7〜10</a></li></ol></sc-if>
+    </aside>
+    <article style="flex: 999 1 560px; max-width: 720px; min-width: 0; display: flex; flex-direction: column; gap: 22px;">
+    <sc-if value="{{is_terms}}" hint-placeholder-val="{{true}}">
+      <h1 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 36px; line-height: 1.3;">利用規約</h1>
+      <div style="display: flex; gap: 8px 16px; flex-wrap: wrap; font-size: 13px; line-height: 20px; color: var(--muted);"><span>制定 [ ]年[ ]月[ ]日</span><span>運営者 choko1229</span><a href="ContactPC.dc.html">ご質問はお問い合わせへ</a></div>
+      <p style="margin: 0; font-size: 15px; line-height: 26px;">この規約は、choko1229(運営者)が運営する「ド田舎.net」の使い方を定めます。本サービスを使った時点で、この規約に同意したものとします。</p>
+      
+      <section id="t0" style="display: flex; flex-direction: column; gap: 6px;"><h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 19px; line-height: 1.4;">第1条 言葉の意味</h2><p style="margin: 0; font-size: 15px; line-height: 26px;">「会員」はGoogleアカウントで登録した利用者、「投稿」はスポット・記事・体験談・コメント・写真・修正依頼、「情報提供」はイベントの情報元(WebページのURL、チラシ・回覧板の写真)を送ることをいいます。</p></section><section id="t1" style="display: flex; flex-direction: column; gap: 6px;"><h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 19px; line-height: 1.4;">第2条 会員登録</h2><p style="margin: 0; font-size: 15px; line-height: 26px;">会員登録はGoogleアカウントで行い、1人1アカウントです。投稿と情報提供は会員でなくてもできます。コメントは会員だけができます。</p></section><section id="t2" style="display: flex; flex-direction: column; gap: 6px;"><h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 19px; line-height: 1.4;">第3条 投稿と情報提供</h2><p style="margin: 0; font-size: 15px; line-height: 26px;">投稿は運営者が確かめてから公開します(AIによる自動の判定も使います)。写真は自分で撮ったものか、許可を得たものだけを送ってください。イベントのページは情報提供をもとに運営者が作り、情報元から使うのは日時・場所などの事実だけです。</p></section><section id="t3" style="display: flex; flex-direction: column; gap: 6px;"><h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 19px; line-height: 1.4;">第4条 投稿の権利</h2><p style="margin: 0; font-size: 15px; line-height: 26px;">投稿の著作権は投稿した人に残ります。本サービスでの表示と、必要な範囲の編集(縮小、表記の統一、個人情報の伏せ字など)を、無償で許可していただきます。</p></section><section id="t4" style="display: flex; flex-direction: column; gap: 6px;"><h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 19px; line-height: 1.4;">第5条 禁止すること</h2><p style="margin: 0; font-size: 15px; line-height: 26px;">他人の権利やプライバシーを侵すこと、事実と違う情報をわざと送ること、宣伝だけが目的の投稿、地域や住民を見下すこと、本サービスに過度な負担をかけること、など。</p></section><section id="t5" style="display: flex; flex-direction: column; gap: 6px;"><h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 19px; line-height: 1.4;">第6条 非公開・削除・利用の停止</h2><p style="margin: 0; font-size: 15px; line-height: 26px;">第5条に当たる投稿は、予告なく非公開・削除できます。削除依頼を受けた投稿は、確認が終わるまでぼかして「確認中」と表示し、確認の結果によって削除します。停止中の会員は、ログインと閲覧、マイページでの確認と退会だけができます。</p></section><section id="t6" style="display: flex; flex-direction: column; gap: 6px;"><h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 19px; line-height: 1.4;">第7条 掲載する情報</h2><p style="margin: 0; font-size: 15px; line-height: 26px;">イベントの日時や内容は変わることがあります。出かける前に主催者に確かめてください。地域ページの紹介文はAIが作り、情報元と照らし合わせてから載せています。</p></section><section id="t7" style="display: flex; flex-direction: column; gap: 6px;"><h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 19px; line-height: 1.4;">第8条 退会</h2><p style="margin: 0; font-size: 15px; line-height: 26px;">いつでも退会できます。投稿はすべて削除します。退会画面で選べば、匿名にして残せます。</p></section><section id="t8" style="display: flex; flex-direction: column; gap: 6px;"><h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 19px; line-height: 1.4;">第9〜12条</h2><p style="margin: 0; font-size: 15px; line-height: 26px;">サービスの変更と停止(日本国内からの利用が前提で、海外からのアクセスは制限しています)、責任、規約の変更、準拠法と裁判所(高松地方裁判所または高松簡易裁判所)。</p></section>
+    </sc-if>
+    <sc-if value="{{is_privacy}}" hint-placeholder-val="{{false}}">
+      <h1 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 36px; line-height: 1.3;">プライバシーポリシー</h1>
+      <div style="display: flex; gap: 8px 16px; flex-wrap: wrap; font-size: 13px; line-height: 20px; color: var(--muted);"><span>制定 [ ]年[ ]月[ ]日</span><span>運営者 choko1229</span><a href="ContactPC.dc.html">ご質問はお問い合わせへ</a></div>
+      <p style="margin: 0; font-size: 15px; line-height: 26px;">運営者は、本サービスで取り扱う個人情報を、個人情報保護法その他の法令に従って取り扱います。外部サービスへの送信(電気通信事業法の外部送信規律)についても、このページでまとめて説明します。</p>
+      
+      <section id="p0" style="display: flex; flex-direction: column; gap: 8px;"><h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 19px; line-height: 1.4;">1. いただく情報と保存期間</h2><table style="width: 100%; border-collapse: collapse; font-size: 14px; line-height: 22px; background: var(--surface); border-radius: 10px; overflow: hidden;"><thead><tr><th scope="col" style="text-align: left; padding: 8px 10px; font-size: 13px; color: var(--muted); background: var(--sunken);">情報</th><th scope="col" style="text-align: left; padding: 8px 10px; font-size: 13px; color: var(--muted); background: var(--sunken);">保存期間</th></tr></thead><tbody><tr style="border-top: 1px solid var(--line);"><td style="padding: 8px 10px;">Googleの識別子・表示名・メール</td><td style="padding: 8px 10px;">退会まで</td></tr><tr style="border-top: 1px solid var(--line);"><td style="padding: 8px 10px;">投稿・写真</td><td style="padding: 8px 10px;">削除まで(却下は90日)</td></tr><tr style="border-top: 1px solid var(--line);"><td style="padding: 8px 10px;">IPアドレス</td><td style="padding: 8px 10px;">ハッシュにして90日</td></tr><tr style="border-top: 1px solid var(--line);"><td style="padding: 8px 10px;">「行った!」のCookie</td><td style="padding: 8px 10px;">1年</td></tr><tr style="border-top: 1px solid var(--line);"><td style="padding: 8px 10px;">お問い合わせ</td><td style="padding: 8px 10px;">対応後 3年</td></tr></tbody></table><p style="font-size: 13px; line-height: 20px; color: var(--muted); margin: 0;">現在地はブラウザの中だけで使い、サーバーには保存しません。写真の位置情報は保存するときに消します。</p></section><section id="p1" style="display: flex; flex-direction: column; gap: 8px;"><h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 19px; line-height: 1.4;">2. 使う目的</h2><p style="margin: 0; font-size: 15px; line-height: 26px;">本サービスの提供、投稿と情報提供の確認、スパムの防止、お問い合わせへの返信、改善のための集計(個人を特定しない形)。</p></section><section id="p2" style="display: flex; flex-direction: column; gap: 8px;"><h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 19px; line-height: 1.4;">3. 第三者への提供</h2><p style="margin: 0; font-size: 15px; line-height: 26px;">法令に基づく場合などを除き、本人の同意なく第三者に提供しません。</p></section><section id="p3" style="display: flex; flex-direction: column; gap: 8px;"><h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 19px; line-height: 1.4;">4. 外部サービスへの送信</h2><p style="margin: 0; font-size: 15px; line-height: 26px;">次のサービスに、端末の情報(Cookie のID、IPアドレスなど)が送られます。</p><div style="overflow-x: auto;"><table style="width: 100%; border-collapse: collapse; font-size: 14px; line-height: 22px; background: var(--surface); border-radius: 10px; overflow: hidden; min-width: 0px;"><thead><tr><th scope="col" style="text-align: left; padding: 8px 10px; font-size: 13px; color: var(--muted); background: var(--sunken);">送信先</th><th scope="col" style="text-align: left; padding: 8px 10px; font-size: 13px; color: var(--muted); background: var(--sunken);">目的</th><th scope="col" style="text-align: left; padding: 8px 10px; font-size: 13px; color: var(--muted); background: var(--sunken);">止める方法</th></tr></thead><tbody><tr style="border-top: 1px solid var(--line);"><td style="padding: 8px 10px; font-weight: 700;">Google アナリティクス 4</td><td style="padding: 8px 10px;">アクセスの分析</td><td style="padding: 8px 10px;">同意バナー</td></tr><tr style="border-top: 1px solid var(--line);"><td style="padding: 8px 10px; font-weight: 700;">Google AdSense</td><td style="padding: 8px 10px;">広告の配信</td><td style="padding: 8px 10px;">同意バナー・広告設定</td></tr><tr style="border-top: 1px solid var(--line);"><td style="padding: 8px 10px; font-weight: 700;">Cloudflare Turnstile</td><td style="padding: 8px 10px;">スパムの防止</td><td style="padding: 8px 10px;">フォームを使うときだけ</td></tr><tr style="border-top: 1px solid var(--line);"><td style="padding: 8px 10px; font-weight: 700;">Google ログイン</td><td style="padding: 8px 10px;">ログイン</td><td style="padding: 8px 10px;">ログインしなければ送られない</td></tr><tr style="border-top: 1px solid var(--line);"><td style="padding: 8px 10px; font-weight: 700;">国土地理院 地理院タイル</td><td style="padding: 8px 10px;">地図の表示</td><td style="padding: 8px 10px;">地図を開かなければ送られない</td></tr></tbody></table></div></section><section id="p4" style="display: flex; flex-direction: column; gap: 8px;"><h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 19px; line-height: 1.4;">5. AIサービスの利用</h2><p style="margin: 0; font-size: 15px; line-height: 26px;">投稿の確認や紹介文づくりに、OpenRouter(米国)を通してAIを使います。送るのは公開予定の投稿の内容と写真、情報提供で送られた公開中のページの本文、削除依頼の内容と対象のページで、IPアドレス・メールアドレス・会員名は送りません。提供元は米国・中国など外国の事業者のことがあり、記録や学習に使われることもあるため、各フォームで送信の前に同意をいただきます(削除依頼は記録・学習しない提供元だけに送ります)。</p></section><section id="p5" style="display: flex; flex-direction: column; gap: 8px;"><h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 19px; line-height: 1.4;">6. 広告について</h2><p style="margin: 0; font-size: 15px; line-height: 26px;">Google AdSense の広告では、第三者配信事業者が Cookie を使い、過去のアクセス情報に基づいて広告を配信します。パーソナライズ広告は Google の広告設定や aboutads.info で無効にできます。Google 以外の広告配信事業者の広告は配信していません。</p></section><section id="p6" style="display: flex; flex-direction: column; gap: 8px;"><h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 19px; line-height: 1.4;">7〜10</h2><p style="margin: 0; font-size: 15px; line-height: 26px;">安全のためにしていること、開示・訂正・利用停止などの請求(お問い合わせの「個人情報について」から)、変更、お問い合わせ先。</p></section>
+    </sc-if>
+    </article>
+  </div>
+</main>
+<footer style="border-top: 1px solid var(--line);"><div style="max-width: 1200px; margin: 0 auto; padding: 24px 32px; display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between;"><nav aria-label="サイトの情報" style="display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 14px; line-height: 22px;"><a href="AboutPC.dc.html">運営者情報</a><a href="LegalPC.dc.html">利用規約</a><a href="LegalPC.dc.html">プライバシーポリシー</a><a href="ContactPC.dc.html">お問い合わせ</a></nav><span style="font-family: 'Yomogi', sans-serif; font-size: 16px; color: var(--muted);">コンビニまで5km。でも、いいところです。</span></div></footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":1700}}'>
+class Component extends DCLogic {
+renderVals() {
+const doc = (this.state && this.state.doc) || 'terms';
+const base = 'flex: 0 0 auto; height: 40px; padding: 0 16px; border-radius: 999px; font: 700 14px/1 BIZ UDPGothic, sans-serif; cursor: pointer; ';
+const list = [['terms', '利用規約'], ['privacy', 'プライバシーポリシー']];
+return {
+docs: list.map(([id, label]) => ({
+ label: label,
+ pressed: doc === id ? 'true' : 'false',
+ style: doc === id ? base + 'background: var(--surface); border: 2px solid var(--accent); color: var(--accent);' : base + 'background: var(--surface); border: 2px solid var(--strong); color: var(--ink);',
+ pick: () => this.setState({ doc: id })
+})),
+is_terms: doc === 'terms',
+is_privacy: doc === 'privacy'
+};
+}
+}
+</script>
+</body>
+</html>

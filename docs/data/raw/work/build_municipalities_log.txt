@@ -1,0 +1,59 @@
+sheet1: R6.1.1現在の団体  sheet2: R6.1.1政令指定都市
+counts by kind: {'pref': 47, 'designated_city': 20, 'city': 772, 'ward': 171, 'special_ward': 23, 'town': 743, 'village': 189}
+市町村 = 1724  特別区 = 23  市区町村 = 1747
+市 (指定都市含む) = 792
+designated cities in sheet2 = 20  missing in sheet1: []
+skipped non-code rows sheet1: []
+skipped non-code rows sheet2: []
+rows with extra columns: []
+check digit mismatches: []
+pref rows: 47  distinct pref_code: 47
+kana suffix mismatches: []
+town ending マチ: 277  チョウ: 466
+village ending ムラ: 161  ソン: 28
+names containing 市/町/村/区 before suffix: 24
+  INNER 014087 余市町 ヨイチチョウ town
+  INNER 043222 村田町 ムラタマチ town
+  INNER 062081 村山市 ムラヤマシ city
+  INNER 072117 田村市 タムラシ city
+  INNER 093441 市貝町 イチカイマチ town
+  INNER 104647 玉村町 タマムラマチ town
+  INNER 122033 市川市 イチカワシ city
+  INNER 122190 市原市 イチハラシ city
+  INNER 132098 町田市 マチダシ city
+  INNER 132136 東村山市 ヒガシムラヤマシ city
+  INNER 132233 武蔵村山市 ムサシムラヤマシ city
+  INNER 132276 羽村市 ハムラシ city
+  INNER 152102 十日町市 トオカマチシ city
+  INNER 152129 村上市 ムラカミシ city
+  INNER 163228 上市町 カミイチマチ town
+  INNER 172120 野々市市 ノノイチシ city
+  INNER 193461 市川三郷町 イチカワミサトチョウ town
+  INNER 202126 大町市 オオマチシ city
+  INNER 242021 四日市市 ヨッカイチシ city
+  INNER 284424 市川町 イチカワチョウ town
+  INNER 294438 下市町 シモイチチョウ town
+  INNER 342131 廿日市市 ハツカイチシ city
+  INNER 414239 大町町 オオマチチョウ town
+  INNER 422053 大村市 オオムラシ city
+kana with non-katakana chars: []
+Kagawa rows: 18
+   {'code': '370002', 'pref_code': '37', 'pref_name': '香川県', 'city_name': '', 'pref_kana': 'カガワケン', 'city_kana': '', 'kind': 'pref'}
+   {'code': '372013', 'pref_code': '37', 'pref_name': '香川県', 'city_name': '高松市', 'pref_kana': 'カガワケン', 'city_kana': 'タカマツシ', 'kind': 'city'}
+   {'code': '372021', 'pref_code': '37', 'pref_name': '香川県', 'city_name': '丸亀市', 'pref_kana': 'カガワケン', 'city_kana': 'マルガメシ', 'kind': 'city'}
+   {'code': '372030', 'pref_code': '37', 'pref_name': '香川県', 'city_name': '坂出市', 'pref_kana': 'カガワケン', 'city_kana': 'サカイデシ', 'kind': 'city'}
+   {'code': '372048', 'pref_code': '37', 'pref_name': '香川県', 'city_name': '善通寺市', 'pref_kana': 'カガワケン', 'city_kana': 'ゼンツウジシ', 'kind': 'city'}
+   {'code': '372056', 'pref_code': '37', 'pref_name': '香川県', 'city_name': '観音寺市', 'pref_kana': 'カガワケン', 'city_kana': 'カンオンジシ', 'kind': 'city'}
+   {'code': '372064', 'pref_code': '37', 'pref_name': '香川県', 'city_name': 'さぬき市', 'pref_kana': 'カガワケン', 'city_kana': 'サヌキシ', 'kind': 'city'}
+   {'code': '372072', 'pref_code': '37', 'pref_name': '香川県', 'city_name': '東かがわ市', 'pref_kana': 'カガワケン', 'city_kana': 'ヒガシカガワシ', 'kind': 'city'}
+   {'code': '372081', 'pref_code': '37', 'pref_name': '香川県', 'city_name': '三豊市', 'pref_kana': 'カガワケン', 'city_kana': 'ミトヨシ', 'kind': 'city'}
+   {'code': '373222', 'pref_code': '37', 'pref_name': '香川県', 'city_name': '土庄町', 'pref_kana': 'カガワケン', 'city_kana': 'トノショウチョウ', 'kind': 'town'}
+   {'code': '373249', 'pref_code': '37', 'pref_name': '香川県', 'city_name': '小豆島町', 'pref_kana': 'カガワケン', 'city_kana': 'ショウドシマチョウ', 'kind': 'town'}
+   {'code': '373419', 'pref_code': '37', 'pref_name': '香川県', 'city_name': '三木町', 'pref_kana': 'カガワケン', 'city_kana': 'ミキチョウ', 'kind': 'town'}
+   {'code': '373648', 'pref_code': '37', 'pref_name': '香川県', 'city_name': '直島町', 'pref_kana': 'カガワケン', 'city_kana': 'ナオシマチョウ', 'kind': 'town'}
+   {'code': '373869', 'pref_code': '37', 'pref_name': '香川県', 'city_name': '宇多津町', 'pref_kana': 'カガワケン', 'city_kana': 'ウタヅチョウ', 'kind': 'town'}
+   {'code': '373877', 'pref_code': '37', 'pref_name': '香川県', 'city_name': '綾川町', 'pref_kana': 'カガワケン', 'city_kana': 'アヤガワチョウ', 'kind': 'town'}
+   {'code': '374032', 'pref_code': '37', 'pref_name': '香川県', 'city_name': '琴平町', 'pref_kana': 'カガワケン', 'city_kana': 'コトヒラチョウ', 'kind': 'town'}
+   {'code': '374041', 'pref_code': '37', 'pref_name': '香川県', 'city_name': '多度津町', 'pref_kana': 'カガワケン', 'city_kana': 'タドツチョウ', 'kind': 'town'}
+   {'code': '374067', 'pref_code': '37', 'pref_name': '香川県', 'city_name': 'まんのう町', 'pref_kana': 'カガワケン', 'city_kana': 'マンノウチョウ', 'kind': 'town'}
+written 1965 rows

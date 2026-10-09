@@ -1,0 +1,37 @@
+# PHP の設定(kagoya の既定値は memory_limit 128M、アップロード 25600M、display_errors On なので上書きする)
+# 画像変換はキュー(cron)側で php -d memory_limit=512M として動かす。ここは Web だけに効く
+<IfModule php_module>
+    php_value memory_limit 256M
+    php_value upload_max_filesize 10M
+    php_value post_max_size 110M
+    php_flag display_errors off
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Handle X-XSRF-Token Header
+    RewriteCond %{HTTP:x-xsrf-token} .
+    RewriteRule .* - [E=HTTP_X_XSRF_TOKEN:%{HTTP:X-XSRF-Token}]
+
+    # URL は末尾スラッシュありに統一する(設計書15.1)ので、Laravel 標準の「末尾スラッシュを外す」転送は置かない。
+    # 正規化はアプリ側のミドルウェアで1回の 301 にする(フェーズ4)
+
+    # Send Requests To Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+# ドットで始まるファイルは見せない(.well-known は除く)
+<FilesMatch "^\.(?!well-known)">
+    Require all denied
+</FilesMatch>

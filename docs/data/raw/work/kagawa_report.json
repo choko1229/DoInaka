@@ -1,0 +1,4984 @@
+{
+ "mismatches": [
+  {
+   "name": "竜川村",
+   "date": "1954-03-31",
+   "chain_now": [
+    "善通寺市"
+   ],
+   "infobox_now": [
+    "善通寺市",
+    "丸亀市"
+   ]
+  },
+  {
+   "name": "川津村",
+   "date": "1955-01-01",
+   "chain_now": [
+    "坂出市",
+    "丸亀市",
+    "宇多津町"
+   ],
+   "infobox_now": [
+    "坂出市",
+    "宇多津町"
+   ]
+  },
+  {
+   "name": "神野村",
+   "date": "1955-04-01",
+   "chain_now": [
+    "まんのう町"
+   ],
+   "infobox_now": [
+    "まんのう町",
+    "琴平町"
+   ]
+  },
+  {
+   "name": "井戸村",
+   "date": "1956-09-30",
+   "chain_now": [
+    "三木町"
+   ],
+   "infobox_now": [
+    "三木町",
+    "さぬき市"
+   ]
+  }
+ ],
+ "notes": [],
+ "only_in_wiki": [],
+ "only_in_uub": [],
+ "heisei_only_in_wiki": [],
+ "heisei_only_in_mic": [],
+ "rows": [
+  {
+   "era": "heisei",
+   "former_name": "大川町",
+   "former_kana": "おおかわちょう",
+   "former_kind": "町",
+   "abolished_on": "2002-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "さぬき市",
+   "current_city_name": "さぬき市",
+   "current_city_code": "372064",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "さぬき市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%B7%9D%E7%94%BA_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u540.html https://www.soumu.go.jp/main_content/000283317.xls https://www.soumu.go.jp/gapei/gapei_h11iko.html https://www.soumu.go.jp/gapei/hensen_kagawa.html",
+   "confidence": "high",
+   "notes": "旧郡: 大川郡",
+   "_fact_conf": "high",
+   "_read_conf": "high",
+   "_cur_conf": "high",
+   "id": 1,
+   "parent_former_id": ""
+  },
+  {
+   "era": "heisei",
+   "former_name": "寒川町",
+   "former_kana": "さんがわちょう",
+   "former_kind": "町",
+   "abolished_on": "2002-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "さぬき市",
+   "current_city_name": "さぬき市",
+   "current_city_code": "372064",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "さぬき市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%AF%92%E5%B7%9D%E7%94%BA_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u540.html https://www.soumu.go.jp/main_content/000283317.xls https://www.soumu.go.jp/gapei/gapei_h11iko.html https://www.soumu.go.jp/gapei/hensen_kagawa.html",
+   "confidence": "high",
+   "notes": "旧郡: 大川郡",
+   "_fact_conf": "high",
+   "_read_conf": "high",
+   "_cur_conf": "high",
+   "id": 2,
+   "parent_former_id": ""
+  },
+  {
+   "era": "heisei",
+   "former_name": "志度町",
+   "former_kana": "しどちょう",
+   "former_kind": "町",
+   "abolished_on": "2002-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "さぬき市",
+   "current_city_name": "さぬき市",
+   "current_city_code": "372064",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "さぬき市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%BF%97%E5%BA%A6%E7%94%BA https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u540.html https://www.soumu.go.jp/main_content/000283317.xls https://www.soumu.go.jp/gapei/gapei_h11iko.html https://www.soumu.go.jp/gapei/hensen_kagawa.html",
+   "confidence": "high",
+   "notes": "旧郡: 大川郡",
+   "_fact_conf": "high",
+   "_read_conf": "high",
+   "_cur_conf": "high",
+   "id": 3,
+   "parent_former_id": ""
+  },
+  {
+   "era": "heisei",
+   "former_name": "津田町",
+   "former_kana": "つだちょう",
+   "former_kind": "町",
+   "abolished_on": "2002-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "さぬき市",
+   "current_city_name": "さぬき市",
+   "current_city_code": "372064",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "さぬき市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E6%B4%A5%E7%94%B0%E7%94%BA_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u540.html https://www.soumu.go.jp/main_content/000283317.xls https://www.soumu.go.jp/gapei/gapei_h11iko.html https://www.soumu.go.jp/gapei/hensen_kagawa.html",
+   "confidence": "high",
+   "notes": "旧郡: 大川郡",
+   "_fact_conf": "high",
+   "_read_conf": "high",
+   "_cur_conf": "high",
+   "id": 4,
+   "parent_former_id": ""
+  },
+  {
+   "era": "heisei",
+   "former_name": "長尾町",
+   "former_kana": "ながおちょう",
+   "former_kind": "町",
+   "abolished_on": "2002-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "さぬき市",
+   "current_city_name": "さぬき市",
+   "current_city_code": "372064",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "さぬき市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E9%95%B7%E5%B0%BE%E7%94%BA_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u540.html https://www.soumu.go.jp/main_content/000283317.xls https://www.soumu.go.jp/gapei/gapei_h11iko.html https://www.soumu.go.jp/gapei/hensen_kagawa.html",
+   "confidence": "high",
+   "notes": "旧郡: 大川郡",
+   "_fact_conf": "high",
+   "_read_conf": "high",
+   "_cur_conf": "high",
+   "id": 5,
+   "parent_former_id": ""
+  },
+  {
+   "era": "heisei",
+   "former_name": "大内町",
+   "former_kana": "おおちちょう",
+   "former_kind": "町",
+   "abolished_on": "2003-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "東かがわ市",
+   "current_city_name": "東かがわ市",
+   "current_city_code": "372072",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "東かがわ市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%86%85%E7%94%BA_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u541.html https://www.soumu.go.jp/main_content/000283317.xls https://www.soumu.go.jp/gapei/gapei_h11iko.html https://www.soumu.go.jp/gapei/hensen_kagawa.html",
+   "confidence": "high",
+   "notes": "旧郡: 大川郡",
+   "_fact_conf": "high",
+   "_read_conf": "high",
+   "_cur_conf": "high",
+   "id": 6,
+   "parent_former_id": ""
+  },
+  {
+   "era": "heisei",
+   "former_name": "引田町",
+   "former_kana": "ひけたちょう",
+   "former_kind": "町",
+   "abolished_on": "2003-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "東かがわ市",
+   "current_city_name": "東かがわ市",
+   "current_city_code": "372072",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "東かがわ市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%BC%95%E7%94%B0%E7%94%BA https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u541.html https://www.soumu.go.jp/main_content/000283317.xls https://www.soumu.go.jp/gapei/gapei_h11iko.html https://www.soumu.go.jp/gapei/hensen_kagawa.html",
+   "confidence": "high",
+   "notes": "旧郡: 大川郡",
+   "_fact_conf": "high",
+   "_read_conf": "high",
+   "_cur_conf": "high",
+   "id": 7,
+   "parent_former_id": ""
+  },
+  {
+   "era": "heisei",
+   "former_name": "白鳥町",
+   "former_kana": "しろとりちょう",
+   "former_kind": "町",
+   "abolished_on": "2003-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "東かがわ市",
+   "current_city_name": "東かがわ市",
+   "current_city_code": "372072",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "東かがわ市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E7%99%BD%E9%B3%A5%E7%94%BA_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u541.html https://www.soumu.go.jp/main_content/000283317.xls https://www.soumu.go.jp/gapei/gapei_h11iko.html https://www.soumu.go.jp/gapei/hensen_kagawa.html",
+   "confidence": "high",
+   "notes": "旧郡: 大川郡",
+   "_fact_conf": "high",
+   "_read_conf": "high",
+   "_cur_conf": "high",
+   "id": 8,
+   "parent_former_id": ""
+  },
+  {
+   "era": "heisei",
+   "former_name": "丸亀市",
+   "former_kana": "まるがめし",
+   "former_kind": "市",
+   "abolished_on": "2005-03-22",
+   "merger_type": "新設合併",
+   "merged_into": "丸亀市",
+   "current_city_name": "丸亀市",
+   "current_city_code": "372021",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "丸亀市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E4%B8%B8%E4%BA%80%E5%B8%82 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u796.html https://www.soumu.go.jp/main_content/000283317.xls https://www.soumu.go.jp/gapei/gapei_h11iko.html https://www.soumu.go.jp/gapei/hensen_kagawa.html",
+   "confidence": "high",
+   "notes": "Wikipedia一覧では『（旧）』付き（同日に同名の新自治体が成立）。読みは同名の後身自治体の記事による",
+   "_fact_conf": "high",
+   "_read_conf": "high",
+   "_cur_conf": "high",
+   "id": 9,
+   "parent_former_id": ""
+  },
+  {
+   "era": "heisei",
+   "former_name": "綾歌町",
+   "former_kana": "あやうたちょう",
+   "former_kind": "町",
+   "abolished_on": "2005-03-22",
+   "merger_type": "新設合併",
+   "merged_into": "丸亀市",
+   "current_city_name": "丸亀市",
+   "current_city_code": "372021",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "丸亀市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E7%B6%BE%E6%AD%8C%E7%94%BA https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u796.html https://www.soumu.go.jp/main_content/000283317.xls https://www.soumu.go.jp/gapei/gapei_h11iko.html https://www.soumu.go.jp/gapei/hensen_kagawa.html",
+   "confidence": "high",
+   "notes": "旧郡: 綾歌郡",
+   "_fact_conf": "high",
+   "_read_conf": "high",
+   "_cur_conf": "high",
+   "id": 10,
+   "parent_former_id": ""
+  },
+  {
+   "era": "heisei",
+   "former_name": "飯山町",
+   "former_kana": "はんざんちょう",
+   "former_kind": "町",
+   "abolished_on": "2005-03-22",
+   "merger_type": "新設合併",
+   "merged_into": "丸亀市",
+   "current_city_name": "丸亀市",
+   "current_city_code": "372021",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "丸亀市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E9%A3%AF%E5%B1%B1%E7%94%BA_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u796.html https://www.soumu.go.jp/main_content/000283317.xls https://www.soumu.go.jp/gapei/gapei_h11iko.html https://www.soumu.go.jp/gapei/hensen_kagawa.html",
+   "confidence": "high",
+   "notes": "旧郡: 綾歌郡",
+   "_fact_conf": "high",
+   "_read_conf": "high",
+   "_cur_conf": "high",
+   "id": 11,
+   "parent_former_id": ""
+  },
+  {
+   "era": "heisei",
+   "former_name": "塩江町",
+   "former_kana": "しおのえちょう",
+   "former_kind": "町",
+   "abolished_on": "2005-09-26",
+   "merger_type": "編入",
+   "merged_into": "高松市",
+   "current_city_name": "高松市",
+   "current_city_code": "372013",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "高松市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%A1%A9%E6%B1%9F%E7%94%BA https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u1297.html https://www.soumu.go.jp/main_content/000283317.xls https://www.soumu.go.jp/gapei/gapei_h11iko.html https://www.soumu.go.jp/gapei/hensen_kagawa.html",
+   "confidence": "high",
+   "notes": "旧郡: 香川郡",
+   "_fact_conf": "high",
+   "_read_conf": "high",
+   "_cur_conf": "high",
+   "id": 12,
+   "parent_former_id": ""
+  },
+  {
+   "era": "heisei",
+   "former_name": "大野原町",
+   "former_kana": "おおのはらちょう",
+   "former_kind": "町",
+   "abolished_on": "2005-10-11",
+   "merger_type": "新設合併",
+   "merged_into": "観音寺市",
+   "current_city_name": "観音寺市",
+   "current_city_code": "372056",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "観音寺市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%A4%A7%E9%87%8E%E5%8E%9F%E7%94%BA https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u1049.html https://www.soumu.go.jp/main_content/000283317.xls https://www.soumu.go.jp/gapei/gapei_h11iko.html https://www.soumu.go.jp/gapei/hensen_kagawa.html",
+   "confidence": "high",
+   "notes": "旧郡: 三豊郡",
+   "_fact_conf": "high",
+   "_read_conf": "high",
+   "_cur_conf": "high",
+   "id": 13,
+   "parent_former_id": ""
+  },
+  {
+   "era": "heisei",
+   "former_name": "観音寺市",
+   "former_kana": "かんおんじし",
+   "former_kind": "市",
+   "abolished_on": "2005-10-11",
+   "merger_type": "新設合併",
+   "merged_into": "観音寺市",
+   "current_city_name": "観音寺市",
+   "current_city_code": "372056",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "観音寺市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E8%A6%B3%E9%9F%B3%E5%AF%BA%E5%B8%82 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u1049.html https://www.soumu.go.jp/main_content/000283317.xls https://www.soumu.go.jp/gapei/gapei_h11iko.html https://www.soumu.go.jp/gapei/hensen_kagawa.html",
+   "confidence": "high",
+   "notes": "Wikipedia一覧では『（旧）』付き（同日に同名の新自治体が成立）。読みは同名の後身自治体の記事による",
+   "_fact_conf": "high",
+   "_read_conf": "high",
+   "_cur_conf": "high",
+   "id": 14,
+   "parent_former_id": ""
+  },
+  {
+   "era": "heisei",
+   "former_name": "豊浜町",
+   "former_kana": "とよはまちょう",
+   "former_kind": "町",
+   "abolished_on": "2005-10-11",
+   "merger_type": "新設合併",
+   "merged_into": "観音寺市",
+   "current_city_name": "観音寺市",
+   "current_city_code": "372056",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "観音寺市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E8%B1%8A%E6%B5%9C%E7%94%BA_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u1049.html https://www.soumu.go.jp/main_content/000283317.xls https://www.soumu.go.jp/gapei/gapei_h11iko.html https://www.soumu.go.jp/gapei/hensen_kagawa.html",
+   "confidence": "high",
+   "notes": "旧郡: 三豊郡",
+   "_fact_conf": "high",
+   "_read_conf": "high",
+   "_cur_conf": "high",
+   "id": 15,
+   "parent_former_id": ""
+  },
+  {
+   "era": "heisei",
+   "former_name": "三野町",
+   "former_kana": "みのちょう",
+   "former_kind": "町",
+   "abolished_on": "2006-01-01",
+   "merger_type": "新設合併",
+   "merged_into": "三豊市",
+   "current_city_name": "三豊市",
+   "current_city_code": "372081",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "三豊市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E4%B8%89%E9%87%8E%E7%94%BA_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u1142.html https://www.soumu.go.jp/main_content/000283317.xls https://www.soumu.go.jp/gapei/gapei_h11iko.html https://www.soumu.go.jp/gapei/hensen_kagawa.html",
+   "confidence": "high",
+   "notes": "旧郡: 三豊郡",
+   "_fact_conf": "high",
+   "_read_conf": "high",
+   "_cur_conf": "high",
+   "id": 16,
+   "parent_former_id": ""
+  },
+  {
+   "era": "heisei",
+   "former_name": "仁尾町",
+   "former_kana": "におちょう",
+   "former_kind": "町",
+   "abolished_on": "2006-01-01",
+   "merger_type": "新設合併",
+   "merged_into": "三豊市",
+   "current_city_name": "三豊市",
+   "current_city_code": "372081",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "三豊市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E4%BB%81%E5%B0%BE%E7%94%BA https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u1142.html https://www.soumu.go.jp/main_content/000283317.xls https://www.soumu.go.jp/gapei/gapei_h11iko.html https://www.soumu.go.jp/gapei/hensen_kagawa.html",
+   "confidence": "high",
+   "notes": "旧郡: 三豊郡",
+   "_fact_conf": "high",
+   "_read_conf": "high",
+   "_cur_conf": "high",
+   "id": 17,
+   "parent_former_id": ""
+  },
+  {
+   "era": "heisei",
+   "former_name": "山本町",
+   "former_kana": "やまもとちょう",
+   "former_kind": "町",
+   "abolished_on": "2006-01-01",
+   "merger_type": "新設合併",
+   "merged_into": "三豊市",
+   "current_city_name": "三豊市",
+   "current_city_code": "372081",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "三豊市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%B1%B1%E6%9C%AC%E7%94%BA_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u1142.html https://www.soumu.go.jp/main_content/000283317.xls https://www.soumu.go.jp/gapei/gapei_h11iko.html https://www.soumu.go.jp/gapei/hensen_kagawa.html",
+   "confidence": "high",
+   "notes": "旧郡: 三豊郡",
+   "_fact_conf": "high",
+   "_read_conf": "high",
+   "_cur_conf": "high",
+   "id": 18,
+   "parent_former_id": ""
+  },
+  {
+   "era": "heisei",
+   "former_name": "詫間町",
+   "former_kana": "たくまちょう",
+   "former_kind": "町",
+   "abolished_on": "2006-01-01",
+   "merger_type": "新設合併",
+   "merged_into": "三豊市",
+   "current_city_name": "三豊市",
+   "current_city_code": "372081",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "三豊市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E8%A9%AB%E9%96%93%E7%94%BA https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u1142.html https://www.soumu.go.jp/main_content/000283317.xls https://www.soumu.go.jp/gapei/gapei_h11iko.html https://www.soumu.go.jp/gapei/hensen_kagawa.html",
+   "confidence": "high",
+   "notes": "旧郡: 三豊郡",
+   "_fact_conf": "high",
+   "_read_conf": "high",
+   "_cur_conf": "high",
+   "id": 19,
+   "parent_former_id": ""
+  },
+  {
+   "era": "heisei",
+   "former_name": "豊中町",
+   "former_kana": "とよなかちょう",
+   "former_kind": "町",
+   "abolished_on": "2006-01-01",
+   "merger_type": "新設合併",
+   "merged_into": "三豊市",
+   "current_city_name": "三豊市",
+   "current_city_code": "372081",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "三豊市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E8%B1%8A%E4%B8%AD%E7%94%BA_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u1142.html https://www.soumu.go.jp/main_content/000283317.xls https://www.soumu.go.jp/gapei/gapei_h11iko.html https://www.soumu.go.jp/gapei/hensen_kagawa.html",
+   "confidence": "high",
+   "notes": "旧郡: 三豊郡",
+   "_fact_conf": "high",
+   "_read_conf": "high",
+   "_cur_conf": "high",
+   "id": 20,
+   "parent_former_id": ""
+  },
+  {
+   "era": "heisei",
+   "former_name": "財田町",
+   "former_kana": "さいたちょう",
+   "former_kind": "町",
+   "abolished_on": "2006-01-01",
+   "merger_type": "新設合併",
+   "merged_into": "三豊市",
+   "current_city_name": "三豊市",
+   "current_city_code": "372081",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "三豊市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E8%B2%A1%E7%94%B0%E7%94%BA_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u1142.html https://www.soumu.go.jp/main_content/000283317.xls https://www.soumu.go.jp/gapei/gapei_h11iko.html https://www.soumu.go.jp/gapei/hensen_kagawa.html",
+   "confidence": "high",
+   "notes": "旧郡: 三豊郡",
+   "_fact_conf": "high",
+   "_read_conf": "high",
+   "_cur_conf": "high",
+   "id": 21,
+   "parent_former_id": ""
+  },
+  {
+   "era": "heisei",
+   "former_name": "高瀬町",
+   "former_kana": "たかせちょう",
+   "former_kind": "町",
+   "abolished_on": "2006-01-01",
+   "merger_type": "新設合併",
+   "merged_into": "三豊市",
+   "current_city_name": "三豊市",
+   "current_city_code": "372081",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "三豊市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E9%AB%98%E7%80%AC%E7%94%BA_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u1142.html https://www.soumu.go.jp/main_content/000283317.xls https://www.soumu.go.jp/gapei/gapei_h11iko.html https://www.soumu.go.jp/gapei/hensen_kagawa.html",
+   "confidence": "high",
+   "notes": "旧郡: 三豊郡",
+   "_fact_conf": "high",
+   "_read_conf": "high",
+   "_cur_conf": "high",
+   "id": 22,
+   "parent_former_id": ""
+  },
+  {
+   "era": "heisei",
+   "former_name": "国分寺町",
+   "former_kana": "こくぶんじちょう",
+   "former_kind": "町",
+   "abolished_on": "2006-01-10",
+   "merger_type": "編入",
+   "merged_into": "高松市",
+   "current_city_name": "高松市",
+   "current_city_code": "372013",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "高松市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%9B%BD%E5%88%86%E5%AF%BA%E7%94%BA_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u869.html https://www.soumu.go.jp/main_content/000283317.xls https://www.soumu.go.jp/gapei/gapei_h11iko.html https://www.soumu.go.jp/gapei/hensen_kagawa.html",
+   "confidence": "high",
+   "notes": "旧郡: 綾歌郡",
+   "_fact_conf": "high",
+   "_read_conf": "high",
+   "_cur_conf": "high",
+   "id": 23,
+   "parent_former_id": ""
+  },
+  {
+   "era": "heisei",
+   "former_name": "庵治町",
+   "former_kana": "あじちょう",
+   "former_kind": "町",
+   "abolished_on": "2006-01-10",
+   "merger_type": "編入",
+   "merged_into": "高松市",
+   "current_city_name": "高松市",
+   "current_city_code": "372013",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "高松市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%BA%B5%E6%B2%BB%E7%94%BA https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u869.html https://www.soumu.go.jp/main_content/000283317.xls https://www.soumu.go.jp/gapei/gapei_h11iko.html https://www.soumu.go.jp/gapei/hensen_kagawa.html",
+   "confidence": "high",
+   "notes": "旧郡: 木田郡",
+   "_fact_conf": "high",
+   "_read_conf": "high",
+   "_cur_conf": "high",
+   "id": 24,
+   "parent_former_id": ""
+  },
+  {
+   "era": "heisei",
+   "former_name": "牟礼町",
+   "former_kana": "むれちょう",
+   "former_kind": "町",
+   "abolished_on": "2006-01-10",
+   "merger_type": "編入",
+   "merged_into": "高松市",
+   "current_city_name": "高松市",
+   "current_city_code": "372013",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "高松市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E7%89%9F%E7%A4%BC%E7%94%BA https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u869.html https://www.soumu.go.jp/main_content/000283317.xls https://www.soumu.go.jp/gapei/gapei_h11iko.html https://www.soumu.go.jp/gapei/hensen_kagawa.html",
+   "confidence": "high",
+   "notes": "旧郡: 木田郡",
+   "_fact_conf": "high",
+   "_read_conf": "high",
+   "_cur_conf": "high",
+   "id": 25,
+   "parent_former_id": ""
+  },
+  {
+   "era": "heisei",
+   "former_name": "香南町",
+   "former_kana": "こうなんちょう",
+   "former_kind": "町",
+   "abolished_on": "2006-01-10",
+   "merger_type": "編入",
+   "merged_into": "高松市",
+   "current_city_name": "高松市",
+   "current_city_code": "372013",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "高松市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E9%A6%99%E5%8D%97%E7%94%BA https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u869.html https://www.soumu.go.jp/main_content/000283317.xls https://www.soumu.go.jp/gapei/gapei_h11iko.html https://www.soumu.go.jp/gapei/hensen_kagawa.html",
+   "confidence": "high",
+   "notes": "旧郡: 香川郡",
+   "_fact_conf": "high",
+   "_read_conf": "high",
+   "_cur_conf": "high",
+   "id": 26,
+   "parent_former_id": ""
+  },
+  {
+   "era": "heisei",
+   "former_name": "香川町",
+   "former_kana": "かがわちょう",
+   "former_kind": "町",
+   "abolished_on": "2006-01-10",
+   "merger_type": "編入",
+   "merged_into": "高松市",
+   "current_city_name": "高松市",
+   "current_city_code": "372013",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "高松市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%94%BA https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u869.html https://www.soumu.go.jp/main_content/000283317.xls https://www.soumu.go.jp/gapei/gapei_h11iko.html https://www.soumu.go.jp/gapei/hensen_kagawa.html",
+   "confidence": "high",
+   "notes": "旧郡: 香川郡",
+   "_fact_conf": "high",
+   "_read_conf": "high",
+   "_cur_conf": "high",
+   "id": 27,
+   "parent_former_id": ""
+  },
+  {
+   "era": "heisei",
+   "former_name": "仲南町",
+   "former_kana": "ちゅうなんちょう",
+   "former_kind": "町",
+   "abolished_on": "2006-03-20",
+   "merger_type": "新設合併",
+   "merged_into": "まんのう町",
+   "current_city_name": "まんのう町",
+   "current_city_code": "374067",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "まんのう町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E4%BB%B2%E5%8D%97%E7%94%BA https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u1183.html https://www.soumu.go.jp/main_content/000283317.xls https://www.soumu.go.jp/gapei/gapei_h11iko.html https://www.soumu.go.jp/gapei/hensen_kagawa.html",
+   "confidence": "high",
+   "notes": "旧郡: 仲多度郡",
+   "_fact_conf": "high",
+   "_read_conf": "high",
+   "_cur_conf": "high",
+   "id": 28,
+   "parent_former_id": ""
+  },
+  {
+   "era": "heisei",
+   "former_name": "満濃町",
+   "former_kana": "まんのうちょう",
+   "former_kind": "町",
+   "abolished_on": "2006-03-20",
+   "merger_type": "新設合併",
+   "merged_into": "まんのう町",
+   "current_city_name": "まんのう町",
+   "current_city_code": "374067",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "まんのう町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E6%BA%80%E6%BF%83%E7%94%BA https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u1183.html https://www.soumu.go.jp/main_content/000283317.xls https://www.soumu.go.jp/gapei/gapei_h11iko.html https://www.soumu.go.jp/gapei/hensen_kagawa.html",
+   "confidence": "high",
+   "notes": "旧郡: 仲多度郡",
+   "_fact_conf": "high",
+   "_read_conf": "high",
+   "_cur_conf": "high",
+   "id": 29,
+   "parent_former_id": ""
+  },
+  {
+   "era": "heisei",
+   "former_name": "琴南町",
+   "former_kana": "ことなみちょう",
+   "former_kind": "町",
+   "abolished_on": "2006-03-20",
+   "merger_type": "新設合併",
+   "merged_into": "まんのう町",
+   "current_city_name": "まんのう町",
+   "current_city_code": "374067",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "まんのう町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E7%90%B4%E5%8D%97%E7%94%BA https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u1183.html https://www.soumu.go.jp/main_content/000283317.xls https://www.soumu.go.jp/gapei/gapei_h11iko.html https://www.soumu.go.jp/gapei/hensen_kagawa.html",
+   "confidence": "high",
+   "notes": "旧郡: 仲多度郡",
+   "_fact_conf": "high",
+   "_read_conf": "high",
+   "_cur_conf": "high",
+   "id": 30,
+   "parent_former_id": ""
+  },
+  {
+   "era": "heisei",
+   "former_name": "内海町",
+   "former_kana": "うちのみちょう",
+   "former_kind": "町",
+   "abolished_on": "2006-03-21",
+   "merger_type": "新設合併",
+   "merged_into": "小豆島町",
+   "current_city_name": "小豆島町",
+   "current_city_code": "373249",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "小豆島町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%86%85%E6%B5%B7%E7%94%BA_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u1190.html https://www.soumu.go.jp/main_content/000283317.xls https://www.soumu.go.jp/gapei/gapei_h11iko.html https://www.soumu.go.jp/gapei/hensen_kagawa.html",
+   "confidence": "high",
+   "notes": "旧郡: 小豆郡",
+   "_fact_conf": "high",
+   "_read_conf": "high",
+   "_cur_conf": "high",
+   "id": 31,
+   "parent_former_id": ""
+  },
+  {
+   "era": "heisei",
+   "former_name": "池田町",
+   "former_kana": "いけだちょう",
+   "former_kind": "町",
+   "abolished_on": "2006-03-21",
+   "merger_type": "新設合併",
+   "merged_into": "小豆島町",
+   "current_city_name": "小豆島町",
+   "current_city_code": "373249",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "小豆島町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E6%B1%A0%E7%94%B0%E7%94%BA_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u1190.html https://www.soumu.go.jp/main_content/000283317.xls https://www.soumu.go.jp/gapei/gapei_h11iko.html https://www.soumu.go.jp/gapei/hensen_kagawa.html",
+   "confidence": "high",
+   "notes": "旧郡: 小豆郡",
+   "_fact_conf": "high",
+   "_read_conf": "high",
+   "_cur_conf": "high",
+   "id": 32,
+   "parent_former_id": ""
+  },
+  {
+   "era": "heisei",
+   "former_name": "綾上町",
+   "former_kana": "あやかみちょう",
+   "former_kind": "町",
+   "abolished_on": "2006-03-21",
+   "merger_type": "新設合併",
+   "merged_into": "綾川町",
+   "current_city_name": "綾川町",
+   "current_city_code": "373877",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "綾川町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E7%B6%BE%E4%B8%8A%E7%94%BA https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u1172.html https://www.soumu.go.jp/main_content/000283317.xls https://www.soumu.go.jp/gapei/gapei_h11iko.html https://www.soumu.go.jp/gapei/hensen_kagawa.html",
+   "confidence": "high",
+   "notes": "旧郡: 綾歌郡",
+   "_fact_conf": "high",
+   "_read_conf": "high",
+   "_cur_conf": "high",
+   "id": 33,
+   "parent_former_id": ""
+  },
+  {
+   "era": "heisei",
+   "former_name": "綾南町",
+   "former_kana": "りょうなんちょう",
+   "former_kind": "町",
+   "abolished_on": "2006-03-21",
+   "merger_type": "新設合併",
+   "merged_into": "綾川町",
+   "current_city_name": "綾川町",
+   "current_city_code": "373877",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "綾川町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E7%B6%BE%E5%8D%97%E7%94%BA https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u1172.html https://www.soumu.go.jp/main_content/000283317.xls https://www.soumu.go.jp/gapei/gapei_h11iko.html https://www.soumu.go.jp/gapei/hensen_kagawa.html",
+   "confidence": "high",
+   "notes": "旧郡: 綾歌郡",
+   "_fact_conf": "high",
+   "_read_conf": "high",
+   "_cur_conf": "high",
+   "id": 34,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "与北村",
+   "former_kana": "よぎたそん",
+   "former_kind": "村",
+   "abolished_on": "1954-03-31",
+   "merger_type": "新設合併",
+   "merged_into": "善通寺市",
+   "current_city_name": "善通寺市",
+   "current_city_code": "372048",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "善通寺市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E4%B8%8E%E5%8C%97%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u5718.html",
+   "confidence": "medium",
+   "notes": "旧郡: 仲多度郡。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 35,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "吉原村",
+   "former_kana": "よしわらむら",
+   "former_kind": "村",
+   "abolished_on": "1954-03-31",
+   "merger_type": "新設合併",
+   "merged_into": "善通寺市",
+   "current_city_name": "善通寺市",
+   "current_city_code": "372048",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "善通寺市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%90%89%E5%8E%9F%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u5718.html",
+   "confidence": "medium",
+   "notes": "旧郡: 仲多度郡。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 36,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "善通寺町",
+   "former_kana": "ぜんつうじちょう",
+   "former_kind": "町",
+   "abolished_on": "1954-03-31",
+   "merger_type": "新設合併",
+   "merged_into": "善通寺市",
+   "current_city_name": "善通寺市",
+   "current_city_code": "372048",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "善通寺市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%96%84%E9%80%9A%E5%AF%BA%E7%94%BA https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u5718.html",
+   "confidence": "medium",
+   "notes": "旧郡: 仲多度郡。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 37,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "川西村",
+   "former_kana": "かわにしむら",
+   "former_kind": "村",
+   "abolished_on": "1954-03-31",
+   "merger_type": "編入",
+   "merged_into": "丸亀市",
+   "current_city_name": "丸亀市",
+   "current_city_code": "372021",
+   "_heisei_parents": [
+    [
+     "丸亀市",
+     "2005-03-22"
+    ]
+   ],
+   "_chain_now": [
+    "丸亀市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%B7%9D%E8%A5%BF%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u5577.html",
+   "confidence": "medium",
+   "notes": "旧郡: 綾歌郡。その後の経路: 丸亀市 → 2005-03-22に丸亀市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 38,
+   "parent_former_id": "9"
+  },
+  {
+   "era": "showa",
+   "former_name": "本島村",
+   "former_kana": "ほんじまそん",
+   "former_kind": "村",
+   "abolished_on": "1954-03-31",
+   "merger_type": "編入",
+   "merged_into": "丸亀市",
+   "current_city_name": "丸亀市",
+   "current_city_code": "372021",
+   "_heisei_parents": [
+    [
+     "丸亀市",
+     "2005-03-22"
+    ]
+   ],
+   "_chain_now": [
+    "丸亀市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E6%9C%AC%E5%B3%B6%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u5577.html",
+   "confidence": "medium",
+   "notes": "旧郡: 仲多度郡。その後の経路: 丸亀市 → 2005-03-22に丸亀市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 39,
+   "parent_former_id": "9"
+  },
+  {
+   "era": "showa",
+   "former_name": "竜川村",
+   "former_kana": "たつかわむら",
+   "former_kind": "村",
+   "abolished_on": "1954-03-31",
+   "merger_type": "新設合併",
+   "merged_into": "善通寺市",
+   "current_city_name": "善通寺市",
+   "current_city_code": "372048",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "善通寺市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E7%AB%9C%E5%B7%9D%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u5718.html",
+   "confidence": "medium",
+   "notes": "旧郡: 仲多度郡。表記ゆれ: uub.jp では『龍川村』。Wikipedia記事の現在の自治体は善通寺市・丸亀市（合併経路からは善通寺市。後年の境界変更等の可能性、未確認）。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "medium",
+   "id": 40,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "筆岡村",
+   "former_kana": "ふでおかむら",
+   "former_kind": "村",
+   "abolished_on": "1954-03-31",
+   "merger_type": "新設合併",
+   "merged_into": "善通寺市",
+   "current_city_name": "善通寺市",
+   "current_city_code": "372048",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "善通寺市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E7%AD%86%E5%B2%A1%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u5718.html",
+   "confidence": "medium",
+   "notes": "旧郡: 仲多度郡。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 41,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "丹生村",
+   "former_kana": "にぶそん",
+   "former_kind": "村",
+   "abolished_on": "1954-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "大内町",
+   "current_city_name": "東かがわ市",
+   "current_city_code": "372072",
+   "_heisei_parents": [
+    [
+     "大内町",
+     "2003-04-01"
+    ]
+   ],
+   "_chain_now": [
+    "東かがわ市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E4%B8%B9%E7%94%9F%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u5578.html",
+   "confidence": "medium",
+   "notes": "旧郡: 大川郡。その後の経路: 大内町 → 1955-03-15に大内町へ → 2003-04-01に東かがわ市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 42,
+   "parent_former_id": "6"
+  },
+  {
+   "era": "showa",
+   "former_name": "山田村",
+   "former_kana": "やまだむら",
+   "former_kind": "村",
+   "abolished_on": "1954-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "綾上村",
+   "current_city_name": "綾川町",
+   "current_city_code": "373877",
+   "_heisei_parents": [
+    [
+     "綾上町",
+     "2006-03-21"
+    ]
+   ],
+   "_chain_now": [
+    "綾川町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%B1%B1%E7%94%B0%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u5580.html",
+   "confidence": "medium",
+   "notes": "旧郡: 綾歌郡。その後の経路: 綾上村 → 1962-02-01に綾上町へ（町制等） → 2006-03-21に綾川町へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 43,
+   "parent_former_id": "33"
+  },
+  {
+   "era": "showa",
+   "former_name": "府中村",
+   "former_kana": "ふちゅうむら",
+   "former_kind": "村",
+   "abolished_on": "1954-04-01",
+   "merger_type": "編入",
+   "merged_into": "坂出市",
+   "current_city_name": "坂出市",
+   "current_city_code": "372030",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "坂出市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%BA%9C%E4%B8%AD%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u5582.html https://www.city.sakaide.lg.jp/soshiki/seisaku/shiikihensen.html",
+   "confidence": "medium",
+   "notes": "旧郡: 綾歌郡。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 44,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "昭和村",
+   "former_kana": "しょうわむら",
+   "former_kind": "村",
+   "abolished_on": "1954-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "綾南町",
+   "current_city_name": "綾川町",
+   "current_city_code": "373877",
+   "_heisei_parents": [
+    [
+     "綾南町",
+     "2006-03-21"
+    ]
+   ],
+   "_chain_now": [
+    "綾川町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E6%98%AD%E5%92%8C%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u5581.html",
+   "confidence": "medium",
+   "notes": "旧郡: 綾歌郡。その後の経路: 綾南町 → 2006-03-21に綾川町へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 45,
+   "parent_former_id": "34"
+  },
+  {
+   "era": "showa",
+   "former_name": "枌所村",
+   "former_kana": "そぎしょそん",
+   "former_kind": "村",
+   "abolished_on": "1954-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "綾上村",
+   "current_city_name": "綾川町",
+   "current_city_code": "373877",
+   "_heisei_parents": [
+    [
+     "綾上町",
+     "2006-03-21"
+    ]
+   ],
+   "_chain_now": [
+    "綾川町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E6%9E%8C%E6%89%80%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u5580.html",
+   "confidence": "medium",
+   "notes": "旧郡: 綾歌郡。その後の経路: 綾上村 → 1962-02-01に綾上町へ（町制等） → 2006-03-21に綾川町へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 46,
+   "parent_former_id": "33"
+  },
+  {
+   "era": "showa",
+   "former_name": "滝宮村",
+   "former_kana": "たきのみやむら",
+   "former_kind": "村",
+   "abolished_on": "1954-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "綾南町",
+   "current_city_name": "綾川町",
+   "current_city_code": "373877",
+   "_heisei_parents": [
+    [
+     "綾南町",
+     "2006-03-21"
+    ]
+   ],
+   "_chain_now": [
+    "綾川町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E6%BB%9D%E5%AE%AE%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u5581.html",
+   "confidence": "medium",
+   "notes": "旧郡: 綾歌郡。その後の経路: 綾南町 → 2006-03-21に綾川町へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 47,
+   "parent_former_id": "34"
+  },
+  {
+   "era": "showa",
+   "former_name": "羽床上村",
+   "former_kana": "はゆかかみむら",
+   "former_kind": "村",
+   "abolished_on": "1954-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "綾上村",
+   "current_city_name": "綾川町",
+   "current_city_code": "373877",
+   "_heisei_parents": [
+    [
+     "綾上町",
+     "2006-03-21"
+    ]
+   ],
+   "_chain_now": [
+    "綾川町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E7%BE%BD%E5%BA%8A%E4%B8%8A%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u5580.html",
+   "confidence": "medium",
+   "notes": "旧郡: 綾歌郡。その後の経路: 綾上村 → 1962-02-01に綾上町へ（町制等） → 2006-03-21に綾川町へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 48,
+   "parent_former_id": "33"
+  },
+  {
+   "era": "showa",
+   "former_name": "羽床村",
+   "former_kana": "はゆかむら",
+   "former_kind": "村",
+   "abolished_on": "1954-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "綾南町",
+   "current_city_name": "綾川町",
+   "current_city_code": "373877",
+   "_heisei_parents": [
+    [
+     "綾南町",
+     "2006-03-21"
+    ]
+   ],
+   "_chain_now": [
+    "綾川町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E7%BE%BD%E5%BA%8A%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u5581.html",
+   "confidence": "medium",
+   "notes": "旧郡: 綾歌郡。その後の経路: 綾南町 → 2006-03-21に綾川町へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 49,
+   "parent_former_id": "34"
+  },
+  {
+   "era": "showa",
+   "former_name": "西分村",
+   "former_kana": "にしぶんそん",
+   "former_kind": "村",
+   "abolished_on": "1954-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "綾上村",
+   "current_city_name": "綾川町",
+   "current_city_code": "373877",
+   "_heisei_parents": [
+    [
+     "綾上町",
+     "2006-03-21"
+    ]
+   ],
+   "_chain_now": [
+    "綾川町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E8%A5%BF%E5%88%86%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u5580.html",
+   "confidence": "medium",
+   "notes": "旧郡: 綾歌郡。その後の経路: 綾上村 → 1962-02-01に綾上町へ（町制等） → 2006-03-21に綾川町へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 50,
+   "parent_former_id": "33"
+  },
+  {
+   "era": "showa",
+   "former_name": "誉水村",
+   "former_kana": "よみずむら",
+   "former_kind": "村",
+   "abolished_on": "1954-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "大内町",
+   "current_city_name": "東かがわ市",
+   "current_city_code": "372072",
+   "_heisei_parents": [
+    [
+     "大内町",
+     "2003-04-01"
+    ]
+   ],
+   "_chain_now": [
+    "東かがわ市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E8%AA%89%E6%B0%B4%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u5578.html",
+   "confidence": "medium",
+   "notes": "旧郡: 大川郡。その後の経路: 大内町 → 1955-03-15に大内町へ → 2003-04-01に東かがわ市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 51,
+   "parent_former_id": "6"
+  },
+  {
+   "era": "showa",
+   "former_name": "陶村",
+   "former_kana": "すえむら",
+   "former_kind": "村",
+   "abolished_on": "1954-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "綾南町",
+   "current_city_name": "綾川町",
+   "current_city_code": "373877",
+   "_heisei_parents": [
+    [
+     "綾南町",
+     "2006-03-21"
+    ]
+   ],
+   "_chain_now": [
+    "綾川町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E9%99%B6%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u5581.html",
+   "confidence": "medium",
+   "notes": "旧郡: 綾歌郡。その後の経路: 綾南町 → 2006-03-21に綾川町へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 52,
+   "parent_former_id": "34"
+  },
+  {
+   "era": "showa",
+   "former_name": "四箇村",
+   "former_kana": "しかむら",
+   "former_kind": "村",
+   "abolished_on": "1954-05-03",
+   "merger_type": "新設合併",
+   "merged_into": "多度津町",
+   "current_city_name": "多度津町",
+   "current_city_code": "374041",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "多度津町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%9B%9B%E7%AE%87%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u5506.html",
+   "confidence": "medium",
+   "notes": "旧郡: 仲多度郡。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 53,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "土器村",
+   "former_kana": "どきむら",
+   "former_kind": "村",
+   "abolished_on": "1954-05-03",
+   "merger_type": "編入",
+   "merged_into": "丸亀市",
+   "current_city_name": "丸亀市",
+   "current_city_code": "372021",
+   "_heisei_parents": [
+    [
+     "丸亀市",
+     "2005-03-22"
+    ]
+   ],
+   "_chain_now": [
+    "丸亀市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%9C%9F%E5%99%A8%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u5505.html",
+   "confidence": "medium",
+   "notes": "旧郡: 綾歌郡。その後の経路: 丸亀市 → 2005-03-22に丸亀市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 54,
+   "parent_former_id": "9"
+  },
+  {
+   "era": "showa",
+   "former_name": "多度津町",
+   "former_kana": "たどつちょう",
+   "former_kind": "町",
+   "abolished_on": "1954-05-03",
+   "merger_type": "新設合併",
+   "merged_into": "多度津町",
+   "current_city_name": "多度津町",
+   "current_city_code": "374041",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "多度津町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%A4%9A%E5%BA%A6%E6%B4%A5%E7%94%BA https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u5506.html",
+   "confidence": "medium",
+   "notes": "旧郡: 仲多度郡。Wikipedia一覧では『（旧）』付き（同日に同名の新自治体が成立）。読み: Wikipedia記事のみ（1出典）。読みは同名の後身自治体の記事による",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 55,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "白方村",
+   "former_kana": "しらかたむら",
+   "former_kind": "村",
+   "abolished_on": "1954-05-03",
+   "merger_type": "新設合併",
+   "merged_into": "多度津町",
+   "current_city_name": "多度津町",
+   "current_city_code": "374041",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "多度津町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E7%99%BD%E6%96%B9%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u5506.html",
+   "confidence": "medium",
+   "notes": "旧郡: 仲多度郡。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 56,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "三都村",
+   "former_kana": "みとそん",
+   "former_kind": "村",
+   "abolished_on": "1954-10-01",
+   "merger_type": "新設合併",
+   "merged_into": "池田町",
+   "current_city_name": "小豆島町",
+   "current_city_code": "373249",
+   "_heisei_parents": [
+    [
+     "池田町",
+     "2006-03-21"
+    ]
+   ],
+   "_chain_now": [
+    "小豆島町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E4%B8%89%E9%83%BD%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u5241.html",
+   "confidence": "medium",
+   "notes": "旧郡: 小豆郡。その後の経路: 池田町 → 2006-03-21に小豆島町へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 57,
+   "parent_former_id": "32"
+  },
+  {
+   "era": "showa",
+   "former_name": "下高岡村",
+   "former_kana": "しもたかおかむら",
+   "former_kind": "村",
+   "abolished_on": "1954-10-01",
+   "merger_type": "新設合併",
+   "merged_into": "三木町",
+   "current_city_name": "三木町",
+   "current_city_code": "373419",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "三木町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E4%B8%8B%E9%AB%98%E5%B2%A1%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u5242.html",
+   "confidence": "medium",
+   "notes": "旧郡: 木田郡。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 58,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "二生村",
+   "former_kana": "にぶそん",
+   "former_kind": "村",
+   "abolished_on": "1954-10-01",
+   "merger_type": "新設合併",
+   "merged_into": "池田町",
+   "current_city_name": "小豆島町",
+   "current_city_code": "373249",
+   "_heisei_parents": [
+    [
+     "池田町",
+     "2006-03-21"
+    ]
+   ],
+   "_chain_now": [
+    "小豆島町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E4%BA%8C%E7%94%9F%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u5241.html",
+   "confidence": "medium",
+   "notes": "旧郡: 小豆郡。その後の経路: 池田町 → 2006-03-21に小豆島町へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 59,
+   "parent_former_id": "32"
+  },
+  {
+   "era": "showa",
+   "former_name": "平井町",
+   "former_kana": "ひらいちょう",
+   "former_kind": "町",
+   "abolished_on": "1954-10-01",
+   "merger_type": "新設合併",
+   "merged_into": "三木町",
+   "current_city_name": "三木町",
+   "current_city_code": "373419",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "三木町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%B9%B3%E4%BA%95%E7%94%BA https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u5242.html",
+   "confidence": "medium",
+   "notes": "旧郡: 木田郡。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 60,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "氷上村",
+   "former_kana": "ひかみむら",
+   "former_kind": "村",
+   "abolished_on": "1954-10-01",
+   "merger_type": "新設合併",
+   "merged_into": "三木町",
+   "current_city_name": "三木町",
+   "current_city_code": "373419",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "三木町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E6%B0%B7%E4%B8%8A%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u5242.html",
+   "confidence": "medium",
+   "notes": "旧郡: 木田郡。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 61,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "池田町",
+   "former_kana": "いけだちょう",
+   "former_kind": "町",
+   "abolished_on": "1954-10-01",
+   "merger_type": "新設合併",
+   "merged_into": "池田町",
+   "current_city_name": "小豆島町",
+   "current_city_code": "373249",
+   "_heisei_parents": [
+    [
+     "池田町",
+     "2006-03-21"
+    ]
+   ],
+   "_chain_now": [
+    "小豆島町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E6%B1%A0%E7%94%B0%E7%94%BA_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u5241.html",
+   "confidence": "medium",
+   "notes": "旧郡: 小豆郡。Wikipedia一覧では『（旧）』付き（同日に同名の新自治体が成立）。その後の経路: 池田町 → 2006-03-21に小豆島町へ。読み: Wikipedia記事のみ（1出典）。読みは同名の後身自治体の記事による",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 62,
+   "parent_former_id": "32"
+  },
+  {
+   "era": "showa",
+   "former_name": "田中村",
+   "former_kana": "たなかむら",
+   "former_kind": "村",
+   "abolished_on": "1954-10-01",
+   "merger_type": "新設合併",
+   "merged_into": "三木町",
+   "current_city_name": "三木町",
+   "current_city_code": "373419",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "三木町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E7%94%B0%E4%B8%AD%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u5242.html",
+   "confidence": "medium",
+   "notes": "旧郡: 木田郡。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 63,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "神山村",
+   "former_kana": "かみやまむら",
+   "former_kind": "村",
+   "abolished_on": "1954-10-01",
+   "merger_type": "新設合併",
+   "merged_into": "三木町",
+   "current_city_name": "三木町",
+   "current_city_code": "373419",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "三木町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E7%A5%9E%E5%B1%B1%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u5242.html",
+   "confidence": "medium",
+   "notes": "旧郡: 木田郡。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 64,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "郡家村",
+   "former_kana": "ぐんげそん",
+   "former_kind": "村",
+   "abolished_on": "1954-10-17",
+   "merger_type": "編入",
+   "merged_into": "丸亀市",
+   "current_city_name": "丸亀市",
+   "current_city_code": "372021",
+   "_heisei_parents": [
+    [
+     "丸亀市",
+     "2005-03-22"
+    ]
+   ],
+   "_chain_now": [
+    "丸亀市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E9%83%A1%E5%AE%B6%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u5214.html",
+   "confidence": "medium",
+   "notes": "旧郡: 仲多度郡。その後の経路: 丸亀市 → 2005-03-22に丸亀市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 65,
+   "parent_former_id": "9"
+  },
+  {
+   "era": "showa",
+   "former_name": "小田村",
+   "former_kana": "おだむら",
+   "former_kind": "村",
+   "abolished_on": "1955-01-01",
+   "merger_type": "新設合併",
+   "merged_into": "志度町",
+   "current_city_name": "さぬき市",
+   "current_city_code": "372064",
+   "_heisei_parents": [
+    [
+     "志度町",
+     "2002-04-01"
+    ]
+   ],
+   "_chain_now": [
+    "さぬき市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%B0%8F%E7%94%B0%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u4921.html",
+   "confidence": "medium",
+   "notes": "旧郡: 大川郡。その後の経路: 志度町 → 2002-04-01にさぬき市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 66,
+   "parent_former_id": "3"
+  },
+  {
+   "era": "showa",
+   "former_name": "川津村",
+   "former_kana": "かわつむら",
+   "former_kind": "村",
+   "abolished_on": "1955-01-01",
+   "merger_type": "編入",
+   "merged_into": "坂出市;飯野村",
+   "current_city_name": "坂出市;宇多津町",
+   "current_city_code": "372030;373869",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "坂出市",
+    "丸亀市",
+    "宇多津町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%B7%9D%E6%B4%A5%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u4922.html https://www.city.sakaide.lg.jp/soshiki/seisaku/shiikihensen.html",
+   "confidence": "medium",
+   "notes": "旧郡: 綾歌郡。分割の内訳(uub.jp): 飯野村=微、坂出市=本（本=大部分、微=一部）。合併経路からは坂出市・丸亀市・宇多津町。Wikipedia記事の現在の自治体は坂出市・宇多津町。記事側を採用（区域の行き先を他出典で未確認）。採用しなかった経路上の平成の旧自治体: 丸亀市(2005-03-22)。その後の経路: 飯野村 → 1955-05-03に宇多津町へ。区域が複数の現市町にまたがるため current_city_name/current_city_code はセミコロン区切り。分割編入（merged_into はセミコロン区切り）。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "medium",
+   "id": 67,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "常磐村",
+   "former_kana": "ときわむら",
+   "former_kind": "村",
+   "abolished_on": "1955-01-01",
+   "merger_type": "新設合併",
+   "merged_into": "観音寺市",
+   "current_city_name": "観音寺市",
+   "current_city_code": "372056",
+   "_heisei_parents": [
+    [
+     "観音寺市",
+     "2005-10-11"
+    ]
+   ],
+   "_chain_now": [
+    "観音寺市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%B8%B8%E7%A3%90%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u4920.html",
+   "confidence": "medium",
+   "notes": "旧郡: 三豊郡。その後の経路: 観音寺市 → 2005-10-11に観音寺市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 68,
+   "parent_former_id": "14"
+  },
+  {
+   "era": "showa",
+   "former_name": "志度町",
+   "former_kana": "しどちょう",
+   "former_kind": "町",
+   "abolished_on": "1955-01-01",
+   "merger_type": "新設合併",
+   "merged_into": "志度町",
+   "current_city_name": "さぬき市",
+   "current_city_code": "372064",
+   "_heisei_parents": [
+    [
+     "志度町",
+     "2002-04-01"
+    ]
+   ],
+   "_chain_now": [
+    "さぬき市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%BF%97%E5%BA%A6%E7%94%BA https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u4921.html",
+   "confidence": "medium",
+   "notes": "旧郡: 大川郡。Wikipedia一覧では『（旧）』付き（同日に同名の新自治体が成立）。その後の経路: 志度町 → 2002-04-01にさぬき市へ。読み: Wikipedia記事のみ（1出典）。読みは同名の後身自治体の記事による",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 69,
+   "parent_former_id": "3"
+  },
+  {
+   "era": "showa",
+   "former_name": "柞田村",
+   "former_kana": "くにたむら",
+   "former_kind": "村",
+   "abolished_on": "1955-01-01",
+   "merger_type": "新設合併",
+   "merged_into": "観音寺市",
+   "current_city_name": "観音寺市",
+   "current_city_code": "372056",
+   "_heisei_parents": [
+    [
+     "観音寺市",
+     "2005-10-11"
+    ]
+   ],
+   "_chain_now": [
+    "観音寺市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E6%9F%9E%E7%94%B0%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u4920.html",
+   "confidence": "medium",
+   "notes": "旧郡: 三豊郡。その後の経路: 観音寺市 → 2005-10-11に観音寺市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 70,
+   "parent_former_id": "14"
+  },
+  {
+   "era": "showa",
+   "former_name": "観音寺町",
+   "former_kana": "かんおんじちょう",
+   "former_kind": "町",
+   "abolished_on": "1955-01-01",
+   "merger_type": "新設合併",
+   "merged_into": "観音寺市",
+   "current_city_name": "観音寺市",
+   "current_city_code": "372056",
+   "_heisei_parents": [
+    [
+     "観音寺市",
+     "2005-10-11"
+    ]
+   ],
+   "_chain_now": [
+    "観音寺市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E8%A6%B3%E9%9F%B3%E5%AF%BA%E7%94%BA https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u4920.html",
+   "confidence": "medium",
+   "notes": "旧郡: 三豊郡。その後の経路: 観音寺市 → 2005-10-11に観音寺市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 71,
+   "parent_former_id": "14"
+  },
+  {
+   "era": "showa",
+   "former_name": "高室村",
+   "former_kana": "たかむろそん",
+   "former_kind": "村",
+   "abolished_on": "1955-01-01",
+   "merger_type": "新設合併",
+   "merged_into": "観音寺市",
+   "current_city_name": "観音寺市",
+   "current_city_code": "372056",
+   "_heisei_parents": [
+    [
+     "観音寺市",
+     "2005-10-11"
+    ]
+   ],
+   "_chain_now": [
+    "観音寺市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E9%AB%98%E5%AE%A4%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u4920.html",
+   "confidence": "medium",
+   "notes": "旧郡: 三豊郡。その後の経路: 観音寺市 → 2005-10-11に観音寺市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 72,
+   "parent_former_id": "14"
+  },
+  {
+   "era": "showa",
+   "former_name": "鴨庄村",
+   "former_kana": "かもしょうむら",
+   "former_kind": "村",
+   "abolished_on": "1955-01-01",
+   "merger_type": "新設合併",
+   "merged_into": "志度町",
+   "current_city_name": "さぬき市",
+   "current_city_code": "372064",
+   "_heisei_parents": [
+    [
+     "志度町",
+     "2002-04-01"
+    ]
+   ],
+   "_chain_now": [
+    "さぬき市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E9%B4%A8%E5%BA%84%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u4921.html",
+   "confidence": "medium",
+   "notes": "旧郡: 大川郡。その後の経路: 志度町 → 2002-04-01にさぬき市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 73,
+   "parent_former_id": "3"
+  },
+  {
+   "era": "showa",
+   "former_name": "五郷村",
+   "former_kana": "ごごうそん",
+   "former_kind": "村",
+   "abolished_on": "1955-02-11",
+   "merger_type": "新設合併",
+   "merged_into": "大野原町",
+   "current_city_name": "観音寺市",
+   "current_city_code": "372056",
+   "_heisei_parents": [
+    [
+     "大野原町",
+     "2005-10-11"
+    ]
+   ],
+   "_chain_now": [
+    "観音寺市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E4%BA%94%E9%83%B7%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u4662.html",
+   "confidence": "medium",
+   "notes": "旧郡: 三豊郡。その後の経路: 大野原町 → 2005-10-11に観音寺市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 74,
+   "parent_former_id": "13"
+  },
+  {
+   "era": "showa",
+   "former_name": "大野原村",
+   "former_kana": "おおのはらむら",
+   "former_kind": "村",
+   "abolished_on": "1955-02-11",
+   "merger_type": "新設合併",
+   "merged_into": "大野原町",
+   "current_city_name": "観音寺市",
+   "current_city_code": "372056",
+   "_heisei_parents": [
+    [
+     "大野原町",
+     "2005-10-11"
+    ]
+   ],
+   "_chain_now": [
+    "観音寺市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%A4%A7%E9%87%8E%E5%8E%9F%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u4662.html",
+   "confidence": "medium",
+   "notes": "旧郡: 三豊郡。その後の経路: 大野原町 → 2005-10-11に観音寺市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 75,
+   "parent_former_id": "13"
+  },
+  {
+   "era": "showa",
+   "former_name": "萩原村",
+   "former_kana": "はぎはらむら",
+   "former_kind": "村",
+   "abolished_on": "1955-02-11",
+   "merger_type": "新設合併",
+   "merged_into": "大野原町",
+   "current_city_name": "観音寺市",
+   "current_city_code": "372056",
+   "_heisei_parents": [
+    [
+     "大野原町",
+     "2005-10-11"
+    ]
+   ],
+   "_chain_now": [
+    "観音寺市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E8%90%A9%E5%8E%9F%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u4662.html",
+   "confidence": "medium",
+   "notes": "旧郡: 三豊郡。その後の経路: 大野原町 → 2005-10-11に観音寺市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 76,
+   "parent_former_id": "13"
+  },
+  {
+   "era": "showa",
+   "former_name": "三本松町",
+   "former_kana": "さんぼんまつちょう",
+   "former_kind": "町",
+   "abolished_on": "1955-03-15",
+   "merger_type": "新設合併",
+   "merged_into": "大内町",
+   "current_city_name": "東かがわ市",
+   "current_city_code": "372072",
+   "_heisei_parents": [
+    [
+     "大内町",
+     "2003-04-01"
+    ]
+   ],
+   "_chain_now": [
+    "東かがわ市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E4%B8%89%E6%9C%AC%E6%9D%BE%E7%94%BA https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u4512.html",
+   "confidence": "medium",
+   "notes": "旧郡: 大川郡。官報告示(uub.jp記載): 1955/3/15（総理府告示第358号）。その後の経路: 大内町 → 2003-04-01に東かがわ市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 77,
+   "parent_former_id": "6"
+  },
+  {
+   "era": "showa",
+   "former_name": "大内町",
+   "former_kana": "おおちちょう",
+   "former_kind": "町",
+   "abolished_on": "1955-03-15",
+   "merger_type": "新設合併",
+   "merged_into": "大内町",
+   "current_city_name": "東かがわ市",
+   "current_city_code": "372072",
+   "_heisei_parents": [
+    [
+     "大内町",
+     "2003-04-01"
+    ]
+   ],
+   "_chain_now": [
+    "東かがわ市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%86%85%E7%94%BA_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u4512.html",
+   "confidence": "medium",
+   "notes": "旧郡: 大川郡。Wikipedia一覧では『（旧）』付き（同日に同名の新自治体が成立）。官報告示(uub.jp記載): 1955/3/15（総理府告示第358号）。その後の経路: 大内町 → 2003-04-01に東かがわ市へ。読み: Wikipedia記事のみ（1出典）。読みは同名の後身自治体の記事による",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 78,
+   "parent_former_id": "6"
+  },
+  {
+   "era": "showa",
+   "former_name": "山内村",
+   "former_kana": "やまのうちそん",
+   "former_kind": "村",
+   "abolished_on": "1955-03-20",
+   "merger_type": "新設合併",
+   "merged_into": "国分寺町",
+   "current_city_name": "高松市",
+   "current_city_code": "372013",
+   "_heisei_parents": [
+    [
+     "国分寺町",
+     "2006-01-10"
+    ]
+   ],
+   "_chain_now": [
+    "高松市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%B1%B1%E5%86%85%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u4499.html",
+   "confidence": "medium",
+   "notes": "旧郡: 綾歌郡。その後の経路: 国分寺町 → 2006-01-10に高松市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 79,
+   "parent_former_id": "23"
+  },
+  {
+   "era": "showa",
+   "former_name": "端岡村",
+   "former_kana": "はしおかむら",
+   "former_kind": "村",
+   "abolished_on": "1955-03-20",
+   "merger_type": "新設合併",
+   "merged_into": "国分寺町",
+   "current_city_name": "高松市",
+   "current_city_code": "372013",
+   "_heisei_parents": [
+    [
+     "国分寺町",
+     "2006-01-10"
+    ]
+   ],
+   "_chain_now": [
+    "高松市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E7%AB%AF%E5%B2%A1%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u4499.html",
+   "confidence": "medium",
+   "notes": "旧郡: 綾歌郡。その後の経路: 国分寺町 → 2006-01-10に高松市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 80,
+   "parent_former_id": "23"
+  },
+  {
+   "era": "showa",
+   "former_name": "上高瀬村",
+   "former_kana": "かみたかせむら",
+   "former_kind": "村",
+   "abolished_on": "1955-03-31",
+   "merger_type": "新設合併",
+   "merged_into": "高瀬町",
+   "current_city_name": "三豊市",
+   "current_city_code": "372081",
+   "_heisei_parents": [
+    [
+     "高瀬町",
+     "2006-01-01"
+    ]
+   ],
+   "_chain_now": [
+    "三豊市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E4%B8%8A%E9%AB%98%E7%80%AC%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u4247.html",
+   "confidence": "medium",
+   "notes": "旧郡: 三豊郡。その後の経路: 高瀬町 → 2006-01-01に三豊市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 81,
+   "parent_former_id": "22"
+  },
+  {
+   "era": "showa",
+   "former_name": "上高野村",
+   "former_kana": "かみだかのむら",
+   "former_kind": "村",
+   "abolished_on": "1955-03-31",
+   "merger_type": "新設合併",
+   "merged_into": "豊中村",
+   "current_city_name": "三豊市",
+   "current_city_code": "372081",
+   "_heisei_parents": [
+    [
+     "豊中町",
+     "2006-01-01"
+    ]
+   ],
+   "_chain_now": [
+    "三豊市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E4%B8%8A%E9%AB%98%E9%87%8E%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u4246.html",
+   "confidence": "medium",
+   "notes": "旧郡: 三豊郡。その後の経路: 豊中村 → 1957-01-01に豊中町へ（町制等） → 2006-01-01に三豊市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 82,
+   "parent_former_id": "20"
+  },
+  {
+   "era": "showa",
+   "former_name": "二ノ宮村",
+   "former_kana": "にのみやむら",
+   "former_kind": "村",
+   "abolished_on": "1955-03-31",
+   "merger_type": "新設合併",
+   "merged_into": "高瀬町",
+   "current_city_name": "三豊市",
+   "current_city_code": "372081",
+   "_heisei_parents": [
+    [
+     "高瀬町",
+     "2006-01-01"
+    ]
+   ],
+   "_chain_now": [
+    "三豊市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E4%BA%8C%E3%83%8E%E5%AE%AE%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u4247.html",
+   "confidence": "medium",
+   "notes": "旧郡: 三豊郡。その後の経路: 高瀬町 → 2006-01-01に三豊市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 83,
+   "parent_former_id": "22"
+  },
+  {
+   "era": "showa",
+   "former_name": "勝間村",
+   "former_kana": "かつまむら",
+   "former_kind": "村",
+   "abolished_on": "1955-03-31",
+   "merger_type": "新設合併",
+   "merged_into": "高瀬町",
+   "current_city_name": "三豊市",
+   "current_city_code": "372081",
+   "_heisei_parents": [
+    [
+     "高瀬町",
+     "2006-01-01"
+    ]
+   ],
+   "_chain_now": [
+    "三豊市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%8B%9D%E9%96%93%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u4247.html",
+   "confidence": "medium",
+   "notes": "旧郡: 三豊郡。その後の経路: 高瀬町 → 2006-01-01に三豊市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 84,
+   "parent_former_id": "22"
+  },
+  {
+   "era": "showa",
+   "former_name": "本山村",
+   "former_kana": "もとやまむら",
+   "former_kind": "村",
+   "abolished_on": "1955-03-31",
+   "merger_type": "新設合併",
+   "merged_into": "豊中村",
+   "current_city_name": "三豊市",
+   "current_city_code": "372081",
+   "_heisei_parents": [
+    [
+     "豊中町",
+     "2006-01-01"
+    ]
+   ],
+   "_chain_now": [
+    "三豊市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E6%9C%AC%E5%B1%B1%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u4246.html",
+   "confidence": "medium",
+   "notes": "旧郡: 三豊郡。その後の経路: 豊中村 → 1957-01-01に豊中町へ（町制等） → 2006-01-01に三豊市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 85,
+   "parent_former_id": "20"
+  },
+  {
+   "era": "showa",
+   "former_name": "桑山村",
+   "former_kana": "くわやまむら",
+   "former_kind": "村",
+   "abolished_on": "1955-03-31",
+   "merger_type": "新設合併",
+   "merged_into": "豊中村",
+   "current_city_name": "三豊市",
+   "current_city_code": "372081",
+   "_heisei_parents": [
+    [
+     "豊中町",
+     "2006-01-01"
+    ]
+   ],
+   "_chain_now": [
+    "三豊市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E6%A1%91%E5%B1%B1%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u4246.html",
+   "confidence": "medium",
+   "notes": "旧郡: 三豊郡。その後の経路: 豊中村 → 1957-01-01に豊中町へ（町制等） → 2006-01-01に三豊市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 86,
+   "parent_former_id": "20"
+  },
+  {
+   "era": "showa",
+   "former_name": "比地二村",
+   "former_kana": "ひじふたむら",
+   "former_kind": "村",
+   "abolished_on": "1955-03-31",
+   "merger_type": "新設合併",
+   "merged_into": "高瀬町",
+   "current_city_name": "三豊市",
+   "current_city_code": "372081",
+   "_heisei_parents": [
+    [
+     "高瀬町",
+     "2006-01-01"
+    ]
+   ],
+   "_chain_now": [
+    "三豊市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E6%AF%94%E5%9C%B0%E4%BA%8C%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u4247.html",
+   "confidence": "medium",
+   "notes": "旧郡: 三豊郡。その後の経路: 高瀬町 → 2006-01-01に三豊市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 87,
+   "parent_former_id": "22"
+  },
+  {
+   "era": "showa",
+   "former_name": "比地大村",
+   "former_kana": "ひじだいむら",
+   "former_kind": "村",
+   "abolished_on": "1955-03-31",
+   "merger_type": "新設合併",
+   "merged_into": "豊中村",
+   "current_city_name": "三豊市",
+   "current_city_code": "372081",
+   "_heisei_parents": [
+    [
+     "豊中町",
+     "2006-01-01"
+    ]
+   ],
+   "_chain_now": [
+    "三豊市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E6%AF%94%E5%9C%B0%E5%A4%A7%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u4246.html",
+   "confidence": "medium",
+   "notes": "旧郡: 三豊郡。その後の経路: 豊中村 → 1957-01-01に豊中町へ（町制等） → 2006-01-01に三豊市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 88,
+   "parent_former_id": "20"
+  },
+  {
+   "era": "showa",
+   "former_name": "笠田村",
+   "former_kana": "かさだむら",
+   "former_kind": "村",
+   "abolished_on": "1955-03-31",
+   "merger_type": "新設合併",
+   "merged_into": "豊中村",
+   "current_city_name": "三豊市",
+   "current_city_code": "372081",
+   "_heisei_parents": [
+    [
+     "豊中町",
+     "2006-01-01"
+    ]
+   ],
+   "_chain_now": [
+    "三豊市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E7%AC%A0%E7%94%B0%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u4246.html",
+   "confidence": "medium",
+   "notes": "旧郡: 三豊郡。その後の経路: 豊中村 → 1957-01-01に豊中町へ（町制等） → 2006-01-01に三豊市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 89,
+   "parent_former_id": "20"
+  },
+  {
+   "era": "showa",
+   "former_name": "麻村",
+   "former_kana": "あさむら",
+   "former_kind": "村",
+   "abolished_on": "1955-03-31",
+   "merger_type": "新設合併",
+   "merged_into": "高瀬町",
+   "current_city_name": "三豊市",
+   "current_city_code": "372081",
+   "_heisei_parents": [
+    [
+     "高瀬町",
+     "2006-01-01"
+    ]
+   ],
+   "_chain_now": [
+    "三豊市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E9%BA%BB%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u4247.html",
+   "confidence": "medium",
+   "notes": "旧郡: 三豊郡。その後の経路: 高瀬町 → 2006-01-01に三豊市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 90,
+   "parent_former_id": "22"
+  },
+  {
+   "era": "showa",
+   "former_name": "七箇村",
+   "former_kana": "しちかむら",
+   "former_kind": "村",
+   "abolished_on": "1955-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "仲南村",
+   "current_city_name": "まんのう町",
+   "current_city_code": "374067",
+   "_heisei_parents": [
+    [
+     "仲南町",
+     "2006-03-20"
+    ]
+   ],
+   "_chain_now": [
+    "まんのう町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E4%B8%83%E7%AE%87%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3894.html",
+   "confidence": "medium",
+   "notes": "旧郡: 仲多度郡。その後の経路: 仲南村 → 1970-01-01に仲南町へ（町制等） → 2006-03-20にまんのう町へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 91,
+   "parent_former_id": "28"
+  },
+  {
+   "era": "showa",
+   "former_name": "下高瀬村",
+   "former_kana": "しもたかせむら",
+   "former_kind": "村",
+   "abolished_on": "1955-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "三野村",
+   "current_city_name": "三豊市",
+   "current_city_code": "372081",
+   "_heisei_parents": [
+    [
+     "三野町",
+     "2006-01-01"
+    ]
+   ],
+   "_chain_now": [
+    "三豊市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E4%B8%8B%E9%AB%98%E7%80%AC%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3897.html",
+   "confidence": "medium",
+   "notes": "旧郡: 三豊郡。その後の経路: 三野村 → 1961-09-01に三野町へ（町制等） → 2006-01-01に三豊市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 92,
+   "parent_former_id": "16"
+  },
+  {
+   "era": "showa",
+   "former_name": "北浦村",
+   "former_kana": "きたうらそん",
+   "former_kind": "村",
+   "abolished_on": "1955-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "土庄町",
+   "current_city_name": "土庄町",
+   "current_city_code": "373222",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "土庄町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%8C%97%E6%B5%A6%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3892.html",
+   "confidence": "medium",
+   "notes": "旧郡: 小豆郡。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 93,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "十河村",
+   "former_kana": "そがわむら",
+   "former_kind": "村",
+   "abolished_on": "1955-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "山田町",
+   "current_city_name": "高松市",
+   "current_city_code": "372013",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "高松市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%8D%81%E6%B2%B3%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3902.html",
+   "confidence": "medium",
+   "notes": "旧郡: 木田郡。その後の経路: 山田町 → 1966-07-01に高松市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 94,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "十郷村",
+   "former_kana": "そごうそん",
+   "former_kind": "村",
+   "abolished_on": "1955-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "仲南村",
+   "current_city_name": "まんのう町",
+   "current_city_code": "374067",
+   "_heisei_parents": [
+    [
+     "仲南町",
+     "2006-03-20"
+    ]
+   ],
+   "_chain_now": [
+    "まんのう町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%8D%81%E9%83%B7%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3894.html",
+   "confidence": "medium",
+   "notes": "旧郡: 仲多度郡。その後の経路: 仲南村 → 1970-01-01に仲南町へ（町制等） → 2006-03-20にまんのう町へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 95,
+   "parent_former_id": "28"
+  },
+  {
+   "era": "showa",
+   "former_name": "吉津村",
+   "former_kana": "よしづむら",
+   "former_kind": "村",
+   "abolished_on": "1955-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "三野村",
+   "current_city_name": "三豊市",
+   "current_city_code": "372081",
+   "_heisei_parents": [
+    [
+     "三野町",
+     "2006-01-01"
+    ]
+   ],
+   "_chain_now": [
+    "三豊市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%90%89%E6%B4%A5%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3897.html",
+   "confidence": "medium",
+   "notes": "旧郡: 三豊郡。その後の経路: 三野村 → 1961-09-01に三野町へ（町制等） → 2006-01-01に三豊市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 96,
+   "parent_former_id": "16"
+  },
+  {
+   "era": "showa",
+   "former_name": "吉野村",
+   "former_kana": "よしのむら",
+   "former_kind": "村",
+   "abolished_on": "1955-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "満濃町",
+   "current_city_name": "まんのう町",
+   "current_city_code": "374067",
+   "_heisei_parents": [
+    [
+     "満濃町",
+     "2006-03-20"
+    ]
+   ],
+   "_chain_now": [
+    "まんのう町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%90%89%E9%87%8E%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3896.html",
+   "confidence": "medium",
+   "notes": "旧郡: 仲多度郡。その後の経路: 満濃町 → 2006-03-20にまんのう町へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 97,
+   "parent_former_id": "29"
+  },
+  {
+   "era": "showa",
+   "former_name": "和田村",
+   "former_kana": "わだむら",
+   "former_kind": "村",
+   "abolished_on": "1955-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "豊浜町",
+   "current_city_name": "観音寺市",
+   "current_city_code": "372056",
+   "_heisei_parents": [
+    [
+     "豊浜町",
+     "2005-10-11"
+    ]
+   ],
+   "_chain_now": [
+    "観音寺市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%92%8C%E7%94%B0%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3899.html",
+   "confidence": "medium",
+   "notes": "旧郡: 三豊郡。その後の経路: 豊浜町 → 2005-10-11に観音寺市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 98,
+   "parent_former_id": "15"
+  },
+  {
+   "era": "showa",
+   "former_name": "四条村",
+   "former_kana": "しじょうむら",
+   "former_kind": "村",
+   "abolished_on": "1955-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "満濃町",
+   "current_city_name": "まんのう町",
+   "current_city_code": "374067",
+   "_heisei_parents": [
+    [
+     "満濃町",
+     "2006-03-20"
+    ]
+   ],
+   "_chain_now": [
+    "まんのう町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%9B%9B%E6%9D%A1%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3896.html",
+   "confidence": "medium",
+   "notes": "旧郡: 仲多度郡。その後の経路: 満濃町 → 2006-03-20にまんのう町へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 99,
+   "parent_former_id": "29"
+  },
+  {
+   "era": "showa",
+   "former_name": "四海村",
+   "former_kana": "しかいそん",
+   "former_kind": "村",
+   "abolished_on": "1955-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "土庄町",
+   "current_city_name": "土庄町",
+   "current_city_code": "373222",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "土庄町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%9B%9B%E6%B5%B7%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3892.html",
+   "confidence": "medium",
+   "notes": "旧郡: 小豆郡。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 100,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "土庄町",
+   "former_kana": "とのしょうちょう",
+   "former_kind": "町",
+   "abolished_on": "1955-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "土庄町",
+   "current_city_name": "土庄町",
+   "current_city_code": "373222",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "土庄町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%9C%9F%E5%BA%84%E7%94%BA https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3892.html",
+   "confidence": "medium",
+   "notes": "旧郡: 小豆郡。Wikipedia一覧では『（旧）』付き（同日に同名の新自治体が成立）。読み: Wikipedia記事のみ（1出典）。読みは同名の後身自治体の記事による",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 101,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "多和村",
+   "former_kana": "たわむら",
+   "former_kind": "村",
+   "abolished_on": "1955-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "長尾町",
+   "current_city_name": "さぬき市",
+   "current_city_code": "372064",
+   "_heisei_parents": [
+    [
+     "長尾町",
+     "2002-04-01"
+    ]
+   ],
+   "_chain_now": [
+    "さぬき市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%A4%9A%E5%92%8C%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3900.html",
+   "confidence": "medium",
+   "notes": "旧郡: 大川郡。その後の経路: 長尾町 → 1956-09-16に長尾町へ → 2002-04-01にさぬき市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 102,
+   "parent_former_id": "5"
+  },
+  {
+   "era": "showa",
+   "former_name": "大見村",
+   "former_kana": "おおみむら",
+   "former_kind": "村",
+   "abolished_on": "1955-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "三野村",
+   "current_city_name": "三豊市",
+   "current_city_code": "372081",
+   "_heisei_parents": [
+    [
+     "三野町",
+     "2006-01-01"
+    ]
+   ],
+   "_chain_now": [
+    "三豊市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%A4%A7%E8%A6%8B%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3897.html",
+   "confidence": "medium",
+   "notes": "旧郡: 三豊郡。その後の経路: 三野村 → 1961-09-01に三野町へ（町制等） → 2006-01-01に三豊市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 103,
+   "parent_former_id": "16"
+  },
+  {
+   "era": "showa",
+   "former_name": "大野村",
+   "former_kana": "おおのむら",
+   "former_kind": "村",
+   "abolished_on": "1955-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "香川町",
+   "current_city_name": "高松市",
+   "current_city_code": "372013",
+   "_heisei_parents": [
+    [
+     "香川町",
+     "2006-01-10"
+    ]
+   ],
+   "_chain_now": [
+    "高松市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%A4%A7%E9%87%8E%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3893.html",
+   "confidence": "medium",
+   "notes": "旧郡: 香川郡。その後の経路: 香川町 → 2006-01-10に高松市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 104,
+   "parent_former_id": "27"
+  },
+  {
+   "era": "showa",
+   "former_name": "大鐸村",
+   "former_kana": "おおぬでそん",
+   "former_kind": "村",
+   "abolished_on": "1955-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "土庄町",
+   "current_city_name": "土庄町",
+   "current_city_code": "373222",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "土庄町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%A4%A7%E9%90%B8%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3892.html",
+   "confidence": "medium",
+   "notes": "旧郡: 小豆郡。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 105,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "小海村",
+   "former_kana": "おうみそん",
+   "former_kind": "村",
+   "abolished_on": "1955-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "引田町",
+   "current_city_name": "東かがわ市",
+   "current_city_code": "372072",
+   "_heisei_parents": [
+    [
+     "引田町",
+     "2003-04-01"
+    ]
+   ],
+   "_chain_now": [
+    "東かがわ市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%B0%8F%E6%B5%B7%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3901.html",
+   "confidence": "medium",
+   "notes": "旧郡: 大川郡。その後の経路: 引田町 → 2003-04-01に東かがわ市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 106,
+   "parent_former_id": "7"
+  },
+  {
+   "era": "showa",
+   "former_name": "川島町",
+   "former_kana": "かわしまちょう",
+   "former_kind": "町",
+   "abolished_on": "1955-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "山田町",
+   "current_city_name": "高松市",
+   "current_city_code": "372013",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "高松市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%B7%9D%E5%B3%B6%E7%94%BA_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3902.html",
+   "confidence": "medium",
+   "notes": "旧郡: 木田郡。その後の経路: 山田町 → 1966-07-01に高松市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 107,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "川東村",
+   "former_kana": "かわひがしむら",
+   "former_kind": "村",
+   "abolished_on": "1955-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "香川町",
+   "current_city_name": "高松市",
+   "current_city_code": "372013",
+   "_heisei_parents": [
+    [
+     "香川町",
+     "2006-01-10"
+    ]
+   ],
+   "_chain_now": [
+    "高松市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%B7%9D%E6%9D%B1%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3893.html",
+   "confidence": "medium",
+   "notes": "旧郡: 香川郡。その後の経路: 香川町 → 2006-01-10に高松市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 108,
+   "parent_former_id": "27"
+  },
+  {
+   "era": "showa",
+   "former_name": "引田町",
+   "former_kana": "ひけたちょう",
+   "former_kind": "町",
+   "abolished_on": "1955-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "引田町",
+   "current_city_name": "東かがわ市",
+   "current_city_code": "372072",
+   "_heisei_parents": [
+    [
+     "引田町",
+     "2003-04-01"
+    ]
+   ],
+   "_chain_now": [
+    "東かがわ市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%BC%95%E7%94%B0%E7%94%BA https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3901.html",
+   "confidence": "medium",
+   "notes": "旧郡: 大川郡。Wikipedia一覧では『（旧）』付き（同日に同名の新自治体が成立）。その後の経路: 引田町 → 2003-04-01に東かがわ市へ。読み: Wikipedia記事のみ（1出典）。読みは同名の後身自治体の記事による",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 109,
+   "parent_former_id": "7"
+  },
+  {
+   "era": "showa",
+   "former_name": "東植田村",
+   "former_kana": "ひがしうえたむら",
+   "former_kind": "村",
+   "abolished_on": "1955-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "山田町",
+   "current_city_name": "高松市",
+   "current_city_code": "372013",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "高松市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E6%9D%B1%E6%A4%8D%E7%94%B0%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3902.html",
+   "confidence": "medium",
+   "notes": "旧郡: 木田郡。その後の経路: 山田町 → 1966-07-01に高松市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 110,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "榎井村",
+   "former_kana": "えないむら",
+   "former_kind": "村",
+   "abolished_on": "1955-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "琴平町",
+   "current_city_name": "琴平町",
+   "current_city_code": "374032",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "琴平町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E6%A6%8E%E4%BA%95%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3895.html",
+   "confidence": "medium",
+   "notes": "旧郡: 仲多度郡。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 111,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "河内村",
+   "former_kana": "こうちむら",
+   "former_kind": "村",
+   "abolished_on": "1955-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "山本村",
+   "current_city_name": "三豊市",
+   "current_city_code": "372081",
+   "_heisei_parents": [
+    [
+     "山本町",
+     "2006-01-01"
+    ]
+   ],
+   "_chain_now": [
+    "三豊市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E6%B2%B3%E5%86%85%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3891.html",
+   "confidence": "medium",
+   "notes": "旧郡: 三豊郡。その後の経路: 山本村 → 1957-11-03に山本町へ（町制等） → 2006-01-01に三豊市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 112,
+   "parent_former_id": "18"
+  },
+  {
+   "era": "showa",
+   "former_name": "浅野村",
+   "former_kana": "あさのむら",
+   "former_kind": "村",
+   "abolished_on": "1955-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "香川町",
+   "current_city_name": "高松市",
+   "current_city_code": "372013",
+   "_heisei_parents": [
+    [
+     "香川町",
+     "2006-01-10"
+    ]
+   ],
+   "_chain_now": [
+    "高松市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E6%B5%85%E9%87%8E%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3893.html",
+   "confidence": "medium",
+   "notes": "旧郡: 香川郡。その後の経路: 香川町 → 2006-01-10に高松市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 113,
+   "parent_former_id": "27"
+  },
+  {
+   "era": "showa",
+   "former_name": "淵崎村",
+   "former_kana": "ふちざきそん",
+   "former_kind": "村",
+   "abolished_on": "1955-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "土庄町",
+   "current_city_name": "土庄町",
+   "current_city_code": "373222",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "土庄町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E6%B7%B5%E5%B4%8E%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3892.html",
+   "confidence": "medium",
+   "notes": "旧郡: 小豆郡。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 114,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "琴平町",
+   "former_kana": "ことひらちょう",
+   "former_kind": "町",
+   "abolished_on": "1955-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "琴平町",
+   "current_city_name": "琴平町",
+   "current_city_code": "374032",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "琴平町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E7%90%B4%E5%B9%B3%E7%94%BA https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3895.html",
+   "confidence": "medium",
+   "notes": "旧郡: 仲多度郡。Wikipedia一覧では『（旧）』付き（同日に同名の新自治体が成立）。読み: Wikipedia記事のみ（1出典）。読みは同名の後身自治体の記事による",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 115,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "相生村",
+   "former_kana": "あいおいむら",
+   "former_kind": "村",
+   "abolished_on": "1955-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "引田町",
+   "current_city_name": "東かがわ市",
+   "current_city_code": "372072",
+   "_heisei_parents": [
+    [
+     "引田町",
+     "2003-04-01"
+    ]
+   ],
+   "_chain_now": [
+    "東かがわ市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E7%9B%B8%E7%94%9F%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3901.html",
+   "confidence": "medium",
+   "notes": "旧郡: 大川郡。その後の経路: 引田町 → 2003-04-01に東かがわ市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 116,
+   "parent_former_id": "7"
+  },
+  {
+   "era": "showa",
+   "former_name": "神田村",
+   "former_kana": "こうだむら",
+   "former_kind": "村",
+   "abolished_on": "1955-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "山本村",
+   "current_city_name": "三豊市",
+   "current_city_code": "372081",
+   "_heisei_parents": [
+    [
+     "山本町",
+     "2006-01-01"
+    ]
+   ],
+   "_chain_now": [
+    "三豊市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E7%A5%9E%E7%94%B0%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3891.html",
+   "confidence": "medium",
+   "notes": "旧郡: 三豊郡。その後の経路: 山本村 → 1957-11-03に山本町へ（町制等） → 2006-01-01に三豊市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 117,
+   "parent_former_id": "18"
+  },
+  {
+   "era": "showa",
+   "former_name": "神野村",
+   "former_kana": "かんのそん",
+   "former_kind": "村",
+   "abolished_on": "1955-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "満濃町",
+   "current_city_name": "まんのう町",
+   "current_city_code": "374067",
+   "_heisei_parents": [
+    [
+     "満濃町",
+     "2006-03-20"
+    ]
+   ],
+   "_chain_now": [
+    "まんのう町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E7%A5%9E%E9%87%8E%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3896.html",
+   "confidence": "medium",
+   "notes": "旧郡: 仲多度郡。Wikipedia記事の現在の自治体はまんのう町・琴平町（合併経路からはまんのう町。後年の境界変更等の可能性、未確認）。Wikipedia記事によると、大字五條の大部分は満濃町発足後の1956年・1957年に満濃町から琴平町へ割譲。current_city は合併経路の値のみ。その後の経路: 満濃町 → 2006-03-20にまんのう町へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "medium",
+   "id": 118,
+   "parent_former_id": "29"
+  },
+  {
+   "era": "showa",
+   "former_name": "粟島村",
+   "former_kana": "あわしまむら",
+   "former_kind": "村",
+   "abolished_on": "1955-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "詫間町",
+   "current_city_name": "三豊市",
+   "current_city_code": "372081",
+   "_heisei_parents": [
+    [
+     "詫間町",
+     "2006-01-01"
+    ]
+   ],
+   "_chain_now": [
+    "三豊市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E7%B2%9F%E5%B3%B6%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3898.html",
+   "confidence": "medium",
+   "notes": "旧郡: 三豊郡。その後の経路: 詫間町 → 2006-01-01に三豊市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 119,
+   "parent_former_id": "19"
+  },
+  {
+   "era": "showa",
+   "former_name": "荘内村",
+   "former_kana": "しょうないむら",
+   "former_kind": "村",
+   "abolished_on": "1955-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "詫間町",
+   "current_city_name": "三豊市",
+   "current_city_code": "372081",
+   "_heisei_parents": [
+    [
+     "詫間町",
+     "2006-01-01"
+    ]
+   ],
+   "_chain_now": [
+    "三豊市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E8%8D%98%E5%86%85%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3898.html",
+   "confidence": "medium",
+   "notes": "旧郡: 三豊郡。その後の経路: 詫間町 → 2006-01-01に三豊市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 120,
+   "parent_former_id": "19"
+  },
+  {
+   "era": "showa",
+   "former_name": "西植田村",
+   "former_kana": "にしうえたむら",
+   "former_kind": "村",
+   "abolished_on": "1955-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "山田町",
+   "current_city_name": "高松市",
+   "current_city_code": "372013",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "高松市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E8%A5%BF%E6%A4%8D%E7%94%B0%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3902.html",
+   "confidence": "medium",
+   "notes": "旧郡: 木田郡。その後の経路: 山田町 → 1966-07-01に高松市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 121,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "詫間町",
+   "former_kana": "たくまちょう",
+   "former_kind": "町",
+   "abolished_on": "1955-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "詫間町",
+   "current_city_name": "三豊市",
+   "current_city_code": "372081",
+   "_heisei_parents": [
+    [
+     "詫間町",
+     "2006-01-01"
+    ]
+   ],
+   "_chain_now": [
+    "三豊市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E8%A9%AB%E9%96%93%E7%94%BA https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3898.html",
+   "confidence": "medium",
+   "notes": "旧郡: 三豊郡。Wikipedia一覧では『（旧）』付き（同日に同名の新自治体が成立）。その後の経路: 詫間町 → 2006-01-01に三豊市へ。読み: Wikipedia記事のみ（1出典）。読みは同名の後身自治体の記事による",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 122,
+   "parent_former_id": "19"
+  },
+  {
+   "era": "showa",
+   "former_name": "豊島村",
+   "former_kana": "てしまそん",
+   "former_kind": "村",
+   "abolished_on": "1955-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "土庄町",
+   "current_city_name": "土庄町",
+   "current_city_code": "373222",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "土庄町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E8%B1%8A%E5%B3%B6%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3892.html",
+   "confidence": "medium",
+   "notes": "旧郡: 小豆郡。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 123,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "豊浜町",
+   "former_kana": "とよはまちょう",
+   "former_kind": "町",
+   "abolished_on": "1955-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "豊浜町",
+   "current_city_name": "観音寺市",
+   "current_city_code": "372056",
+   "_heisei_parents": [
+    [
+     "豊浜町",
+     "2005-10-11"
+    ]
+   ],
+   "_chain_now": [
+    "観音寺市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E8%B1%8A%E6%B5%9C%E7%94%BA_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3899.html",
+   "confidence": "medium",
+   "notes": "旧郡: 三豊郡。Wikipedia一覧では『（旧）』付き（同日に同名の新自治体が成立）。その後の経路: 豊浜町 → 2005-10-11に観音寺市へ。読み: Wikipedia記事のみ（1出典）。読みは同名の後身自治体の記事による",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 124,
+   "parent_former_id": "15"
+  },
+  {
+   "era": "showa",
+   "former_name": "財田大野村",
+   "former_kana": "さいたおおのむら",
+   "former_kind": "村",
+   "abolished_on": "1955-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "山本村",
+   "current_city_name": "三豊市",
+   "current_city_code": "372081",
+   "_heisei_parents": [
+    [
+     "山本町",
+     "2006-01-01"
+    ]
+   ],
+   "_chain_now": [
+    "三豊市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E8%B2%A1%E7%94%B0%E5%A4%A7%E9%87%8E%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3891.html",
+   "confidence": "medium",
+   "notes": "旧郡: 三豊郡。その後の経路: 山本村 → 1957-11-03に山本町へ（町制等） → 2006-01-01に三豊市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 125,
+   "parent_former_id": "18"
+  },
+  {
+   "era": "showa",
+   "former_name": "辻村",
+   "former_kana": "つじむら",
+   "former_kind": "村",
+   "abolished_on": "1955-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "山本村",
+   "current_city_name": "三豊市",
+   "current_city_code": "372081",
+   "_heisei_parents": [
+    [
+     "山本町",
+     "2006-01-01"
+    ]
+   ],
+   "_chain_now": [
+    "三豊市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E8%BE%BB%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3891.html",
+   "confidence": "medium",
+   "notes": "旧郡: 三豊郡。その後の経路: 山本村 → 1957-11-03に山本町へ（町制等） → 2006-01-01に三豊市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 126,
+   "parent_former_id": "18"
+  },
+  {
+   "era": "showa",
+   "former_name": "長尾町",
+   "former_kana": "ながおちょう",
+   "former_kind": "町",
+   "abolished_on": "1955-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "長尾町",
+   "current_city_name": "さぬき市",
+   "current_city_code": "372064",
+   "_heisei_parents": [
+    [
+     "長尾町",
+     "2002-04-01"
+    ]
+   ],
+   "_chain_now": [
+    "さぬき市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E9%95%B7%E5%B0%BE%E7%94%BA_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3900.html",
+   "confidence": "medium",
+   "notes": "旧郡: 大川郡。Wikipedia一覧では『（旧）』付き（同日に同名の新自治体が成立）。その後の経路: 長尾町 → 1956-09-16に長尾町へ → 2002-04-01にさぬき市へ。読み: Wikipedia記事のみ（1出典）。読みは同名の後身自治体の記事による",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 127,
+   "parent_former_id": "5"
+  },
+  {
+   "era": "showa",
+   "former_name": "粟井村",
+   "former_kana": "あわいむら",
+   "former_kind": "村",
+   "abolished_on": "1955-04-10",
+   "merger_type": "編入",
+   "merged_into": "観音寺市",
+   "current_city_name": "観音寺市",
+   "current_city_code": "372056",
+   "_heisei_parents": [
+    [
+     "観音寺市",
+     "2005-10-11"
+    ]
+   ],
+   "_chain_now": [
+    "観音寺市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E7%B2%9F%E4%BA%95%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3788.html",
+   "confidence": "medium",
+   "notes": "旧郡: 三豊郡。その後の経路: 観音寺市 → 2005-10-11に観音寺市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 128,
+   "parent_former_id": "14"
+  },
+  {
+   "era": "showa",
+   "former_name": "紀伊村",
+   "former_kana": "きいむら",
+   "former_kind": "村",
+   "abolished_on": "1955-04-10",
+   "merger_type": "編入",
+   "merged_into": "観音寺市;大野原町",
+   "current_city_name": "観音寺市",
+   "current_city_code": "372056",
+   "_heisei_parents": [
+    [
+     "観音寺市",
+     "2005-10-11"
+    ],
+    [
+     "大野原町",
+     "2005-10-11"
+    ]
+   ],
+   "_chain_now": [
+    "観音寺市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E7%B4%80%E4%BC%8A%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3788.html",
+   "confidence": "medium",
+   "notes": "旧郡: 三豊郡。分割の内訳(uub.jp): 観音寺市=一部、大野原町=一部（本=大部分、微=一部）。その後の経路: 観音寺市 → 2005-10-11に観音寺市へ / 大野原町 → 2005-10-11に観音寺市へ。分割編入（merged_into はセミコロン区切り）。読み: Wikipedia記事のみ（1出典）。平成の親が複数（分割編入のため。セミコロン区切り）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 129,
+   "parent_former_id": "14;13"
+  },
+  {
+   "era": "showa",
+   "former_name": "豊田村",
+   "former_kana": "とよたむら",
+   "former_kind": "村",
+   "abolished_on": "1955-04-10",
+   "merger_type": "編入",
+   "merged_into": "観音寺市",
+   "current_city_name": "観音寺市",
+   "current_city_code": "372056",
+   "_heisei_parents": [
+    [
+     "観音寺市",
+     "2005-10-11"
+    ]
+   ],
+   "_chain_now": [
+    "観音寺市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E8%B1%8A%E7%94%B0%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3788.html",
+   "confidence": "medium",
+   "notes": "旧郡: 三豊郡。その後の経路: 観音寺市 → 2005-10-11に観音寺市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 130,
+   "parent_former_id": "14"
+  },
+  {
+   "era": "showa",
+   "former_name": "富田村",
+   "former_kana": "とみだむら",
+   "former_kind": "村",
+   "abolished_on": "1955-04-15",
+   "merger_type": "新設合併",
+   "merged_into": "大川村",
+   "current_city_name": "さぬき市",
+   "current_city_code": "372064",
+   "_heisei_parents": [
+    [
+     "大川町",
+     "2002-04-01"
+    ]
+   ],
+   "_chain_now": [
+    "さぬき市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%AF%8C%E7%94%B0%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3755.html",
+   "confidence": "medium",
+   "notes": "旧郡: 大川郡。その後の経路: 大川村 → 1961-09-01に大川町へ（町制等） → 2002-04-01にさぬき市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 131,
+   "parent_former_id": "1"
+  },
+  {
+   "era": "showa",
+   "former_name": "松尾村",
+   "former_kana": "まつおそん",
+   "former_kind": "村",
+   "abolished_on": "1955-04-15",
+   "merger_type": "新設合併",
+   "merged_into": "大川村",
+   "current_city_name": "さぬき市",
+   "current_city_code": "372064",
+   "_heisei_parents": [
+    [
+     "大川町",
+     "2002-04-01"
+    ]
+   ],
+   "_chain_now": [
+    "さぬき市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E6%9D%BE%E5%B0%BE%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3755.html",
+   "confidence": "medium",
+   "notes": "旧郡: 大川郡。その後の経路: 大川村 → 1961-09-01に大川町へ（町制等） → 2002-04-01にさぬき市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 132,
+   "parent_former_id": "1"
+  },
+  {
+   "era": "showa",
+   "former_name": "飯野村",
+   "former_kana": "いいのむら",
+   "former_kind": "村",
+   "abolished_on": "1955-05-03",
+   "merger_type": "編入",
+   "merged_into": "丸亀市;宇多津町",
+   "current_city_name": "丸亀市;宇多津町",
+   "current_city_code": "372021;373869",
+   "_heisei_parents": [
+    [
+     "丸亀市",
+     "2005-03-22"
+    ]
+   ],
+   "_chain_now": [
+    "丸亀市",
+    "宇多津町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E9%A3%AF%E9%87%8E%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3700.html",
+   "confidence": "medium",
+   "notes": "旧郡: 綾歌郡。分割の内訳(uub.jp): 宇多津町=微、丸亀市=本（本=大部分、微=一部）。その後の経路: 丸亀市 → 2005-03-22に丸亀市へ。区域が複数の現市町にまたがるため current_city_name/current_city_code はセミコロン区切り。分割編入（merged_into はセミコロン区切り）。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 133,
+   "parent_former_id": "9"
+  },
+  {
+   "era": "showa",
+   "former_name": "五名村",
+   "former_kana": "ごみょうむら",
+   "former_kind": "村",
+   "abolished_on": "1955-07-01",
+   "merger_type": "新設合併",
+   "merged_into": "白鳥町",
+   "current_city_name": "東かがわ市",
+   "current_city_code": "372072",
+   "_heisei_parents": [
+    [
+     "白鳥町",
+     "2003-04-01"
+    ]
+   ],
+   "_chain_now": [
+    "東かがわ市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E4%BA%94%E5%90%8D%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3660.html",
+   "confidence": "medium",
+   "notes": "旧郡: 大川郡。その後の経路: 白鳥町 → 2003-04-01に東かがわ市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 134,
+   "parent_former_id": "8"
+  },
+  {
+   "era": "showa",
+   "former_name": "白鳥本町",
+   "former_kana": "しろとりほんちょう",
+   "former_kind": "町",
+   "abolished_on": "1955-07-01",
+   "merger_type": "新設合併",
+   "merged_into": "白鳥町",
+   "current_city_name": "東かがわ市",
+   "current_city_code": "372072",
+   "_heisei_parents": [
+    [
+     "白鳥町",
+     "2003-04-01"
+    ]
+   ],
+   "_chain_now": [
+    "東かがわ市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E7%99%BD%E9%B3%A5%E6%9C%AC%E7%94%BA https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3660.html",
+   "confidence": "medium",
+   "notes": "旧郡: 大川郡。その後の経路: 白鳥町 → 2003-04-01に東かがわ市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 135,
+   "parent_former_id": "8"
+  },
+  {
+   "era": "showa",
+   "former_name": "白鳥村",
+   "former_kana": "しろとりむら",
+   "former_kind": "村",
+   "abolished_on": "1955-07-01",
+   "merger_type": "新設合併",
+   "merged_into": "白鳥町",
+   "current_city_name": "東かがわ市",
+   "current_city_code": "372072",
+   "_heisei_parents": [
+    [
+     "白鳥町",
+     "2003-04-01"
+    ]
+   ],
+   "_chain_now": [
+    "東かがわ市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E7%99%BD%E9%B3%A5%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3660.html",
+   "confidence": "medium",
+   "notes": "旧郡: 大川郡。その後の経路: 白鳥町 → 2003-04-01に東かがわ市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 136,
+   "parent_former_id": "8"
+  },
+  {
+   "era": "showa",
+   "former_name": "石田村",
+   "former_kana": "いしだそん",
+   "former_kind": "村",
+   "abolished_on": "1955-07-01",
+   "merger_type": "新設合併",
+   "merged_into": "寒川村",
+   "current_city_name": "さぬき市",
+   "current_city_code": "372064",
+   "_heisei_parents": [
+    [
+     "寒川町",
+     "2002-04-01"
+    ]
+   ],
+   "_chain_now": [
+    "さぬき市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E7%9F%B3%E7%94%B0%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3659.html",
+   "confidence": "medium",
+   "notes": "旧郡: 大川郡。その後の経路: 寒川村 → 1961-09-01に寒川町へ（町制等） → 2002-04-01にさぬき市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 137,
+   "parent_former_id": "2"
+  },
+  {
+   "era": "showa",
+   "former_name": "神前村",
+   "former_kana": "かんざきそん",
+   "former_kind": "村",
+   "abolished_on": "1955-07-01",
+   "merger_type": "新設合併",
+   "merged_into": "寒川村",
+   "current_city_name": "さぬき市",
+   "current_city_code": "372064",
+   "_heisei_parents": [
+    [
+     "寒川町",
+     "2002-04-01"
+    ]
+   ],
+   "_chain_now": [
+    "さぬき市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E7%A5%9E%E5%89%8D%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3659.html",
+   "confidence": "medium",
+   "notes": "旧郡: 大川郡。その後の経路: 寒川村 → 1961-09-01に寒川町へ（町制等） → 2002-04-01にさぬき市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 138,
+   "parent_former_id": "2"
+  },
+  {
+   "era": "showa",
+   "former_name": "福栄村",
+   "former_kana": "ふくえむら",
+   "former_kind": "村",
+   "abolished_on": "1955-07-01",
+   "merger_type": "新設合併",
+   "merged_into": "白鳥町",
+   "current_city_name": "東かがわ市",
+   "current_city_code": "372072",
+   "_heisei_parents": [
+    [
+     "白鳥町",
+     "2003-04-01"
+    ]
+   ],
+   "_chain_now": [
+    "東かがわ市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E7%A6%8F%E6%A0%84%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3660.html",
+   "confidence": "medium",
+   "notes": "旧郡: 大川郡。その後の経路: 白鳥町 → 2003-04-01に東かがわ市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 139,
+   "parent_former_id": "8"
+  },
+  {
+   "era": "showa",
+   "former_name": "高篠村",
+   "former_kana": "たかしのむら",
+   "former_kind": "村",
+   "abolished_on": "1955-07-01",
+   "merger_type": "編入",
+   "merged_into": "満濃町",
+   "current_city_name": "まんのう町",
+   "current_city_code": "374067",
+   "_heisei_parents": [
+    [
+     "満濃町",
+     "2006-03-20"
+    ]
+   ],
+   "_chain_now": [
+    "まんのう町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E9%AB%98%E7%AF%A0%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3661.html",
+   "confidence": "medium",
+   "notes": "旧郡: 仲多度郡。その後の経路: 満濃町 → 2006-03-20にまんのう町へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 140,
+   "parent_former_id": "29"
+  },
+  {
+   "era": "showa",
+   "former_name": "松山村",
+   "former_kana": "まつやまむら",
+   "former_kind": "村",
+   "abolished_on": "1956-07-01",
+   "merger_type": "編入",
+   "merged_into": "坂出市",
+   "current_city_name": "坂出市",
+   "current_city_code": "372030",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "坂出市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E6%9D%BE%E5%B1%B1%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3396.html https://www.city.sakaide.lg.jp/soshiki/seisaku/shiikihensen.html",
+   "confidence": "medium",
+   "notes": "旧郡: 綾歌郡。Wikipedia一覧は1955-07-01。uub.jp・坂出市「市域の変遷」・Wikipedia個別記事は1956-07-01（昭和31年7月1日）。後者を採用。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 141,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "王越村",
+   "former_kana": "おうごしむら",
+   "former_kind": "村",
+   "abolished_on": "1956-07-01",
+   "merger_type": "編入",
+   "merged_into": "坂出市",
+   "current_city_name": "坂出市",
+   "current_city_code": "372030",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "坂出市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E7%8E%8B%E8%B6%8A%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3396.html https://www.city.sakaide.lg.jp/soshiki/seisaku/shiikihensen.html",
+   "confidence": "medium",
+   "notes": "旧郡: 綾歌郡。Wikipedia一覧は1955-07-01。uub.jp・坂出市「市域の変遷」・Wikipedia個別記事は1956-07-01（昭和31年7月1日）。後者を採用。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 142,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "坂本村",
+   "former_kana": "さかもとむら",
+   "former_kind": "村",
+   "abolished_on": "1956-08-01",
+   "merger_type": "新設合併",
+   "merged_into": "飯山町",
+   "current_city_name": "丸亀市",
+   "current_city_code": "372021",
+   "_heisei_parents": [
+    [
+     "飯山町",
+     "2005-03-22"
+    ]
+   ],
+   "_chain_now": [
+    "丸亀市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%9D%82%E6%9C%AC%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3369.html",
+   "confidence": "medium",
+   "notes": "旧郡: 綾歌郡。その後の経路: 飯山町 → 2005-03-22に丸亀市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 143,
+   "parent_former_id": "11"
+  },
+  {
+   "era": "showa",
+   "former_name": "法勲寺村",
+   "former_kana": "ほうくんじむら",
+   "former_kind": "村",
+   "abolished_on": "1956-08-01",
+   "merger_type": "新設合併",
+   "merged_into": "飯山町",
+   "current_city_name": "丸亀市",
+   "current_city_code": "372021",
+   "_heisei_parents": [
+    [
+     "飯山町",
+     "2005-03-22"
+    ]
+   ],
+   "_chain_now": [
+    "丸亀市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E6%B3%95%E5%8B%B2%E5%AF%BA%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3369.html",
+   "confidence": "medium",
+   "notes": "旧郡: 綾歌郡。その後の経路: 飯山町 → 2005-03-22に丸亀市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 144,
+   "parent_former_id": "11"
+  },
+  {
+   "era": "showa",
+   "former_name": "津田町",
+   "former_kana": "つだちょう",
+   "former_kind": "町",
+   "abolished_on": "1956-09-08",
+   "merger_type": "新設合併",
+   "merged_into": "津田町",
+   "current_city_name": "さぬき市",
+   "current_city_code": "372064",
+   "_heisei_parents": [
+    [
+     "津田町",
+     "2002-04-01"
+    ]
+   ],
+   "_chain_now": [
+    "さぬき市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E6%B4%A5%E7%94%B0%E7%94%BA_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3323.html",
+   "confidence": "medium",
+   "notes": "旧郡: 大川郡。Wikipedia一覧では『（旧）』付き（同日に同名の新自治体が成立）。その後の経路: 津田町 → 2002-04-01にさぬき市へ。読み: Wikipedia記事のみ（1出典）。読みは同名の後身自治体の記事による",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 145,
+   "parent_former_id": "4"
+  },
+  {
+   "era": "showa",
+   "former_name": "鶴羽村",
+   "former_kana": "つるわむら",
+   "former_kind": "村",
+   "abolished_on": "1956-09-08",
+   "merger_type": "新設合併",
+   "merged_into": "津田町",
+   "current_city_name": "さぬき市",
+   "current_city_code": "372064",
+   "_heisei_parents": [
+    [
+     "津田町",
+     "2002-04-01"
+    ]
+   ],
+   "_chain_now": [
+    "さぬき市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E9%B6%B4%E7%BE%BD%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3323.html",
+   "confidence": "medium",
+   "notes": "旧郡: 大川郡。その後の経路: 津田町 → 2002-04-01にさぬき市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 146,
+   "parent_former_id": "4"
+  },
+  {
+   "era": "showa",
+   "former_name": "造田村",
+   "former_kana": "ぞうたそん",
+   "former_kind": "村",
+   "abolished_on": "1956-09-16",
+   "merger_type": "新設合併",
+   "merged_into": "長尾町",
+   "current_city_name": "さぬき市",
+   "current_city_code": "372064",
+   "_heisei_parents": [
+    [
+     "長尾町",
+     "2002-04-01"
+    ]
+   ],
+   "_chain_now": [
+    "さぬき市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E9%80%A0%E7%94%B0%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%E5%A4%A7%E5%B7%9D%E9%83%A1%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3320.html",
+   "confidence": "medium",
+   "notes": "旧郡: 大川郡。その後の経路: 長尾町 → 2002-04-01にさぬき市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 147,
+   "parent_former_id": "5"
+  },
+  {
+   "era": "showa",
+   "former_name": "長尾町",
+   "former_kana": "ながおちょう",
+   "former_kind": "町",
+   "abolished_on": "1956-09-16",
+   "merger_type": "新設合併",
+   "merged_into": "長尾町",
+   "current_city_name": "さぬき市",
+   "current_city_code": "372064",
+   "_heisei_parents": [
+    [
+     "長尾町",
+     "2002-04-01"
+    ]
+   ],
+   "_chain_now": [
+    "さぬき市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E9%95%B7%E5%B0%BE%E7%94%BA_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3320.html",
+   "confidence": "medium",
+   "notes": "旧郡: 大川郡。Wikipedia一覧では『（旧）』付き（同日に同名の新自治体が成立）。その後の経路: 長尾町 → 2002-04-01にさぬき市へ。読み: Wikipedia記事のみ（1出典）。読みは同名の後身自治体の記事による",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 148,
+   "parent_former_id": "5"
+  },
+  {
+   "era": "showa",
+   "former_name": "美合村",
+   "former_kana": "みあいむら",
+   "former_kind": "村",
+   "abolished_on": "1956-09-29",
+   "merger_type": "新設合併",
+   "merged_into": "琴南村",
+   "current_city_name": "まんのう町",
+   "current_city_code": "374067",
+   "_heisei_parents": [
+    [
+     "琴南町",
+     "2006-03-20"
+    ]
+   ],
+   "_chain_now": [
+    "まんのう町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E7%BE%8E%E5%90%88%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3294.html",
+   "confidence": "medium",
+   "notes": "旧郡: 綾歌郡。その後の経路: 琴南村 → 1962-04-01に琴南町へ（町制等） → 2006-03-20にまんのう町へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 149,
+   "parent_former_id": "30"
+  },
+  {
+   "era": "showa",
+   "former_name": "造田村",
+   "former_kana": "そうだむら",
+   "former_kind": "村",
+   "abolished_on": "1956-09-29",
+   "merger_type": "新設合併",
+   "merged_into": "琴南村",
+   "current_city_name": "まんのう町",
+   "current_city_code": "374067",
+   "_heisei_parents": [
+    [
+     "琴南町",
+     "2006-03-20"
+    ]
+   ],
+   "_chain_now": [
+    "まんのう町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E9%80%A0%E7%94%B0%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%E7%B6%BE%E6%AD%8C%E9%83%A1%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u3294.html",
+   "confidence": "medium",
+   "notes": "旧郡: 綾歌郡。その後の経路: 琴南村 → 1962-04-01に琴南町へ（町制等） → 2006-03-20にまんのう町へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 150,
+   "parent_former_id": "30"
+  },
+  {
+   "era": "showa",
+   "former_name": "一ノ谷村",
+   "former_kana": "いちのたにむら",
+   "former_kind": "村",
+   "abolished_on": "1956-09-30",
+   "merger_type": "編入",
+   "merged_into": "観音寺市",
+   "current_city_name": "観音寺市",
+   "current_city_code": "372056",
+   "_heisei_parents": [
+    [
+     "観音寺市",
+     "2005-10-11"
+    ]
+   ],
+   "_chain_now": [
+    "観音寺市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E4%B8%80%E3%83%8E%E8%B0%B7%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u2989.html",
+   "confidence": "medium",
+   "notes": "旧郡: 三豊郡。官報告示(uub.jp記載): 1956/9/30（総理府告示第762号）。その後の経路: 観音寺市 → 2005-10-11に観音寺市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 151,
+   "parent_former_id": "14"
+  },
+  {
+   "era": "showa",
+   "former_name": "一宮村",
+   "former_kana": "いちのみやむら",
+   "former_kind": "村",
+   "abolished_on": "1956-09-30",
+   "merger_type": "編入",
+   "merged_into": "高松市",
+   "current_city_name": "高松市",
+   "current_city_code": "372013",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "高松市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E4%B8%80%E5%AE%AE%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u2995.html",
+   "confidence": "medium",
+   "notes": "旧郡: 香川郡。官報告示(uub.jp記載): 1956/9/30（総理府告示第767号）。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 152,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "三谷村",
+   "former_kana": "みたにむら",
+   "former_kind": "村",
+   "abolished_on": "1956-09-30",
+   "merger_type": "編入",
+   "merged_into": "高松市",
+   "current_city_name": "高松市",
+   "current_city_code": "372013",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "高松市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E4%B8%89%E8%B0%B7%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u2995.html",
+   "confidence": "medium",
+   "notes": "旧郡: 木田郡。官報告示(uub.jp記載): 1956/9/30（総理府告示第767号）。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 153,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "上笠居村",
+   "former_kana": "かみかさいむら",
+   "former_kind": "村",
+   "abolished_on": "1956-09-30",
+   "merger_type": "編入",
+   "merged_into": "高松市",
+   "current_city_name": "高松市",
+   "current_city_code": "372013",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "高松市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E4%B8%8A%E7%AC%A0%E5%B1%85%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u2995.html",
+   "confidence": "medium",
+   "notes": "旧郡: 香川郡。官報告示(uub.jp記載): 1956/9/30（総理府告示第767号）。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 154,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "上西村",
+   "former_kana": "かみにしむら",
+   "former_kind": "村",
+   "abolished_on": "1956-09-30",
+   "merger_type": "新設合併",
+   "merged_into": "塩江町",
+   "current_city_name": "高松市",
+   "current_city_code": "372013",
+   "_heisei_parents": [
+    [
+     "塩江町",
+     "2005-09-26"
+    ]
+   ],
+   "_chain_now": [
+    "高松市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E4%B8%8A%E8%A5%BF%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u2992.html",
+   "confidence": "medium",
+   "notes": "旧郡: 香川郡。官報告示(uub.jp記載): 1956/9/30（総理府告示第765号）。その後の経路: 塩江町 → 2005-09-26に高松市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 155,
+   "parent_former_id": "12"
+  },
+  {
+   "era": "showa",
+   "former_name": "下笠居村",
+   "former_kana": "しもかさいむら",
+   "former_kind": "村",
+   "abolished_on": "1956-09-30",
+   "merger_type": "編入",
+   "merged_into": "高松市",
+   "current_city_name": "高松市",
+   "current_city_code": "372013",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "高松市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E4%B8%8B%E7%AC%A0%E5%B1%85%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u2995.html",
+   "confidence": "medium",
+   "notes": "旧郡: 香川郡。官報告示(uub.jp記載): 1956/9/30（総理府告示第767号）。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 156,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "井戸村",
+   "former_kana": "いどむら",
+   "former_kind": "村",
+   "abolished_on": "1956-09-30",
+   "merger_type": "編入",
+   "merged_into": "三木町",
+   "current_city_name": "三木町",
+   "current_city_code": "373419",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "三木町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E4%BA%95%E6%88%B8%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u2994.html",
+   "confidence": "medium",
+   "notes": "旧郡: 木田郡。官報告示(uub.jp記載): 1956/9/30（総理府告示第768号）。Wikipedia記事の現在の自治体は三木町・さぬき市（合併経路からは三木町。後年の境界変更等の可能性、未確認）。Wikipedia記事によると、1959年11月1日に旧村域の一部が大川郡長尾町（現さぬき市）へ編入。current_city は合併経路の値のみ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "medium",
+   "id": 157,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "仏生山町",
+   "former_kana": "ぶっしょうざんちょう",
+   "former_kind": "町",
+   "abolished_on": "1956-09-30",
+   "merger_type": "編入",
+   "merged_into": "高松市",
+   "current_city_name": "高松市",
+   "current_city_code": "372013",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "高松市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E4%BB%8F%E7%94%9F%E5%B1%B1%E7%94%BA https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u2995.html",
+   "confidence": "medium",
+   "notes": "旧郡: 香川郡。官報告示(uub.jp記載): 1956/9/30（総理府告示第767号）。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 158,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "伊吹村",
+   "former_kana": "いぶきむら",
+   "former_kind": "村",
+   "abolished_on": "1956-09-30",
+   "merger_type": "編入",
+   "merged_into": "観音寺市",
+   "current_city_name": "観音寺市",
+   "current_city_code": "372056",
+   "_heisei_parents": [
+    [
+     "観音寺市",
+     "2005-10-11"
+    ]
+   ],
+   "_chain_now": [
+    "観音寺市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E4%BC%8A%E5%90%B9%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u2989.html",
+   "confidence": "medium",
+   "notes": "旧郡: 三豊郡。官報告示(uub.jp記載): 1956/9/30（総理府告示第762号）。その後の経路: 観音寺市 → 2005-10-11に観音寺市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 159,
+   "parent_former_id": "14"
+  },
+  {
+   "era": "showa",
+   "former_name": "佐柳島村",
+   "former_kana": "さなぎしまむら",
+   "former_kind": "村",
+   "abolished_on": "1956-09-30",
+   "merger_type": "編入",
+   "merged_into": "多度津町",
+   "current_city_name": "多度津町",
+   "current_city_code": "374041",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "多度津町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E4%BD%90%E6%9F%B3%E5%B3%B6%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u2990.html",
+   "confidence": "medium",
+   "notes": "旧郡: 仲多度郡。官報告示(uub.jp記載): 1956/9/30（総理府告示第763号）。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 160,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "円座村",
+   "former_kana": "えんざむら",
+   "former_kind": "村",
+   "abolished_on": "1956-09-30",
+   "merger_type": "編入",
+   "merged_into": "高松市",
+   "current_city_name": "高松市",
+   "current_city_code": "372013",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "高松市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%86%86%E5%BA%A7%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u2995.html",
+   "confidence": "medium",
+   "notes": "旧郡: 香川郡。官報告示(uub.jp記載): 1956/9/30（総理府告示第767号）。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 161,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "前田村",
+   "former_kana": "まえだむら",
+   "former_kind": "村",
+   "abolished_on": "1956-09-30",
+   "merger_type": "編入",
+   "merged_into": "高松市",
+   "current_city_name": "高松市",
+   "current_city_code": "372013",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "高松市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%89%8D%E7%94%B0%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u2995.html",
+   "confidence": "medium",
+   "notes": "旧郡: 木田郡。官報告示(uub.jp記載): 1956/9/30（総理府告示第767号）。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 162,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "塩江村",
+   "former_kana": "しおのえむら",
+   "former_kind": "村",
+   "abolished_on": "1956-09-30",
+   "merger_type": "新設合併",
+   "merged_into": "塩江町",
+   "current_city_name": "高松市",
+   "current_city_code": "372013",
+   "_heisei_parents": [
+    [
+     "塩江町",
+     "2005-09-26"
+    ]
+   ],
+   "_chain_now": [
+    "高松市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%A1%A9%E6%B1%9F%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u2992.html",
+   "confidence": "medium",
+   "notes": "旧郡: 香川郡。官報告示(uub.jp記載): 1956/9/30（総理府告示第765号）。その後の経路: 塩江町 → 2005-09-26に高松市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 163,
+   "parent_former_id": "12"
+  },
+  {
+   "era": "showa",
+   "former_name": "多肥村",
+   "former_kana": "たひむら",
+   "former_kind": "村",
+   "abolished_on": "1956-09-30",
+   "merger_type": "編入",
+   "merged_into": "高松市",
+   "current_city_name": "高松市",
+   "current_city_code": "372013",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "高松市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%A4%9A%E8%82%A5%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u2995.html",
+   "confidence": "medium",
+   "notes": "旧郡: 香川郡。官報告示(uub.jp記載): 1956/9/30（総理府告示第767号）。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 164,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "安原村",
+   "former_kana": "やすはらむら",
+   "former_kind": "村",
+   "abolished_on": "1956-09-30",
+   "merger_type": "新設合併",
+   "merged_into": "塩江町",
+   "current_city_name": "高松市",
+   "current_city_code": "372013",
+   "_heisei_parents": [
+    [
+     "塩江町",
+     "2005-09-26"
+    ]
+   ],
+   "_chain_now": [
+    "高松市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%AE%89%E5%8E%9F%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u2992.html",
+   "confidence": "medium",
+   "notes": "旧郡: 香川郡。官報告示(uub.jp記載): 1956/9/30（総理府告示第765号）。その後の経路: 塩江町 → 2005-09-26に高松市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 165,
+   "parent_former_id": "12"
+  },
+  {
+   "era": "showa",
+   "former_name": "川岡村",
+   "former_kana": "かわおかむら",
+   "former_kind": "村",
+   "abolished_on": "1956-09-30",
+   "merger_type": "編入",
+   "merged_into": "高松市",
+   "current_city_name": "高松市",
+   "current_city_code": "372013",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "高松市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%B7%9D%E5%B2%A1%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u2995.html",
+   "confidence": "medium",
+   "notes": "旧郡: 香川郡。官報告示(uub.jp記載): 1956/9/30（総理府告示第767号）。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 166,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "川添村",
+   "former_kana": "かわぞえむら",
+   "former_kind": "村",
+   "abolished_on": "1956-09-30",
+   "merger_type": "編入",
+   "merged_into": "高松市",
+   "current_city_name": "高松市",
+   "current_city_code": "372013",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "高松市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%B7%9D%E6%B7%BB%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u2995.html",
+   "confidence": "medium",
+   "notes": "旧郡: 木田郡。官報告示(uub.jp記載): 1956/9/30（総理府告示第767号）。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 167,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "弦打村",
+   "former_kana": "つるうちむら",
+   "former_kind": "村",
+   "abolished_on": "1956-09-30",
+   "merger_type": "編入",
+   "merged_into": "高松市",
+   "current_city_name": "高松市",
+   "current_city_code": "372013",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "高松市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%BC%A6%E6%89%93%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u2995.html",
+   "confidence": "medium",
+   "notes": "旧郡: 香川郡。官報告示(uub.jp記載): 1956/9/30（総理府告示第767号）。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 168,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "林村",
+   "former_kana": "はやしむら",
+   "former_kind": "村",
+   "abolished_on": "1956-09-30",
+   "merger_type": "編入",
+   "merged_into": "高松市",
+   "current_city_name": "高松市",
+   "current_city_code": "372013",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "高松市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E6%9E%97%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u2995.html",
+   "confidence": "medium",
+   "notes": "旧郡: 木田郡。官報告示(uub.jp記載): 1956/9/30（総理府告示第767号）。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 169,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "檀紙村",
+   "former_kana": "だんしむら",
+   "former_kind": "村",
+   "abolished_on": "1956-09-30",
+   "merger_type": "編入",
+   "merged_into": "高松市",
+   "current_city_name": "高松市",
+   "current_city_code": "372013",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "高松市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E6%AA%80%E7%B4%99%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u2995.html",
+   "confidence": "medium",
+   "notes": "旧郡: 香川郡。官報告示(uub.jp記載): 1956/9/30（総理府告示第767号）。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 170,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "池西村",
+   "former_kana": "いけにしむら",
+   "former_kind": "村",
+   "abolished_on": "1956-09-30",
+   "merger_type": "新設合併",
+   "merged_into": "香南町",
+   "current_city_name": "高松市",
+   "current_city_code": "372013",
+   "_heisei_parents": [
+    [
+     "香南町",
+     "2006-01-10"
+    ]
+   ],
+   "_chain_now": [
+    "高松市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E6%B1%A0%E8%A5%BF%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u2991.html",
+   "confidence": "medium",
+   "notes": "旧郡: 香川郡。官報告示(uub.jp記載): 1956/9/30（総理府告示第764号）。その後の経路: 香南町 → 2006-01-10に高松市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 171,
+   "parent_former_id": "26"
+  },
+  {
+   "era": "showa",
+   "former_name": "由佐村",
+   "former_kana": "ゆさむら",
+   "former_kind": "村",
+   "abolished_on": "1956-09-30",
+   "merger_type": "新設合併",
+   "merged_into": "香南町",
+   "current_city_name": "高松市",
+   "current_city_code": "372013",
+   "_heisei_parents": [
+    [
+     "香南町",
+     "2006-01-10"
+    ]
+   ],
+   "_chain_now": [
+    "高松市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E7%94%B1%E4%BD%90%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u2991.html",
+   "confidence": "medium",
+   "notes": "旧郡: 香川郡。官報告示(uub.jp記載): 1956/9/30（総理府告示第764号）。その後の経路: 香南町 → 2006-01-10に高松市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 172,
+   "parent_former_id": "26"
+  },
+  {
+   "era": "showa",
+   "former_name": "長炭村",
+   "former_kana": "ながすみむら",
+   "former_kind": "村",
+   "abolished_on": "1956-09-30",
+   "merger_type": "編入",
+   "merged_into": "満濃町",
+   "current_city_name": "まんのう町",
+   "current_city_code": "374067",
+   "_heisei_parents": [
+    [
+     "満濃町",
+     "2006-03-20"
+    ]
+   ],
+   "_chain_now": [
+    "まんのう町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E9%95%B7%E7%82%AD%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u2988.html",
+   "confidence": "medium",
+   "notes": "旧郡: 綾歌郡。官報告示(uub.jp記載): 1956/9/30（総理府告示第761号）。その後の経路: 満濃町 → 2006-03-20にまんのう町へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 173,
+   "parent_former_id": "29"
+  },
+  {
+   "era": "showa",
+   "former_name": "雌雄島村",
+   "former_kana": "しゆうじまむら",
+   "former_kind": "村",
+   "abolished_on": "1956-09-30",
+   "merger_type": "編入",
+   "merged_into": "高松市",
+   "current_city_name": "高松市",
+   "current_city_code": "372013",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "高松市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E9%9B%8C%E9%9B%84%E5%B3%B6%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u2995.html",
+   "confidence": "medium",
+   "notes": "旧郡: 香川郡。官報告示(uub.jp記載): 1956/9/30（総理府告示第767号）。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 174,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "香西町",
+   "former_kana": "こうざいちょう",
+   "former_kind": "町",
+   "abolished_on": "1956-09-30",
+   "merger_type": "編入",
+   "merged_into": "高松市",
+   "current_city_name": "高松市",
+   "current_city_code": "372013",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "高松市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E9%A6%99%E8%A5%BF%E7%94%BA https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u2995.html",
+   "confidence": "medium",
+   "notes": "旧郡: 香川郡。官報告示(uub.jp記載): 1956/9/30（総理府告示第767号）。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 175,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "高見島村",
+   "former_kana": "たかみしまむら",
+   "former_kind": "村",
+   "abolished_on": "1956-09-30",
+   "merger_type": "編入",
+   "merged_into": "多度津町",
+   "current_city_name": "多度津町",
+   "current_city_code": "374041",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "多度津町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E9%AB%98%E8%A6%8B%E5%B3%B6%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u2990.html",
+   "confidence": "medium",
+   "notes": "旧郡: 仲多度郡。官報告示(uub.jp記載): 1956/9/30（総理府告示第763号）。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 176,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "鴨部村",
+   "former_kana": "かべむら",
+   "former_kind": "村",
+   "abolished_on": "1956-09-30",
+   "merger_type": "編入",
+   "merged_into": "志度町",
+   "current_city_name": "さぬき市",
+   "current_city_code": "372064",
+   "_heisei_parents": [
+    [
+     "志度町",
+     "2002-04-01"
+    ]
+   ],
+   "_chain_now": [
+    "さぬき市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E9%B4%A8%E9%83%A8%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u2993.html",
+   "confidence": "medium",
+   "notes": "旧郡: 大川郡。官報告示(uub.jp記載): 1956/9/30（総理府告示第766号）。その後の経路: 志度町 → 2002-04-01にさぬき市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 177,
+   "parent_former_id": "3"
+  },
+  {
+   "era": "showa",
+   "former_name": "福田村",
+   "former_kana": "ふくだそん",
+   "former_kind": "村",
+   "abolished_on": "1957-03-31",
+   "merger_type": "編入",
+   "merged_into": "内海町",
+   "current_city_name": "小豆島町",
+   "current_city_code": "373249",
+   "_heisei_parents": [
+    [
+     "内海町",
+     "2006-03-21"
+    ]
+   ],
+   "_chain_now": [
+    "小豆島町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E7%A6%8F%E7%94%B0%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u2858.html",
+   "confidence": "medium",
+   "notes": "旧郡: 小豆郡。官報告示(uub.jp記載): 1957/3/29（総理府告示第94号）。その後の経路: 内海町 → 2006-03-21に小豆島町へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 178,
+   "parent_former_id": "31"
+  },
+  {
+   "era": "showa",
+   "former_name": "大部村",
+   "former_kana": "おおべそん",
+   "former_kind": "村",
+   "abolished_on": "1957-07-01",
+   "merger_type": "編入",
+   "merged_into": "土庄町",
+   "current_city_name": "土庄町",
+   "current_city_code": "373222",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "土庄町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%A4%A7%E9%83%A8%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u2789.html",
+   "confidence": "medium",
+   "notes": "旧郡: 小豆郡。官報告示(uub.jp記載): 1957/7/1（総理府告示第310号）。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 179,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "象郷村",
+   "former_kana": "ぞうごうむら",
+   "former_kind": "村",
+   "abolished_on": "1958-03-31",
+   "merger_type": "編入",
+   "merged_into": "善通寺市;琴平町",
+   "current_city_name": "善通寺市;琴平町",
+   "current_city_code": "372048;374032",
+   "_heisei_parents": [],
+   "_chain_now": [
+    "善通寺市",
+    "琴平町"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E8%B1%A1%E9%83%B7%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u2679.html",
+   "confidence": "medium",
+   "notes": "旧郡: 仲多度郡。分割の内訳(uub.jp): 善通寺市=一部、琴平町=一部（本=大部分、微=一部）。官報告示(uub.jp記載): 1958/3/31（総理府告示第71号）。区域が複数の現市町にまたがるため current_city_name/current_city_code はセミコロン区切り。分割編入（merged_into はセミコロン区切り）。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 180,
+   "parent_former_id": ""
+  },
+  {
+   "era": "showa",
+   "former_name": "垂水村",
+   "former_kana": "たるみむら",
+   "former_kind": "村",
+   "abolished_on": "1958-05-01",
+   "merger_type": "編入",
+   "merged_into": "丸亀市",
+   "current_city_name": "丸亀市",
+   "current_city_code": "372021",
+   "_heisei_parents": [
+    [
+     "丸亀市",
+     "2005-03-22"
+    ]
+   ],
+   "_chain_now": [
+    "丸亀市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%9E%82%E6%B0%B4%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u2632.html",
+   "confidence": "medium",
+   "notes": "旧郡: 仲多度郡。官報告示(uub.jp記載): 1958/4/30（総理府告示第191号）。その後の経路: 丸亀市 → 2005-03-22に丸亀市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 181,
+   "parent_former_id": "9"
+  },
+  {
+   "era": "showa",
+   "former_name": "広島村",
+   "former_kana": "ひろしまむら",
+   "former_kind": "村",
+   "abolished_on": "1958-05-01",
+   "merger_type": "編入",
+   "merged_into": "丸亀市",
+   "current_city_name": "丸亀市",
+   "current_city_code": "372021",
+   "_heisei_parents": [
+    [
+     "丸亀市",
+     "2005-03-22"
+    ]
+   ],
+   "_chain_now": [
+    "丸亀市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%BA%83%E5%B3%B6%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u2632.html",
+   "confidence": "medium",
+   "notes": "旧郡: 仲多度郡。官報告示(uub.jp記載): 1958/4/30（総理府告示第191号）。その後の経路: 丸亀市 → 2005-03-22に丸亀市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 182,
+   "parent_former_id": "9"
+  },
+  {
+   "era": "showa",
+   "former_name": "久万玉村",
+   "former_kana": "くまたまむら",
+   "former_kind": "村",
+   "abolished_on": "1959-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "綾歌町",
+   "current_city_name": "丸亀市",
+   "current_city_code": "372021",
+   "_heisei_parents": [
+    [
+     "綾歌町",
+     "2005-03-22"
+    ]
+   ],
+   "_chain_now": [
+    "丸亀市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E4%B9%85%E4%B8%87%E7%8E%89%E6%9D%91 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u2459.html",
+   "confidence": "medium",
+   "notes": "旧郡: 綾歌郡。官報告示(uub.jp記載): 1959/3/30（総理府告示第110号）。その後の経路: 綾歌町 → 2005-03-22に丸亀市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 183,
+   "parent_former_id": "10"
+  },
+  {
+   "era": "showa",
+   "former_name": "岡田村",
+   "former_kana": "おかだむら",
+   "former_kind": "村",
+   "abolished_on": "1959-04-01",
+   "merger_type": "新設合併",
+   "merged_into": "綾歌町",
+   "current_city_name": "丸亀市",
+   "current_city_code": "372021",
+   "_heisei_parents": [
+    [
+     "綾歌町",
+     "2005-03-22"
+    ]
+   ],
+   "_chain_now": [
+    "丸亀市"
+   ],
+   "source_urls": "https://ja.wikipedia.org/wiki/%E9%A6%99%E5%B7%9D%E7%9C%8C%E3%81%AE%E5%BB%83%E6%AD%A2%E5%B8%82%E7%94%BA%E6%9D%91%E4%B8%80%E8%A6%A7 https://ja.wikipedia.org/wiki/%E5%B2%A1%E7%94%B0%E6%9D%91_%28%E9%A6%99%E5%B7%9D%E7%9C%8C%29 https://uub.jp/upd/kagawa.html https://uub.jp/upd/u/u2459.html",
+   "confidence": "medium",
+   "notes": "旧郡: 綾歌郡。官報告示(uub.jp記載): 1959/3/30（総理府告示第110号）。その後の経路: 綾歌町 → 2005-03-22に丸亀市へ。読み: Wikipedia記事のみ（1出典）",
+   "_fact_conf": "high",
+   "_read_conf": "medium",
+   "_cur_conf": "high",
+   "id": 184,
+   "parent_former_id": "10"
+  }
+ ],
+ "out_of_scope": [
+  {
+   "date": "1901-11-03",
+   "gun": "仲多度郡",
+   "name": "善通寺村",
+   "rest": "仲多度郡善通寺町新設のため"
+  },
+  {
+   "date": "1901-11-03",
+   "gun": "仲多度郡",
+   "name": "麻野村",
+   "rest": "仲多度郡善通寺町新設のため"
+  },
+  {
+   "date": "1901-11-03",
+   "gun": "仲多度郡",
+   "name": "吉田村",
+   "rest": "仲多度郡善通寺町新設のため"
+  },
+  {
+   "date": "1914-05-01",
+   "gun": "香川郡",
+   "name": "宮脇村",
+   "rest": "高松市に編入のため"
+  },
+  {
+   "date": "1917-06-01",
+   "gun": "仲多度郡",
+   "name": "六郷村",
+   "rest": "丸亀市に編入のため"
+  },
+  {
+   "date": "1921-01-01",
+   "gun": "香川郡",
+   "name": "東浜村",
+   "rest": "高松市に編入のため"
+  },
+  {
+   "date": "1921-11-01",
+   "gun": "香川郡",
+   "name": "栗林村",
+   "rest": "高松市に編入のため"
+  },
+  {
+   "date": "1929-04-01",
+   "gun": "綾歌郡",
+   "name": "千疋村",
+   "rest": "綾歌郡昭和村新設のため"
+  },
+  {
+   "date": "1929-04-01",
+   "gun": "綾歌郡",
+   "name": "畑田村",
+   "rest": "綾歌郡昭和村新設のため"
+  },
+  {
+   "date": "1929-04-01",
+   "gun": "三豊郡",
+   "name": "中姫村",
+   "rest": "大野原村に編入のため"
+  },
+  {
+   "date": "1936-06-01",
+   "gun": "綾歌郡",
+   "name": "金山村",
+   "rest": "綾歌郡坂出町に編入のため"
+  },
+  {
+   "date": "1936-09-01",
+   "gun": "綾歌郡",
+   "name": "西庄村",
+   "rest": "綾歌郡坂出町に編入のため"
+  },
+  {
+   "date": "1940-02-11",
+   "gun": "木田郡",
+   "name": "屋島町",
+   "rest": "高松市に編入のため"
+  },
+  {
+   "date": "1940-02-11",
+   "gun": "木田郡",
+   "name": "木太村",
+   "rest": "高松市に編入のため"
+  },
+  {
+   "date": "1940-02-11",
+   "gun": "木田郡",
+   "name": "古高松村",
+   "rest": "高松市に編入のため"
+  },
+  {
+   "date": "1940-02-11",
+   "gun": "香川郡",
+   "name": "太田村",
+   "rest": "高松市に編入のため"
+  },
+  {
+   "date": "1940-02-11",
+   "gun": "香川郡",
+   "name": "鷺田村",
+   "rest": "高松市に編入のため"
+  },
+  {
+   "date": "1942-05-10",
+   "gun": "仲多度郡",
+   "name": "豊原村",
+   "rest": "仲多度郡多度津町に編入のため"
+  },
+  {
+   "date": "1942-07-01",
+   "gun": "綾歌郡",
+   "name": "林田村",
+   "rest": "綾歌郡坂出町に編入のため"
+  },
+  {
+   "date": "1951-04-01",
+   "gun": "小豆郡",
+   "name": "草壁町",
+   "rest": "小豆郡内海町新設のため"
+  },
+  {
+   "date": "1951-04-01",
+   "gun": "小豆郡",
+   "name": "安田村",
+   "rest": "小豆郡内海町新設のため"
+  },
+  {
+   "date": "1951-04-01",
+   "gun": "小豆郡",
+   "name": "苗羽村",
+   "rest": "小豆郡内海町新設のため"
+  },
+  {
+   "date": "1951-04-01",
+   "gun": "小豆郡",
+   "name": "坂手村",
+   "rest": "小豆郡内海町新設のため"
+  },
+  {
+   "date": "1951-04-01",
+   "gun": "小豆郡",
+   "name": "西村",
+   "rest": "小豆郡内海町新設のため"
+  },
+  {
+   "date": "1951-04-01",
+   "gun": "綾歌郡",
+   "name": "加茂村",
+   "rest": "坂出市に編入のため"
+  },
+  {
+   "date": "1951-04-01",
+   "gun": "綾歌郡",
+   "name": "栗熊村",
+   "rest": "綾歌郡久栄村（即日改称、久万玉村）新設のため"
+  },
+  {
+   "date": "1951-04-01",
+   "gun": "綾歌郡",
+   "name": "富熊村",
+   "rest": "綾歌郡久栄村（即日改称、久万玉村）新設のため"
+  },
+  {
+   "date": "1951-04-01",
+   "gun": "仲多度郡",
+   "name": "南村",
+   "rest": "丸亀市に編入のため"
+  },
+  {
+   "date": "1953-04-01",
+   "gun": "仲多度郡",
+   "name": "与島村",
+   "rest": "坂出市に編入のため"
+  },
+  {
+   "date": "1966-07-01",
+   "gun": "木田郡",
+   "name": "山田町",
+   "rest": "高松市に編入のため"
+  }
+ ]
+}

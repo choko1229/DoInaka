@@ -1,0 +1,22 @@
+<!-- @dsCard group="レイアウト" height=230 subtitle="時間帯で空が変わるヘッダー" -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Yomogi&family=Yusei+Magic&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:var(--font-body);background:var(--bg);color:var(--ink)}
+.sky{position:relative;background:linear-gradient(var(--sky-top),var(--sky-bottom));padding:16px 20px 72px;overflow:hidden}
+.top{display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1}
+.logo{display:inline-flex;align-items:center;gap:8px;color:var(--ink);font-size:28px;text-decoration:none}
+.logo .mark{width:1.15em;height:1.15em}
+.logo b{font-family:var(--font-logo);font-weight:400}.logo i{font-style:normal;font-family:var(--font-logo);color:var(--accent);font-size:.72em}
+.nav{display:flex;gap:16px;font:700 14px/1 var(--font-body)}.nav a{color:var(--ink)}
+.copy{position:relative;z-index:1;margin-top:20px;font:700 24px/32px var(--font-heading)}
+.copy small{display:block;font:400 15px/22px var(--font-hand);color:var(--ink-muted)}
+.land{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:80px}
+.land .hill{fill:var(--hill)}.land .ground{fill:var(--bg)}
+.glow{fill:var(--glow);opacity:0}
+[data-theme="night"] .glow{opacity:.9}
+</style>
+<header class="sky">
+  <div class="top"><a class="logo" href="#"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M3 26 L12 13 L17 19 L21 14 L29 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><path d="M24 5 V26 M20 8 H28 M21 11 H27" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg><b>ド田舎</b><i>.net</i></a><nav class="nav"><a href="#">イベント</a><a href="#">地図</a><a href="#">投稿</a></nav></div>
+  <p class="copy">何もないが、ある。<small>香川のいなかの、今日と今週末。</small></p>
+  <svg class="land" viewBox="0 0 400 80" preserveAspectRatio="none" aria-hidden="true"><path class="hill" d="M0 50 Q60 18 120 42 T240 34 T400 40 V80 H0Z"/><path class="ground" d="M0 66 Q200 58 400 66 V80 H0Z"/><circle class="glow" cx="300" cy="22" r="1.8"/><circle class="glow" cx="80" cy="14" r="1.5"/><circle class="glow" cx="350" cy="48" r="2"/><circle class="glow" cx="200" cy="10" r="1.2"/></svg>
+</header>

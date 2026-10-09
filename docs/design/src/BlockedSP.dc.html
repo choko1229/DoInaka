@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>海外からのアクセス制限(スマホ)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&amp;family=Yomogi&amp;family=Yusei+Magic&amp;family=Zen+Maru+Gothic:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.t-day{--bg:#fbf8ee;--surface:#ffffff;--sunken:#f2eedf;--ink:#26261c;--muted:#5a5a48;--line:#ddd7c2;--strong:#7d775e;--sky1:#9cd3ec;--sky2:#e8f4e1;--hill:#8fb86b;--on:#ffffff}
+.t-morning{--bg:#f3f8f7;--surface:#ffffff;--sunken:#e6f0ee;--ink:#1e2b2a;--muted:#4f615f;--line:#cddcd9;--strong:#6a7f7c;--sky1:#cde8ef;--sky2:#f3f8f7;--hill:#a8c98d;--on:#ffffff}
+.t-evening{--bg:#fbf1e6;--surface:#fffdf9;--sunken:#f4e3d2;--ink:#2e211a;--muted:#6a5246;--line:#e8d2bd;--strong:#8a6e5e;--sky1:#f2a65a;--sky2:#f9dcc0;--hill:#7c8a52;--on:#ffffff}
+.t-night{--bg:#141b2b;--surface:#1d2638;--sunken:#0f1522;--ink:#eceff5;--muted:#a9b3c6;--line:#2c3850;--strong:#7d8aa3;--sky1:#0e1424;--sky2:#24304a;--hill:#1a2a2a;--on:#141b2b}
+.s-spring{--accent:#b8325f}.s-summer{--accent:#1b7352}.s-autumn{--accent:#b24a0c}.s-winter{--accent:#2d5a99}
+.t-night.s-spring{--accent:#f48fb5}.t-night.s-summer{--accent:#6fd3a6}.t-night.s-autumn{--accent:#f4a261}.t-night.s-winter{--accent:#8db4f0}
+a{color:var(--accent)}a:hover{color:var(--ink)}
+</style>
+</helmet>
+<div class="t-morning s-autumn" style="width: 390px; min-height: 1000px; box-sizing: border-box; background: var(--bg); color: var(--ink); font-family: 'BIZ UDPGothic', sans-serif; font-size: 16px; line-height: 28px;">
+
+<header style="position: relative; background: linear-gradient(var(--sky1), var(--sky2)); padding: 14px 16px 40px; overflow: hidden;">
+  <div style="display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1;">
+    <a href="Main.dc.html" style="display: inline-flex; align-items: center; gap: 8px; color: var(--ink); text-decoration: none; font-size: 22px; line-height: 28px;">
+      <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><path d="M3 26 L12 13 L17 19 L21 14 L29 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path><path d="M24 5 V26 M20 8 H28 M21 11 H27" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"></path></svg>
+      <span style="font-family: 'Yusei Magic', sans-serif;">ド田舎</span><span style="font-family: 'Yusei Magic', sans-serif; color: var(--accent); font-size: 16px; margin-left: -6px;">.net</span>
+    </a>
+    <button aria-label="メニュー" style="width: 44px; height: 44px; border-radius: 999px; border: 0; background: transparent; color: var(--ink); display: grid; place-items: center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
+  </div>
+  <svg viewBox="0 0 390 40" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; left: 0; bottom: -1px; width: 100%; height: 40px;"><path d="M0 26 Q90 8 190 22 T390 18 V40 H0Z" style="fill: var(--hill);"></path><path d="M0 32 Q195 26 390 32 V40 H0Z" style="fill: var(--bg);"></path></svg>
+</header>
+
+<main style="padding: 24px 16px 40px; display: flex; flex-direction: column;"><section style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 20px; display: flex; flex-direction: column; gap: 16px; max-width: 720px;">
+      <span style="font-size: 13px; color: var(--muted); letter-spacing: 0.04em;">403</span>
+      <h1 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 24px; line-height: 1.3;">海外からはご利用いただけません</h1>
+      <p style="margin: 0; font-size: 15px; line-height: 26px;">ド田舎.net は、日本国内からの利用を前提にしたサイトです。海外のネットワークからのアクセスは、表示を制限しています。</p>
+      <p lang="en" style="margin: 0; font-size: 15px; line-height: 26px; color: var(--muted);">Sorry, this site is available only from Japan.</p>
+      <div style="background: var(--sunken); border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px;">
+        <b>海外からでも見られるページ</b>
+        <span style="font-size: 14px; line-height: 22px;">掲載内容への削除依頼や権利の侵害のご連絡は、お問い合わせから受け付けます。</span>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;"><a href="AboutSP.dc.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 999px; border: 2px solid var(--strong); color: var(--ink); text-decoration: none; font-weight: 700; font-size: 14px;">運営者情報</a><a href="LegalSP.dc.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 999px; border: 2px solid var(--strong); color: var(--ink); text-decoration: none; font-weight: 700; font-size: 14px;">利用規約</a><a href="LegalSP.dc.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 999px; border: 2px solid var(--strong); color: var(--ink); text-decoration: none; font-weight: 700; font-size: 14px;">プライバシーポリシー</a><a href="ContactSP.dc.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 999px; border: 2px solid var(--strong); color: var(--ink); text-decoration: none; font-weight: 700; font-size: 14px;">お問い合わせ</a></div>
+      </div>
+      <p style="margin: 0; font-size: 13px; line-height: 20px; color: var(--muted);">日本にいるのにこの画面が出るときは、VPN やプライベートリレーを切ってから開き直してください。</p>
+    </section></main>
+<footer style="border-top: 1px solid var(--line); padding: 20px 16px 28px; display: flex; flex-direction: column; gap: 10px;"><nav aria-label="サイトの情報" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 16px; font-size: 14px; line-height: 32px;"><a href="AboutSP.dc.html">運営者情報</a><a href="LegalSP.dc.html">利用規約</a><a href="LegalSP.dc.html">プライバシーポリシー</a><a href="ContactSP.dc.html">お問い合わせ</a><a href="CookieBannerSP.dc.html">Cookie の設定</a></nav><span style="font-family: 'Yomogi', sans-serif; font-size: 15px; color: var(--muted);">コンビニまで5km。でも、いいところです。</span></footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1000}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

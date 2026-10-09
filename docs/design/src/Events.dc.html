@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>イベント一覧・検索</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&amp;family=Yomogi&amp;family=Yusei+Magic&amp;family=Zen+Maru+Gothic:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.t-day{--bg:#fbf8ee;--surface:#ffffff;--sunken:#f2eedf;--ink:#26261c;--muted:#5a5a48;--line:#ddd7c2;--strong:#7d775e;--sky1:#9cd3ec;--sky2:#e8f4e1;--hill:#8fb86b;--on:#ffffff}
+.t-morning{--bg:#f3f8f7;--surface:#ffffff;--sunken:#e6f0ee;--ink:#1e2b2a;--muted:#4f615f;--line:#cddcd9;--strong:#6a7f7c;--sky1:#cde8ef;--sky2:#f3f8f7;--hill:#a8c98d;--on:#ffffff}
+.t-evening{--bg:#fbf1e6;--surface:#fffdf9;--sunken:#f4e3d2;--ink:#2e211a;--muted:#6a5246;--line:#e8d2bd;--strong:#8a6e5e;--sky1:#f2a65a;--sky2:#f9dcc0;--hill:#7c8a52;--on:#ffffff}
+.t-night{--bg:#141b2b;--surface:#1d2638;--sunken:#0f1522;--ink:#eceff5;--muted:#a9b3c6;--line:#2c3850;--strong:#7d8aa3;--sky1:#0e1424;--sky2:#24304a;--hill:#1a2a2a;--on:#141b2b}
+.s-spring{--accent:#b8325f}.s-summer{--accent:#1b7352}.s-autumn{--accent:#b24a0c}.s-winter{--accent:#2d5a99}
+.t-night.s-spring{--accent:#f48fb5}.t-night.s-summer{--accent:#6fd3a6}.t-night.s-autumn{--accent:#f4a261}.t-night.s-winter{--accent:#8db4f0}
+a{color:var(--accent)}a:hover{color:var(--ink)}
+</style>
+</helmet>
+<div class="t-evening s-autumn" style="width: 390px; min-height: 1760px; box-sizing: border-box; background: var(--bg); color: var(--ink); font-family: 'BIZ UDPGothic', sans-serif; font-size: 16px; line-height: 28px;">
+
+<header style="position: relative; background: linear-gradient(var(--sky1), var(--sky2)); padding: 14px 16px 40px; overflow: hidden;">
+  <div style="display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1;">
+    <a href="Main.dc.html" style="display: inline-flex; align-items: center; gap: 8px; color: var(--ink); text-decoration: none; font-size: 22px; line-height: 28px;">
+      <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><path d="M3 26 L12 13 L17 19 L21 14 L29 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path><path d="M24 5 V26 M20 8 H28 M21 11 H27" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"></path></svg>
+      <span style="font-family: 'Yusei Magic', sans-serif;">ド田舎</span><span style="font-family: 'Yusei Magic', sans-serif; color: var(--accent); font-size: 16px; margin-left: -6px;">.net</span>
+    </a>
+    <button aria-label="メニュー" style="width: 44px; height: 44px; border-radius: 999px; border: 0; background: transparent; color: var(--ink); display: grid; place-items: center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
+  </div>
+  <svg viewBox="0 0 390 40" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; left: 0; bottom: -1px; width: 100%; height: 40px;"><path d="M0 26 Q90 8 190 22 T390 18 V40 H0Z" style="fill: var(--hill);"></path><path d="M0 32 Q195 26 390 32 V40 H0Z" style="fill: var(--bg);"></path></svg>
+</header>
+
+<main style="padding: 8px 16px 32px; display: flex; flex-direction: column; gap: 20px;">
+  <nav aria-label="パンくず" style="font-size: 12px; line-height: 18px; color: var(--muted);"><a href="Main.dc.html">トップ</a> / 香川 / イベント</nav>
+  <h1 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 24px; line-height: 32px;">香川のイベント</h1>
+
+  <form style="display: flex; flex-direction: column; gap: 12px; background: var(--surface); border-radius: 14px; padding: 16px; box-shadow: 0 1px 0 var(--line);">
+    <label for="q" style="font-size: 14px; line-height: 22px; color: var(--muted);">キーワード</label>
+    <input id="q" type="search" value="獅子舞" style="height: 48px; box-sizing: border-box; padding: 0 16px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit;">
+    <span style="font-size: 14px; line-height: 22px; color: var(--muted);">いつ</span>
+    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+      <sc-for list="{{presets}}" as="p" hint-placeholder-count="4">
+        <button type="button" aria-pressed="{{p.pressed}}" onClick="{{p.pick}}" style="{{p.style}}">{{p.label}}</button>
+      </sc-for>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px;">
+      <div style="display: flex; flex-direction: column; gap: 4px;">
+        <label for="area" style="font-size: 14px; line-height: 22px; color: var(--muted);">エリア</label>
+        <select id="area" style="height: 48px; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit;"><option>香川全域</option><option>小豆島</option><option>高松市</option></select>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 4px;">
+        <label for="cat" style="font-size: 14px; line-height: 22px; color: var(--muted);">カテゴリ</label>
+        <select id="cat" style="height: 48px; padding: 0 12px; border: 2px solid var(--strong); border-radius: 6px; background: var(--sunken); color: var(--ink); font: inherit;"><option>祭り・行事</option><option>すべて</option></select>
+      </div>
+    </div>
+    <label style="display: flex; align-items: center; gap: 8px; min-height: 44px; font-size: 14px;"><input type="checkbox" style="width: 20px; height: 20px; accent-color: var(--accent);">現在地から10km以内</label>
+    <button type="submit" style="height: 48px; border: 0; border-radius: 999px; background: var(--accent); color: var(--on); font: 700 16px/1 'BIZ UDPGothic', sans-serif;">この条件で探す</button>
+  </form>
+
+  <div style="display: flex; justify-content: space-between; align-items: center;">
+    <span style="font-size: 14px; line-height: 22px;"><b>12件</b> <span style="color: var(--muted);">次の日程が近い順</span></span>
+    <div role="group" aria-label="表示" style="display: inline-flex; gap: 4px; padding: 4px; background: var(--sunken); border-radius: 999px;">
+      <button aria-pressed="true" style="height: 36px; padding: 0 12px; border: 0; border-radius: 999px; background: var(--surface); box-shadow: inset 0 0 0 2px var(--accent); color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">一覧</button>
+      <button aria-pressed="false" style="height: 36px; padding: 0 12px; border: 0; border-radius: 999px; background: transparent; color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">カレンダー</button>
+      <button aria-pressed="false" style="height: 36px; padding: 0 12px; border: 0; border-radius: 999px; background: transparent; color: var(--ink); font: 700 14px/1 'BIZ UDPGothic', sans-serif;">地図</button>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 16px;">
+    <a href="EventDetail.dc.html" style="background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); overflow: hidden; color: inherit; text-decoration: none; display: block;">
+      <div data-illust="1" role="img" aria-label="イラスト(写真がまだありません)" style="position: relative; aspect-ratio: 4 / 3; background: var(--sunken) url(illust/card/village-autumn-evening.webp) center / cover no-repeat;"><span style="position: absolute; left: 8px; bottom: 8px; padding: 2px 8px; border-radius: 999px; background: color-mix(in srgb, var(--surface) 88%, transparent); color: var(--ink); font-size: 11px; line-height: 18px; font-weight: 700;">写真募集中</span></div>
+      <div style="padding: 12px 16px 16px; display: flex; flex-direction: column; gap: 4px;">
+        <span style="font-size: 14px; line-height: 22px; font-weight: 700; color: var(--accent);">10月11日(土)・12日(日)</span>
+        <span style="font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 17px; line-height: 24px;">[集落名]の獅子舞奉納</span>
+        <span style="font-size: 14px; line-height: 22px; color: var(--muted);">高松市 塩江町 ・ 2.4km</span>
+        <span style="display: flex; gap: 6px;"><span style="font-size: 12px; line-height: 18px; background: var(--sunken); padding: 2px 8px; border-radius: 6px;">祭り・行事</span><span style="font-size: 12px; line-height: 18px; background: var(--sunken); padding: 2px 8px; border-radius: 6px;">無料</span><span style="font-size: 12px; line-height: 18px; background: var(--sunken); padding: 2px 8px; border-radius: 6px;">毎年開催</span></span>
+      </div>
+    </a>
+    <a href="#" style="display: flex; gap: 12px; background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 12px; color: inherit; text-decoration: none;">
+      <div style="flex: 0 0 96px; height: 96px; border-radius: 10px; background: var(--sunken); display: grid; place-items: center; color: var(--strong);"><svg width="64" height="48" viewBox="0 0 64 48" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 42 H60"></path><path d="M20 42 V18 M44 42 V18 M14 18 H50 M16 12 H48"></path></svg></div>
+      <div style="display: flex; flex-direction: column; gap: 2px; min-width: 0;">
+        <span style="font-size: 14px; line-height: 22px; font-weight: 700; color: var(--accent);">10月18日(土) 13:00〜</span>
+        <span style="font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 17px; line-height: 24px;">秋季例大祭 太鼓台の宮入り</span>
+        <span style="font-size: 14px; line-height: 22px; color: var(--muted);">観音寺市 ・ 18km</span>
+      </div>
+    </a>
+    <a href="#" style="display: flex; gap: 12px; background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 12px; color: inherit; text-decoration: none;">
+      <div style="flex: 0 0 96px; height: 96px; border-radius: 10px; background: var(--sunken); display: grid; place-items: center; color: var(--strong); font-size: 12px;">[写真]</div>
+      <div style="display: flex; flex-direction: column; gap: 2px; min-width: 0;">
+        <span style="font-size: 14px; line-height: 22px; font-weight: 700; color: var(--danger, #a8241c);">中止 ・ 10月19日(日)</span>
+        <span style="font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 17px; line-height: 24px;">[地区名]秋祭り 子ども獅子</span>
+        <span style="font-size: 14px; line-height: 22px; color: var(--muted);">さぬき市 ・ 22km</span>
+      </div>
+    </a>
+  </div>
+
+  <div style="display: flex; justify-content: center;"><button style="height: 48px; padding: 0 24px; border-radius: 999px; border: 2px solid var(--strong); background: var(--surface); color: var(--ink); font: 700 16px/1 'BIZ UDPGothic', sans-serif;">もっと見る</button></div>
+  <p style="margin: 0; text-align: center; font-family: 'Yomogi', sans-serif; font-size: 16px; line-height: 24px; color: var(--muted);">夕方の空になりました。</p>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1760}}'>
+class Component extends DCLogic {
+renderVals() {
+const picked = (this.state && this.state.preset) || 'weekend';
+const base = 'height: 36px; padding: 0 16px; border-radius: 999px; font: 700 14px/1 BIZ UDPGothic, sans-serif; cursor: pointer; ';
+const on = base + 'background: var(--surface); border: 2px solid var(--accent); color: var(--accent);';
+const off = base + 'background: var(--surface); border: 2px solid var(--strong); color: var(--ink);';
+const list = [['today','今日'],['weekend','今週末'],['month','今月'],['range','期間を指定']];
+return {
+presets: list.map(([id, label]) => ({
+label: label,
+pressed: picked === id ? 'true' : 'false',
+style: picked === id ? on : off,
+pick: () => this.setState({ preset: id })
+}))
+};
+}
+}
+</script>
+</body>
+</html>

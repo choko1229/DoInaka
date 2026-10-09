@@ -1,0 +1,132 @@
+/* 自動生成: php artisan design:tokens(docs/design-system/tokens.json から作る。直接編集しない) */
+
+:root,
+:root[data-theme='day'] {
+    --bg: #fbf8ee;
+    --surface: #ffffff;
+    --surface-sunken: #f2eedf;
+    --ink: #26261c;
+    --ink-muted: #5a5a48;
+    --line: #ddd7c2;
+    --line-strong: #7d775e;
+    --sky-top: #9cd3ec;
+    --sky-bottom: #e8f4e1;
+    --hill: #8fb86b;
+    --glow: #f2e27a;
+    --accent-spring: #b8325f;
+    --accent-summer: #1b7352;
+    --accent-autumn: #b24a0c;
+    --accent-winter: #2d5a99;
+    --on-accent: #ffffff;
+    --success: #2b7048;
+    --warning: #7a5200;
+    --danger: #a8241c;
+    --shadow-card: 0 1px 0 #ddd7c2;
+}
+
+:root[data-theme='morning'] {
+    --bg: #f3f8f7;
+    --surface: #ffffff;
+    --surface-sunken: #e6f0ee;
+    --ink: #1e2b2a;
+    --ink-muted: #4f615f;
+    --line: #cddcd9;
+    --line-strong: #6a7f7c;
+    --sky-top: #cde8ef;
+    --sky-bottom: #f3f8f7;
+    --hill: #a8c98d;
+    --glow: #f2e27a;
+    --accent-spring: #b8325f;
+    --accent-summer: #1b7352;
+    --accent-autumn: #b24a0c;
+    --accent-winter: #2d5a99;
+    --on-accent: #ffffff;
+    --success: #2b7048;
+    --warning: #7a5200;
+    --danger: #a8241c;
+    --shadow-card: 0 1px 0 #cddcd9;
+}
+
+:root[data-theme='evening'] {
+    --bg: #fbf1e6;
+    --surface: #fffdf9;
+    --surface-sunken: #f4e3d2;
+    --ink: #2e211a;
+    --ink-muted: #6a5246;
+    --line: #e8d2bd;
+    --line-strong: #8a6e5e;
+    --sky-top: #f2a65a;
+    --sky-bottom: #f9dcc0;
+    --hill: #7c8a52;
+    --glow: #f2e27a;
+    --accent-spring: #b8325f;
+    --accent-summer: #1b7352;
+    --accent-autumn: #b24a0c;
+    --accent-winter: #2d5a99;
+    --on-accent: #ffffff;
+    --success: #2b7048;
+    --warning: #7a5200;
+    --danger: #a8241c;
+    --shadow-card: 0 1px 0 #e8d2bd;
+}
+
+:root[data-theme='night'] {
+    --bg: #141b2b;
+    --surface: #1d2638;
+    --surface-sunken: #0f1522;
+    --ink: #eceff5;
+    --ink-muted: #a9b3c6;
+    --line: #2c3850;
+    --line-strong: #7d8aa3;
+    --sky-top: #0e1424;
+    --sky-bottom: #24304a;
+    --hill: #1a2a2a;
+    --glow: #f2e27a;
+    --accent-spring: #f48fb5;
+    --accent-summer: #6fd3a6;
+    --accent-autumn: #f4a261;
+    --accent-winter: #8db4f0;
+    --on-accent: #141b2b;
+    --success: #7fd4a0;
+    --warning: #f2c14e;
+    --danger: #ff9a8f;
+    --shadow-card: 0 1px 0 #2c3850;
+}
+
+:root {
+    --accent: var(--accent-autumn);
+    --focus: var(--ink);
+}
+
+:root[data-season='spring'] {
+    --accent: var(--accent-spring);
+}
+
+:root[data-season='summer'] {
+    --accent: var(--accent-summer);
+}
+
+:root[data-season='autumn'] {
+    --accent: var(--accent-autumn);
+}
+
+:root[data-season='winter'] {
+    --accent: var(--accent-winter);
+}
+
+:root {
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --space-12: 48px;
+    --radius-sm: 6px;
+    --radius-md: 14px;
+    --radius-pill: 999px;
+    --font-logo: "Yusei Magic", "Zen Maru Gothic", sans-serif;
+    --font-heading: "Zen Maru Gothic", "BIZ UDPGothic", sans-serif;
+    --font-hand: "Yomogi", "Zen Maru Gothic", sans-serif;
+    --font-body: "BIZ UDPGothic", "Hiragino Sans", "Noto Sans JP", sans-serif;
+}

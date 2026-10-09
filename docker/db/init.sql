@@ -1,0 +1,4 @@
+CREATE DATABASE IF NOT EXISTS doinaka_test CHARACTER SET utf8mb4 COLLATE utf8mb4_ja_0900_as_cs_ks;
+GRANT ALL PRIVILEGES ON doinaka_test.* TO 'doinaka'@'%';
+FLUSH PRIVILEGES;
+

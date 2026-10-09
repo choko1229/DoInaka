@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>削除依頼を受けたページ(確認中・PC)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&amp;family=Yomogi&amp;family=Yusei+Magic&amp;family=Zen+Maru+Gothic:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.t-morning{--bg:#f3f8f7;--surface:#ffffff;--sunken:#e6f0ee;--ink:#1e2b2a;--muted:#4f615f;--line:#cddcd9;--strong:#6a7f7c;--sky1:#cde8ef;--sky2:#f3f8f7;--hill:#a8c98d;--on:#ffffff}
+.s-autumn{--accent:#b24a0c}
+a{color:var(--accent)}a:hover{color:var(--ink)}
+</style>
+</helmet>
+<div class="t-morning s-autumn" style="min-height: 920px; background: var(--bg); color: var(--ink); font-family: 'BIZ UDPGothic', sans-serif; font-size: 16px; line-height: 28px;">
+
+<header style="position: relative; background: linear-gradient(var(--sky1), var(--sky2)); overflow: hidden;">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 16px 32px 56px; position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+    <a href="TopPC.dc.html" style="display: inline-flex; align-items: center; gap: 8px; color: var(--ink); text-decoration: none; font-size: 28px; line-height: 32px;"><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><path d="M3 26 L12 13 L17 19 L21 14 L29 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path><path d="M24 5 V26 M20 8 H28 M21 11 H27" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"></path></svg><span style="font-family: 'Yusei Magic', sans-serif;">ド田舎</span><span style="font-family: 'Yusei Magic', sans-serif; color: var(--accent); font-size: 20px; margin-left: -6px;">.net</span></a>
+    <nav style="display: flex; gap: 24px; align-items: center; flex-wrap: wrap; font-weight: 700;"><a href="EventsPC.dc.html" style="color: var(--ink); text-decoration: none;">イベント</a><a href="#" style="color: var(--ink); text-decoration: none;">スポット</a><a href="#" style="color: var(--ink); text-decoration: none;">記事</a><a href="MapPC.dc.html" style="color: var(--ink); text-decoration: none;">地図</a><a href="MyPagePC.dc.html" style="color: var(--ink); text-decoration: none;">ログイン</a></nav>
+  </div>
+  <svg viewBox="0 0 1280 56" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; left: 0; bottom: -1px; width: 100%; height: 56px;"><path d="M0 34 Q260 6 560 28 T1280 24 V56 H0Z" style="fill: var(--hill);"></path><path d="M0 46 Q640 38 1280 46 V56 H0Z" style="fill: var(--bg);"></path></svg>
+</header>
+
+<main style="max-width: 1100px; margin: 0 auto; padding: 8px 32px 56px; display: flex; flex-direction: column; gap: 18px;">
+  <nav aria-label="パンくず" style="font-size: 14px; line-height: 22px; color: var(--muted);"><a href="#">トップ</a> / 香川県 / イベント</nav>
+  <div role="group" aria-label="デザイン確認用: 削除依頼の対象" style="display: flex; gap: 8px; flex-wrap: wrap;">
+    <sc-for list="{{scopes}}" as="o" hint-placeholder-count="2">
+      <button aria-pressed="{{o.pressed}}" onClick="{{o.pick}}" style="{{o.style}}">{{o.label}}</button>
+    </sc-for>
+  </div>
+  <div style="display: flex; gap: 32px; align-items: flex-start; flex-wrap: wrap;">
+    <article style="flex: 999 1 600px; min-width: 0; display: flex; flex-direction: column; gap: 18px;">
+    <sc-if value="{{is_photo}}" hint-placeholder-val="{{true}}">
+      <div role="status" style="display: flex; gap: 12px; align-items: flex-start; padding: 16px 20px; border-radius: 14px; border: 3px solid var(--accent); background: var(--surface);">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" aria-hidden="true" style="flex: 0 0 auto;"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v6M12 16.5v.5"></path></svg>
+      <div style="display: flex; flex-direction: column; gap: 2px;"><b style="font-size: 18px; line-height: 1.5;">確認中です</b><span style="font-size: 14px; line-height: 22px;">このページの写真1枚について削除依頼を受けました。確認が終わるまで、その写真をぼかしています。</span></div>
+    </div>
+      <h1 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 36px; line-height: 1.3;">[集落名]の獅子舞奉納</h1>
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <span style="font-size: 15px; font-weight: 700; color: var(--accent);">10月11日(土)・12日(日) ・ 高松市 塩江町</span>
+        <p style="margin: 0; font-size: 15px; line-height: 26px;">[集落の神社に獅子舞を奉納する秋祭り。ド田舎.netが書いた紹介文が入る]</p>
+        <div style="padding: 10px 14px; border-radius: 10px; background: var(--sunken); font-size: 14px;">情報元: Webページ ・ [自治会のお知らせ](10/6 確認)</div>
+      </div>
+      <h2 style="margin: 0; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 20px; line-height: 1.4;">行った人の写真</h2>
+      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px;"><div style="aspect-ratio: 1; background: var(--sunken); border-radius: 10px;"></div><div style="aspect-ratio: 1; background: var(--sunken); border-radius: 10px;"></div><div style="position: relative; aspect-ratio: 1; border-radius: 10px; overflow: hidden;">
+        <div aria-hidden="true" style="position: absolute; inset: -12px; background: repeating-linear-gradient(45deg, var(--strong) 0 10px, var(--sunken) 10px 22px); filter: blur(10px); user-select: none; pointer-events: none;"></div>
+        <span style="position: absolute; inset: auto 6px 6px 6px; padding: 4px 6px; border-radius: 6px; background: var(--accent); color: var(--on); font-size: 12px; font-weight: 700; text-align: center;">確認中</span>
+      </div><div style="aspect-ratio: 1; background: var(--sunken); border-radius: 10px;"></div></div>
+    </sc-if>
+    <sc-if value="{{is_page}}" hint-placeholder-val="{{false}}">
+      <div role="status" style="display: flex; gap: 12px; align-items: flex-start; padding: 16px 20px; border-radius: 14px; border: 3px solid var(--accent); background: var(--surface);">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" aria-hidden="true" style="flex: 0 0 auto;"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v6M12 16.5v.5"></path></svg>
+      <div style="display: flex; flex-direction: column; gap: 2px;"><b style="font-size: 18px; line-height: 1.5;">確認中です</b><span style="font-size: 14px; line-height: 22px;">このページについて削除依頼を受けました。確認が終わるまで、内容をぼかしています。確認の結果、そのまま残すこともあります。</span></div>
+    </div>
+      <div style="position: relative;">
+        <div aria-hidden="true" style="display: flex; flex-direction: column; gap: 14px; filter: blur(10px); user-select: none; pointer-events: none;">
+          <div style="height: 40px; width: 60%; border-radius: 8px; background: var(--strong); opacity: .5;"></div>
+          <div style="height: 16px; width: 40%; border-radius: 6px; background: var(--accent); opacity: .5;"></div>
+          <div style="height: 14px; border-radius: 6px; background: var(--line);"></div><div style="height: 14px; width: 92%; border-radius: 6px; background: var(--line);"></div><div style="height: 14px; width: 80%; border-radius: 6px; background: var(--line);"></div>
+          <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px;"><div style="aspect-ratio: 1; background: var(--sunken); border-radius: 10px;"></div><div style="aspect-ratio: 1; background: var(--sunken); border-radius: 10px;"></div><div style="aspect-ratio: 1; background: var(--sunken); border-radius: 10px;"></div><div style="aspect-ratio: 1; background: var(--sunken); border-radius: 10px;"></div></div>
+        </div>
+      </div>
+    </sc-if>
+    </article>
+    <aside style="flex: 1 1 280px; max-width: 320px; background: var(--surface); border-radius: 14px; box-shadow: 0 1px 0 var(--line); padding: 16px 18px; display: flex; flex-direction: column; gap: 6px;">
+      <b>確認中の表示について</b>
+      <span style="font-size: 14px; line-height: 22px;">削除依頼を受けた部分は、確認が終わるまでぼかして表示します。内容を確かめる前に消すことはありません。</span>
+      <a href="ContactPC.dc.html" style="font-size: 14px; font-weight: 700;">お問い合わせ</a>
+    </aside>
+  </div>
+</main>
+<footer style="border-top: 1px solid var(--line);"><div style="max-width: 1200px; margin: 0 auto; padding: 24px 32px; display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between;"><nav aria-label="サイトの情報" style="display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 14px; line-height: 22px;"><a href="AboutPC.dc.html">運営者情報</a><a href="LegalPC.dc.html">利用規約</a><a href="LegalPC.dc.html">プライバシーポリシー</a><a href="ContactPC.dc.html">お問い合わせ</a></nav><span style="font-family: 'Yomogi', sans-serif; font-size: 16px; color: var(--muted);">コンビニまで5km。でも、いいところです。</span></div></footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":920}}'>
+class Component extends DCLogic {
+renderVals() {
+const scope = (this.state && this.state.scope) || 'photo';
+const base = 'flex: 0 0 auto; height: 40px; padding: 0 16px; border-radius: 999px; font: 700 14px/1 BIZ UDPGothic, sans-serif; cursor: pointer; ';
+const list = [['photo', '対象: 写真1枚'], ['page', '対象: ページ全体']];
+return {
+scopes: list.map(([id, label]) => ({
+ label: label,
+ pressed: scope === id ? 'true' : 'false',
+ style: scope === id ? base + 'background: var(--surface); border: 2px solid var(--accent); color: var(--accent);' : base + 'background: var(--surface); border: 2px solid var(--strong); color: var(--ink);',
+ pick: () => this.setState({ scope: id })
+})),
+is_photo: scope === 'photo',
+is_page: scope === 'page'
+};
+}
+}
+</script>
+</body>
+</html>

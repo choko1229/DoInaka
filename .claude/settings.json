@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(docker compose *)",
+      "Bash(composer *)",
+      "Bash(npm install *)",
+      "Bash(npm ci *)",
+      "Bash(npm run *)",
+      "Bash(php artisan *)",
+      "Bash(./vendor/bin/pint *)",
+      "Bash(./vendor/bin/phpstan *)",
+      "Bash(./vendor/bin/pest *)",
+      "Bash(git status *)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git switch *)",
+      "Bash(git checkout -b *)",
+      "Bash(git pull *)",
+      "Bash(git fetch *)",
+      "Bash(gh pr view *)",
+      "Bash(gh pr checks *)",
+      "Bash(gh run view *)",
+      "Bash(gh run list *)",
+      "Bash(gh run watch *)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.local)",
+      "Read(./.env.*.local)",
+      "Bash(cat .env*)",
+      "Bash(git push --force *)",
+      "Bash(git push -f *)",
+      "Bash(git push origin main)",
+      "Bash(git push origin main *)",
+      "Bash(git add resources/images/illust/src*)",
+      "Bash(ssh *)",
+      "Bash(sftp *)",
+      "Bash(scp *)",
+      "Bash(lftp *)"
+    ]
+  }
+}

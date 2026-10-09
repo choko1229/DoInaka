@@ -1,0 +1,25 @@
+{
+  "v": 3,
+  "assetGroups": {},
+  "blobs": {},
+  "createdOnFiles": {
+    "at": "2026-10-06T06:11:07Z",
+    "v": 1
+  },
+  "docs": {
+    "readme": "project/README.md",
+    "sections": []
+  },
+  "groups": [],
+  "lastChange": {
+    "at": "2026-10-06T06:11:07Z",
+    "by": "choko1229",
+    "note": "初版: 時間帯4テーマ×季節4アクセント、書体、部品6種、カバー",
+    "via": "Claude (chat)"
+  },
+  "layout": "files",
+  "libraries": [],
+  "namespace": "Doinaka",
+  "sections": {},
+  "title": "ド田舎.net"
+}
