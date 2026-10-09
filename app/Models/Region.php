@@ -36,6 +36,10 @@ use Illuminate\Support\Carbon;
  * @property EraTag|null $era
  * @property Carbon|null $abolished_on
  * @property string|null $merged_into
+ * @property string|null $intro_body
+ * @property array<int, array<string, string>|string>|null $intro_sources
+ * @property bool $intro_fact_checked
+ * @property Carbon|null $intro_generated_at
  */
 class Region extends Model
 {
@@ -54,6 +58,9 @@ class Region extends Model
             'crawl_enabled' => 'boolean',
             'abolished_on' => 'date',
             'merged_at' => 'date',
+            'intro_sources' => 'array',
+            'intro_fact_checked' => 'boolean',
+            'intro_generated_at' => 'datetime',
         ];
     }
 

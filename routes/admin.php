@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Admin\AdminBarController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\ContentController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -34,6 +35,11 @@ Route::middleware('staff')->prefix('two-factor')->name('two-factor')->group(func
 // ここから先は、管理者(または編集者)で、このセッションで2段階認証を通った人だけ
 Route::middleware('admin')->group(function (): void {
     Route::get('/', DashboardController::class)->name('dashboard');
+
+    // 公開ページの上端に差し込む管理者バー(設計書6.5)
+    Route::get('/bar', [AdminBarController::class, 'show'])->name('bar');
+    Route::post('/bar/unpublish/{type}/{id}', [AdminBarController::class, 'unpublish'])->whereNumber('id')->name('bar.unpublish');
+    Route::post('/bar/regions/{region}/regenerate', [AdminBarController::class, 'regenerate'])->name('bar.regenerate');
     Route::post('/two-factor/reset', [TwoFactorController::class, 'reset'])->name('two-factor.reset');
 
     // 行事・開催回・スポット・記事・コメント・変更履歴(審査・コンテンツ編集は編集者も使える)
