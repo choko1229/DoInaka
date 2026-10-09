@@ -35,6 +35,7 @@
                 </section>
             </div>
             <aside class="detail-side">
+                <x-ad position="spot_detail" />
                 <x-reaction-buttons type="spot" :id="$spot->id" :favorite-count="\App\Models\Favorite::query()->where('favoritable_type', 'spot')->where('favoritable_id', $spot->id)->count()" :visit-count="\App\Models\Visit::query()->where('visitable_type', 'spot')->where('visitable_id', $spot->id)->count()" />
                 <x-share-buttons :url="$shareUrl" :title="$spot->title" />
                 <p class="t-small"><a href="/report/spot/{{ $spot->id }}/">{{ __('public.report_error') }}</a></p>

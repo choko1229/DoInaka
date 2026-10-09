@@ -7,6 +7,7 @@
         @if ($article->tags->isNotEmpty())
             <p class="tags">@foreach ($article->tags as $tag)<a class="chip" href="/{{ $pref }}/articles/?tag={{ urlencode($tag->name) }}">{{ $tag->name }}</a>@endforeach</p>
         @endif
+        <x-ad position="article_detail" />
         <x-reaction-buttons type="article" :id="$article->id" :favorite-count="\App\Models\Favorite::query()->where('favoritable_type', 'article')->where('favoritable_id', $article->id)->count()" />
         <x-share-buttons :url="$shareUrl" :title="$article->title" />
     </article>

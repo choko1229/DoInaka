@@ -482,3 +482,10 @@ textarea { width: 100%; min-height: 160px; padding: var(--space-3); border: 2px 
 .gallery figure { margin: 0; }
 .gallery img { display: block; width: 100%; height: auto; border-radius: var(--radius-sm); background: var(--surface-sunken); }
 .source-flyer { display: block; max-width: 160px; margin-top: var(--space-2); border-radius: var(--radius-sm); }
+/* ---- 広告(フェーズ7)。PR は必ず「PR」と表示する ---- */
+.ad { position: relative; margin: var(--space-4) 0; padding: var(--space-3) var(--space-4); border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface-sunken); }
+.ad-label { display: inline-block; margin-right: var(--space-2); padding: 0 var(--space-2); border: 1px solid var(--ink-muted); border-radius: var(--radius-sm); color: var(--ink-muted); font-size: 12px; line-height: 18px; }
+.ad p { margin: var(--space-1) 0 0; }
+.stat-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+.stat { display: grid; gap: var(--space-1); margin-top: 0; text-decoration: none; color: inherit; }
+a.stat:hover strong { text-decoration: underline; }

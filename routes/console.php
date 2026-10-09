@@ -62,3 +62,6 @@ Schedule::command('regions:generate')->everyTenMinutes()->withoutOverlapping()->
 
 // OpenRouter の無料モデルの一覧を取り直す(1日1回。管理画面の候補と、モデルが消えたかの判断に使う)
 Schedule::call(fn () => app(OpenRouterModels::class)->refresh())->dailyAt('3:40')->name('ai-models-refresh');
+
+// 保持期間を過ぎたログの削除(操作ログ365日・AIのログ90日。設定で変えられる)
+Schedule::command('logs:prune')->dailyAt('4:20')->name('logs-prune');

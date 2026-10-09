@@ -99,6 +99,7 @@
             </div>
 
             <aside class="detail-side">
+                <x-ad position="event_detail" />
                 <x-reaction-buttons type="event" :id="$event->id" :favorite-count="\App\Models\Favorite::query()->where('favoritable_type', 'event')->where('favoritable_id', $event->id)->count()" :visit-count="\App\Models\Visit::query()->where('visitable_type', 'event')->where('visitable_id', $event->id)->count()" />
                 <x-share-buttons :url="$shareUrl" :title="$event->title" />
                 <p class="t-small"><a href="/report/event/{{ $event->id }}/">{{ __('public.report_error') }}</a></p>

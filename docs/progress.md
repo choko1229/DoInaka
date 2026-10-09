@@ -4,7 +4,7 @@
 
 ## 今のフェーズ
 
-フェーズ7(マイページ・会員・広告・ログ・設定)— 着手前
+フェーズ8(公開前の運用準備)— 着手前
 
 ## 終わったフェーズ
 
@@ -17,11 +17,12 @@
 | 4 公開画面 | [#8](https://github.com/choko1229/DoInaka/pull/8) | 公開ルート・検索・詳細・地域ページ・地図・SEO・API・管理者バー・海外制限・人気スコア |
 | 5 投稿・画像・審査 | [#10](https://github.com/choko1229/DoInaka/pull/10) | 投稿・修正依頼・コメント・情報提供・画像処理・審査画面・却下ボックス・定期削除 |
 | 6 AI審査とAI下書き | [#11](https://github.com/choko1229/DoInaka/pull/11) | OpenRouter・AI判定・自動承認/却下・URLから下書き・情報源の巡回・地域ページの紹介文 |
+| 7 マイページ・会員・広告・ログ・設定 | [#12](https://github.com/choko1229/DoInaka/pull/12) | マイページ・会員の管理・広告枠・ログとCSV・設定の全タブ・ダッシュボード・停止中の会員の制限 |
 
 ## 次にやること
 
-1. フェーズ7(マイページ・会員・広告・ログ・設定)に進む。マイページ(お気に入り・行った!・自分の投稿と審査の結果・配色の設定)、会員(AdminUsers: 停止・解除・権限。メールは詳細画面だけで、表示を操作ログに)、広告枠(AdminAds)、ログ画面(操作・審査・AI・エラー)、設定画面(14章。AI のキー・モデル選択=:free の候補は OpenRouterModels::all()、Turnstile、メール、Discord など)
-2. フェーズ8(公開前の運用)は、cron の点検・固定ページ(/terms/ /privacy/ /about/ /contact/)・削除依頼・セキュリティヘッダー(CSP)・メール・Cookie の同意・本番の確認
+1. フェーズ8(公開前の運用準備)に進む。固定ページ(/terms/ /privacy/ /about/ /contact/ と管理画面のお問い合わせ・削除依頼・AI の照合・ぼかし・会員への同意照会)、メール(キュー・再試行・Mailpit)、同意バナー(GA4・AdSense の読み込みを同意で制御。AdSense の data-consent-ads が目印)、セキュリティヘッダー(CSP・HSTS)、cron の点検と Discord 通知(止まった・回復)、E2E
+2. その後、最終の確認: main の CI、Pint・Larastan・Pest、manual-checks の整理、【BETA】プレリリース(release.yml を workflow_dispatch で beta=true)、最終報告
 
 ## 環境メモ
 

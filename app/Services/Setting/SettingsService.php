@@ -121,6 +121,26 @@ class SettingsService
         return $this->get($key);
     }
 
+    /** 画面に出す、秘密の値の目印(末尾4文字だけ。設計書13.1)。未設定なら空 */
+    public function secretHint(SettingKey $key): string
+    {
+        $value = $this->string($key);
+
+        return $value === '' ? '' : '********'.mb_substr($value, -4);
+    }
+
+    /** 値を保存せずに、保存できるかだけを確かめる。だめなら理由、よければ null */
+    public function check(SettingKey $key, mixed $value): ?string
+    {
+        try {
+            $this->assertValid($key, $value);
+        } catch (InvalidSettingValueException $e) {
+            return $e->getMessage();
+        }
+
+        return null;
+    }
+
     /**
      * @throws InvalidSettingValueException
      */

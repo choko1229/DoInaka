@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\ReactionController;
 use App\Http\Controllers\Api\RegionController as RegionApiController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Install\InstallController;
+use App\Http\Controllers\Member\MyPageController;
 use App\Http\Controllers\Public\ArticleController;
 use App\Http\Controllers\Public\EventController;
 use App\Http\Controllers\Public\HomeController;
@@ -53,9 +54,9 @@ Route::get('/robots.txt', [SeoController::class, 'robots'])->name('robots');
 // API v1(絞り込みの部分更新、お気に入り、行った!)
 Route::prefix('api/v1')->name('api.')->group(function (): void {
     Route::get('/events', EventListController::class)->middleware('throttle:60,1')->name('events');
-    Route::post('/favorites/{type}/{id}', [ReactionController::class, 'favorite'])->whereNumber('id')->middleware('throttle:60,1')->name('favorites');
-    Route::post('/visits/{type}/{id}', [ReactionController::class, 'visit'])->whereNumber('id')->middleware('throttle:60,1')->name('visits');
-    Route::post('/{type}/{id}/comments', [CommentController::class, 'store'])->whereIn('type', ['event', 'spot', 'article'])->whereNumber('id')->middleware('throttle:20,1')->name('comments');
+    Route::post('/favorites/{type}/{id}', [ReactionController::class, 'favorite'])->whereNumber('id')->middleware(['permit:favorite', 'throttle:60,1'])->name('favorites');
+    Route::post('/visits/{type}/{id}', [ReactionController::class, 'visit'])->whereNumber('id')->middleware(['permit:visit', 'throttle:60,1'])->name('visits');
+    Route::post('/{type}/{id}/comments', [CommentController::class, 'store'])->whereIn('type', ['event', 'spot', 'article'])->whereNumber('id')->middleware(['permit:comment', 'throttle:20,1'])->name('comments');
     Route::get('/regions', [RegionApiController::class, 'index'])->middleware('throttle:120,1')->name('regions');
     Route::get('/regions/nearest', [RegionApiController::class, 'nearest'])->middleware('throttle:120,1')->name('regions.nearest');
 });
@@ -64,7 +65,7 @@ Route::prefix('api/v1')->name('api.')->group(function (): void {
 Route::get('/storage/{path}', [MediaFileController::class, 'show'])->where('path', 'media/.+')->name('media.file');
 
 // 投稿・修正依頼・「行った!」の写真(設計書6.1)。受付は Turnstile・件数制限・同意つき
-Route::prefix('post')->name('post.')->group(function (): void {
+Route::prefix('post')->name('post.')->middleware('permit:post')->group(function (): void {
     Route::get('/', [SubmissionController::class, 'index'])->name('index');
     Route::get('/done', [SubmissionController::class, 'done'])->name('done');
     Route::get('/photo/{type}/{id}', [SubmissionController::class, 'photo'])->whereNumber('id')->name('photo');
@@ -72,8 +73,19 @@ Route::prefix('post')->name('post.')->group(function (): void {
     Route::get('/{type}', [SubmissionController::class, 'create'])->where('type', 'tip|spot|article')->name('create');
     Route::post('/{type}', [SubmissionController::class, 'store'])->where('type', 'tip|spot|article')->middleware('throttle:20,1')->name('store');
 });
-Route::get('/report/{type}/{id}', [SubmissionController::class, 'report'])->whereNumber('id')->name('report');
-Route::post('/report/{type}/{id}', [SubmissionController::class, 'storeReport'])->whereNumber('id')->middleware('throttle:20,1')->name('report.store');
+Route::get('/report/{type}/{id}', [SubmissionController::class, 'report'])->whereNumber('id')->middleware('permit:post')->name('report');
+Route::post('/report/{type}/{id}', [SubmissionController::class, 'storeReport'])->whereNumber('id')->middleware(['permit:post', 'throttle:20,1'])->name('report.store');
+
+// マイページ(ログインが要る。停止中の会員も、見る・退会はできる。設計書5.1・6.1)
+Route::middleware(['auth', 'can:my-page'])->prefix('mypage')->name('mypage.')->group(function (): void {
+    Route::get('/', [MyPageController::class, 'index'])->name('index');
+    Route::get('/submissions', [MyPageController::class, 'submissions'])->name('submissions');
+    Route::get('/lists', [MyPageController::class, 'lists'])->name('lists');
+    Route::get('/profile', [MyPageController::class, 'profile'])->name('profile');
+    Route::post('/profile', [MyPageController::class, 'updateProfile'])->name('profile.update');
+    Route::get('/withdraw', [MyPageController::class, 'withdraw'])->name('withdraw');
+    Route::post('/withdraw', [MyPageController::class, 'destroy'])->name('withdraw.destroy');
+});
 
 // 公開ページ(設計書6.1)。URL の先頭は県のスラッグ。予約語は県のスラッグにならない。有効でない県は 404
 $pref = '(?!(?:'.implode('|', array_filter(ReservedSlugs::WORDS, fn (string $w): bool => preg_match('/^[a-z0-9-]+$/', $w) === 1)).')(?![a-z0-9-]))[a-z0-9-]+';

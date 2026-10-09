@@ -14,6 +14,8 @@
         </p>
     </section>
 
+    <x-ad position="top" />
+
     @if ($weekend !== [])
         <section class="block">
             <div class="block-head"><h2 class="t-h1">{{ __('public.this_weekend') }}</h2><a href="/{{ $pref }}/events/weekend/">{{ __('public.see_all') }}</a></div>
