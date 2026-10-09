@@ -10,6 +10,7 @@ return [
     'nav_content' => 'コンテンツ',
     'nav_operation' => '運営',
     'admin_dashboard' => 'ダッシュボード',
+    'footer_nav' => 'このサイトについて',
     'footer_aside' => 'コンビニまで5km。でも、いいところです。',
     'theme_switch' => '配色の切り替え',
     'theme_auto' => '自動(いまの空)',

@@ -18,4 +18,9 @@ return [
     'ai_purpose' => ['review_text' => '投稿の判定', 'review_image' => '画像のチェック', 'draft_from_url' => 'URLから下書き', 'suggest' => 'AIの提案', 'tip' => '情報提供の読み取り', 'crawl' => '巡回の解析', 'region_intro' => '地域ページの紹介文', 'fact_check' => 'ファクトチェック', 'takedown_check' => '削除依頼の照合'],
     'submission_status' => ['received' => '受付', 'processing' => '画像処理中', 'ai_pending' => 'AI判定待ち', 'ai_deferred' => '翌日へ延期', 'in_review' => '審査待ち', 'approved' => '承認', 'rejected' => '却下', 'auto_rejected' => '自動却下'],
     'submission_type' => ['tip' => 'イベントの情報提供', 'event' => 'イベント(下書き)', 'spot' => 'スポット', 'article' => '記事・体験談', 'correction' => '修正依頼', 'comment' => 'コメント', 'visit_photo' => '行った!の写真'],
+    'inquiry_kind' => ['general' => '一般の質問・不具合', 'takedown' => '削除依頼(権利侵害・個人情報)', 'listing' => '掲載・修正の依頼(主催者の方)', 'ads' => '広告・独自掲載枠のご相談', 'privacy' => '個人情報について(開示・訂正・削除・利用停止など)'],
+    'inquiry_status' => ['new' => '未対応', 'in_progress' => '対応中', 'done' => '対応済み'],
+    'right_type' => ['copyright' => '著作権', 'portrait' => '肖像権(人の写り込み)', 'privacy' => 'プライバシー(住所・電話番号・名前など)', 'defamation' => '名誉', 'other' => 'その他'],
+    'consent_status' => ['pending' => '返事待ち', 'agreed' => '削除に同意', 'objected' => '反対'],
+    'reply_status' => ['queued' => '送信待ち', 'sent' => '送信済み', 'failed' => '送れなかった'],
 ];

@@ -142,7 +142,7 @@
             <div class="button-row">
                 <form method="post" action="{{ route('admin.events.cancel', $event) }}">@csrf<x-button type="submit">{{ __('content.cancel_event') }}</x-button></form>
                 <form method="post" action="{{ route('admin.events.copy', $event) }}">@csrf<x-button type="submit">{{ __('content.copy_next_year') }}</x-button></form>
-                <form method="post" action="{{ route('admin.events.destroy', $event) }}" onsubmit="return confirm(@js(__('content.delete_confirm')))">@csrf @method('delete')<x-button type="submit">{{ __('content.delete_mistake') }}</x-button></form>
+                <form method="post" action="{{ route('admin.events.destroy', $event) }}" data-confirm="{{ __('content.delete_confirm') }}">@csrf @method('delete')<x-button type="submit">{{ __('content.delete_mistake') }}</x-button></form>
             </div>
             <p class="t-caption t-muted">{{ __('content.delete_help') }}</p>
         </section>

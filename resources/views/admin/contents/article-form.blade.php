@@ -29,6 +29,6 @@
         </aside>
     </form>
     @if ($article->exists)
-        <form method="post" action="{{ route('admin.articles.destroy', $article) }}" onsubmit="return confirm(@js(__('content.delete_confirm')))">@csrf @method('delete')<x-button type="submit">{{ __('content.delete_mistake') }}</x-button></form>
+        <form method="post" action="{{ route('admin.articles.destroy', $article) }}" data-confirm="{{ __('content.delete_confirm') }}">@csrf @method('delete')<x-button type="submit">{{ __('content.delete_mistake') }}</x-button></form>
     @endif
 </x-layouts.admin>

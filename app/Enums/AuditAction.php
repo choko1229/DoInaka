@@ -34,4 +34,8 @@ enum AuditAction: string
     case SettingsChange = 'settings.change';
     case AdChange = 'ad.change';
     case LogExport = 'log.export';
+    case InquiryHandle = 'inquiry.handle';
+    case InquiryReply = 'inquiry.reply';
+    case TakedownRemove = 'takedown.remove';
+    case TakedownKeep = 'takedown.keep';
 }

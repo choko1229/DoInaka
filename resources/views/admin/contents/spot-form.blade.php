@@ -38,6 +38,6 @@
         </aside>
     </form>
     @if ($spot->exists)
-        <form method="post" action="{{ route('admin.spots.destroy', $spot) }}" onsubmit="return confirm(@js(__('content.delete_confirm')))">@csrf @method('delete')<x-button type="submit">{{ __('content.delete_mistake') }}</x-button></form>
+        <form method="post" action="{{ route('admin.spots.destroy', $spot) }}" data-confirm="{{ __('content.delete_confirm') }}">@csrf @method('delete')<x-button type="submit">{{ __('content.delete_mistake') }}</x-button></form>
     @endif
 </x-layouts.admin>

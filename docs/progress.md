@@ -4,7 +4,7 @@
 
 ## 今のフェーズ
 
-フェーズ8(公開前の運用準備)— 着手前
+フェーズ0〜8 すべて完了(最終確認と【BETA】プレリリースの作成が残っている)
 
 ## 終わったフェーズ
 
@@ -18,11 +18,13 @@
 | 5 投稿・画像・審査 | [#10](https://github.com/choko1229/DoInaka/pull/10) | 投稿・修正依頼・コメント・情報提供・画像処理・審査画面・却下ボックス・定期削除 |
 | 6 AI審査とAI下書き | [#11](https://github.com/choko1229/DoInaka/pull/11) | OpenRouter・AI判定・自動承認/却下・URLから下書き・情報源の巡回・地域ページの紹介文 |
 | 7 マイページ・会員・広告・ログ・設定 | [#12](https://github.com/choko1229/DoInaka/pull/12) | マイページ・会員の管理・広告枠・ログとCSV・設定の全タブ・ダッシュボード・停止中の会員の制限 |
+| 8 公開前の運用準備 | [#13](https://github.com/choko1229/DoInaka/pull/13) | 固定ページ・お問い合わせと削除依頼(ぼかし・AI の照合・会員への照会・返信メール)・Cookie 同意・セキュリティヘッダー・cron の点検と停止通知・通しのテスト |
 
 ## 次にやること
 
-1. フェーズ8(公開前の運用準備)に進む。固定ページ(/terms/ /privacy/ /about/ /contact/ と管理画面のお問い合わせ・削除依頼・AI の照合・ぼかし・会員への同意照会)、メール(キュー・再試行・Mailpit)、同意バナー(GA4・AdSense の読み込みを同意で制御。AdSense の data-consent-ads が目印)、セキュリティヘッダー(CSP・HSTS)、cron の点検と Discord 通知(止まった・回復)、E2E
-2. その後、最終の確認: main の CI、Pint・Larastan・Pest、manual-checks の整理、【BETA】プレリリース(release.yml を workflow_dispatch で beta=true)、最終報告
+1. 最終の確認: main の CI、コンテナでの Pint・Larastan・Pest、manual-checks の整理
+2. 【BETA】プレリリース(release.yml を workflow_dispatch で beta=true。正式版は作らない)。ZIP の中身(.env・tests・開発用ファイルがない。resources/prompts・resources/legal が入っている)を確かめる
+3. 最終報告(PR の一覧、decisions の要約、manual-checks をフェーズ順に)
 
 ## 環境メモ
 

@@ -30,6 +30,8 @@ function makeProjectTree(): string
         'public/build/manifest.json' => '{}',
         'public/build/assets/app-abc.css' => 'body{}',
         'resources/views/public/home.blade.php' => 'home',
+        'resources/prompts/review_text.md' => 'prompt',
+        'resources/legal/privacy.md' => 'privacy',
         'resources/css/app.css' => 'body{}',
         'resources/images/illust/src/island-summer-evening.png' => 'PNG',
         'routes/web.php' => '<?php',
@@ -120,7 +122,7 @@ it('必要なものは入っている(vendor、ビルド済みアセット、VER
     expect(zipEntries($this->zip))->toContain(
         'artisan', 'composer.json', 'composer.lock', 'VERSION',
         'app/Models/Setting.php', 'bootstrap/app.php', 'config/app.php', 'routes/web.php',
-        'lang/ja/layout.php', 'resources/views/public/home.blade.php',
+        'lang/ja/layout.php', 'resources/views/public/home.blade.php', 'resources/prompts/review_text.md', 'resources/legal/privacy.md',
         'database/migrations/2026_01_01_000000_x.php',
         'public/.htaccess', 'public/index.php', 'public/build/manifest.json', 'public/build/assets/app-abc.css',
         'vendor/autoload.php', 'vendor/laravel/framework/src/x.php',
