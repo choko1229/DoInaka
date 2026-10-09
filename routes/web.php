@@ -2,18 +2,22 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\EventListController;
 use App\Http\Controllers\Api\ReactionController;
+use App\Http\Controllers\Api\RegionController as RegionApiController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Install\InstallController;
 use App\Http\Controllers\Public\ArticleController;
 use App\Http\Controllers\Public\EventController;
 use App\Http\Controllers\Public\HomeController;
 use App\Http\Controllers\Public\MapController;
+use App\Http\Controllers\Public\MediaFileController;
 use App\Http\Controllers\Public\RegionController;
 use App\Http\Controllers\Public\SeoController;
 use App\Http\Controllers\Public\SeriesController;
 use App\Http\Controllers\Public\SpotController;
+use App\Http\Controllers\Public\SubmissionController;
 use App\Http\Middleware\EnsureNotInstalled;
 use App\Support\ReservedSlugs;
 use Illuminate\Support\Facades\Route;
@@ -51,7 +55,25 @@ Route::prefix('api/v1')->name('api.')->group(function (): void {
     Route::get('/events', EventListController::class)->middleware('throttle:60,1')->name('events');
     Route::post('/favorites/{type}/{id}', [ReactionController::class, 'favorite'])->whereNumber('id')->middleware('throttle:60,1')->name('favorites');
     Route::post('/visits/{type}/{id}', [ReactionController::class, 'visit'])->whereNumber('id')->middleware('throttle:60,1')->name('visits');
+    Route::post('/{type}/{id}/comments', [CommentController::class, 'store'])->whereIn('type', ['event', 'spot', 'article'])->whereNumber('id')->middleware('throttle:20,1')->name('comments');
+    Route::get('/regions', [RegionApiController::class, 'index'])->middleware('throttle:120,1')->name('regions');
+    Route::get('/regions/nearest', [RegionApiController::class, 'nearest'])->middleware('throttle:120,1')->name('regions.nearest');
 });
+
+// 公開用の画像(public/storage のリンクがない環境の代わり。リンクがあれば Web サーバーが直接返す)
+Route::get('/storage/{path}', [MediaFileController::class, 'show'])->where('path', 'media/.+')->name('media.file');
+
+// 投稿・修正依頼・「行った!」の写真(設計書6.1)。受付は Turnstile・件数制限・同意つき
+Route::prefix('post')->name('post.')->group(function (): void {
+    Route::get('/', [SubmissionController::class, 'index'])->name('index');
+    Route::get('/done', [SubmissionController::class, 'done'])->name('done');
+    Route::get('/photo/{type}/{id}', [SubmissionController::class, 'photo'])->whereNumber('id')->name('photo');
+    Route::post('/photo/{type}/{id}', [SubmissionController::class, 'storePhoto'])->whereNumber('id')->middleware('throttle:20,1')->name('photo.store');
+    Route::get('/{type}', [SubmissionController::class, 'create'])->where('type', 'tip|spot|article')->name('create');
+    Route::post('/{type}', [SubmissionController::class, 'store'])->where('type', 'tip|spot|article')->middleware('throttle:20,1')->name('store');
+});
+Route::get('/report/{type}/{id}', [SubmissionController::class, 'report'])->whereNumber('id')->name('report');
+Route::post('/report/{type}/{id}', [SubmissionController::class, 'storeReport'])->whereNumber('id')->middleware('throttle:20,1')->name('report.store');
 
 // 公開ページ(設計書6.1)。URL の先頭は県のスラッグ。予約語は県のスラッグにならない。有効でない県は 404
 $pref = '(?!(?:'.implode('|', array_filter(ReservedSlugs::WORDS, fn (string $w): bool => preg_match('/^[a-z0-9-]+$/', $w) === 1)).')(?![a-z0-9-]))[a-z0-9-]+';

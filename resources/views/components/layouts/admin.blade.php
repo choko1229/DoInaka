@@ -15,6 +15,7 @@
                 <li><a href="{{ route('admin.dashboard') }}" @if ($current === 'dashboard') aria-current="page" @endif>{{ __('layout.admin_dashboard') }}</a></li>
                 @can('review')
                     <li class="nav-group">{{ __('layout.nav_content') }}</li>
+                    <li><a href="{{ route('admin.review') }}" @if ($current === 'review') aria-current="page" @endif>{{ __('submission.review_title') }}</a></li>
                     <li><a href="{{ route('admin.events') }}" @if ($current === 'events') aria-current="page" @endif>{{ __('content.events_title') }}</a></li>
                     <li><a href="{{ route('admin.contents') }}" @if ($current === 'contents') aria-current="page" @endif>{{ __('content.contents_title') }}</a></li>
                 @endcan

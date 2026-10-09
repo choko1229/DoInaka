@@ -8,7 +8,9 @@ use App\Http\Controllers\Admin\ContentController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EventAdminController;
 use App\Http\Controllers\Admin\MasterController;
+use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\RevisionController;
+use App\Http\Controllers\Admin\TipController;
 use App\Http\Controllers\Admin\TwoFactorController;
 use App\Http\Controllers\Admin\UpdateController;
 use Illuminate\Support\Facades\Route;
@@ -72,6 +74,19 @@ Route::middleware('admin')->group(function (): void {
         Route::put('/articles/{article}', [ContentController::class, 'updateArticle'])->name('articles.update');
         Route::delete('/articles/{article}', [ContentController::class, 'destroyArticle'])->name('articles.destroy');
         Route::post('/comments/{comment}/moderate', [ContentController::class, 'moderateComment'])->name('comments.moderate');
+
+        // 審査(投稿・修正依頼・情報提供・コメント。却下ボックス)。状態の変更は ReviewService だけが行う
+        Route::get('/review', [ReviewController::class, 'index'])->name('review');
+        Route::get('/review/rejected', [ReviewController::class, 'rejected'])->name('review.rejected');
+        Route::get('/review/{submission}', [ReviewController::class, 'show'])->whereNumber('submission')->name('review.show');
+        Route::post('/review/{submission}/approve', [ReviewController::class, 'approve'])->whereNumber('submission')->name('review.approve');
+        Route::post('/review/{submission}/reject', [ReviewController::class, 'reject'])->whereNumber('submission')->name('review.reject');
+        Route::post('/review/{submission}/restore', [ReviewController::class, 'restore'])->whereNumber('submission')->name('review.restore');
+        Route::get('/corrections', [ReviewController::class, 'corrections'])->name('corrections');
+        Route::get('/media/{media}/original', [ReviewController::class, 'original'])->whereNumber('media')->name('media.original');
+        Route::get('/tips', [TipController::class, 'index'])->name('tips');
+        Route::get('/tips/{submission}', [TipController::class, 'show'])->whereNumber('submission')->name('tips.show');
+        Route::post('/tips/{submission}/mask/{media}', [TipController::class, 'mask'])->whereNumber(['submission', 'media'])->name('tips.mask');
 
         Route::get('/revisions/{type}/{id}', [RevisionController::class, 'index'])->whereNumber('id')->name('revisions');
         Route::post('/revisions/{revision}/rollback', [RevisionController::class, 'rollback'])->name('revisions.rollback');

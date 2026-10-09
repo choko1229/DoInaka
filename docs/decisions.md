@@ -166,3 +166,25 @@
 | 地図 | Leaflet を npm で入れてビルドに含める(CDN を使わない)。地理院タイル(淡色)。夜の配色では CSS の filter でタイルを暗くする。ピンのタイトルは textContent で入れる(HTML として解釈しない) |
 | E2E | Playwright の設定と spec(e2e/)を置く。ブラウザのダウンロードが要るため CI には入れず、手元の `npm run e2e` で確かめる(manual-checks)。このフェーズでは同じ流れ(トップ → 検索 → 詳細 → 行った! → ログイン誘導)をアプリ内ブラウザで SP 幅に通して確かめた |
 | ルート引数の渡され方 | Laravel はルートの引数を名前でなく位置で渡す。サービスの注入と混ざって取り違えた(`/events/category/{category}` が mode に入った)ので、EventController::index は `$request->route()` から名前で読む |
+
+## 2026-10-10 フェーズ5(投稿・画像・審査)で決めたこと
+
+| 項目 | 決めたこと |
+| --- | --- |
+| 投稿の状態 | SubmissionStatus は8つ(received / processing / ai_pending / ai_deferred / in_review / approved / rejected / auto_rejected)。設計書の「9つ」目の「物理削除」は行を消すことなので、状態には持たない。遷移は SubmissionStateMachine だけが行い(許されない遷移は例外)、Submission の `status` は mass assignment できない。app 内のほかの場所が status を書いていないことを、テストで確かめる |
+| AI の入口 | 受け付けたあとは、画像があれば処理 → AiReviewGate(契約)が使えれば AI判定待ち、使えなければ審査待ち。フェーズ5の実装は NoAiReviewGate で常に人の審査に回す。フェーズ6で本物に差し替える |
+| 受付の順序 | 検証(欄・同意)→ 画像の検証 → 情報提供のURL確認 → スパム対策(ハニーポット・Turnstile・IPハッシュの件数・URL数・NGワード)→ 保存。断ったものは件数に数えない。断る理由は欄ごとの文で返す(ValidationException) |
+| Turnstile | 設定の秘密鍵が空(開発環境)のときは確認しない。入っているときは、トークンなし・失敗・通信エラーのすべてを断る。外部への通信は Http で、テストは必ずモック |
+| 件数制限 | 同じIPハッシュから直近1時間に spam.post_per_hour(既定5)件。投稿・修正依頼・コメント・写真のどれも数える。IP のハッシュは privacy.ip_hash_retention_days(90日)で消す(投稿は残る) |
+| 同意 | 規約・プライバシーポリシーへの同意は全部の送信で必須。外国の事業者(AI)への送信の同意は、情報提供・スポット・記事・「行った!」の写真で必須(SubmissionType::needsOverseasConsent)。コメントは会員登録時に同意済みとして、規約の同意だけを送信時に自動で付ける。同意の日時と版(config app.terms_version)を submissions に残す |
+| 画像の検証 | 拡張子や申告のMIMEでなく、ファイルの先頭の中身で JPEG / PNG / WebP / HEIC(ftyp ブランド)を判定し、Imagick で読み込めることを確かめる。10MB以下(upload.max_mb)、枚数は記事10・ほか5。画素数は4000万まで(超えたら、その場で縮小を案内して断る。HEIC の展開で約372MBになる4800万画素は断る) |
+| 画像の処理 | 元画像は private(local ディスク)の originals/{年月}/{ランダム名}、60日。キューで向きを直し、メタデータを全部落とし、長辺1600・800・400px の WebP(品質80、拡大しない)を public の media/{年月}/ に作る。Imagick のメモリは256MBに制限して、超えた分はディスクに逃がす。処理に失敗しても投稿は止めず、人の審査に回して media_ids を payload に残す |
+| 公開用の画像の配信 | public ディスクの URL は /storage/…。public/storage のリンクがない環境でも届くよう、MediaFileController が `media/{年月}/{40文字}-{400|800|1600}.webp` だけを返す(リンクがあれば Web サーバーが直接返す)。Laravel 標準の local ディスクの配信(`storage.local`。署名つきで private を返し、PUT も受ける)は `serve=false` で切り、元画像に届く経路を作らない。media/.htaccess で PHP を動かさない |
+| チラシ写真(情報提供) | 個人情報を隠す前の写真は、公開用を作らない(元画像のみ)。管理者が隠した画像を登録すると、その画像から公開用ができる。チラシの情報元(event_sources.kind=flyer)は、公開用ができている media が要る(なければ保存できない)。元画像は管理者だけが認証つきの経路(/admin/media/{id}/original)で見られる |
+| 情報提供のURL | SNS(X・Facebook・Instagram・TikTok・Threads・LINE・Bluesky・mixi・Pinterest など)は理由を示して断る。http/https 以外・名前解決後のIPがプライベート/ループバック/予約済み・認証情報つきは断る(SSRF)。robots.txt(DoinakaBot と * )が禁止している、または読めない(接続失敗・5xx)URLは、本文を読まずに受け付け、管理者の確認に回す(404 は制限なし)。選んだ地域の県が crawl_enabled でない(または地域なし)ときは「情報源の候補」の印(inspection.candidate)をつけ、定期巡回には入れない。巡回の実体はフェーズ6 |
+| 承認 | 1つのトランザクションで、公開テーブルへの反映・revisions(原因=投稿の承認、submission_id つき)・画像の付け替え(処理済みのみ)・投稿者の approved_count の加算。スポット・記事は投稿者を author に(匿名は匿名)、スポットのタグは読点・カンマ区切り。修正依頼は、直せる項目(CorrectionFields)だけを、履歴つきで直し、applied_revision_id を残す。コメントは thread_id でスレッドにまとめ、「行った!」の写真は対象の写真に加え、会員なら行った!も記録する。情報提供(tip)の承認は「採用した」の印だけで、イベントの下書きは管理者が手で作る(情報元の行はURLと隠した写真から自動で入る) |
+| 修正依頼 | 直せる項目は、イベント(title・venue_name・address・fee・url・body)、スポット(title・address・hours・access・url・body)、記事(title・body)。日程の直しはまだ対象外。url は http(s) だけ。ここにない項目は依頼の段階で断る |
+| コメント | 会員だけ(未ログインはログインへ)。審査に入り、承認で公開。500文字まで |
+| 定期処理 | submissions:prune を毎日4:10。期限(expires_at)を過ぎた却下・自動却下(90日、画像のファイルごと。公開コンテンツに付いた画像は残す)、60日を過ぎた元画像(公開用の WebP は残す)、90日を過ぎた IP のハッシュ |
+| 却下の「元に戻す」 | 却下・自動却下は審査待ちに戻せる(公開はされない。期限と理由は外す)。承認済みは戻せない(公開の取り消しは、管理者バーの「非公開にする」か履歴) |
+| 管理画面の入口 | 審査(/admin/review。審査待ち・処理中・却下ボックス・修正依頼・情報提供のタブ)。権限は review(管理者・編集者) |

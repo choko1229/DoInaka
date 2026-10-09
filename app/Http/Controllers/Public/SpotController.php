@@ -46,7 +46,7 @@ final class SpotController extends PublicController
             return $spot;
         }
 
-        $spot->load(['region.parent', 'category', 'tags']);
+        $spot->load(['region.parent', 'category', 'tags', 'media']);
         $this->views->record($request, $spot);
 
         return view('public.spots.show', [

@@ -80,3 +80,7 @@ document.querySelectorAll('form[data-reaction]').forEach((form) => {
 if (document.querySelector('[data-map]')) {
     import('./map.js');
 }
+
+if (document.querySelector('[data-region-picker], [data-map-picker], [data-photos]')) {
+    import('./post.js');
+}

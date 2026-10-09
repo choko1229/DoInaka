@@ -24,4 +24,6 @@ enum AuditAction: string
     case MasterUpdate = 'master.update';
     case MasterDelete = 'master.delete';
     case CommentModerate = 'comment.moderate';
+    case SubmissionReview = 'submission.review';
+    case SubmissionPublish = 'submission.publish';
 }

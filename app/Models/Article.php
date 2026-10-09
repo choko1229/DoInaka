@@ -46,6 +46,16 @@ class Article extends Model
         return $this->belongsTo(Region::class);
     }
 
+    /**
+     * 公開された写真(処理済みの画像)
+     *
+     * @return MorphMany<Media, $this>
+     */
+    public function media(): MorphMany
+    {
+        return $this->morphMany(Media::class, 'mediable')->whereNotNull('path_large')->orderBy('sort_order')->orderBy('id');
+    }
+
     /** @return MorphToMany<Tag, $this> */
     public function tags(): MorphToMany
     {

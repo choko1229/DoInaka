@@ -11,6 +11,26 @@
     <article class="detail detail-narrow">
         <h1 class="t-display"><?php echo e($article->title); ?></h1>
         <p class="t-small t-muted"><?php echo e($article->region->name); ?><?php if($article->published_at): ?> · <?php echo e($article->published_at->format('Y-m-d')); ?><?php endif; ?></p>
+        <?php if (isset($component)) { $__componentOriginal57c28f5ad6af257e8b535dfbe6900ca5 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal57c28f5ad6af257e8b535dfbe6900ca5 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.media-gallery','data' => ['media' => $article->media,'title' => $article->title]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('media-gallery'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['media' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($article->media),'title' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($article->title)]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal57c28f5ad6af257e8b535dfbe6900ca5)): ?>
+<?php $attributes = $__attributesOriginal57c28f5ad6af257e8b535dfbe6900ca5; ?>
+<?php unset($__attributesOriginal57c28f5ad6af257e8b535dfbe6900ca5); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal57c28f5ad6af257e8b535dfbe6900ca5)): ?>
+<?php $component = $__componentOriginal57c28f5ad6af257e8b535dfbe6900ca5; ?>
+<?php unset($__componentOriginal57c28f5ad6af257e8b535dfbe6900ca5); ?>
+<?php endif; ?>
         <?php if($article->body): ?><div class="prose"><p><?php echo nl2br(e($article->body)); ?></p></div><?php endif; ?>
         <?php if($article->tags->isNotEmpty()): ?>
             <p class="tags"><?php $__currentLoopData = $article->tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><a class="chip" href="/<?php echo e($pref); ?>/articles/?tag=<?php echo e(urlencode($tag->name)); ?>"><?php echo e($tag->name); ?></a><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?></p>

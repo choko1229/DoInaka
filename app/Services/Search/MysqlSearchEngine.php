@@ -60,7 +60,7 @@ class MysqlSearchEngine implements SearchEngine
             default => $builder->orderByRaw('next_date IS NULL')->orderBy('next_date')->orderByDesc('last_date')->orderByDesc('events.id'),
         };
 
-        $builder->with(['region.parent', 'category', 'schedules', 'tags']);
+        $builder->with(['region.parent', 'category', 'schedules', 'tags', 'media']);
 
         return $builder->paginate($this->perPage($query), ['*'], 'page', max(1, $query->page));
     }
@@ -75,7 +75,7 @@ class MysqlSearchEngine implements SearchEngine
         $this->distance($builder, 'spots', $query);
         $this->order($builder, 'spots', $query);
 
-        $builder->with(['region.parent', 'category', 'tags']);
+        $builder->with(['region.parent', 'category', 'tags', 'media']);
 
         return $builder->paginate($this->perPage($query), ['*'], 'page', max(1, $query->page));
     }
@@ -89,7 +89,7 @@ class MysqlSearchEngine implements SearchEngine
         $builder->select('articles.*');
         $this->order($builder, 'articles', $query);
 
-        $builder->with(['region.parent', 'tags']);
+        $builder->with(['region.parent', 'tags', 'media']);
 
         return $builder->paginate($this->perPage($query), ['*'], 'page', max(1, $query->page));
     }

@@ -30,6 +30,16 @@ class EventSource extends Model
         return ['kind' => EventSourceKind::class, 'checked_at' => 'date', 'is_official' => 'boolean'];
     }
 
+    /**
+     * チラシの写真(個人情報を隠したあとの画像)
+     *
+     * @return BelongsTo<Media, $this>
+     */
+    public function media(): BelongsTo
+    {
+        return $this->belongsTo(Media::class);
+    }
+
     /** @return BelongsTo<Event, $this> */
     public function event(): BelongsTo
     {

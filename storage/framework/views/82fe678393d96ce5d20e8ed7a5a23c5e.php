@@ -74,6 +74,7 @@ unset($__defined_vars, $__key, $__value); ?>
                 <li><a href="<?php echo e(route('admin.dashboard')); ?>" <?php if($current === 'dashboard'): ?> aria-current="page" <?php endif; ?>><?php echo e(__('layout.admin_dashboard')); ?></a></li>
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('review')): ?>
                     <li class="nav-group"><?php echo e(__('layout.nav_content')); ?></li>
+                    <li><a href="<?php echo e(route('admin.review')); ?>" <?php if($current === 'review'): ?> aria-current="page" <?php endif; ?>><?php echo e(__('submission.review_title')); ?></a></li>
                     <li><a href="<?php echo e(route('admin.events')); ?>" <?php if($current === 'events'): ?> aria-current="page" <?php endif; ?>><?php echo e(__('content.events_title')); ?></a></li>
                     <li><a href="<?php echo e(route('admin.contents')); ?>" <?php if($current === 'contents'): ?> aria-current="page" <?php endif; ?>><?php echo e(__('content.contents_title')); ?></a></li>
                 <?php endif; ?>

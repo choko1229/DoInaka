@@ -79,7 +79,7 @@ final class EventController extends PublicController
             return $event;
         }
 
-        $event->load(['schedules', 'sources', 'region.parent', 'category', 'tags', 'series']);
+        $event->load(['schedules', 'sources.media', 'region.parent', 'category', 'tags', 'series', 'media']);
         $this->views->record($request, $event);
 
         $comments = Comment::query()->where('commentable_type', 'event')->where('commentable_id', $event->id)->where('status', 'published')
