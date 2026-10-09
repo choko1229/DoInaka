@@ -94,6 +94,15 @@ it('HEIC(iPhone の写真)を受け付けて、WebP に変換する', function (
     }
     $path = tempnam(sys_get_temp_dir(), 'heic');
     file_put_contents($path, $blob);
+    // この環境が HEIC を書き出して読み戻せるときだけ確かめる(CI の ImageMagick には HEIC の読み込みがないことがある)
+    try {
+        (new Imagick)->pingImage($path);
+    } catch (Throwable) {
+        $this->markTestSkipped('この環境の ImageMagick は HEIC を読み込めません。');
+    }
+    if (app(App\Services\Image\ImageValidator::class)->detect($path) !== 'image/heic') {
+        $this->markTestSkipped('この環境の ImageMagick が書き出した HEIC は、HEIC として判定できません。');
+    }
     $file = new UploadedFile($path, 'IMG_0001.HEIC', 'image/heic', null, true);
 
     $this->post('/post/spot/', spotInput(['rights_agreed' => '1', 'photos' => [$file]]))->assertRedirect('/post/done/');
