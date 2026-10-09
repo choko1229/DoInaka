@@ -54,7 +54,8 @@ function photoFor(Spot $spot): Media
     $paths = [];
     foreach ([400, 800, 1600] as $w) {
         $image = new Imagick;
-        $image->newImage($w, intdiv($w * 3, 4), new ImagickPixel('#c33'));
+        // 一色の画像はぼかしても変わらないので、模様のある画像にする
+        $image->newPseudoImage($w, intdiv($w * 3, 4), 'plasma:fractal');
         $image->setImageFormat('webp');
         $path = "media/202610/{$token}-{$w}.webp";
         Storage::disk('public')->put($path, $image->getImageBlob());
