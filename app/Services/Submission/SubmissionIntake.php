@@ -4,14 +4,18 @@ declare(strict_types=1);
 
 namespace App\Services\Submission;
 
+use App\Enums\AiPurpose;
 use App\Enums\SettingKey;
 use App\Enums\SubmissionAction;
 use App\Enums\SubmissionType;
 use App\Exceptions\UploadRejected;
+use App\Jobs\ReadTipUrl;
 use App\Models\Correction;
 use App\Models\Region;
 use App\Models\Submission;
 use App\Models\User;
+use App\Services\Ai\AiClient;
+use App\Services\Crawl\CandidateRecorder;
 use App\Services\Image\ImageStore;
 use App\Services\Image\ImageValidator;
 use App\Services\Security\IpHasher;
@@ -40,6 +44,8 @@ final class SubmissionIntake
         private readonly SubmissionPipeline $pipeline,
         private readonly SettingsService $settings,
         private readonly IpHasher $hasher,
+        private readonly CandidateRecorder $candidates,
+        private readonly AiClient $ai,
     ) {}
 
     /**
@@ -97,7 +103,9 @@ final class SubmissionIntake
 
         $hasTarget = in_array($type, [SubmissionType::Correction, SubmissionType::Comment, SubmissionType::VisitPhoto], true);
 
-        return DB::transaction(function () use ($type, $request, $user, $payload, $validated, $files, $data, $hasTarget): Submission {
+        $tipReadable = $inspection !== null && $inspection['status'] === 'ok';
+
+        return DB::transaction(function () use ($type, $request, $user, $payload, $validated, $files, $data, $hasTarget, $tipReadable): Submission {
             $submission = $this->machine->open([
                 'receipt_no' => ReceiptNumber::generate(),
                 'type' => $type,
@@ -128,6 +136,13 @@ final class SubmissionIntake
             }
 
             $this->pipeline->afterIntake($submission);
+
+            if ($type === SubmissionType::Tip) {
+                $this->candidates->fromTip($submission);
+                if ($this->ai->isConfigured() && $tipReadable) {
+                    ReadTipUrl::dispatch($submission->id)->onQueue(AiPurpose::Tip->queue())->afterCommit();
+                }
+            }
 
             return $submission->refresh();
         });
@@ -172,7 +187,7 @@ final class SubmissionIntake
                 'source_url' => $url,
             ],
             SubmissionType::Comment => [
-                'target_type' => ['required', Rule::in(CorrectionFields::targetTypes())],
+                'target_type' => ['required', Rule::in(['event', 'spot', 'article'])],
                 'target_id' => ['required', 'integer', 'min:1'],
                 'body' => ['required', 'string', 'max:500'],
                 'reply_to_comment_id' => ['nullable', 'integer', 'min:1'],
@@ -214,8 +229,8 @@ final class SubmissionIntake
 
         $targetType = $this->str($data['target_type'] ?? null);
         $class = CorrectionFields::model($targetType);
-        $target = $class === null ? null : $class::query()->where('is_published', true)->find($this->int($data['target_id'] ?? null));
-        if ($target === null) {
+        $target = $class === null ? null : $class::query()->find($this->int($data['target_id'] ?? null));
+        if ($target === null || ! CorrectionFields::isOpen($target)) {
             return ['target_id' => __('submission.target_not_found')];
         }
 

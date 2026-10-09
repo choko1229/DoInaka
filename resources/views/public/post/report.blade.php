@@ -1,7 +1,7 @@
 @php($meta = new \App\Support\PageMeta(title: __('submission.report_title'), noindex: true))
 <x-layouts.public :meta="$meta">
     <h1 class="t-h1">{{ __('submission.report_title') }}</h1>
-    <p>{{ __('submission.report_lead', ['title' => $target->title]) }}</p>
+    <p>{{ __('submission.report_lead', ['title' => $target->title ?? $target->name]) }}</p>
     @if ($errors->any())
         <div class="alert alert-danger" role="alert"><ul class="t-small">@foreach ($errors->all() as $message)<li>{{ $message }}</li>@endforeach</ul></div>
     @endif

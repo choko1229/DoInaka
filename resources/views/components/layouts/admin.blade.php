@@ -16,11 +16,14 @@
                 @can('review')
                     <li class="nav-group">{{ __('layout.nav_content') }}</li>
                     <li><a href="{{ route('admin.review') }}" @if ($current === 'review') aria-current="page" @endif>{{ __('submission.review_title') }}</a></li>
+                    <li><a href="{{ route('admin.drafts') }}" @if ($current === 'drafts') aria-current="page" @endif>{{ __('ai.draft_title') }}</a></li>
+                    <li><a href="{{ route('admin.region-pages') }}" @if ($current === 'region-pages') aria-current="page" @endif>{{ __('region.admin_title') }}</a></li>
                     <li><a href="{{ route('admin.events') }}" @if ($current === 'events') aria-current="page" @endif>{{ __('content.events_title') }}</a></li>
                     <li><a href="{{ route('admin.contents') }}" @if ($current === 'contents') aria-current="page" @endif>{{ __('content.contents_title') }}</a></li>
                 @endcan
                 @can('manage-masters')
                     <li class="nav-group">{{ __('layout.nav_operation') }}</li>
+                    <li><a href="{{ route('admin.sources') }}" @if ($current === 'sources') aria-current="page" @endif>{{ __('crawl.title') }}</a></li>
                     <li><a href="{{ route('admin.masters') }}" @if ($current === 'masters') aria-current="page" @endif>{{ __('masters.title') }}</a></li>
                 @endcan
                 @can('manage-settings')

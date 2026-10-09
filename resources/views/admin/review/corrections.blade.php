@@ -23,4 +23,29 @@
         </table>
     </div>
     {{ $submissions->links() }}
+
+    <h2 class="t-h2" style="margin-top:var(--space-8)">{{ __('submission.needs_check') }}</h2>
+    <p class="t-small t-muted">{{ __('submission.needs_check_lead') }}</p>
+    <div class="table-wrap">
+        <table class="table">
+            <thead><tr><th>{{ __('submission.col_receipt') }}</th><th>{{ __('submission.target') }}</th><th>{{ __('submission.col_field') }}</th><th>{{ __('submission.proposed') }}</th><th></th></tr></thead>
+            <tbody>
+                @forelse ($autoApplied as $s)
+                    @php($c = $s->corrections->first())
+                    <tr>
+                        <td><code>{{ $s->receipt_no }}</code></td>
+                        <td>{{ $c?->target_type }} #{{ $c?->target_id }}</td>
+                        <td>{{ $c ? __('submission.fields.'.$c->field) : '' }}</td>
+                        <td>{{ \Illuminate\Support\Str::limit($c?->proposed_value ?? '', 60) }}</td>
+                        <td class="actions">
+                            <form method="post" action="{{ route('admin.corrections.confirm', $s) }}" style="display:inline">@csrf<button class="btn btn-sm" type="submit">{{ __('submission.confirm') }}</button></form>
+                            <form method="post" action="{{ route('admin.corrections.rollback', $s) }}" style="display:inline">@csrf<button class="btn btn-sm" type="submit">{{ __('submission.rollback') }}</button></form>
+                        </td>
+                    </tr>
+                @empty
+                    <tr><td colspan="5" class="t-muted">{{ __('submission.review_empty') }}</td></tr>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
 </x-layouts.admin>

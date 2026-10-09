@@ -37,6 +37,8 @@ use Illuminate\Support\Collection;
  * @property EventStatus $status
  * @property bool $is_published
  * @property Carbon|null $published_at
+ * @property int|null $crawl_source_id
+ * @property bool $auto_published
  * @property bool $is_postponed
  * @property Carbon|null $postponed_from
  * @property string|null $search_text
@@ -59,6 +61,7 @@ class Event extends Model
             'is_published' => 'boolean',
             'is_postponed' => 'boolean',
             'is_anonymous' => 'boolean',
+            'auto_published' => 'boolean',
             'published_at' => 'datetime',
             'postponed_from' => 'date',
         ];

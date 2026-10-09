@@ -18,4 +18,5 @@ enum RevisionCause: string
     case Submission = 'submission';
     case CorrectionAuto = 'correction_auto';
     case Rollback = 'rollback';
+    case AiGenerated = 'ai_generated';
 }

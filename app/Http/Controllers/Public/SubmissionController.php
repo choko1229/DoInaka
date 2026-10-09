@@ -112,12 +112,12 @@ final class SubmissionController extends Controller
         return $user instanceof User ? $user : null;
     }
 
-    private function target(string $type, int $id): Event|Spot|Article
+    private function target(string $type, int $id): Event|Spot|Article|Region
     {
         $class = CorrectionFields::model($type);
         abort_if($class === null, 404);
-        $target = $class::query()->where('is_published', true)->find($id);
-        abort_unless($target instanceof Event || $target instanceof Spot || $target instanceof Article, 404);
+        $target = $class::query()->find($id);
+        abort_unless(($target instanceof Event || $target instanceof Spot || $target instanceof Article || $target instanceof Region) && CorrectionFields::isOpen($target), 404);
 
         return $target;
     }
@@ -125,7 +125,7 @@ final class SubmissionController extends Controller
     /**
      * @return array<string, string>
      */
-    private function currentValues(string $type, Event|Spot|Article $target): array
+    private function currentValues(string $type, Event|Spot|Article|Region $target): array
     {
         $values = [];
         foreach (CorrectionFields::for($type) as $field) {

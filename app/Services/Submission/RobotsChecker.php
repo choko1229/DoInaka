@@ -27,7 +27,9 @@ final class RobotsChecker
         $robotsUrl = $parts['scheme'].'://'.$parts['host'].(isset($parts['port']) ? ':'.$parts['port'] : '').'/robots.txt';
 
         try {
-            $response = Http::withUserAgent(self::USER_AGENT)->timeout(10)->get($robotsUrl);
+            // リダイレクトは自動でたどらない(行き先が社内のアドレスでも読みに行かないため)。
+            // 読めなければ「読まない側」に倒すので、www の有無などで転送するサイトは、管理者の確認に回る
+            $response = Http::withUserAgent(self::USER_AGENT)->timeout(10)->withOptions(['allow_redirects' => false])->get($robotsUrl);
         } catch (Throwable) {
             return false;
         }

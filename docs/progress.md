@@ -4,7 +4,7 @@
 
 ## 今のフェーズ
 
-フェーズ6(AI審査とAI下書き)— 着手前
+フェーズ7(マイページ・会員・広告・ログ・設定)— 着手前
 
 ## 終わったフェーズ
 
@@ -16,10 +16,12 @@
 | 3 データと管理のコンテンツ | [#7](https://github.com/choko1229/DoInaka/pull/7) | 地域・分類・行事・スポット・記事・履歴・マスタ・管理画面 |
 | 4 公開画面 | [#8](https://github.com/choko1229/DoInaka/pull/8) | 公開ルート・検索・詳細・地域ページ・地図・SEO・API・管理者バー・海外制限・人気スコア |
 | 5 投稿・画像・審査 | [#10](https://github.com/choko1229/DoInaka/pull/10) | 投稿・修正依頼・コメント・情報提供・画像処理・審査画面・却下ボックス・定期削除 |
+| 6 AI審査とAI下書き | [#11](https://github.com/choko1229/DoInaka/pull/11) | OpenRouter・AI判定・自動承認/却下・URLから下書き・情報源の巡回・地域ページの紹介文 |
 
 ## 次にやること
 
-1. フェーズ6(AI審査とAI下書き)に進む。AiReviewGate(NoAiReviewGate を差し替え)・OpenRouter の接続(無料モデルのみ・モックでテスト)・投稿の判定と整形・自動承認/自動却下・情報提供のURL読み取り・巡回・地域ページの紹介文(生成キューは region_generation_queue)・ローマ字スラッグ
+1. フェーズ7(マイページ・会員・広告・ログ・設定)に進む。マイページ(お気に入り・行った!・自分の投稿と審査の結果・配色の設定)、会員(AdminUsers: 停止・解除・権限。メールは詳細画面だけで、表示を操作ログに)、広告枠(AdminAds)、ログ画面(操作・審査・AI・エラー)、設定画面(14章。AI のキー・モデル選択=:free の候補は OpenRouterModels::all()、Turnstile、メール、Discord など)
+2. フェーズ8(公開前の運用)は、cron の点検・固定ページ(/terms/ /privacy/ /about/ /contact/)・削除依頼・セキュリティヘッダー(CSP)・メール・Cookie の同意・本番の確認
 
 ## 環境メモ
 

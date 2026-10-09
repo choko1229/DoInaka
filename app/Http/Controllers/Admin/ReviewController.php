@@ -9,8 +9,10 @@ use App\Enums\SubmissionType;
 use App\Exceptions\InvalidSubmissionTransition;
 use App\Http\Controllers\Controller;
 use App\Models\Media;
+use App\Models\Revision;
 use App\Models\Submission;
 use App\Models\User;
+use App\Services\Content\RevisionService;
 use App\Services\Submission\CorrectionFields;
 use App\Services\Submission\ReviewService;
 use Illuminate\Contracts\View\View;
@@ -119,7 +121,35 @@ final class ReviewController extends Controller
             $current[$submission->id] = $this->currentValue($submission);
         }
 
-        return view('admin.review.corrections', ['submissions' => $submissions, 'current' => $current]);
+        // AI が自動で反映した修正は「要確認」として残す(管理者が確認するか、戻す)
+        $autoApplied = Submission::query()->where('type', SubmissionType::Correction)->where('status', SubmissionStatus::Approved)->where('auto_decision', 'approved')->whereNull('reviewed_by')->with('corrections')->orderByDesc('id')->limit(50)->get();
+
+        return view('admin.review.corrections', ['submissions' => $submissions, 'current' => $current, 'autoApplied' => $autoApplied]);
+    }
+
+    /** 自動で反映された修正を、確認した(「要確認」から外す) */
+    public function confirmCorrection(Request $request, Submission $submission): RedirectResponse
+    {
+        abort_unless($submission->type === SubmissionType::Correction && $submission->auto_decision === 'approved' && $submission->reviewed_by === null, 404);
+        $submission->forceFill(['reviewed_by' => $this->user($request)->id, 'reviewed_at' => now()])->save();
+
+        return back()->with('status', __('submission.admin_confirmed'));
+    }
+
+    /** 自動で反映された修正を、元に戻す(履歴に「版を戻した」として残る) */
+    public function rollbackCorrection(Request $request, Submission $submission, RevisionService $revisions): RedirectResponse
+    {
+        abort_unless($submission->type === SubmissionType::Correction && $submission->auto_decision === 'approved' && $submission->reviewed_by === null, 404);
+        $correction = $submission->corrections()->firstOrFail();
+        $revision = Revision::query()->find($correction->applied_revision_id);
+        $class = CorrectionFields::model($correction->target_type);
+        $target = $class === null ? null : $class::query()->find($correction->target_id);
+        abort_if($revision === null || $target === null, 404);
+
+        $revisions->rollback($revision, $target, $this->user($request));
+        $submission->forceFill(['reviewed_by' => $this->user($request)->id, 'reviewed_at' => now()])->save();
+
+        return back()->with('status', __('submission.admin_rolled_back'));
     }
 
     /** 元の画像の確認。管理者だけが、認証つきのこの経路で見られる(公開側から届く経路は作らない) */

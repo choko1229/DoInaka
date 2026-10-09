@@ -80,6 +80,19 @@ class Submission extends Model
         return $this->hasMany(Correction::class);
     }
 
+    /**
+     * 情報提供の URL の確認の結果(受付のときに残したもの)。なければ空。
+     *
+     * @return array<string, mixed>
+     */
+    public function inspection(): array
+    {
+        $value = $this->payload['inspection'] ?? null;
+
+        /** @var array<string, mixed> */
+        return is_array($value) ? $value : [];
+    }
+
     /** payload から整数を取り出す(なければ 0) */
     public function number(string $key): int
     {

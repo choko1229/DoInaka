@@ -27,6 +27,10 @@
         <h2 class="t-h2">{{ __('public.region_intro') }}</h2>
         @if ($region->intro_body)
             <p>{!! nl2br(e($region->intro_body)) !!}</p>
+            @if ($region->intro_generated_at)
+                <p class="t-small t-muted">{{ __('region.ai_notice') }} {{ __('region.last_checked', ['date' => $region->intro_generated_at->format('Y-m-d')]) }}</p>
+            @endif
+            <p class="t-small"><a href="/report/region/{{ $region->id }}/">{{ __('public.report_error') }}</a></p>
             @if (is_array($region->intro_sources) && $region->intro_sources !== [])
                 <p class="t-small t-muted">{{ __('public.region_sources') }}:
                     @foreach ($region->intro_sources as $source)
