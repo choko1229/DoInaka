@@ -82,5 +82,9 @@ jobs:
       - name: アセットのビルド
         run: npm run build
 
+      # CI には .env がなく、Laravel が .env を読もうとして PHP の警告(file_get_contents)が出ていたので、空の .env を置く(値は env: と phpunit.xml が決める)
+      - name: テスト用の空の .env を置く
+        run: touch .env
+
       - name: テスト(Pest)
-        run: ./vendor/bin/pest --display-warnings
+        run: ./vendor/bin/pest
