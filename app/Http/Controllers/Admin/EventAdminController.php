@@ -24,6 +24,7 @@ use App\Models\User;
 use App\Services\Audit\AuditLogger;
 use App\Services\Content\ContentService;
 use App\Services\Content\EventLifecycle;
+use App\Services\Crawl\CrawlTrust;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
@@ -167,6 +168,7 @@ final class EventAdminController extends Controller
     public function destroyEvent(Request $request, Event $event): RedirectResponse
     {
         $seriesId = $event->series_id;
+        app(CrawlTrust::class)->eventChangedByAdmin($event, __('crawl.what_deleted'));
         $event->unpublish();
         $event->delete();
         $this->audit->record(AuditAction::ContentDelete, $this->user($request), 'event', $event->id);
@@ -284,6 +286,10 @@ final class EventAdminController extends Controller
         }
 
         $this->audit->record($event === null ? AuditAction::ContentCreate : AuditAction::ContentUpdate, $this->user($request), 'event', $saved->id);
+        // 自動公開したイベントを管理者が直したら、情報源の「信頼済み」を外す(設計書9.6)
+        if ($event !== null) {
+            app(CrawlTrust::class)->eventChangedByAdmin($saved, __('crawl.what_edited'));
+        }
 
         return redirect()->route('admin.events.edit', $saved)->with('status', __('content.saved'));
     }

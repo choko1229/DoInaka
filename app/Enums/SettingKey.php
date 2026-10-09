@@ -234,8 +234,26 @@ enum SettingKey: string
             self::AiTimeoutSec, self::UploadMaxMb, self::SpamPostPerHour, self::SpamMaxUrls, self::PopularityWindowDays,
             self::AdminTotpTtlHours, self::AdminRememberDeviceDays => is_int($value) && $value >= 1 ? null : self::message('positive_int'),
             self::AiDailyLimit => is_int($value) && $value >= 1 ? null : self::message('positive_int_or_null'),
+            self::AiModelsReviewText, self::AiModelsReviewImage, self::AiModelsDraft, self::AiModelsSuggest,
+            self::AiModelsTip, self::AiModelsCrawl, self::AiModelsRegionIntro, self::AiModelsFactCheck,
+            self::AiModelsTakedownCheck => self::validateFreeModels($value),
             default => null,
         };
+    }
+
+    /** AI のモデルは、無料(:free)のものだけ。有料モデルは保存できない(設計書9.2) */
+    private static function validateFreeModels(mixed $value): ?string
+    {
+        if (! is_array($value) || ! array_is_list($value)) {
+            return self::message('models_list');
+        }
+        foreach ($value as $id) {
+            if (! is_string($id) || ! str_ends_with($id, ':free') || strlen($id) > 120) {
+                return self::message('models_free');
+            }
+        }
+
+        return null;
     }
 
     private static function message(string $name): string

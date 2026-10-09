@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use App\Contracts\AiProvider;
 use App\Contracts\AiReviewGate;
 use App\Contracts\CommandRunner;
 use App\Contracts\GoogleLogin;
@@ -23,6 +24,7 @@ use App\Models\Region;
 use App\Models\Spot;
 use App\Models\Submission;
 use App\Models\User;
+use App\Services\Ai\OpenRouterProvider;
 use App\Services\Auth\RolePermissions;
 use App\Services\Auth\SocialiteGoogleLogin;
 use App\Services\Design\IllustUrlResolver;
@@ -36,7 +38,7 @@ use App\Services\Search\MysqlSearchEngine;
 use App\Services\Security\IpHasher;
 use App\Services\Setting\AppMetaService;
 use App\Services\Setting\SettingsService;
-use App\Services\Submission\NoAiReviewGate;
+use App\Services\Submission\SettingsAiReviewGate;
 use App\Services\Update\BackupStore;
 use App\Services\Update\CurrentVersion;
 use App\Services\Update\DirectorySwapper;
@@ -76,8 +78,9 @@ class AppServiceProvider extends ServiceProvider
 
         // 検索(フェーズ4)
         $this->app->bind(SearchEngine::class, MysqlSearchEngine::class);
-        // AI の判定は、フェーズ6で本物に差し替える。それまでは、すべて人の審査に回す
-        $this->app->bind(AiReviewGate::class, NoAiReviewGate::class);
+        // AI の呼び出し口(OpenRouter)。使えるか(オフ・キー未設定)は AiClient が見る。使えないときは人の審査に回る
+        $this->app->bind(AiProvider::class, OpenRouterProvider::class);
+        $this->app->bind(AiReviewGate::class, SettingsAiReviewGate::class);
 
         // ログイン(フェーズ2)
         $this->app->bind(GoogleLogin::class, SocialiteGoogleLogin::class);

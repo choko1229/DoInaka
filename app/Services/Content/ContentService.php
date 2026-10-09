@@ -73,7 +73,7 @@ class ContentService
      * @param  list<array<string, mixed>>  $sources
      * @param  list<string>  $tags
      */
-    public function saveEvent(?Event $event, array $data, array $schedules, array $sources, array $tags, ?User $actor = null, ?string $reason = null): Event
+    public function saveEvent(?Event $event, array $data, array $schedules, array $sources, array $tags, ?User $actor = null, ?string $reason = null, ?int $submissionId = null): Event
     {
         $isNew = $event === null;
         $event ??= new Event;
@@ -112,15 +112,15 @@ class ContentService
         };
 
         if ($isNew) {
-            DB::transaction(function () use ($change, $event, $actor, $reason): void {
+            DB::transaction(function () use ($change, $event, $actor, $reason, $submissionId): void {
                 $change();
-                $this->revisions->recordCreated($event, $actor, $reason);
+                $this->revisions->recordCreated($event, $actor, $reason, $submissionId, $submissionId === null ? RevisionCause::Created : RevisionCause::Submission);
             });
 
             return $event->refresh();
         }
 
-        $this->revisions->update($event, $change, actor: $actor, reason: $reason);
+        $this->revisions->update($event, $change, $submissionId === null ? RevisionCause::AdminEdit : RevisionCause::Submission, $actor, $reason, $submissionId);
 
         return $event->refresh();
     }

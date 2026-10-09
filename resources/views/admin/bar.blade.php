@@ -9,7 +9,7 @@
         <a href="{{ route('admin.spots.create') }}">{{ __('public.nav_spots') }}</a>
         <a href="{{ route('admin.articles.create') }}">{{ __('public.nav_articles') }}</a>
     </details>
-    <span class="admin-bar-item">{{ __('public.bar_ai_today', ['count' => $aiToday]) }}</span>
+    <span class="admin-bar-item">{{ __('public.bar_ai_today', ['count' => $aiToday]) }}@if ($aiPausedUntil) · {{ __('public.bar_ai_paused', ['time' => $aiPausedUntil->setTimezone('Asia/Tokyo')->format('H:i')]) }}@endif</span>
 
     @if ($target)
         <details class="admin-bar-menu admin-bar-page">

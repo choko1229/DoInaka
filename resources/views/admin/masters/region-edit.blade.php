@@ -27,6 +27,13 @@
                 <p class="t-small t-muted">{{ __('masters.url_preview') }}: {{ url('/'.$region->path().'/') }}</p>
             </div>
 
+            <div class="field">
+                <label for="official_url">{{ __('region.official_url') }}</label>
+                <input id="official_url" name="official_url" type="url" value="{{ old('official_url', $region->official_url) }}" maxlength="500" placeholder="https://">
+                <p class="t-small t-muted">{{ __('region.official_url_help') }}</p>
+                @error('official_url')<p class="field-error" role="alert">{{ $message }}</p>@enderror
+            </div>
+
             @if ($region->level === \App\Enums\RegionLevel::OldMunicipality)
                 <div class="field">
                     <label for="parent_id">{{ __('masters.field_parent') }}</label>

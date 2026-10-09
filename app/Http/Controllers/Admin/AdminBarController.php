@@ -11,7 +11,9 @@ use App\Models\Event;
 use App\Models\Region;
 use App\Models\Spot;
 use App\Models\User;
+use App\Services\Ai\AiUsage;
 use App\Services\Audit\AuditLogger;
+use App\Services\Crawl\CrawlTrust;
 use App\Services\Region\RegionPageQueue;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -34,7 +36,8 @@ final class AdminBarController extends Controller
         return view('admin.bar', [
             'pendingSubmissions' => DB::table('submissions')->where('status', 'in_review')->count(),
             'pendingCorrections' => DB::table('corrections')->join('submissions', 'submissions.id', '=', 'corrections.submission_id')->where('submissions.status', 'in_review')->count(),
-            'aiToday' => DB::table('ai_calls')->where('created_at', '>=', now()->startOfDay())->count(),
+            'aiToday' => app(AiUsage::class)->today(),
+            'aiPausedUntil' => app(AiUsage::class)->pausedUntil(),
             'target' => $target,
             'targetType' => $target === null ? null : $target->getMorphClass(),
             'user' => $request->user(),
@@ -50,6 +53,9 @@ final class AdminBarController extends Controller
             'article' => Article::query()->findOrFail($id),
             default => abort(404),
         };
+        if ($model instanceof Event) {
+            app(CrawlTrust::class)->eventChangedByAdmin($model, __('crawl.what_unpublished'));
+        }
         $model->forceFill(['is_published' => false])->save();
         $this->audit->record(AuditAction::ContentUpdate, $this->user($request), $type, $id, ['unpublished' => true, 'via' => 'admin_bar']);
 
@@ -58,11 +64,8 @@ final class AdminBarController extends Controller
 
     public function regenerate(Request $request, Region $region, RegionPageQueue $queue): RedirectResponse
     {
-        // 紹介文を再生成する: 既存の紹介文を「再生成待ち」として、キューへ入れ直す
-        DB::table('region_generation_queue')->updateOrInsert(
-            ['region_id' => $region->id],
-            ['status' => 'pending', 'reason' => 'admin', 'requested_at' => now(), 'created_at' => now(), 'updated_at' => now()],
-        );
+        // 紹介文を再生成する: キューの先頭に入れる(新しい紹介文が確認を通るまで、いまの紹介文を出し続ける)
+        $queue->regenerate($region);
         $this->audit->record(AuditAction::ContentUpdate, $this->user($request), 'region', $region->id, ['regenerate_intro' => true, 'via' => 'admin_bar']);
 
         return redirect()->to($this->back($request));

@@ -15,6 +15,7 @@ enum AppMetaKey: string
     case SchedulerLastRun = 'scheduler_last_run';
     case UpdateWindowHour = 'update_window_hour';
     case CrawlWindowHour = 'crawl_window_hour';
+    case AiStartedAt = 'ai_started_at';
     case LastUpdateCheck = 'last_update_check';
     case LastNotifiedVersion = 'last_notified_version';
 }

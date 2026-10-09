@@ -14,6 +14,19 @@ final class UrlGuard
 {
     public function __construct(private readonly DnsResolver $dns) {}
 
+    /**
+     * 名前解決した、最初のアドレス(読む相手を、確かめたアドレスに固定するのに使う)。IP を直接書いた URL・解決できないものは null。
+     */
+    public function pinnedAddress(string $url): ?string
+    {
+        $host = parse_url($url, PHP_URL_HOST);
+        if (! is_string($host) || filter_var(trim($host, '[]'), FILTER_VALIDATE_IP) !== false) {
+            return null;
+        }
+
+        return $this->dns->forward(strtolower($host))[0] ?? null;
+    }
+
     /** 読んでよい URL か。だめなら理由のキー(unsafe_scheme / unsafe_host / invalid)を返し、よければ null */
     public function problem(string $url): ?string
     {

@@ -6,10 +6,14 @@ use App\Http\Controllers\Admin\AdminBarController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\ContentController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\DraftController;
 use App\Http\Controllers\Admin\EventAdminController;
 use App\Http\Controllers\Admin\MasterController;
+use App\Http\Controllers\Admin\RegionPageController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\RevisionController;
+use App\Http\Controllers\Admin\SourceController;
+use App\Http\Controllers\Admin\SuggestController;
 use App\Http\Controllers\Admin\TipController;
 use App\Http\Controllers\Admin\TwoFactorController;
 use App\Http\Controllers\Admin\UpdateController;
@@ -83,6 +87,14 @@ Route::middleware('admin')->group(function (): void {
         Route::post('/review/{submission}/reject', [ReviewController::class, 'reject'])->whereNumber('submission')->name('review.reject');
         Route::post('/review/{submission}/restore', [ReviewController::class, 'restore'])->whereNumber('submission')->name('review.restore');
         Route::get('/corrections', [ReviewController::class, 'corrections'])->name('corrections');
+        Route::post('/corrections/{submission}/confirm', [ReviewController::class, 'confirmCorrection'])->whereNumber('submission')->name('corrections.confirm');
+        Route::post('/corrections/{submission}/rollback', [ReviewController::class, 'rollbackCorrection'])->whereNumber('submission')->name('corrections.rollback');
+        Route::get('/drafts', [DraftController::class, 'index'])->name('drafts');
+        Route::post('/drafts', [DraftController::class, 'read'])->middleware('throttle:20,1')->name('drafts.read');
+        Route::post('/drafts/save', [DraftController::class, 'save'])->name('drafts.save');
+        Route::post('/suggest', SuggestController::class)->middleware('throttle:20,1')->name('suggest');
+        Route::get('/region-pages', [RegionPageController::class, 'index'])->name('region-pages');
+        Route::post('/region-pages/regenerate', [RegionPageController::class, 'regenerate'])->name('region-pages.regenerate');
         Route::get('/media/{media}/original', [ReviewController::class, 'original'])->whereNumber('media')->name('media.original');
         Route::get('/tips', [TipController::class, 'index'])->name('tips');
         Route::get('/tips/{submission}', [TipController::class, 'show'])->whereNumber('submission')->name('tips.show');
@@ -105,6 +117,20 @@ Route::middleware('admin')->group(function (): void {
         Route::delete('/tags/{tag}', [MasterController::class, 'destroyTag'])->name('.tags.destroy');
         Route::post('/ng-words', [MasterController::class, 'storeNgWord'])->name('.ng.store');
         Route::delete('/ng-words/{ngWord}', [MasterController::class, 'destroyNgWord'])->name('.ng.destroy');
+    });
+    // 情報源の巡回は管理者だけ(設計書6.2)
+    Route::middleware('can:manage-masters')->prefix('sources')->name('sources')->group(function (): void {
+        Route::get('/', [SourceController::class, 'index'])->name('');
+        Route::get('/create', [SourceController::class, 'create'])->name('.create');
+        Route::post('/', [SourceController::class, 'store'])->name('.store');
+        Route::get('/{source}/edit', [SourceController::class, 'edit'])->whereNumber('source')->name('.edit');
+        Route::put('/{source}', [SourceController::class, 'update'])->whereNumber('source')->name('.update');
+        Route::delete('/{source}', [SourceController::class, 'destroy'])->whereNumber('source')->name('.destroy');
+        Route::post('/{source}/run', [SourceController::class, 'run'])->whereNumber('source')->name('.run');
+        Route::post('/{source}/pause', [SourceController::class, 'pause'])->whereNumber('source')->name('.pause');
+        Route::post('/{source}/resume', [SourceController::class, 'resume'])->whereNumber('source')->name('.resume');
+        Route::post('/{source}/trust', [SourceController::class, 'trust'])->whereNumber('source')->name('.trust');
+        Route::post('/candidates/{candidate}/ignore', [SourceController::class, 'ignoreCandidate'])->whereNumber('candidate')->name('.candidates.ignore');
     });
     // 設定・AI・広告・更新適用は管理者だけ(設計書5.3)
     Route::middleware('can:manage-settings')->group(function (): void {

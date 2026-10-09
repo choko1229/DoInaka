@@ -127,6 +127,7 @@ return [
     'bar_corrections' => '修正依頼',
     'bar_new' => '＋新規',
     'bar_ai_today' => 'AI 今日 :count 回',
+    'bar_ai_paused' => '制限エラーのため :time まで停止中',
     'bar_this_page' => 'このページ',
     'bar_edit' => '編集',
     'bar_history' => '履歴',

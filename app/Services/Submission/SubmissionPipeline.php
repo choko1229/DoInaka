@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace App\Services\Submission;
 
 use App\Contracts\AiReviewGate;
+use App\Enums\AiPurpose;
 use App\Enums\SubmissionStatus;
 use App\Enums\SubmissionType;
+use App\Jobs\JudgeSubmission;
 use App\Jobs\ProcessUploadedImage;
 use App\Models\Submission;
 
@@ -46,6 +48,13 @@ final class SubmissionPipeline
 
     private function readyForJudgement(Submission $submission): void
     {
-        $this->machine->transition($submission, $this->ai->available() ? SubmissionStatus::AiPending : SubmissionStatus::InReview);
+        if (! $this->ai->available()) {
+            $this->machine->transition($submission, SubmissionStatus::InReview);
+
+            return;
+        }
+
+        $this->machine->transition($submission, SubmissionStatus::AiPending);
+        JudgeSubmission::dispatch($submission->id)->onQueue(AiPurpose::ReviewText->queue());
     }
 }
