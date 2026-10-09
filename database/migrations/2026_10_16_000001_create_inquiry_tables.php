@@ -53,6 +53,8 @@ return new class extends Migration
             $table->text('objection_reason')->nullable();
             $table->timestamp('deadline_at');
             $table->timestamp('responded_at')->nullable();
+            // 期限を過ぎて「削除できる」状態になったことを、管理者に知らせた時刻
+            $table->timestamp('notified_at')->nullable();
             $table->timestamps();
 
             $table->unique('inquiry_id');

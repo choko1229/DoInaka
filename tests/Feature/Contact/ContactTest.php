@@ -94,6 +94,7 @@ it('一般の質問を送ると、受付番号が出て、Discord には番号�
 
 it('同意がない・必須の欄が空なら受け付けない。広告と個人情報はメールが必須', function (): void {
     $this->post('/contact/', contactInput(['consent_terms' => null]))->assertSessionHasErrors('consent_terms');
+    $this->post('/contact/', contactInput(['consent_overseas' => null]))->assertSessionHasErrors('consent_overseas');
     $this->post('/contact/', contactInput(['kind' => 'ads', 'organizer_name' => '店']))->assertSessionHasErrors('email');
     $this->post('/contact/', contactInput(['kind' => 'privacy']))->assertSessionHasErrors('email');
     $this->post('/contact/', contactInput(['kind' => 'listing', 'organizer_name' => '']))->assertSessionHasErrors(['target_url', 'organizer_name']);

@@ -12,6 +12,8 @@ use App\Http\Middleware\HideHeldContent;
 use App\Http\Middleware\PrepareInstallSession;
 use App\Http\Middleware\RedirectToCanonicalUrl;
 use App\Http\Middleware\RedirectToInstaller;
+use App\Http\Middleware\SecurityHeaders;
+use App\Http\Middleware\WatchCron;
 use App\Services\Install\InstallEnvironment;
 use App\Support\ErrorId;
 use Illuminate\Foundation\Application;
@@ -38,9 +40,9 @@ return Application::configure(basePath: dirname(__DIR__))
 
         // インストーラーのセッションは StartSession より前に file へ切り替える
         // 初回(.env も DB もない)は、存在しない URL でもインストーラーへ案内したいので、グローバルに置く
-        $middleware->prepend([PrepareInstallSession::class, RedirectToInstaller::class, RedirectToCanonicalUrl::class, BlockOverseas::class]);
+        $middleware->prepend([SecurityHeaders::class, PrepareInstallSession::class, RedirectToInstaller::class, RedirectToCanonicalUrl::class, BlockOverseas::class]);
         $middleware->alias(['admin' => EnsureAdmin::class, 'staff' => EnsureStaff::class, 'permit' => EnsurePermitted::class]);
-        $middleware->web(append: [CountPageView::class, HideHeldContent::class]);
+        $middleware->web(append: [CountPageView::class, HideHeldContent::class, WatchCron::class]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

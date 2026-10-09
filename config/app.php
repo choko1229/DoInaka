@@ -70,6 +70,9 @@ return [
     'timezone' => env('APP_TIMEZONE', 'Asia/Tokyo'),
 
     // 正規 URL への転送(do-inaka.net・www・http・末尾スラッシュ・大文字)。テストでは false にして、転送のテストだけ true にする
+    // cron の停止を、Web へのアクセスのついでに確かめて Discord に知らせる(設計書10.3)。テストでは切る
+    'cron_watch' => (bool) env('CRON_WATCH', true),
+
     'canonical_redirects' => (bool) env('CANONICAL_REDIRECTS', true),
 
     // IP アドレスのハッシュ用の秘密鍵(設計書14章)。空なら APP_KEY を使う

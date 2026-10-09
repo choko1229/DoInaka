@@ -116,4 +116,7 @@ return [
     'recovery_1' => '履歴が「戻せなかった」になり、サイトはメンテナンス表示のまま止まります。Discord にも知らせます。',
     'recovery_2' => 'FTP で storage/framework/down を削除すると、メンテナンス表示が消えます。',
     'recovery_3' => '上のバックアップ(コードの zip と DB のダンプ)から手で戻します。手順は docs/operations.md に書きます。',
+    'cron_notice_stopped' => '【警告】定期処理(cron)が止まっています。最後に動いたのは :minutes 分前です。サーバーの cron の設定を確かめてください。',
+    'cron_notice_never' => '【警告】定期処理(cron)がまだ一度も動いていません。サーバーの cron の設定を確かめてください。',
+    'cron_notice_recovered' => '定期処理(cron)が再開しました。',
 ];

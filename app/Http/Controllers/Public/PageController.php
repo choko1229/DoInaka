@@ -35,6 +35,7 @@ final class PageController extends Controller
         $html = Str::markdown($markdown, ['html_input' => 'strip', 'allow_unsafe_links' => false]);
         // 個人情報の外国への送信の同意欄から、AI の節へ飛べるように
         $html = (string) preg_replace('/<h2>(5\. AIサービスの利用)<\/h2>/u', '<h2 id="overseas">$1</h2>', $html);
+        $html = (string) preg_replace('/<h2>(4\. 外部サービスへの送信[^<]*)<\/h2>/u', '<h2 id="external">$1</h2>', $html);
         // 外部のリンクは、別タブで・参照元を送らずに開く
         $html = (string) preg_replace('/<a href="(https?:\/\/[^"]+)"/u', '<a href="$1" target="_blank" rel="noopener noreferrer"', $html);
 

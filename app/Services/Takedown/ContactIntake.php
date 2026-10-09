@@ -55,7 +55,8 @@ final class ContactIntake
         $data = Validator::make($request->all(), $this->rules($kind), [], __('inquiry.attributes'))->validate();
 
         $errors = [];
-        if ($kind === InquiryKind::Takedown && ! $request->boolean('consent_overseas')) {
+        // 削除依頼は AI の照合で外国の事業者へ送るので同意が要る。ほかの種類も、プライバシーポリシーの案内どおり、お問い合わせの各フォームで取る
+        if (! $request->boolean('consent_overseas')) {
             $errors['consent_overseas'] = __('submission.consent_overseas_required');
         }
 

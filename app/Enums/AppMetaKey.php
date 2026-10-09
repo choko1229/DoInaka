@@ -18,4 +18,5 @@ enum AppMetaKey: string
     case AiStartedAt = 'ai_started_at';
     case LastUpdateCheck = 'last_update_check';
     case LastNotifiedVersion = 'last_notified_version';
+    case CronAlertState = 'cron_alert_state';
 }

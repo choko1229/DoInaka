@@ -107,4 +107,6 @@ return [
     'mypage_done_kept' => '結果: 掲載を続けます。',
     'consent_saved' => '回答を受け付けました。',
     'mypage_link' => '削除の依頼',
+    'discord_deadline' => '削除依頼 :receipt は、会員への照会の期限が過ぎました(反対なし)。管理画面で確認してください。',
+    'deadlines_notified' => '期限が過ぎた照会を :count 件、知らせました。',
 ];

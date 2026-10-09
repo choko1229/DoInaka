@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Schedule;
 | 定期処理(設計書10.2)
 |--------------------------------------------------------------------------
 | サーバーの cron は毎分 `php artisan schedule:run` を呼ぶ1行だけ。常駐プロセスは使わない。
-| 追加の定期処理は各フェーズでここに足す。点検はフェーズ8。
+| 追加の定期処理は、ここに足し、tests/Feature/Console/ScheduleTest.php の一覧にも足す(一覧と食い違うとテストが落ちる)。
 */
 
 // スケジューラが動くたびに最終実行時刻を書く(止まったことを検知するため。設計書10.3)
@@ -62,6 +62,15 @@ Schedule::command('regions:generate')->everyTenMinutes()->withoutOverlapping()->
 
 // OpenRouter の無料モデルの一覧を取り直す(1日1回。管理画面の候補と、モデルが消えたかの判断に使う)
 Schedule::call(fn () => app(OpenRouterModels::class)->refresh())->dailyAt('3:40')->name('ai-models-refresh');
+
+// 人気スコアの集計(1時間ごと。管理者とボットを除いた閲覧、お気に入り、行った!の直近30日)
+Schedule::command('popularity:calculate')->hourly()->name('popularity-calculate');
+
+// 日本の IP アドレス一覧(APNIC。海外アクセスの制限に使う。週1回)
+Schedule::command('geo:import')->weeklyOn(0, '3:20')->name('geo-import');
+
+// 削除への同意の照会で、期限まで反対がなかったものを管理者に知らせる(1日1回。削除は管理者が押したときだけ)
+Schedule::command('takedown:deadlines')->dailyAt('9:00')->name('takedown-deadlines');
 
 // 保持期間を過ぎたログの削除(操作ログ365日・AIのログ90日。設定で変えられる)
 Schedule::command('logs:prune')->dailyAt('4:20')->name('logs-prune');
