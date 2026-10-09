@@ -227,3 +227,4 @@
 | ダッシュボード | 対応が要るもの(審査待ち・修正依頼・情報提供・AI判定待ち/延期・要確認)、サイトの状況(これからのイベント・スポット・記事・今日と7日間の閲覧・会員と停止中・一時停止中の情報源・紹介文の生成待ち)、AI の今日の回数と停止中の表示、最近の操作(管理者のみ)。権限のない項目は出さない |
 | 状態の既定値 | submissions.status の DB 既定値が、状態にない 'pending' になっていた(直接 INSERT すると不正な値が入る)ので、'received' に直した(既存の 'pending' は in_review へ) |
 | 会員の最終ログイン | ログイン成功のときに users.last_login_at を更新する(一覧に出す) |
+| CI の MySQL のイメージ | CI(ci.yml)とリリース(release.yml)の MySQL サービスを、Docker Hub の匿名の取得制限(GitHub のランナーで 	oomanyrequests と認証のタイムアウトが20分以上続いた)を避けるため、同じ公式イメージの Amazon ECR Public のミラー(public.ecr.aws/docker/library/mysql:8.0.46)から取る。版・設定・テストは同じで、CI を弱める変更ではない。開発用の docker-compose.yml は Docker Hub のまま |
