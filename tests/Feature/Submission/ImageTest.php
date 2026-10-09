@@ -8,6 +8,7 @@ use App\Models\Media;
 use App\Models\MediaOriginal;
 use App\Models\Submission;
 use App\Services\Image\ImageProcessor;
+use App\Services\Image\ImageValidator;
 use App\Services\Submission\SubmissionPipeline;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
@@ -100,7 +101,7 @@ it('HEIC(iPhone の写真)を受け付けて、WebP に変換する', function (
     } catch (Throwable) {
         $this->markTestSkipped('この環境の ImageMagick は HEIC を読み込めません。');
     }
-    if (app(App\Services\Image\ImageValidator::class)->detect($path) !== 'image/heic') {
+    if (app(ImageValidator::class)->detect($path) !== 'image/heic') {
         $this->markTestSkipped('この環境の ImageMagick が書き出した HEIC は、HEIC として判定できません。');
     }
     $file = new UploadedFile($path, 'IMG_0001.HEIC', 'image/heic', null, true);
