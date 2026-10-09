@@ -2,21 +2,25 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Admin\AdController;
 use App\Http\Controllers\Admin\AdminBarController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\ContentController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DraftController;
 use App\Http\Controllers\Admin\EventAdminController;
+use App\Http\Controllers\Admin\LogController;
 use App\Http\Controllers\Admin\MasterController;
 use App\Http\Controllers\Admin\RegionPageController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\RevisionController;
+use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\SourceController;
 use App\Http\Controllers\Admin\SuggestController;
 use App\Http\Controllers\Admin\TipController;
 use App\Http\Controllers\Admin\TwoFactorController;
 use App\Http\Controllers\Admin\UpdateController;
+use App\Http\Controllers\Admin\UserAdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -118,6 +122,15 @@ Route::middleware('admin')->group(function (): void {
         Route::post('/ng-words', [MasterController::class, 'storeNgWord'])->name('.ng.store');
         Route::delete('/ng-words/{ngWord}', [MasterController::class, 'destroyNgWord'])->name('.ng.destroy');
     });
+
+    // 会員の管理(管理者だけ。設計書5.3)
+    Route::middleware('can:manage-masters')->prefix('users')->name('users')->group(function (): void {
+        Route::get('/', [UserAdminController::class, 'index'])->name('');
+        Route::get('/{user}', [UserAdminController::class, 'show'])->whereNumber('user')->name('.show');
+        Route::post('/{user}/suspend', [UserAdminController::class, 'suspend'])->whereNumber('user')->name('.suspend');
+        Route::post('/{user}/restore', [UserAdminController::class, 'restore'])->whereNumber('user')->name('.restore');
+        Route::post('/{user}/role', [UserAdminController::class, 'role'])->whereNumber('user')->name('.role');
+    });
     // 情報源の巡回は管理者だけ(設計書6.2)
     Route::middleware('can:manage-masters')->prefix('sources')->name('sources')->group(function (): void {
         Route::get('/', [SourceController::class, 'index'])->name('');
@@ -134,6 +147,17 @@ Route::middleware('admin')->group(function (): void {
     });
     // 設定・AI・広告・更新適用は管理者だけ(設計書5.3)
     Route::middleware('can:manage-settings')->group(function (): void {
+        Route::get('/settings/{tab?}', [SettingsController::class, 'show'])->where('tab', '[a-z]+')->name('settings');
+        Route::post('/settings/{tab}', [SettingsController::class, 'update'])->where('tab', '[a-z]+')->name('settings.update');
+        Route::get('/logs/{tab?}', [LogController::class, 'index'])->where('tab', 'operations|reviews|ai|errors')->name('logs');
+        Route::get('/logs/{tab}/csv', [LogController::class, 'csv'])->where('tab', 'operations|reviews|ai|errors')->middleware('throttle:10,1')->name('logs.csv');
+        Route::get('/ads', [AdController::class, 'index'])->name('ads');
+        Route::post('/ads/adsense', [AdController::class, 'saveAdsense'])->name('ads.adsense');
+        Route::get('/ads/create', [AdController::class, 'create'])->name('ads.create');
+        Route::post('/ads', [AdController::class, 'store'])->name('ads.store');
+        Route::get('/ads/{slot}/edit', [AdController::class, 'edit'])->whereNumber('slot')->name('ads.edit');
+        Route::put('/ads/{slot}', [AdController::class, 'update'])->whereNumber('slot')->name('ads.update');
+        Route::delete('/ads/{slot}', [AdController::class, 'destroy'])->whereNumber('slot')->name('ads.destroy');
         Route::get('/update', [UpdateController::class, 'index'])->name('update');
         Route::post('/update/check', [UpdateController::class, 'check'])->name('update.check');
         Route::post('/update/apply', [UpdateController::class, 'apply'])->name('update.apply');

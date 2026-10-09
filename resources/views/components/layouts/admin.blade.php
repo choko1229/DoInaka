@@ -24,9 +24,13 @@
                 @can('manage-masters')
                     <li class="nav-group">{{ __('layout.nav_operation') }}</li>
                     <li><a href="{{ route('admin.sources') }}" @if ($current === 'sources') aria-current="page" @endif>{{ __('crawl.title') }}</a></li>
+                    <li><a href="{{ route('admin.users') }}" @if ($current === 'users') aria-current="page" @endif>{{ __('users.title') }}</a></li>
                     <li><a href="{{ route('admin.masters') }}" @if ($current === 'masters') aria-current="page" @endif>{{ __('masters.title') }}</a></li>
                 @endcan
                 @can('manage-settings')
+                    <li><a href="{{ route('admin.settings') }}" @if ($current === 'settings') aria-current="page" @endif>{{ __('settings.title') }}</a></li>
+                    <li><a href="{{ route('admin.logs') }}" @if ($current === 'logs') aria-current="page" @endif>{{ __('logs.title') }}</a></li>
+                    <li><a href="{{ route('admin.ads') }}" @if ($current === 'ads') aria-current="page" @endif>{{ __('ads.title') }}</a></li>
                     <li><a href="{{ route('admin.update') }}" @if ($current === 'update') aria-current="page" @endif>{{ __('admin.update') }}</a></li>
                 @endcan
             </ul>

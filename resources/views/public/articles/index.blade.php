@@ -5,6 +5,7 @@
         <input id="a-q" name="q" type="search" maxlength="100" value="{{ $query->q }}" placeholder="{{ __('public.search_placeholder') }}">
         <button class="btn btn-primary btn-sm" type="submit">{{ __('public.apply') }}</button>
     </form>
+    <x-ad position="list" />
     @if ($articles->isEmpty())
         <x-empty-state :title="__('public.no_results')" :aside="__('public.no_results_aside')">{{ __('public.no_results_body') }}</x-empty-state>
     @else

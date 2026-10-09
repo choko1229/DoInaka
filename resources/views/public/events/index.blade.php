@@ -45,6 +45,7 @@
             </form>
         </aside>
         <div class="results">
+            <x-ad position="list" />
             @include('public.events.partials.results')
         </div>
     </div>

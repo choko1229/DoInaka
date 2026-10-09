@@ -77,6 +77,7 @@ final class LoginController extends Controller
         // ログインの前後でセッション ID を作り直す(固定化攻撃の対策)
         Auth::login($user);
         $request->session()->regenerate();
+        $user->forceFill(['last_login_at' => now()])->save();
         $twoFactor->clear($request);
 
         Log::channel('security')->info('ログインしました。', ['user_id' => $user->id, 'context' => $context]);

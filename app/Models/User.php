@@ -18,6 +18,8 @@ use Illuminate\Support\Carbon;
  * @property string $name
  * @property string $email
  * @property string|null $google_sub
+ * @property string|null $bio
+ * @property int $approved_count
  * @property UserRole $role
  * @property UserStatus $status
  * @property string|null $totp_secret
