@@ -4,7 +4,7 @@
 
 ## 今のフェーズ
 
-フェーズ0〜8 すべて完了。【BETA】v26.10.1 のプレリリースを作成済み(人の確認は docs/manual-checks.md)
+フェーズ0〜8 すべて完了。本番で見つかった問題の修正(設置前の /install、コントラスト、アクセスで動く予約処理、AI の状況)も完了。最新の【BETA】は v26.10.5(人の確認は docs/manual-checks.md)
 
 ## 終わったフェーズ
 
@@ -22,8 +22,8 @@
 
 ## 次にやること
 
-- docs/manual-checks.md の「フェーズ8で追加」を中心に、人の確認を進める(バックアップの復元、SPF/DKIM、外部サービスの表と実物の照合、GA4・AdSense・Search Console、HTTPS の 301 など)
-- プレリリース【BETA】v26.10.1(https://github.com/choko1229/DoInaka/releases/tag/v26.10.1)を、テスト用の環境に置いて、確認する。問題がなければ、正式版は人がタグ(vYY.M.N)を push して作る(Claude Code は作らない)
+- 本番(kagoya)に【BETA】v26.10.5 を置いて、docs/manual-checks.md の「コントラスト」「アクセスで動く予約処理」「AI の状況」「フェーズ8で追加」を中心に、人の確認を進める(本番の画面は、運営者の許可があるときだけ、Claude in Chrome で見るだけにする)
+- 問題がなければ、正式版は人がタグ(vYY.M.N)を push して作る(Claude Code は作らない)
 
 ## 環境メモ
 
