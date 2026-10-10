@@ -24,7 +24,6 @@
 
 - docs/manual-checks.md の「フェーズ8で追加」を中心に、人の確認を進める(バックアップの復元、SPF/DKIM、外部サービスの表と実物の照合、GA4・AdSense・Search Console、HTTPS の 301 など)
 - プレリリース【BETA】v26.10.1(https://github.com/choko1229/DoInaka/releases/tag/v26.10.1)を、テスト用の環境に置いて、確認する。問題がなければ、正式版は人がタグ(vYY.M.N)を push して作る(Claude Code は作らない)
-- Dependabot の PR(#2〜#4)の扱いを決める
 
 ## 環境メモ
 
