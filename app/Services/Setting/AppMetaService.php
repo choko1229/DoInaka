@@ -6,6 +6,7 @@ namespace App\Services\Setting;
 
 use App\Enums\AppMetaKey;
 use App\Models\AppMeta;
+use App\Services\Install\InstallEnvironment;
 
 /**
  * アプリとDBのバージョン、設置済みかどうかなど、設定画面では変えない値(app_meta)。
@@ -14,6 +15,11 @@ class AppMetaService
 {
     public function get(AppMetaKey $key): ?string
     {
+        // 設置前(.env がない)は DB が使えない。app_meta は読まない(まだ何も入っていない)
+        if (InstallEnvironment::isFresh()) {
+            return null;
+        }
+
         $value = AppMeta::query()->where('key', $key->value)->value('value');
 
         return is_string($value) ? $value : null;

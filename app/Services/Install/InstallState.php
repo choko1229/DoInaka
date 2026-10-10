@@ -20,6 +20,11 @@ class InstallState
 
     public function isInstalled(): bool
     {
+        // 設置前(.env がない)は、DB を読まずに「まだ」
+        if (InstallEnvironment::isFresh()) {
+            return false;
+        }
+
         try {
             return $this->meta->isInstalled();
         } catch (Throwable) {
@@ -36,7 +41,7 @@ class InstallState
      */
     public function needsInstaller(): bool
     {
-        if (($_ENV['DOINAKA_FRESH_INSTALL'] ?? $_SERVER['DOINAKA_FRESH_INSTALL'] ?? null) === '1') {
+        if (InstallEnvironment::isFresh()) {
             return true;
         }
 

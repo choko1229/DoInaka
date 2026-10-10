@@ -271,3 +271,15 @@
 | 表示 | 管理画面のダッシュボードの警告欄と、公開ページの管理者バーに「公開前モード中」。「準備中」の画面は、既存のエラー画面と同じ部品(`errors.prelaunch`)で、文言は lang/ja/prelaunch.php |
 | ミドルウェアの順序 | `auth` はミドルウェアの優先順で web グループの中身より先に動くので、ログインが要るページ(/mypage/)を未ログインで開くと、503 ではなくログイン画面へ送られる(ログインしても会員は 503) |
 | 設定画面の文言(既存の不具合の修正) | 設定の各項目の名前・説明が、`settings.keys.site.name.label` のようなキーの文字のまま出ていた(文言の表のキーに「.」が含まれ、`__('settings.keys.…')` では引けない)。表を配列として引くように直した。テストで、キーの文字が出ないことを確かめる |
+
+## 2026-10-10 設置前に /install が 500 になる不具合
+
+| 項目 | 内容 |
+| --- | --- |
+| 症状 | kagoya に v26.10.2 を置き、`.env` がない状態で `/install` を開くと 500。`SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) (Database: laravel, SQL: select * from settings)`。呼び出し: RedirectToCanonicalUrl → UrlCanonicalizer::shareHost() → SettingsService::string() → load() |
+| 原因 | `.env` がない初回は、DB の設定がなく、Laravel の既定(DB 名 laravel・root・パスワードなし)で接続しようとして失敗する。インストーラーは DB を使わない作りだったが、**全リクエストが通る共通の部分(正規 URL への転送=共有用ドメインの設定、公開前モードと cron の確認=settings と app_meta)が、設置前でも settings・app_meta を DB から読んでいた**。テストは、DB が必ず使える環境で動くので、見つからなかった(フェーズ4から) |
+| 直し方 | **「設置前なら読まない」という分岐**で直した(例外を握りつぶしていない)。`InstallEnvironment::isFresh()`(`.env` がないまま起動した目印 DOINAKA_FRESH_INSTALL)で、`SettingsService`(全設定を初期値)、`AppMetaService::get()`(null)、`InstallState::isInstalled()`(false)が、DB に行く前に分岐する。これで、web グループのミドルウェア(セキュリティヘッダー、公開前モード、正規 URL、海外の制限、閲覧数、cron の確認、確認中の非表示)とビューの共有データ(配色・GA4 の ID)は、設置前に DB へ行かない。設置の途中で `.env` ができたあとのリクエストは、DB を使う(従来どおり) |
+| 洗い出し | グローバル・web のミドルウェアと AppServiceProvider の boot を確認した。boot は DB に触れない(Gate の権限は呼ばれたときに評価、ビューの配色は Cookie と時刻だけ)。DB に触れていたのは、settings(UrlCanonicalizer・Prelaunch・レイアウトの GA4)と app_meta(InstallState・CronWatcher)で、上の3か所の分岐で止まる |
+| テスト | `tests/Unit/Install/NoDbBeforeInstallTest.php`: DB の接続先を存在しないホストにして、`DB::beforeExecuting`(接続に失敗するクエリも数える)でクエリが0件であることを確かめる(GET /install/ が 200、/ など各ページが /install/ への 302、設置キー → DB の画面 → サイトの画面が開く、settings・app_meta が初期値、404 の画面)。修正を外すと全件失敗することを確認した。`tests/Feature/Install/InstalledStateTest.php`: 設置済みでは、settings を DB から読み、正規 URL への 301 が動く |
+| 設置先(運用) | リリース ZIP は、**公開ディレクトリ(public_html など)の外**に展開し、ドキュメントルートは `public` だけにする。operations.md の「設置」で強調した(`.env`・storage・vendor・バックアップが Web から見えるのを防ぐ) |
+| 版 | 【BETA】v26.10.3 はすでに作成済み(公開前モード)なので、この修正は **v26.10.4**(プレリリース)で出す(同じタグの付け直し・リリースの削除はしない) |
