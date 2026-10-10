@@ -122,4 +122,6 @@ return [
     'cron_notice_web_failed' => '【警告】アクセスで動かす予約処理が、自分自身を呼べない状態が続いています。サーバーの cron に「php artisan schedule:run」を毎分で登録するか、管理画面の設定「予約処理」を確認してください。',
     'warning_webcron_title' => 'アクセスで動かす予約処理が、動かせていません',
     'warning_webcron_body' => 'サイトが自分自身の内部 URL を呼べない状態が続いています(DNS・https・アクセス制限など)。サーバーの cron に「php artisan schedule:run」を毎分で登録してください。',
+    'warning_app_url_title' => '.env の APP_URL が http のままです',
+    'warning_app_url_body' => 'https で見ていますが、APP_URL が http:// で始まっています。サーバーの .env の APP_URL を https:// で始まる URL に直してください(正規 URL・サイトマップ・メールのリンクが http になります)。',
 ];

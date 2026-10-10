@@ -36,8 +36,17 @@ class UrlCanonicalizer
         return $this->mainHost().(is_int($port) ? ':'.$port : '');
     }
 
+    /**
+     * 正規 URL のスキーム。APP_URL のスキームだが、**https で来たリクエストには、必ず https を返す**。
+     * APP_URL が http のまま(設置を http で行った)でも、https のアクセスを http へ転送しない。
+     * http へ転送すると、HSTS(https だけを使う指示)を覚えたブラウザが、すぐ https へ戻して、転送が終わらなくなる(ERR_TOO_MANY_REDIRECTS)。
+     */
     public function mainScheme(): string
     {
+        if (app()->bound('request') && request()->isSecure()) {
+            return 'https';
+        }
+
         return (string) (parse_url(config()->string('app.url'), PHP_URL_SCHEME) ?: 'http');
     }
 

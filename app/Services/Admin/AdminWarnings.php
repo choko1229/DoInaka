@@ -28,6 +28,11 @@ class AdminWarnings
             $warnings[] = ['title' => __('prelaunch.badge'), 'body' => __('prelaunch.badge_help')];
         }
 
+        // https で見ているのに、.env の APP_URL が http のまま(設置を http で行った)。正規 URL・サイトマップ・メールのリンクが http になる
+        if (request()->isSecure() && str_starts_with(config()->string('app.url'), 'http://')) {
+            $warnings[] = ['title' => __('admin.warning_app_url_title'), 'body' => __('admin.warning_app_url_body')];
+        }
+
         if (config('app.debug') === true) {
             $warnings[] = ['title' => __('admin.warning_debug_title'), 'body' => __('admin.warning_debug_body')];
         }

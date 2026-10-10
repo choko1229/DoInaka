@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Enums\SettingKey;
+use App\Models\User;
 use App\Services\Setting\SettingsService;
 use App\Services\Url\UrlCanonicalizer;
 
@@ -68,4 +69,44 @@ it('共有用の URL は do-inaka.net、正規 URL はメインのドメイン�
     $this->rawGet('https://share.example/kagawa/')->assertStatus(301);
     // 古い共有ドメインは、設定を変えたあとは「知らないホスト」になる
     $this->rawGet('https://do-inaka.net/kagawa/')->assertStatus(404);
+});
+
+it('APP_URL が http のままでも、https のアクセスを http へ転送しない(HSTS と組み合わさって、転送が終わらなくなる不具合)', function (): void {
+    // 本番で、設置を http で行ったため、.env の APP_URL が http:// になっていた
+    config(['app.url' => 'http://xn--gdkt37rmci.net']);
+
+    // https で来たら、https の正規 URL へ(http には落とさない)。正規のホスト・スラッシュなら、転送しない
+    $this->rawGet('https://xn--gdkt37rmci.net/up')->assertStatus(200);
+    $this->rawGet('https://xn--gdkt37rmci.net/kagawa/')->assertStatus(404);
+    $this->rawGet('https://www.xn--gdkt37rmci.net/kagawa/')->assertStatus(301)->assertRedirect('https://xn--gdkt37rmci.net/kagawa/');
+    $this->rawGet('https://do-inaka.net/kagawa/events')->assertStatus(301)->assertRedirect('https://xn--gdkt37rmci.net/kagawa/events/');
+
+    // http で来たものは、これまでどおり(APP_URL が http なので、http のまま)
+    $this->rawGet('http://xn--gdkt37rmci.net/up')->assertStatus(200);
+    $this->rawGet('http://www.xn--gdkt37rmci.net/kagawa/')->assertStatus(301)->assertRedirect('http://xn--gdkt37rmci.net/kagawa/');
+});
+
+it('転送のくり返し(ループ)にならない: どの入口からでも、転送は多くても1回で、転送先はもう転送されない', function (): void {
+    foreach (['http', 'https'] as $appScheme) {
+        config(['app.url' => $appScheme.'://xn--gdkt37rmci.net']);
+        foreach (['http', 'https'] as $scheme) {
+            foreach (['xn--gdkt37rmci.net', 'www.xn--gdkt37rmci.net', 'do-inaka.net'] as $host) {
+                foreach (['/kagawa/events', '/kagawa/events/', '/admin/update', '/up'] as $path) {
+                    $first = $this->rawGet("{$scheme}://{$host}{$path}");
+                    if ($first->status() === 301) {
+                        $next = $this->rawGet((string) $first->headers->get('Location'));
+                        expect($next->status())->not->toBe(301, "APP_URL={$appScheme}: {$scheme}://{$host}{$path} が、転送先でまた転送された");
+                    }
+                }
+            }
+        }
+    }
+});
+
+it('https で見ているのに APP_URL が http のままなら、管理画面に警告を出す', function (): void {
+    config(['app.url' => 'http://xn--gdkt37rmci.net']);
+    $this->actingAsVerifiedAdmin(User::factory()->admin()->twoFactor()->create());
+
+    $this->call('GET', 'https://xn--gdkt37rmci.net/admin/', [], [], [], ['HTTPS' => 'on'])->assertOk()->assertSee('APP_URL が http のままです');
+    $this->get('http://xn--gdkt37rmci.net/admin/')->assertOk()->assertDontSee('APP_URL が http のままです');
 });

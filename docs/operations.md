@@ -5,7 +5,7 @@
 ## 設置(初回)
 
 1. リリースZIP(GitHub の Releases の `doinaka-vYY.M.N.zip`)を、**公開ディレクトリ(`public_html` など、Web から見える場所)の外**の `/home/choko1229/doinaka/` に展開する。**`public_html` の中や、ドキュメントルートの下に展開してはいけない**(`.env`・`storage`・`vendor`・DB のバックアップが、Web から見えてしまう)。Web から見せるのは `public` だけで、ド田舎.net のドキュメントルートを `/home/choko1229/doinaka/public` にする
-2. `https://ド田舎.net/install/` を開く。サーバーの `storage/app/private/install.key` に書かれた設置キーを入れる
+2. **https で** `https://ド田舎.net/install/` を開く(http で開いて設置すると、`.env` の APP_URL が http:// になり、HTTPS への転送が終わらなくなる。もし http:// になったら、`.env` の `APP_URL=` を https:// で始まる URL に直す)。サーバーの `storage/app/private/install.key` に書かれた設置キーを入れる
 3. 画面の案内で、動作環境の確認 → DB の接続 → サイトと最初の管理者の登録を進める
 4. cron に次の1行を毎分で登録する(PHP はフルパス)。**登録しなくても動く**(下の「予約処理の動かし方」)が、cron のほうが確実で、おすすめ
 
