@@ -39,7 +39,8 @@ it('PHP のバージョンと拡張機能を確かめる', function (): void {
 
 it('memory_limit が足りないと要対応になる(.htaccess が効いていないとき)', function (): void {
     $original = ini_get('memory_limit');
-    ini_set('memory_limit', '64M');
+    // 要件(256M)より小さく、いまの使用量より大きい値にする(テストの数が増えて、全体で使う量が増えても、設定できるように)
+    ini_set('memory_limit', max(64, (int) ceil(memory_get_usage(true) / 1048576) + 16).'M');
 
     try {
         $results = (new EnvironmentChecker(base_path()))->run();

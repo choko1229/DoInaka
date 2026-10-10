@@ -12,6 +12,14 @@
         <p class="t-small t-muted">{{ __('submission.tip_note_use') }}</p>
     </section>
 
+    @php($aiStatus = app(\App\Services\Ai\AiStatusService::class)->forSubmission($submission))
+    @if ($aiStatus->state !== \App\Enums\AiState::None)
+        <section class="card" id="ai-live-detail" data-ai-live>
+            <h2 class="t-h2">{{ __('submission.ai_result') }}</h2>
+            <x-ai-detail :status="$aiStatus" />
+        </section>
+    @endif
+
     @if ($submission->media->isNotEmpty())
         <section class="card">
             <h2 class="t-h2">{{ __('submission.tip_photos') }}</h2>

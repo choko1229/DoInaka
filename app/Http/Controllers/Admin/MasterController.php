@@ -16,6 +16,7 @@ use App\Models\NgWord;
 use App\Models\Region;
 use App\Models\Tag;
 use App\Models\User;
+use App\Services\Ai\AiStatusService;
 use App\Services\Audit\AuditLogger;
 use App\Services\Content\RegionEditor;
 use Illuminate\Contracts\View\View;
@@ -70,6 +71,13 @@ final class MasterController extends Controller
 
     // ---- 地域 ----
 
+    private function queueValue(Region $region, string $column): ?string
+    {
+        $value = DB::table('region_generation_queue')->where('region_id', $region->id)->value($column);
+
+        return is_string($value) ? $value : null;
+    }
+
     public function editRegion(Region $region): View
     {
         return view('admin.masters.region-edit', [
@@ -81,6 +89,8 @@ final class MasterController extends Controller
                 ? Region::query()->where('level', RegionLevel::OldMunicipality->value)->where('parent_id', $region->parent_id)->where('era', EraTag::Heisei->value)->whereKeyNot($region->id)->orderBy('sort_order')->get()
                 : collect(),
             'revisionCount' => $region->revisionsCount(),
+            // 紹介文の生成の状態(AI)と、作った文
+            'ai' => app(AiStatusService::class)->forRegion($region, $this->queueValue($region, 'status'), $this->queueValue($region, 'last_error')),
         ]);
     }
 

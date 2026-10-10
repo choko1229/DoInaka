@@ -27,11 +27,7 @@
         @endcan
     </div>
 
-    <section class="card">
-        <h2 class="t-h2">{{ __('ai.usage_title') }}</h2>
-        <p>{{ __('ai.usage_today', ['count' => $aiToday]) }}</p>
-        @if ($aiPausedUntil)<p class="alert alert-warning" role="status">{{ __('ai.paused', ['time' => $aiPausedUntil->setTimezone('Asia/Tokyo')->format('m/d H:i')]) }}</p>@endif
-    </section>
+    @include('admin.partials.ai-status', ['ai' => $ai])
 
     <section class="card">
         <div class="card-head"><h2 class="t-h2">{{ __('cron.title') }}</h2>@can('manage-settings')<a href="{{ route('admin.settings', ['tab' => 'cron']) }}">{{ __('cron.settings_link') }}</a>@endcan</div>

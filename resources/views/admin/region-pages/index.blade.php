@@ -10,9 +10,9 @@
 
     <form method="post" action="{{ route('admin.region-pages.regenerate') }}">
         @csrf
-        <div class="table-wrap">
+        <div class="table-wrap" id="ai-live-list" data-ai-live>
             <table class="table">
-                <thead><tr><th></th><th>{{ __('region.col_region') }}</th><th>{{ __('region.col_state') }}</th><th>{{ __('region.col_checked') }}</th><th>{{ __('region.col_hits') }}</th></tr></thead>
+                <thead><tr><th></th><th>{{ __('region.col_region') }}</th><th>{{ __('region.col_state') }}</th><th>{{ __('aistatus.title') }}</th><th>{{ __('region.col_checked') }}</th><th>{{ __('region.col_hits') }}</th></tr></thead>
                 <tbody>
                     @forelse ($regions as $region)
                         <tr>
@@ -24,11 +24,12 @@
                                 @elseif ($region->queue_status === 'failed')<span class="pill pill-failed">{{ __('region.state_failed') }}</span> <span class="t-small t-muted">{{ $region->queue_error }}</span>
                                 @else<span class="pill">{{ __('region.state_none') }}</span>@endif
                             </td>
+                            <td><x-ai-badge :status="app(\App\Services\Ai\AiStatusService::class)->forRegion($region, $region->queue_status, $region->queue_error)" /></td>
                             <td>{{ $region->intro_generated_at?->format('Y-m-d') ?? '—' }}</td>
                             <td>{{ $region->queue_hits ?? 0 }}</td>
                         </tr>
                     @empty
-                        <tr><td colspan="5" class="t-muted">{{ __('submission.review_empty') }}</td></tr>
+                        <tr><td colspan="6" class="t-muted">{{ __('submission.review_empty') }}</td></tr>
                     @endforelse
                 </tbody>
             </table>
