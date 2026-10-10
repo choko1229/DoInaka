@@ -19,29 +19,40 @@ use App\Services\Update\Version;
 use Tests\Support\FakeNotifier;
 
 beforeEach(function (): void {
-    $this->admin = User::factory()->admin()->create(['name' => '管理者さん']);
+    $this->admin = User::factory()->admin()->twoFactor()->create(['name' => '管理者さん']);
 });
 
-it('管理者でない人は、更新の画面も操作も使えない(管理画面があることも見せない)', function (): void {
+it('管理者でない人は、更新の画面も操作も使えない(会員には管理画面があることも見せない)', function (): void {
     $member = User::factory()->create();
 
-    foreach ([
+    $requests = [
         ['get', '/admin'], ['get', '/admin/update'], ['post', '/admin/update/check'], ['post', '/admin/update/apply'],
         ['post', '/admin/update/settings'], ['post', '/admin/update/webhook'], ['post', '/admin/update/webhook/test'],
-    ] as [$method, $url]) {
-        $this->{$method}($url)->assertNotFound();
+    ];
+
+    // 未ログインは管理画面のログインへ
+    foreach ($requests as [$method, $url]) {
+        $this->{$method}($url)->assertRedirect(route('admin.login'));
+    }
+    // 会員は 404
+    foreach ($requests as [$method, $url]) {
         $this->actingAs($member)->{$method}($url)->assertNotFound();
     }
 
     expect(UpdateRun::query()->count())->toBe(0);
 });
 
-it('編集者(管理者ではない)も使えない', function (): void {
-    $editor = User::factory()->create(['role' => 'editor']);
+it('編集者は管理画面には入れるが、更新と設定は使えない(権限がない)', function (): void {
+    $editor = User::factory()->twoFactor()->create(['role' => 'editor']);
 
-    $this->actingAs($editor)->get('/admin/update')->assertNotFound();
+    $this->actingAsVerifiedAdmin($editor)->get('/admin')->assertOk();
+    $this->actingAsVerifiedAdmin($editor)->get('/admin/update')->assertForbidden();
+    $this->actingAsVerifiedAdmin($editor)->post('/admin/update/apply')->assertForbidden();
 });
 
+it('2段階認証を通っていない管理者は、更新の画面に入れない', function (): void {
+    $this->actingAs($this->admin)->get('/admin/update')->assertRedirect(route('admin.two-factor'));
+});
 it('管理者は更新の画面を開ける', function (): void {
     UpdateRun::query()->create([
         'version_from' => 'v26.9.3', 'version_to' => 'v26.10.1', 'trigger' => UpdateTrigger::Auto, 'status' => UpdateStatus::Success,
@@ -52,7 +63,7 @@ it('管理者は更新の画面を開ける', function (): void {
         'status' => UpdateStatus::RolledBack, 'log' => "…\n動作確認で検索ページが500", 'started_at' => now()->subDays(2),
     ]);
 
-    $this->actingAs($this->admin)->get('/admin/update')
+    $this->actingAsVerifiedAdmin($this->admin)->get('/admin/update')
         ->assertOk()
         ->assertSee('アップデート')
         ->assertSee('v26.9.3 → v26.10.1')
@@ -66,15 +77,15 @@ it('管理者は更新の画面を開ける', function (): void {
 it('APP_DEBUG が true なら警告を出す', function (): void {
     config(['app.debug' => true]);
 
-    $this->actingAs($this->admin)->get('/admin/update')->assertSee('APP_DEBUG が true になっています');
+    $this->actingAsVerifiedAdmin($this->admin)->get('/admin/update')->assertSee('APP_DEBUG が true になっています');
 });
 
 it('cron が止まっているときは警告を出す', function (): void {
-    $this->actingAs($this->admin)->get('/admin')->assertSee('定期処理(cron)が止まっています');
+    $this->actingAsVerifiedAdmin($this->admin)->get('/admin')->assertSee('定期処理(cron)が止まっています');
 
     app(CronHealth::class)->beat();
 
-    $this->actingAs($this->admin)->get('/admin')->assertDontSee('定期処理(cron)が止まっています');
+    $this->actingAsVerifiedAdmin($this->admin)->get('/admin')->assertDontSee('定期処理(cron)が止まっています');
 });
 
 it('「今すぐ確認」は確認だけをして、適用はしない(自動更新が ON でも)', function (): void {
@@ -89,8 +100,8 @@ it('「今すぐ確認」は確認だけをして、適用はしない(自動更
     });
 
     try {
-        $this->actingAs($this->admin)->post('/admin/update/check')->assertRedirect()->assertSessionHas('status', '新しい版が見つかりました。');
-        $this->actingAs($this->admin)->get('/admin/update')->assertSee('v26.10.3')->assertSee('新しい版があります')->assertSee('地図のピンを直した');
+        $this->actingAsVerifiedAdmin($this->admin)->post('/admin/update/check')->assertRedirect()->assertSessionHas('status', '新しい版が見つかりました。');
+        $this->actingAsVerifiedAdmin($this->admin)->get('/admin/update')->assertSee('v26.10.3')->assertSee('新しい版があります')->assertSee('地図のピンを直した');
     } finally {
         @unlink(base_path('VERSION'));
     }
@@ -108,7 +119,7 @@ it('GitHub に繋がらなければ、分かる言葉で知らせる', function 
         }
     });
 
-    $this->actingAs($this->admin)->post('/admin/update/check')->assertSessionHas('error');
+    $this->actingAsVerifiedAdmin($this->admin)->post('/admin/update/check')->assertSessionHas('error');
 });
 
 it('「今すぐ更新」は管理者の名前を記録して更新する', function (): void {
@@ -119,7 +130,7 @@ it('「今すぐ更新」は管理者の名前を記録して更新する', func
     $updater->shouldReceive('runManual')->once()->with('管理者さん')->andReturn($run);
     $this->app->instance(AutoUpdater::class, $updater);
 
-    $this->actingAs($this->admin)->post('/admin/update/apply')->assertRedirect()->assertSessionHas('status', '更新しました。');
+    $this->actingAsVerifiedAdmin($this->admin)->post('/admin/update/apply')->assertRedirect()->assertSessionHas('status', '更新しました。');
 
     $log = AuditLog::query()->where('action', AuditAction::UpdateApply->value)->firstOrFail();
     expect($log->user_id)->toBe($this->admin->id)->and($log->target_id)->toBe('7');
@@ -132,13 +143,13 @@ it('更新が戻ったときは、エラーとして知らせる', function (): 
     $updater->shouldReceive('runManual')->andReturn($run);
     $this->app->instance(AutoUpdater::class, $updater);
 
-    $this->actingAs($this->admin)->post('/admin/update/apply')->assertSessionHas('error');
+    $this->actingAsVerifiedAdmin($this->admin)->post('/admin/update/apply')->assertSessionHas('error');
 });
 
 it('自動更新・ベータ・時間帯の設定を保存し、操作ログに前後を残す', function (): void {
     $settings = app(SettingsService::class);
 
-    $this->actingAs($this->admin)->post('/admin/update/settings', [
+    $this->actingAsVerifiedAdmin($this->admin)->post('/admin/update/settings', [
         'auto' => '1', 'window_mode' => 'fixed', 'fixed_hour' => 2,
     ])->assertRedirect()->assertSessionHas('status');
 
@@ -154,7 +165,7 @@ it('自動更新・ベータ・時間帯の設定を保存し、操作ログに�
 });
 
 it('設定の入力が不正なら保存しない', function (array $input): void {
-    $this->actingAs($this->admin)->post('/admin/update/settings', $input)->assertSessionHasErrors();
+    $this->actingAsVerifiedAdmin($this->admin)->post('/admin/update/settings', $input)->assertSessionHasErrors();
 
     expect(AuditLog::query()->count())->toBe(0);
 })->with([
@@ -166,11 +177,11 @@ it('設定の入力が不正なら保存しない', function (array $input): voi
 it('Discord Webhook は暗号化して保存し、画面にも操作ログにも URL を出さない', function (): void {
     $url = 'https://discord.com/api/webhooks/123456789/AbCdEf-secret-token';
 
-    $this->actingAs($this->admin)->post('/admin/update/webhook', ['webhook_url' => $url])->assertRedirect();
+    $this->actingAsVerifiedAdmin($this->admin)->post('/admin/update/webhook', ['webhook_url' => $url])->assertRedirect();
 
     expect(app(SettingsService::class)->string(SettingKey::NotifyDiscordWebhookUrl))->toBe($url);
 
-    $this->actingAs($this->admin)->get('/admin/update')
+    $this->actingAsVerifiedAdmin($this->admin)->get('/admin/update')
         ->assertOk()
         ->assertSee('設定済み')
         ->assertDontSee('secret-token')
@@ -181,7 +192,7 @@ it('Discord Webhook は暗号化して保存し、画面にも操作ログにも
 });
 
 it('Discord 以外の URL や、http の URL は Webhook として保存できない', function (string $url): void {
-    $this->actingAs($this->admin)->post('/admin/update/webhook', ['webhook_url' => $url])->assertSessionHasErrors('webhook_url');
+    $this->actingAsVerifiedAdmin($this->admin)->post('/admin/update/webhook', ['webhook_url' => $url])->assertSessionHasErrors('webhook_url');
 
     expect(app(SettingsService::class)->string(SettingKey::NotifyDiscordWebhookUrl))->toBe('');
 })->with([
@@ -195,7 +206,7 @@ it('空のまま「変更する」を押しても、いまの値は消えない'
     $url = 'https://discord.com/api/webhooks/1/keep-me';
     app(SettingsService::class)->set(SettingKey::NotifyDiscordWebhookUrl, $url);
 
-    $this->actingAs($this->admin)->post('/admin/update/webhook', ['webhook_url' => ''])->assertRedirect();
+    $this->actingAsVerifiedAdmin($this->admin)->post('/admin/update/webhook', ['webhook_url' => ''])->assertRedirect();
 
     expect(app(SettingsService::class)->string(SettingKey::NotifyDiscordWebhookUrl))->toBe($url);
 });
@@ -204,7 +215,7 @@ it('テスト送信は Notifier を通して送り、結果を知らせる', fun
     $notifier = new FakeNotifier;
     $this->app->instance(Notifier::class, $notifier);
 
-    $this->actingAs($this->admin)->post('/admin/update/webhook/test')->assertSessionHas('status');
+    $this->actingAsVerifiedAdmin($this->admin)->post('/admin/update/webhook/test')->assertSessionHas('status');
 
     expect($notifier->messages)->toHaveCount(1);
 });

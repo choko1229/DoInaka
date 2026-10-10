@@ -30,7 +30,8 @@ jobs:
 
     services:
       mysql:
-        image: mysql:8.0.46
+        # Docker Hub の匿名の取得制限で CI が止まったので、同じ公式イメージの Amazon ECR Public のミラーから取る(版は同じ 8.0.46)
+        image: public.ecr.aws/docker/library/mysql:8.0.46
         env:
           MYSQL_ROOT_PASSWORD: root
           MYSQL_DATABASE: doinaka_test
@@ -87,6 +88,9 @@ jobs:
 
       - run: composer install --no-interaction --no-progress --prefer-dist
       - run: npm ci
+
+      - name: DB のトリガー作成を許可(情報元のトリガーのため)
+        run: mysql -h127.0.0.1 -uroot -proot -e "SET GLOBAL log_bin_trust_function_creators = 1"
 
       - name: テスト(Pint・Larastan・ビルド・Pest)
         run: |

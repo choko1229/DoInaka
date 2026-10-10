@@ -24,6 +24,8 @@
                 @if ($date)<span class="event-card-date">{{ $date }}</span>@endif
                 @if ($status === 'ended')<span class="event-card-status">{{ __('layout.status_ended') }}</span>@endif
                 @if ($status === 'cancelled')<span class="event-card-status cancelled">{{ __('layout.status_cancelled') }}</span>@endif
+                @if ($status === 'postponed')<span class="event-card-status postponed">{{ __('layout.status_postponed') }}</span>@endif
+                @if ($status === 'undecided')<span class="event-card-status">{{ __('layout.status_undecided') }}</span>@endif
             </div>
         @endif
         <span class="event-card-title">{{ $title }}</span>

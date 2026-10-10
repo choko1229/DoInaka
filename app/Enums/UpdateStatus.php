@@ -4,11 +4,15 @@ declare(strict_types=1);
 
 namespace App\Enums;
 
+use App\Enums\Concerns\HasLabel;
+
 /**
  * 更新の結果(update_runs.status)。
  */
 enum UpdateStatus: string
 {
+    use HasLabel;
+
     case Running = 'running';
     case Success = 'success';
     /** 失敗したので、コードとDBを更新前に戻した */

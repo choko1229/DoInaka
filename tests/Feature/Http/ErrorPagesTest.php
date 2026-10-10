@@ -15,9 +15,9 @@ it('存在しない URL で 404 の画面が出る', function (): void {
 it('例外が起きても、スタックトレースや内部の情報は画面に出ない', function (): void {
     config(['app.debug' => false]);
     Log::spy();
-    Route::get('/boom', fn () => throw new RuntimeException('秘密の内部メッセージ SELECT * FROM users'));
+    Route::get('/_test/boom', fn () => throw new RuntimeException('秘密の内部メッセージ SELECT * FROM users'));
 
-    $response = $this->get('/boom');
+    $response = $this->get('/_test/boom');
 
     $response->assertStatus(500)
         ->assertSee('停電したみたいです。')
@@ -30,17 +30,17 @@ it('例外が起きても、スタックトレースや内部の情報は画面�
 });
 
 it('メンテナンス中(503)は専用の画面を出す', function (): void {
-    Route::get('/maintenance-like', fn () => abort(503));
+    Route::get('/_test/maintenance-like', fn () => abort(503));
 
-    $this->get('/maintenance-like')
+    $this->get('/_test/maintenance-like')
         ->assertStatus(503)
         ->assertSee('ただいま整備中です。');
 });
 
 it('403・419・429 も同じ作りの画面になる', function (int $status, string $title): void {
-    Route::get("/status-{$status}", fn () => abort($status));
+    Route::get("/_test/status-{$status}", fn () => abort($status));
 
-    $this->get("/status-{$status}")->assertStatus($status)->assertSee($title);
+    $this->get("/_test/status-{$status}")->assertStatus($status)->assertSee($title);
 })->with([
     [403, 'ここから先は入れません。'],
     [419, 'しばらく席を外していたようです。'],
