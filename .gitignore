@@ -35,3 +35,8 @@ Thumbs.db
 /storage/pail
 _ide_helper.php
 *.log
+
+# Playwright(E2E・コントラスト検査)の出力、CI で動かしたアプリのログ
+/test-results/
+/playwright-report/
+/serve.log

@@ -302,6 +302,8 @@ main {
     .card { padding: var(--space-6); }
 }
 .card > h2 { margin-bottom: var(--space-3); }
+/* リンクになっているカード(ダッシュボードの数字、一覧のカードなど)は、操作できる部品なので、枠を 3:1 以上にする */
+a.card { border: 1px solid var(--line-strong); }
 .stepper { display: flex; flex-wrap: wrap; gap: var(--space-2); list-style: none; margin: var(--space-4) 0 0; padding: 0; }
 .stepper li { padding: 0 var(--space-3); border-radius: var(--radius-pill); background: var(--surface-sunken); color: var(--ink-muted); font-size: 14px; }
 .stepper li[aria-current='step'] { background: var(--accent); color: var(--on-accent); font-weight: 700; }
@@ -369,7 +371,8 @@ main {
 @media (min-width: 900px) { .login-layout { grid-template-columns: 460px 1fr; } }
 .login-card { margin-top: 0; }
 .notes { margin: var(--space-4) 0; padding: var(--space-3) var(--space-4); border-radius: var(--radius-md); background: var(--surface-sunken); }
-.login-art { color: var(--line-strong); }
+.login-art { color: var(--ink-muted); }
+.login-art svg { color: var(--line-strong); }
 .login-art svg { width: 100%; max-width: 340px; height: auto; }
 .admin-auth { flex: 1; display: flex; flex-direction: column; align-items: center; padding: var(--space-6) var(--space-4); gap: var(--space-4); }
 .admin-auth-card { width: 100%; max-width: 480px; margin-top: 0; }
@@ -434,7 +437,8 @@ textarea { width: 100%; min-height: 160px; padding: var(--space-3); border: 2px 
 @media (min-width: 1024px) { .list-layout { grid-template-columns: 280px 1fr; align-items: start; } }
 .filters { padding: var(--space-4); border-radius: var(--radius-md); background: var(--surface); box-shadow: var(--shadow-card); }
 .pager { display: flex; align-items: center; justify-content: center; gap: var(--space-4); margin-top: var(--space-6); }
-.chip[aria-disabled='true'] { opacity: 0.5; }
+/* 押せないチップは、薄くせず(文字が読めなくなる)、点線の枠と控えめな文字色で示す */
+.chip[aria-disabled='true'] { border-style: dashed; color: var(--ink-muted); cursor: default; }
 .detail { display: grid; gap: var(--space-4); }
 .detail-narrow { max-width: 760px; }
 .detail-labels { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: 0 0 var(--space-2); }
@@ -495,9 +499,11 @@ a.stat:hover strong { text-decoration: underline; }
 .legal-body h2 { font-size: 1.15rem; margin: var(--space-6) 0 var(--space-2); }
 .legal-body p, .legal-body li { line-height: 1.9; }
 .legal-body table { width: 100%; border-collapse: collapse; font-size: 0.9rem; display: block; overflow-x: auto; }
-.legal-body th, .legal-body td { border: 1px solid var(--border, #ccc); padding: var(--space-2); vertical-align: top; text-align: left; }
-.cookie-banner { position: fixed; inset: auto 0 0 0; z-index: 50; padding: var(--space-3) var(--space-4); background: var(--surface, #fff); color: var(--text, #222); border-top: 2px solid var(--accent); box-shadow: 0 -4px 16px rgb(0 0 0 / 15%); }
+.legal-body th, .legal-body td { border: 1px solid var(--line-strong); padding: var(--space-2); vertical-align: top; text-align: left; }
+.cookie-banner { position: fixed; inset: auto 0 0 0; z-index: 50; padding: var(--space-3) var(--space-4); background: var(--surface); color: var(--ink); border-top: 2px solid var(--accent); box-shadow: 0 -4px 16px rgb(0 0 0 / 15%); }
 .cookie-banner[hidden] { display: none; }
 .cookie-banner .cookie-actions { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-2); }
 .takedown-notice { border: 2px dashed var(--accent); padding: var(--space-3); border-radius: var(--radius, 8px); }
 .blurred-image { filter: blur(24px); }
+/* 入力欄の例(プレースホルダー)も、補足の文字色で読めるようにする(ブラウザの既定は薄い) */
+::placeholder { color: var(--ink-muted); opacity: 1; }
