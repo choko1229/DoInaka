@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Middleware;
 
+use App\Services\Setting\Prelaunch;
 use App\Support\ExternalHosts;
 use Closure;
 use Illuminate\Http\Request;
@@ -28,6 +29,10 @@ final class SecurityHeaders
             'Referrer-Policy' => 'strict-origin-when-cross-origin',
             'Permissions-Policy' => 'geolocation=(self), camera=(), microphone=(), payment=(), usb=(), interest-cohort=()',
         ];
+        // 公開前モードの間は、すべての応答を検索エンジンに載せない
+        if (app(Prelaunch::class)->isOn()) {
+            $headers['X-Robots-Tag'] = 'noindex, nofollow';
+        }
         // HSTS は HTTPS のときだけ(開発の http に付けると、ブラウザが http を使えなくなる)
         if ($request->isSecure()) {
             $headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains';

@@ -1,6 +1,7 @@
 {{-- 管理者バーの部品。/admin/bar?url=… で返し、公開ページに差し込まれる(設計書6.5) --}}
 <div class="admin-bar" role="region" aria-label="{{ __('public.admin_bar') }}">
     <a class="admin-bar-link" href="{{ url('/admin') }}">{{ __('layout.admin') }}</a>
+    @if ($prelaunch)<span class="admin-bar-item" title="{{ __('prelaunch.badge_help') }}"><strong>{{ __('prelaunch.badge') }}</strong></span>@endif
     <span class="admin-bar-item">{{ __('public.bar_submissions') }} {{ $pendingSubmissions }}</span>
     <span class="admin-bar-item">{{ __('public.bar_corrections') }} {{ $pendingCorrections }}</span>
     <details class="admin-bar-menu">

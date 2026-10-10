@@ -17,7 +17,7 @@ final class SettingsCatalog
     public static function tabs(): array
     {
         return [
-            'site' => [SettingKey::SiteName, SettingKey::SiteDescription, SettingKey::SiteOperator, SettingKey::SiteShareHost],
+            'site' => [SettingKey::SiteName, SettingKey::SiteDescription, SettingKey::SiteOperator, SettingKey::SiteShareHost, SettingKey::SitePrelaunch],
             'login' => [SettingKey::GoogleClientId, SettingKey::GoogleClientSecret, SettingKey::AdminTotpTtlHours, SettingKey::AdminRememberDeviceDays],
             'ai' => [
                 SettingKey::AiEnabled, SettingKey::AiApiKey, SettingKey::AiTimeoutSec, SettingKey::AiDailyLimit,

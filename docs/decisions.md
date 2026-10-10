@@ -260,3 +260,14 @@
 | Dependabot #4 actions/checkout 4→7 | マージ。破壊的な変更は `pull_request_target` と `workflow_run` での fork の PR のチェックアウトを止める安全側の変更。このリポジトリは使っていないので影響なし。CI は成功 |
 | Dependabot #9 playwright 1.49→1.64 | マージ。開発用のパッケージで、CI には入っていない(ブラウザのダウンロードが要るため手元の `npm run e2e` で確かめる=manual-checks)。リリースノートは新機能が中心で、e2e の spec が使う API(goto・locator・expect)に削除はない。`npm ci`・ビルドは CI で成功。実機の E2E は manual-checks のまま |
 | マージの手順 | main に「ci が成功し、ブランチが最新であること」の保護が掛かっていたので、1つずつ `gh pr update-branch` → CI → squash マージの順で進めた |
+
+## 2026-10-10 公開前モード
+
+| 項目 | 決めたこと |
+| --- | --- |
+| 設定 | `site.prelaunch`(真偽)。**コード上の既定は OFF**(すでに動いているサイトに影響しない)で、**インストーラーが新しい設置のときだけ ON にする**(オフにするまで一般には見えない)。設定「サイト」タブで切り替え、変更前後が操作ログ(settings.change)に残る |
+| 門 | `PrelaunchMode`(web ミドルウェアグループ。セッションのあと)。通るもの: 2段階認証まで済んだ管理者・編集者(管理画面と同じ条件=このセッションで確認済み、または覚えた端末)、/install、/up、/admin 以下、/login・/logout・/auth/google とそのコールバック、robots.txt・サイトマップ、/build・/storage・/illust・favicon。それ以外は 503 + `Retry-After: 3600` の「準備中」(API・JSON は JSON の 503)。**送信系(投稿・修正依頼・お問い合わせ・コメント・お気に入りなど)は、この門で一律に 503**(個別の判定は足していない=漏れがない)。会員も 503(ログインはできるが、公開ページは見られない) |
+| 検索エンジン | ON の間、`SecurityHeaders` がすべての応答(管理画面・ログイン・エラー・503 も)に `X-Robots-Tag: noindex, nofollow` を付ける。robots.txt は `Disallow: /` だけ(サイトマップの案内なし)、サイトマップは中身が空(sitemapindex・urlset とも `<loc>` なし) |
+| 表示 | 管理画面のダッシュボードの警告欄と、公開ページの管理者バーに「公開前モード中」。「準備中」の画面は、既存のエラー画面と同じ部品(`errors.prelaunch`)で、文言は lang/ja/prelaunch.php |
+| ミドルウェアの順序 | `auth` はミドルウェアの優先順で web グループの中身より先に動くので、ログインが要るページ(/mypage/)を未ログインで開くと、503 ではなくログイン画面へ送られる(ログインしても会員は 503) |
+| 設定画面の文言(既存の不具合の修正) | 設定の各項目の名前・説明が、`settings.keys.site.name.label` のようなキーの文字のまま出ていた(文言の表のキーに「.」が含まれ、`__('settings.keys.…')` では引けない)。表を配列として引くように直した。テストで、キーの文字が出ないことを確かめる |

@@ -15,6 +15,7 @@ use App\Services\Ai\AiUsage;
 use App\Services\Audit\AuditLogger;
 use App\Services\Crawl\CrawlTrust;
 use App\Services\Region\RegionPageQueue;
+use App\Services\Setting\Prelaunch;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -36,6 +37,7 @@ final class AdminBarController extends Controller
         return view('admin.bar', [
             'pendingSubmissions' => DB::table('submissions')->where('status', 'in_review')->count(),
             'pendingCorrections' => DB::table('corrections')->join('submissions', 'submissions.id', '=', 'corrections.submission_id')->where('submissions.status', 'in_review')->count(),
+            'prelaunch' => app(Prelaunch::class)->isOn(),
             'aiToday' => app(AiUsage::class)->today(),
             'aiPausedUntil' => app(AiUsage::class)->pausedUntil(),
             'target' => $target,

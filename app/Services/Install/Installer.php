@@ -123,6 +123,8 @@ class Installer
             $this->settings->set(SettingKey::SiteName, $input['site_name']);
             $this->settings->set(SettingKey::SiteDescription, $input['site_description']);
             $this->settings->set(SettingKey::SearchDriver, $ngram ? 'ngram' : 'like');
+            // 新しく設置したサイトは、管理者が公開前モードをオフにするまで、一般には見えない
+            $this->settings->set(SettingKey::SitePrelaunch, true);
             if ($input['google_client_id'] !== '') {
                 $this->settings->set(SettingKey::GoogleClientId, $input['google_client_id']);
             }
