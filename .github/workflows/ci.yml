@@ -88,3 +88,27 @@ jobs:
 
       - name: テスト(Pest)
         run: ./vendor/bin/pest
+
+      # 画面のコントラストの検査(Playwright + axe-core)。見本データ入りの別の DB(doinaka_e2e)で、アプリを動かして、
+      # 朝・昼・夕・夜 × 春夏秋冬の主要な公開画面を見る(文字 4.5:1、部品の枠 3:1。e2e/contrast.spec.js)
+      - name: コントラスト検査の準備(DB・見本データ・アプリの起動)
+        env:
+          APP_ENV: local
+          APP_DEBUG: 'false'
+          DB_DATABASE: doinaka_e2e
+        run: |
+          mysql -h127.0.0.1 -uroot -proot -e "CREATE DATABASE doinaka_e2e CHARACTER SET utf8mb4 COLLATE utf8mb4_ja_0900_as_cs_ks"
+          export APP_KEY="$(php artisan key:generate --show)"
+          php artisan migrate --force
+          php artisan db:seed --class=InitialDataSeeder --force
+          php artisan db:seed --class=DemoSeeder --force
+          nohup php artisan serve --host=127.0.0.1 --port=8080 > serve.log 2>&1 &
+          for i in $(seq 1 30); do curl -sf -o /dev/null http://127.0.0.1:8080/up && break; sleep 1; done
+          curl -sf -o /dev/null http://127.0.0.1:8080/kagawa/events/
+
+      - name: コントラスト検査(Playwright + axe-core)
+        env:
+          E2E_BASE_URL: http://127.0.0.1:8080
+        run: |
+          npx playwright install --with-deps chromium
+          npm run e2e:contrast
