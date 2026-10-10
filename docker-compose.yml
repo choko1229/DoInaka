@@ -22,6 +22,8 @@ services:
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_ja_0900_as_cs_ks
       - --default-time-zone=+09:00
+      # 情報元のトリガーを、SUPER 権限のない DB ユーザーでも作れるようにする(本番でも同じ設定が使えるかは manual-checks)
+      - --log-bin-trust-function-creators=1
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: doinaka

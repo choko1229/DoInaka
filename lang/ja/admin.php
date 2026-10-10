@@ -4,6 +4,24 @@ declare(strict_types=1);
 
 return [
     'dashboard' => 'ダッシュボード',
+    'stats_todo' => '対応が要るもの',
+    'stats_site' => 'サイトの状況',
+    'stat_review' => '審査待ち',
+    'stat_corrections' => '修正依頼',
+    'stat_tips' => '情報提供',
+    'stat_ai_waiting' => 'AI判定待ち・延期',
+    'stat_needs_check' => '要確認(AIの自動反映)',
+    'stat_events' => 'これからのイベント',
+    'stat_spots' => 'スポット',
+    'stat_articles' => '記事',
+    'stat_views_today' => '今日の閲覧',
+    'stat_views_week' => '7日間の閲覧',
+    'stat_users' => '会員',
+    'stat_users_suspended' => '停止中 :count',
+    'stat_sources_paused' => '一時停止中の情報源',
+    'stat_region_queue' => '紹介文の生成待ち',
+    'recent_ops' => '最近の操作',
+    'all_logs' => 'すべてのログ',
     'dashboard_lead' => '数字と一覧は、あとのフェーズで出します。',
 
     'warning_debug_title' => 'APP_DEBUG が true になっています',
@@ -98,4 +116,7 @@ return [
     'recovery_1' => '履歴が「戻せなかった」になり、サイトはメンテナンス表示のまま止まります。Discord にも知らせます。',
     'recovery_2' => 'FTP で storage/framework/down を削除すると、メンテナンス表示が消えます。',
     'recovery_3' => '上のバックアップ(コードの zip と DB のダンプ)から手で戻します。手順は docs/operations.md に書きます。',
+    'cron_notice_stopped' => '【警告】定期処理(cron)が止まっています。最後に動いたのは :minutes 分前です。サーバーの cron の設定を確かめてください。',
+    'cron_notice_never' => '【警告】定期処理(cron)がまだ一度も動いていません。サーバーの cron の設定を確かめてください。',
+    'cron_notice_recovered' => '定期処理(cron)が再開しました。',
 ];
