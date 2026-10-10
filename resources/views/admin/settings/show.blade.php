@@ -77,4 +77,24 @@
 
         <button class="btn btn-primary" type="submit">{{ __('content.save') }}</button>
     </form>
+
+    @if ($cron)
+        <section class="card">
+            <h2 class="t-h2">{{ __('cron.title') }}</h2>
+            <p><strong>{{ $cron['mode']->label() }}</strong> — {{ __('cron.mode_help.'.$cron['mode']->value) }}</p>
+            <dl class="kv">
+                <dt>{{ __('cron.last_run') }}</dt><dd>{{ $cron['lastRun']?->setTimezone('Asia/Tokyo')->format('Y-m-d H:i:s') ?? __('cron.never') }}</dd>
+                <dt>{{ __('cron.last_web') }}</dt><dd>{{ $cron['lastWeb']?->setTimezone('Asia/Tokyo')->format('Y-m-d H:i:s') ?? __('cron.never') }}</dd>
+            </dl>
+            @if ($cron['result'] !== [])
+                <h3 class="t-h3">{{ __('cron.last_result') }}</h3>
+                <ul class="t-small">
+                    <li>{{ $cron['result']['ran'] ?? [] ? __('cron.result_ran', ['names' => implode('、', $cron['result']['ran'])]) : __('cron.result_none') }}</li>
+                    <li>{{ __('cron.result_queue', ['seconds' => $cron['result']['seconds'] ?? 0]) }}</li>
+                    @if (! empty($cron['result']['errors']))<li>{{ __('cron.result_errors', ['names' => implode('、', $cron['result']['errors'])]) }}</li>@endif
+                </ul>
+            @endif
+            <p class="t-small t-muted">{{ __('cron.update_note') }}</p>
+        </section>
+    @endif
 </x-layouts.admin>

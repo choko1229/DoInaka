@@ -73,6 +73,9 @@ return [
     // cron の停止を、Web へのアクセスのついでに確かめて Discord に知らせる(設計書10.3)。テストでは切る
     'cron_watch' => (bool) env('CRON_WATCH', true),
 
+    // アクセスをきっかけに予約処理を動かす(cron を登録していないとき。設定 cron.web_enabled でも切れる)。テストでは切る
+    'web_cron' => (bool) env('WEB_CRON', true),
+
     'canonical_redirects' => (bool) env('CANONICAL_REDIRECTS', true),
 
     // IP アドレスのハッシュ用の秘密鍵(設計書14章)。空なら APP_KEY を使う

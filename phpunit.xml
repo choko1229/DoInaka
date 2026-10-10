@@ -25,6 +25,7 @@
         <env name="APP_URL" value="http://localhost"/>
         <env name="CANONICAL_REDIRECTS" value="false"/>
         <env name="CRON_WATCH" value="false"/>
+        <env name="WEB_CRON" value="false"/>
         <!-- テスト専用の鍵(秘密ではない。CI に .env がなくても動くように) -->
         <env name="APP_KEY" value="base64:dGVzdC1vbmx5LWtleS1kby1ub3QtdXNlLWluLXByb2Q="/>
         <env name="APP_MAINTENANCE_DRIVER" value="file"/>

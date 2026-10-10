@@ -33,6 +33,12 @@
         @if ($aiPausedUntil)<p class="alert alert-warning" role="status">{{ __('ai.paused', ['time' => $aiPausedUntil->setTimezone('Asia/Tokyo')->format('m/d H:i')]) }}</p>@endif
     </section>
 
+    <section class="card">
+        <div class="card-head"><h2 class="t-h2">{{ __('cron.title') }}</h2>@can('manage-settings')<a href="{{ route('admin.settings', ['tab' => 'cron']) }}">{{ __('cron.settings_link') }}</a>@endcan</div>
+        <p><strong>{{ $cron['mode']->label() }}</strong> — {{ __('cron.mode_help.'.$cron['mode']->value) }}</p>
+        <p class="t-small t-muted">{{ __('cron.last_run') }}: {{ $cron['lastRun']?->setTimezone('Asia/Tokyo')->format('Y-m-d H:i:s') ?? __('cron.never') }}</p>
+    </section>
+
     @can('manage-settings')
         <section class="card">
             <div class="card-head"><h2 class="t-h2">{{ __('admin.recent_ops') }}</h2><a href="{{ route('admin.logs') }}">{{ __('admin.all_logs') }}</a></div>

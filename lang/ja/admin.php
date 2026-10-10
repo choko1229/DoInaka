@@ -119,4 +119,7 @@ return [
     'cron_notice_stopped' => '【警告】定期処理(cron)が止まっています。最後に動いたのは :minutes 分前です。サーバーの cron の設定を確かめてください。',
     'cron_notice_never' => '【警告】定期処理(cron)がまだ一度も動いていません。サーバーの cron の設定を確かめてください。',
     'cron_notice_recovered' => '定期処理(cron)が再開しました。',
+    'cron_notice_web_failed' => '【警告】アクセスで動かす予約処理が、自分自身を呼べない状態が続いています。サーバーの cron に「php artisan schedule:run」を毎分で登録するか、管理画面の設定「予約処理」を確認してください。',
+    'warning_webcron_title' => 'アクセスで動かす予約処理が、動かせていません',
+    'warning_webcron_body' => 'サイトが自分自身の内部 URL を呼べない状態が続いています(DNS・https・アクセス制限など)。サーバーの cron に「php artisan schedule:run」を毎分で登録してください。',
 ];

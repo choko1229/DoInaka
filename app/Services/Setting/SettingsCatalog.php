@@ -35,6 +35,7 @@ final class SettingsCatalog
             'contact' => [SettingKey::ContactRetentionDays, SettingKey::TakedownDailyLimitPerIp, SettingKey::TakedownTargetDays, SettingKey::TakedownObjectionDays],
             'geo' => [SettingKey::GeoBlockOverseas, SettingKey::GeoAllowAdminAbroad],
             'mail' => [SettingKey::MailFromAddress, SettingKey::MailSmtpHost, SettingKey::MailSmtpPort, SettingKey::MailSmtpUsername, SettingKey::MailSmtpPassword],
+            'cron' => [SettingKey::CronWebEnabled],
             'logs' => [SettingKey::LogsAuditRetentionDays, SettingKey::LogsAiRetentionDays],
         ];
     }

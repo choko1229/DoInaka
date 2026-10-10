@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Services\Ai\OpenRouterModels;
 use App\Services\Audit\AuditLogger;
+use App\Services\Cron\WebCronStatus;
 use App\Services\Setting\SettingsCatalog;
 use App\Services\Setting\SettingsService;
 use Illuminate\Contracts\View\View;
@@ -32,7 +33,7 @@ final class SettingsController extends Controller
         private readonly OpenRouterModels $models,
     ) {}
 
-    public function show(string $tab = 'site'): View
+    public function show(WebCronStatus $cron, string $tab = 'site'): View
     {
         $tabs = SettingsCatalog::tabs();
         abort_unless(isset($tabs[$tab]), 404);
@@ -44,6 +45,7 @@ final class SettingsController extends Controller
             'settings' => $this->settings,
             'modelKeys' => $tab === 'ai' ? SettingsCatalog::modelKeys() : [],
             'freeModels' => $this->models->all(),
+            'cron' => $tab === 'cron' ? ['mode' => $cron->mode(), 'lastRun' => $cron->lastRun(), 'lastWeb' => $cron->lastWebRun(), 'result' => $cron->lastResult(), 'failures' => $cron->failures()] : null,
         ]);
     }
 

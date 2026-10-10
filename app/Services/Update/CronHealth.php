@@ -17,9 +17,38 @@ class CronHealth
 
     public function __construct(private readonly AppMetaService $meta) {}
 
-    public function beat(): void
+    /**
+     * @param  string  $source  'cli'(サーバーの cron が動かした)または 'web'(アクセスをきっかけに動かした)
+     */
+    public function beat(string $source = 'cli'): void
     {
-        $this->meta->set(AppMetaKey::SchedulerLastRun, now()->toIso8601String());
+        $now = now()->toIso8601String();
+        $this->meta->set(AppMetaKey::SchedulerLastRun, $now);
+        $this->meta->set($source === 'web' ? AppMetaKey::WebCronLastRun : AppMetaKey::SchedulerLastCliRun, $now);
+    }
+
+    /** 本物の cron(サーバーの cron)が最後に動いた時刻 */
+    public function lastCliRun(): ?CarbonImmutable
+    {
+        $value = $this->meta->get(AppMetaKey::SchedulerLastCliRun);
+
+        return $value === null ? null : CarbonImmutable::parse($value);
+    }
+
+    /** アクセスをきっかけに予約処理が最後に動いた時刻 */
+    public function lastWebRun(): ?CarbonImmutable
+    {
+        $value = $this->meta->get(AppMetaKey::WebCronLastRun);
+
+        return $value === null ? null : CarbonImmutable::parse($value);
+    }
+
+    /** 本物の cron が、いま動いているか(5分以内に動いた) */
+    public function cliIsAlive(): bool
+    {
+        $last = $this->lastCliRun();
+
+        return $last !== null && $last->diffInMinutes(now()) < self::STALE_MINUTES;
     }
 
     public function lastRun(): ?CarbonImmutable
