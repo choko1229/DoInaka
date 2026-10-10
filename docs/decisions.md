@@ -319,3 +319,15 @@
 | 自動更新 | `resources/js/ai-live.js`: 待ち・処理中・延期のもの(`[data-ai-active]`)があるあいだだけ、**10秒ごと**に同じ URL を読み直し、`[data-ai-live]`(id が同じ部分)だけを差し替える。入力中のフォームやスクロールは変えない。変わるものがなくなったら止まり、見えないタブでは動かさない。専用の API は作らず、同じ画面を読み直す(権限・表示の規則が1か所のまま) |
 | 見せる相手 | 管理画面(管理者・編集者)だけ。会員・未ログインには出さない(テスト) |
 | テスト | `tests/Feature/Ai/AiStatusTest.php`(12件): 1件ごとの状態(待ち・処理中・完了・失敗・延期・対象外)、下書きの結果、地域ページの状態、エラーの言葉と伏せ字、ダッシュボードの件数・使用回数・上限・モデル・最後のエラー・次に試す時刻、AI なしのとき、自動更新の印(ある間だけ data-ai-active)とスクリプトの仕様、審査・情報提供・地域ページの一覧と詳細、権限 |
+
+## 2026-10-11 本番の ERR_TOO_MANY_REDIRECTS(https のアクセスを http へ転送していた)
+
+| 項目 | 決めたこと |
+| --- | --- |
+| 症状 | 本番(ド田舎.net)を開くと、どのページも「リダイレクトが繰り返し行われました(ERR_TOO_MANY_REDIRECTS)」。`curl -I https://…/up` が `301 Location: http://…/up`(HSTS つき)、`http://…/up` は 200 |
+| 原因 | 本番の `.env` の **APP_URL が `http://` のまま**(インストーラーは、設置したときのアクセスの URL を APP_URL に書く。設置を http で行った)。正規 URL の転送(`UrlCanonicalizer`)は、APP_URL のスキームを正規としたので、https で来たリクエストを http の正規 URL へ転送した。一方、フェーズ8で入れたセキュリティヘッダーの **HSTS**(https の応答にだけ付く)を覚えたブラウザは、http へ転送されても、すぐ https へ戻す。https → http(転送)→ https(HSTS で戻る)…と、終わらなくなった。HSTS を入れる前は、https の転送先が http のページで止まるだけで、気付けなかった |
+| 直し方 | `mainScheme()` を、**https で来たリクエストには、必ず https を返す**ようにした(APP_URL のスキームより、いま安全な接続で来ていることを優先)。https のアクセスは、http の正規 URL へ落とされない。正規 URL・サイトマップ・メールのリンクも、https で見ているあいだは https になる。http のアクセスは、これまでどおり APP_URL に従う |
+| 運用で直すこと | `.env` の APP_URL を `https://xn--gdkt37rmci.net`(https で始まる URL)にする。コードを直しただけでは、APP_URL は変わらないので、管理画面のダッシュボードに、「https で見ているのに APP_URL が http のまま」という警告を出す。operations.md の設置の手順にも、https にする旨を書いた |
+| 設置を https で行えば | インストーラーは、そのときの URL(https)を APP_URL に書くので、起きない。**まず https で /install/ を開く**(operations.md) |
+| テスト | `CanonicalUrlTest`: APP_URL が http のままでも、https のアクセスは転送されない(正規のホスト)・www や共有ドメインは https の正規 URL へ・http のアクセスは従来どおり、転送のくり返し(どの入口でも、転送先は転送されない)、管理画面の警告。直す前は失敗することを確認した |
+| 当面の回避(復旧) | 運営者が、サーバーの `.env` の `APP_URL=` を https:// にする(FTP・ファイルマネージャー。コードの更新は不要。キャッシュの設定があれば、`bootstrap/cache/config.php` を消す)。ブラウザ側は、Cookie の削除では直らない(HSTS は https だけを使う指示)。直ったあと、新しい版(このコードの修正)に更新する |
