@@ -231,11 +231,59 @@ enum SettingKey: string
             self::UpdateFixedHour => is_int($value) && $value >= 0 && $value <= 23 ? null : self::message('hour'),
             self::ReviewAutoApproveMinScore, self::ReviewAutoRejectMaxScore,
             self::ReviewImageFallbackMinScore => is_numeric($value) && $value >= 0 && $value <= 1 ? null : self::message('score'),
-            self::AiTimeoutSec, self::UploadMaxMb, self::SpamPostPerHour, self::SpamMaxUrls, self::PopularityWindowDays,
-            self::AdminTotpTtlHours, self::AdminRememberDeviceDays => is_int($value) && $value >= 1 ? null : self::message('positive_int'),
+            self::AiTimeoutSec, self::PopularityWindowDays,
+            self::AdminTotpTtlHours, self::AdminRememberDeviceDays => is_int($value) && $value >= 1 && $value <= 8760 ? null : self::message('positive_int'),
             self::AiDailyLimit => is_int($value) && $value >= 1 ? null : self::message('positive_int_or_null'),
+            self::SiteShareHost => is_string($value) && preg_match('/^(?=.{3,190}$)([a-z0-9-]+\.)+[a-z]{2,}$/', $value) === 1 ? null : self::message('hostname'),
+            self::MailFromAddress => is_string($value) && ($value === '' || filter_var($value, FILTER_VALIDATE_EMAIL) !== false) ? null : self::message('email'),
+            self::NotifyDiscordWebhookUrl => is_string($value) && ($value === '' || preg_match('#^https://(?:[\w-]+\.)?discord(?:app)?\.com/api/webhooks/#', $value) === 1) ? null : self::message('discord'),
+            self::AdsAdsenseClientId => is_string($value) && ($value === '' || preg_match('/^ca-pub-\d{10,20}$/', $value) === 1) ? null : self::message('adsense'),
+            self::AnalyticsGa4Id => is_string($value) && ($value === '' || preg_match('/^G-[A-Z0-9]{6,12}$/', $value) === 1) ? null : self::message('ga4'),
+            self::UploadMaxMb => is_int($value) && $value >= 1 && $value <= 50 ? null : self::message('upload_mb'),
+            self::UploadMaxFilesArticle, self::UploadMaxFilesOther => is_int($value) && $value >= 1 && $value <= 30 ? null : self::message('files'),
+            self::SpamMaxUrls => is_int($value) && $value >= 0 && $value <= 50 ? null : self::message('non_negative_int'),
+            self::SpamPostPerHour, self::CrawlMaxPagesPerSite, self::SeoIndexMinItems, self::ContactRetentionDays, self::CommentAutoHideReports,
+            self::TakedownDailyLimitPerIp, self::TakedownTargetDays, self::TakedownObjectionDays, self::LogsAuditRetentionDays,
+            self::LogsAiRetentionDays, self::ReviewRejectedRetentionDays, self::UploadOriginalRetentionDays, self::TipOriginalRetentionDays,
+            self::PrivacyIpHashRetentionDays => is_int($value) && $value >= 1 && $value <= 36500 ? null : self::message('positive_int'),
+            self::ReviewAutoApproveMinApproved, self::ReviewAutoRejectShadowDays, self::CrawlMinIntervalSeconds => is_int($value) && $value >= 0 && $value <= 36500 ? null : self::message('non_negative_int'),
+            self::MailSmtpPort => is_int($value) && $value >= 1 && $value <= 65535 ? null : self::message('port'),
+            self::PopularityWeights => self::validateWeights($value),
+            self::AiModelsReviewText, self::AiModelsReviewImage, self::AiModelsDraft, self::AiModelsSuggest,
+            self::AiModelsTip, self::AiModelsCrawl, self::AiModelsRegionIntro, self::AiModelsFactCheck,
+            self::AiModelsTakedownCheck => self::validateFreeModels($value),
             default => null,
         };
+    }
+
+    /** 人気スコアの重み: view・favorite・visited のそれぞれが 0〜100 の数 */
+    private static function validateWeights(mixed $value): ?string
+    {
+        if (! is_array($value)) {
+            return self::message('weights');
+        }
+        foreach (['view', 'favorite', 'visited'] as $name) {
+            if (! isset($value[$name]) || ! is_numeric($value[$name]) || $value[$name] < 0 || $value[$name] > 100) {
+                return self::message('weights');
+            }
+        }
+
+        return null;
+    }
+
+    /** AI のモデルは、無料(:free)のものだけ。有料モデルは保存できない(設計書9.2) */
+    private static function validateFreeModels(mixed $value): ?string
+    {
+        if (! is_array($value) || ! array_is_list($value)) {
+            return self::message('models_list');
+        }
+        foreach ($value as $id) {
+            if (! is_string($id) || ! str_ends_with($id, ':free') || strlen($id) > 120) {
+                return self::message('models_free');
+            }
+        }
+
+        return null;
     }
 
     private static function message(string $name): string

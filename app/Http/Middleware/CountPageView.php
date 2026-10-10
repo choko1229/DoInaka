@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Middleware;
 
-use App\Models\User;
 use App\Services\Analytics\PageViewCounter;
+use App\Services\Analytics\TrafficFilter;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,9 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 final class CountPageView
 {
-    private const BOT_PATTERN = '/bot|crawl|spider|slurp|facebookexternalhit|curl|wget|python-requests|headless|monitor|uptime/i';
-
-    public function __construct(private readonly PageViewCounter $counter) {}
+    public function __construct(private readonly PageViewCounter $counter, private readonly TrafficFilter $filter) {}
 
     /**
      * @param  Closure(Request): Response  $next
@@ -42,11 +40,7 @@ final class CountPageView
             return false;
         }
 
-        $user = $request->user();
-        if ($user instanceof User && $user->isAdmin()) {
-            return false;
-        }
-
-        return preg_match(self::BOT_PATTERN, (string) $request->userAgent()) !== 1;
+        // 管理者・編集者とボットは数えない(個別ページの閲覧数と同じ規則)
+        return $this->filter->countsViewer($request);
     }
 }

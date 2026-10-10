@@ -4,9 +4,11 @@
     "type": "module",
     "scripts": {
         "build": "vite build",
-        "dev": "vite"
+        "dev": "vite",
+        "e2e": "playwright test"
     },
     "devDependencies": {
+        "@playwright/test": "^1.49.1",
         "laravel-vite-plugin": "^3.1",
         "vite": "^8.0.0"
     },
@@ -14,6 +16,7 @@
         "@fontsource/biz-udpgothic": "^5.0.0",
         "@fontsource/yomogi": "^5.0.0",
         "@fontsource/yusei-magic": "^5.0.0",
-        "@fontsource/zen-maru-gothic": "^5.0.0"
+        "@fontsource/zen-maru-gothic": "^5.0.0",
+        "leaflet": "^1.9.4"
     }
 }
