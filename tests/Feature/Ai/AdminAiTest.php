@@ -75,7 +75,7 @@ it('制限エラーで止まっていても、管理者の操作は画面から�
     $this->post('/admin/drafts', ['url' => 'https://city.example/event/1'])->assertOk()->assertSee('回数制限')->assertSee('もう一度試す');
     $this->post('/admin/drafts', ['url' => 'https://city.example/event/1'])->assertOk()->assertSee('読み取った内容');
     // ダッシュボードには、止まっていたことと、今日の回数が出る
-    $this->get('/admin')->assertOk()->assertSee('今日(UTC)の呼び出し');
+    $this->get('/admin')->assertOk()->assertSee('今日(UTC)の使用回数');
 });
 
 it('AIに提案させる: 整形・タグ・ローマ字を返すだけ(保存しない)。不正なローマ字は捨てる', function (): void {

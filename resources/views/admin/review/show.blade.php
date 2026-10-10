@@ -36,20 +36,12 @@
         @endif
     </section>
 
-    @if ($submission->ai_status)
-        <section class="card">
+    @php($aiStatus = app(\App\Services\Ai\AiStatusService::class)->forSubmission($submission))
+    @if ($aiStatus->state !== \App\Enums\AiState::None)
+        <section class="card" id="ai-live-detail" data-ai-live>
             <h2 class="t-h2">{{ __('submission.ai_result') }}</h2>
-            @if ($submission->ai_status === 'failed')
-                <p class="t-small">{{ __('submission.ai_failed') }}</p>
-            @else
-                <dl class="facts">
-                    <dt>{{ __('submission.ai_score') }}</dt><dd>{{ $submission->ai_score }}</dd>
-                    @if (! empty($submission->ai_result['reasons']))<dt>{{ __('submission.ai_reasons') }}</dt><dd>{{ implode(' / ', array_map('strval', $submission->ai_result['reasons'])) }}</dd>@endif
-                    @if (! empty($submission->ai_result['flags']))<dt>{{ __('submission.ai_flags') }}</dt><dd>{{ implode(', ', array_map('strval', $submission->ai_result['flags'])) }}</dd>@endif
-                    @if (! empty($submission->ai_result['summary']))<dt>{{ __('submission.col_summary') }}</dt><dd>{{ $submission->ai_result['summary'] }}</dd>@endif
-                </dl>
-                @if (! empty($submission->ai_result['would_reject']))<p class="t-small">{{ __('submission.ai_would_reject') }}</p>@endif
-            @endif
+            <x-ai-detail :status="$aiStatus" />
+            @if (! empty($submission->ai_result['would_reject']))<p class="t-small">{{ __('submission.ai_would_reject') }}</p>@endif
         </section>
     @endif
 

@@ -342,6 +342,7 @@ a.card { border: 1px solid var(--line-strong); }
 .pill-success { color: var(--success); }
 .pill-warning, .pill-rolled_back, .pill-running { color: var(--warning); }
 .pill-failed, .pill-rollback_failed { color: var(--danger); }
+.pill-info { color: var(--accent); }
 .version-row { display: flex; align-items: center; gap: var(--space-6); margin: var(--space-3) 0; }
 .version-row p { margin: 0; }
 .accent { color: var(--accent); }

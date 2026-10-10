@@ -12,9 +12,9 @@
             @endif
         @endforeach
     </div>
-    <div class="table-wrap">
+    <div class="table-wrap" id="ai-live-list" data-ai-live>
         <table class="table">
-            <thead><tr><th>{{ __('submission.col_receipt') }}</th><th>{{ __('submission.col_type') }}</th><th>{{ __('submission.col_summary') }}</th><th>{{ __('submission.col_from') }}</th><th>{{ __('submission.col_status') }}</th><th></th></tr></thead>
+            <thead><tr><th>{{ __('submission.col_receipt') }}</th><th>{{ __('submission.col_type') }}</th><th>{{ __('submission.col_summary') }}</th><th>{{ __('submission.col_from') }}</th><th>{{ __('submission.col_status') }}</th><th>{{ __('aistatus.title') }}</th><th></th></tr></thead>
             <tbody>
                 @forelse ($submissions as $s)
                     <tr>
@@ -23,10 +23,11 @@
                         <td>{{ \Illuminate\Support\Str::limit($s->text('title') ?? $s->text('body') ?? $s->text('source_url') ?? $s->text('proposed_value') ?? '', 60) }}</td>
                         <td>{{ $s->user?->name ?? __('submission.anonymous') }}</td>
                         <td><span class="pill">{{ $s->status->label() }}</span></td>
+                        <td><x-ai-badge :status="app(\App\Services\Ai\AiStatusService::class)->forSubmission($s)" /></td>
                         <td class="actions"><a class="btn btn-sm" href="{{ route('admin.review.show', $s) }}">{{ __('submission.open') }}</a></td>
                     </tr>
                 @empty
-                    <tr><td colspan="6" class="t-muted">{{ __('submission.review_empty') }}</td></tr>
+                    <tr><td colspan="7" class="t-muted">{{ __('submission.review_empty') }}</td></tr>
                 @endforelse
             </tbody>
         </table>

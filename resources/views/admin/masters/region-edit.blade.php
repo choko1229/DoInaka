@@ -5,6 +5,13 @@
     </div>
     <p><a href="{{ route('admin.masters', ['tab' => 'regions']) }}">{{ __('masters.back') }}</a></p>
 
+    @if ($ai->state !== \App\Enums\AiState::None)
+        <section class="card" id="ai-live-detail" data-ai-live>
+            <h2 class="t-h2">{{ __('region.admin_title') }} — {{ __('aistatus.title') }}</h2>
+            <x-ai-detail :status="$ai" />
+        </section>
+    @endif
+
     <form method="post" action="{{ route('admin.masters.regions.update', $region) }}" class="grid-main-side">
         @csrf
         @method('put')
