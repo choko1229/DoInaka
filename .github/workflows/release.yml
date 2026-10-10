@@ -81,7 +81,7 @@ jobs:
           coverage: none
           ini-values: post_max_size=110M, upload_max_filesize=10M, memory_limit=512M, date.timezone=Asia/Tokyo
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: '22'
           cache: npm

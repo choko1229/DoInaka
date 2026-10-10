@@ -55,7 +55,7 @@ jobs:
           ini-values: post_max_size=110M, upload_max_filesize=10M, memory_limit=512M, date.timezone=Asia/Tokyo
 
       - name: Composer のキャッシュ
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ~/.composer/cache
           key: composer-${{ hashFiles('composer.lock') }}
@@ -63,7 +63,7 @@ jobs:
 
       - run: composer install --no-interaction --no-progress --prefer-dist
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: '22'
           cache: npm
