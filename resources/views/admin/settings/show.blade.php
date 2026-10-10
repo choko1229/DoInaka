@@ -19,12 +19,15 @@
 
         @foreach ($keys as $key)
             @php($name = $field($key))
-            @php($help = __('settings.keys.'.$key->value.'.help'))
+            {{-- 文言の表は 'site.name' のようにドットを含むキーなので、配列として引く(__('settings.keys.site.name.label') では引けない) --}}
+            @php($entry = __('settings.keys')[$key->value] ?? [])
+            @php($label = $entry['label'] ?? $key->value)
+            @php($help = $entry['help'] ?? '')
             <div class="field">
                 @if ($key->type() === \App\Enums\SettingType::Bool)
-                    <label class="check-row"><input type="hidden" name="{{ $name }}" value="0"><input type="checkbox" id="{{ $name }}" name="{{ $name }}" value="1" @checked(old($name, $settings->bool($key)))><span>{{ __('settings.keys.'.$key->value.'.label') }}</span></label>
+                    <label class="check-row"><input type="hidden" name="{{ $name }}" value="0"><input type="checkbox" id="{{ $name }}" name="{{ $name }}" value="1" @checked(old($name, $settings->bool($key)))><span>{{ $label }}</span></label>
                 @else
-                    <label for="{{ $name }}">{{ __('settings.keys.'.$key->value.'.label') }}</label>
+                    <label for="{{ $name }}">{{ $label }}</label>
                     @if ($key->isSecret())
                         @php($hint = $settings->secretHint($key))
                         <input id="{{ $name }}" name="{{ $name }}" type="password" autocomplete="new-password" placeholder="{{ $hint !== '' ? $hint : __('settings.secret_empty') }}">
@@ -46,7 +49,7 @@
                         <input id="{{ $name }}" name="{{ $name }}" type="text" value="{{ old($name, $settings->string($key)) }}" autocomplete="off">
                     @endif
                 @endif
-                @if ($help !== 'settings.keys.'.$key->value.'.help')<p class="t-small t-muted">{{ $help }}</p>@endif
+                @if ($help !== '')<p class="t-small t-muted">{{ $help }}</p>@endif
                 @error($key->value)<p class="field-error" role="alert">{{ $message }}</p>@enderror
             </div>
         @endforeach

@@ -14,6 +14,7 @@ use App\Models\Spot;
 use App\Services\Public\MetaBuilder;
 use App\Services\Region\RegionPageQueue;
 use App\Services\Region\RegionScope;
+use App\Services\Setting\Prelaunch;
 use App\Services\Url\PublicLinks;
 use App\Services\Url\UrlCanonicalizer;
 use Carbon\CarbonInterface;
@@ -35,10 +36,15 @@ final class SeoController extends Controller
         private readonly MetaBuilder $meta,
         private readonly RegionPageQueue $regions,
         private readonly RegionScope $scope,
+        private readonly Prelaunch $prelaunch,
     ) {}
 
     public function index(): Response
     {
+        if ($this->prelaunch->isOn()) {
+            return $this->xml('<?xml version="1.0" encoding="UTF-8"?>'."\n".'<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'."\n</sitemapindex>");
+        }
+
         $xml = '<?xml version="1.0" encoding="UTF-8"?>'."\n".'<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'."\n";
         foreach (self::KINDS as $kind) {
             $xml .= '<sitemap><loc>'.e($this->urls->canonicalUrl("/sitemap-{$kind}.xml")).'</loc></sitemap>'."\n";
@@ -50,6 +56,10 @@ final class SeoController extends Controller
     public function show(string $kind): Response
     {
         abort_unless(in_array($kind, self::KINDS, true), 404);
+
+        if ($this->prelaunch->isOn()) {
+            return $this->xml('<?xml version="1.0" encoding="UTF-8"?>'."\n".'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'."\n</urlset>");
+        }
 
         $entries = match ($kind) {
             'lists' => $this->lists(),
@@ -73,6 +83,11 @@ final class SeoController extends Controller
 
     public function robots(): Response
     {
+        // 公開前モード: 全体を禁止(サイトマップも載せない)
+        if ($this->prelaunch->isOn()) {
+            return response("User-agent: *\nDisallow: /\n", 200, ['Content-Type' => 'text/plain; charset=UTF-8']);
+        }
+
         $lines = [
             'User-agent: *',
             'Disallow: /admin/',

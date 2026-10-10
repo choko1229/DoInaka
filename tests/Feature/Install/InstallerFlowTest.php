@@ -151,6 +151,8 @@ it('サイト情報と最初の管理者を登録して設置が完了し、設�
     $this->get('/install/done')->assertOk()->assertSee('設置が終わりました')->assertSee('ちょこ');
 
     $settings = app(SettingsService::class);
+    // 新しく設置したサイトは、公開前モードがオン(オフにするまで一般には見えない)
+    expect($settings->bool(SettingKey::SitePrelaunch))->toBeTrue();
     expect($settings->string(SettingKey::SiteName))->toBe('ド田舎.net(テスト)')
         ->and($settings->string(SettingKey::GoogleClientSecret))->toBe('client-secret-value')
         ->and(app(AppMetaService::class)->isInstalled())->toBeTrue()
