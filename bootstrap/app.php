@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Enums\ThemePreference;
+use App\Http\Controllers\WebCronController;
 use App\Http\Middleware\BlockOverseas;
 use App\Http\Middleware\CountPageView;
 use App\Http\Middleware\EnsureAdmin;
@@ -14,6 +15,7 @@ use App\Http\Middleware\PrepareInstallSession;
 use App\Http\Middleware\RedirectToCanonicalUrl;
 use App\Http\Middleware\RedirectToInstaller;
 use App\Http\Middleware\SecurityHeaders;
+use App\Http\Middleware\TriggerWebCron;
 use App\Http\Middleware\WatchCron;
 use App\Services\Install\InstallEnvironment;
 use App\Support\ErrorId;
@@ -32,6 +34,8 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
         then: function (): void {
+            // アクセスで動かす予約処理の内部 URL。セッション・CSRF は使わない。署名と1回きりの番号で守る
+            Route::post('/cron/run', WebCronController::class)->middleware(['signed:relative', 'throttle:10,1'])->name('cron.run');
             Route::middleware('web')->prefix('admin')->name('admin.')->group(base_path('routes/admin.php'));
         },
     )
@@ -43,7 +47,7 @@ return Application::configure(basePath: dirname(__DIR__))
         // 初回(.env も DB もない)は、存在しない URL でもインストーラーへ案内したいので、グローバルに置く
         $middleware->prepend([SecurityHeaders::class, PrepareInstallSession::class, RedirectToInstaller::class, RedirectToCanonicalUrl::class, BlockOverseas::class]);
         $middleware->alias(['admin' => EnsureAdmin::class, 'staff' => EnsureStaff::class, 'permit' => EnsurePermitted::class]);
-        $middleware->web(append: [PrelaunchMode::class, CountPageView::class, HideHeldContent::class, WatchCron::class]);
+        $middleware->web(append: [PrelaunchMode::class, CountPageView::class, HideHeldContent::class, WatchCron::class, TriggerWebCron::class]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

@@ -5,10 +5,12 @@ declare(strict_types=1);
 use App\Contracts\Notifier;
 use App\Enums\ConsentStatus;
 use App\Enums\InquiryStatus;
+use App\Enums\SettingKey;
 use App\Models\Inquiry;
 use App\Models\TakedownConsent;
 use App\Models\User;
 use App\Services\Setting\AppMetaService;
+use App\Services\Setting\SettingsService;
 use App\Services\Submission\SubmissionPruner;
 use App\Services\Update\CronHealth;
 use App\Services\Update\CronWatcher;
@@ -64,6 +66,8 @@ it('queue:work は優先度の順(high → ai-2 → ai-3 → ai-4 → ai-5 → l
 
 function cronWorld(): FakeNotifier
 {
+    // サーバーの cron だけで動かすとき(アクセスで動かす方式は切る)の通知を確かめる。アクセスで動かすときは WebCronTest
+    app(SettingsService::class)->set(SettingKey::CronWebEnabled, false);
     config(['app.cron_watch' => true]);
     app(AppMetaService::class)->markInstalled();
     $notifier = new FakeNotifier;
@@ -96,6 +100,7 @@ it('cron が止まったら Discord に1回だけ知らせ、動き出したら�
 
 it('一度も動いていない cron も止まっているとみなして知らせる。設置前は何もしない', function (): void {
     config(['app.cron_watch' => true]);
+    app(SettingsService::class)->set(SettingKey::CronWebEnabled, false);
     $notifier = new FakeNotifier;
     app()->instance(Notifier::class, $notifier);
     expect(app(CronWatcher::class)->check())->toBeNull();

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use App\Enums\AppMetaKey;
 use App\Services\Ai\OpenRouterModels;
+use App\Services\Cron\WebCronBudget;
+use App\Services\Cron\WebCronRunner;
 use App\Services\Setting\AppMetaService;
 use App\Services\Update\CronHealth;
 use App\Services\Update\UpdateWindowCalculator;
@@ -18,10 +20,11 @@ use Illuminate\Support\Facades\Schedule;
 */
 
 // スケジューラが動くたびに最終実行時刻を書く(止まったことを検知するため。設計書10.3)
-Schedule::call(fn () => app(CronHealth::class)->beat())->everyMinute()->name('cron-heartbeat');
+// アクセスで動かしているとき(WebCronBudget が有効)は 'web'、サーバーの cron のときは 'cli'(これで、本物の cron が動いているとわかり、アクセスで動かす方式は自動で止まる)
+Schedule::call(fn () => app(CronHealth::class)->beat(app(WebCronBudget::class)->active() ? 'web' : 'cli'))->everyMinute()->name('cron-heartbeat');
 
 // キュー処理。次の cron と重ならないよう50秒で終える。優先度は high(画像)→ ai-2(投稿の判定)→ ai-3(情報提供)→ ai-4(巡回)→ ai-5(紹介文)→ low の順
-Schedule::command('queue:work --stop-when-empty --max-time=50 --queue=high,ai-2,ai-3,ai-4,ai-5,low')
+Schedule::command('queue:work --stop-when-empty --max-time=50 --queue='.WebCronRunner::QUEUES)
     ->everyMinute()->withoutOverlapping()->name('queue-work');
 
 // 時間別の閲覧数の集計(管理者とボットは数えていない)

@@ -27,6 +27,7 @@ use App\Models\User;
 use App\Services\Ai\OpenRouterProvider;
 use App\Services\Auth\RolePermissions;
 use App\Services\Auth\SocialiteGoogleLogin;
+use App\Services\Cron\WebCronBudget;
 use App\Services\Design\IllustUrlResolver;
 use App\Services\Design\ThemeResolver;
 use App\Services\Install\EnvFileWriter;
@@ -67,6 +68,8 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->singleton(SettingsService::class);
+        // アクセスで動かす予約処理の、時間の上限(長い処理が見て、区切る)。同じものを共有する
+        $this->app->singleton(WebCronBudget::class);
         $this->app->scoped(ErrorId::class);
         $this->app->singleton(IllustUrlResolver::class);
 

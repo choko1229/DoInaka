@@ -80,7 +80,8 @@ it('APP_DEBUG が true なら警告を出す', function (): void {
     $this->actingAsVerifiedAdmin($this->admin)->get('/admin/update')->assertSee('APP_DEBUG が true になっています');
 });
 
-it('cron が止まっているときは警告を出す', function (): void {
+it('cron が止まっているときは警告を出す(アクセスで動かす方式を切っているとき)', function (): void {
+    app(SettingsService::class)->set(SettingKey::CronWebEnabled, false);
     $this->actingAsVerifiedAdmin($this->admin)->get('/admin')->assertSee('定期処理(cron)が止まっています');
 
     app(CronHealth::class)->beat();

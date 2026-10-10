@@ -46,6 +46,9 @@ final class CrawlRunner
 
     public const PAUSE_AFTER_FAILURES = 3;
 
+    /** 時間の上限まで、この秒数より近づいたら、次のページを始めない(1ページの取得・解析にかかる時間の目安) */
+    public const TIME_MARGIN_SECONDS = 15;
+
     public function __construct(
         private readonly UrlFetcher $fetcher,
         private readonly AiClient $ai,
@@ -59,7 +62,7 @@ final class CrawlRunner
     /**
      * @throws AiRateLimited 制限エラー(呼び出し側が、リセットのあとに再開する)
      */
-    public function run(CrawlSource $source): CrawlRun
+    public function run(CrawlSource $source, ?CarbonImmutable $deadline = null): CrawlRun
     {
         $run = new CrawlRun;
         $run->forceFill(['crawl_source_id' => $source->id, 'status' => 'running', 'started_at' => now()])->save();
@@ -75,6 +78,7 @@ final class CrawlRunner
         }
         $urls = $this->urls($source, $list);
 
+        $timeUp = false;
         $found = 0;
         $changed = 0;
         $fetched = 0;
@@ -83,6 +87,11 @@ final class CrawlRunner
 
         try {
             foreach (array_slice($urls, 0, max(1, $this->settings->int(SettingKey::CrawlMaxPagesPerSite))) as $url) {
+                // 時間の上限(アクセスで動かしているとき)に近ければ、ここで区切る。解析まで終えたページは記録済みなので、次回は続きから読む
+                if ($deadline !== null && CarbonImmutable::now()->addSeconds(self::TIME_MARGIN_SECONDS)->greaterThan($deadline)) {
+                    $timeUp = true;
+                    break;
+                }
                 $page = $this->fetchPage($source, $url, $url === $source->url ? $list : null);
                 if ($page === null) {
                     continue;
@@ -110,6 +119,13 @@ final class CrawlRunner
         } catch (AiUnavailable|AiBadResponse|AiRequestFailed) {
             // AI が使えない・壊れているときは、今回は解析できなかった(ページのハッシュは確定していないので、次回やり直す)
             return $this->fail($source, $run, 'ai_failed', $fetched, $changed);
+        }
+
+        if ($timeUp) {
+            // 失敗でも成功でもない。続きは次の実行で(間隔の記録も、一時停止の数え上げも、まだ動かさない)
+            $run->forceFill(['pages_fetched' => $fetched, 'pages_changed' => $changed, 'events_found' => $found, 'submissions_created' => $created, 'auto_published' => $published])->save();
+
+            return $this->finish($run, 'deferred', error: 'time_budget');
         }
 
         // 前回あったのに0件(ページが変わっていて、イベントを読み取れなくなった)も、失敗として数える

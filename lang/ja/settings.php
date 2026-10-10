@@ -22,7 +22,7 @@ return [
     'models_first' => '第1候補',
     'models_backup' => '予備',
     'models_not_in_list' => '一覧にありません',
-    'tab' => ['site' => 'サイト', 'login' => 'ログイン', 'ai' => 'AI・審査', 'posts' => '投稿・画像', 'search' => '検索・人気', 'ads' => '広告・解析', 'notify' => '通知・巡回', 'contact' => 'お問い合わせ', 'geo' => '海外の制限', 'mail' => 'メール', 'logs' => 'ログ', 'update' => '更新'],
+    'tab' => ['site' => 'サイト', 'login' => 'ログイン', 'ai' => 'AI・審査', 'posts' => '投稿・画像', 'search' => '検索・人気', 'ads' => '広告・解析', 'notify' => '通知・巡回', 'contact' => 'お問い合わせ', 'geo' => '海外の制限', 'mail' => 'メール', 'cron' => '予約処理', 'logs' => 'ログ', 'update' => '更新'],
     'keys' => [
         'admin.remember_device_days' => ['label' => '端末を覚える日数', 'help' => '「この端末を覚える」を選んだとき、コードを省く日数です。'],
         'admin.totp_ttl_hours' => ['label' => '2段階認証の有効時間(時間)', 'help' => '管理画面で2段階認証を通ったあと、この時間がたつと、もう一度コードを求めます。'],
@@ -35,6 +35,7 @@ return [
         'analytics.ga4_id' => ['label' => 'GA4 の測定 ID', 'help' => 'G- から始まる ID。空なら GA4 を読み込みません。'],
         'comment.auto_hide_reports' => ['label' => 'コメントを自動で隠す通報の件数', 'help' => '別の人からこの件数の通報がたまると、自動で隠して管理者の確認に回します。'],
         'contact.retention_days' => ['label' => '対応が終わったお問い合わせを残す日数', 'help' => 'プライバシーポリシーの表と合わせます。'],
+        'cron.web_enabled' => ['label' => '予約処理をアクセスで動かす(cron を登録していないとき)', 'help' => 'サーバーの cron が動いていないとき、サイトへのアクセスをきっかけに予約処理を動かします。cron が動いていると分かったら、自動で止まります。アクセスが少ないと、処理が遅れます。'],
         'crawl.max_pages_per_site' => ['label' => '巡回で1サイトから読むページの上限', 'help' => ''],
         'crawl.min_interval_seconds' => ['label' => '同じサイトへのアクセスの間隔(秒)', 'help' => ''],
         'geo.allow_admin_abroad' => ['label' => '管理画面は海外からも入れる', 'help' => '既定はオフ(海外からは管理画面に入れません)。'],

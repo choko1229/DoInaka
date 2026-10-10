@@ -17,6 +17,7 @@ enum SettingKey: string
     case SiteOperator = 'site.operator';
     case SiteShareHost = 'site.share_host';
     case SitePrelaunch = 'site.prelaunch';
+    case CronWebEnabled = 'cron.web_enabled';
 
     // 外部サービス
     case GoogleClientId = 'google.client_id';
@@ -113,7 +114,7 @@ enum SettingKey: string
     {
         return match ($this) {
             self::AiEnabled, self::AdsEnabled, self::UpdateAuto, self::UpdateAcceptBeta,
-            self::GeoBlockOverseas, self::GeoAllowAdminAbroad, self::SitePrelaunch => SettingType::Bool,
+            self::GeoBlockOverseas, self::GeoAllowAdminAbroad, self::SitePrelaunch, self::CronWebEnabled => SettingType::Bool,
 
             self::AiModelsReviewText, self::AiModelsReviewImage, self::AiModelsDraft, self::AiModelsSuggest,
             self::AiModelsTip, self::AiModelsCrawl, self::AiModelsRegionIntro, self::AiModelsFactCheck,
@@ -202,6 +203,7 @@ enum SettingKey: string
             self::TakedownObjectionDays => 7,
             self::GeoBlockOverseas => true,
             self::SitePrelaunch => false,
+            self::CronWebEnabled => true,
             self::GeoAllowAdminAbroad => false,
             self::MailFromAddress => 'contact@do-inaka.net',
             self::MailSmtpPort => 587,

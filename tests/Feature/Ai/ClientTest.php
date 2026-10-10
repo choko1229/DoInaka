@@ -14,6 +14,7 @@ use App\Models\AiCall;
 use App\Services\Ai\AiClient;
 use App\Services\Ai\AiRequest;
 use App\Services\Ai\AiUsage;
+use App\Services\Cron\WebCronRunner;
 use App\Services\Setting\SettingsService;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Carbon;
@@ -118,7 +119,8 @@ it('用途の優先順位とキュー: 管理者の操作 → 判定 → 情報�
         ->and(AiPurpose::Crawl->queue())->toBe('ai-4')->and(AiPurpose::RegionIntro->queue())->toBe('ai-5');
 
     // スケジューラのワーカーは、この順にキューを取り出す
-    expect(file_get_contents(base_path('routes/console.php')))->toContain('--queue=high,ai-2,ai-3,ai-4,ai-5,low');
+    expect(WebCronRunner::QUEUES)->toBe('high,ai-2,ai-3,ai-4,ai-5,low')
+        ->and(file_get_contents(base_path('routes/console.php')))->toContain("--queue='.WebCronRunner::QUEUES");
 });
 
 it('第1候補のモデルが一覧から消えると予備で動き、Discord の通知は1回だけ。予備もなければ使えない', function (): void {

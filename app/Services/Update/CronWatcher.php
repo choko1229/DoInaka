@@ -6,6 +6,8 @@ namespace App\Services\Update;
 
 use App\Contracts\Notifier;
 use App\Enums\AppMetaKey;
+use App\Enums\CronMode;
+use App\Services\Cron\WebCronStatus;
 use App\Services\Setting\AppMetaService;
 
 /**
@@ -17,10 +19,14 @@ final class CronWatcher
 {
     public const STOPPED = 'stopped';
 
+    /** アクセスで動かす予約処理が、自分自身を呼べない状態が、これだけ続いたら知らせる */
+    public const WEB_FAILURES = 5;
+
     public function __construct(
         private readonly CronHealth $health,
         private readonly AppMetaService $meta,
         private readonly Notifier $notifier,
+        private readonly WebCronStatus $web,
     ) {}
 
     /** @return 'stopped'|'recovered'|null 通知した内容(通知しなかったら null) */
@@ -32,13 +38,15 @@ final class CronWatcher
         }
 
         $alerted = $this->meta->get(AppMetaKey::CronAlertState) === self::STOPPED;
-        $stale = $this->health->isStale();
+        // アクセスで動かしているときは、アクセスが少ないと間があくのがふつう。止まった扱いにしない(自分自身を呼べない状態が続いたときだけ、知らせる)
+        $webMode = $this->web->mode() === CronMode::Web;
+        $stale = $webMode ? $this->web->failures() >= self::WEB_FAILURES : $this->health->isStale();
 
         if ($stale && ! $alerted) {
             $last = $this->health->lastRun();
-            $this->notifier->send($last === null
+            $this->notifier->send($webMode ? __('admin.cron_notice_web_failed') : ($last === null
                 ? __('admin.cron_notice_never')
-                : __('admin.cron_notice_stopped', ['minutes' => (int) $last->diffInMinutes(now())]));
+                : __('admin.cron_notice_stopped', ['minutes' => (int) $last->diffInMinutes(now())])));
             $this->meta->set(AppMetaKey::CronAlertState, self::STOPPED);
 
             return 'stopped';

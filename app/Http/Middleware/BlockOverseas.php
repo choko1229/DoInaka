@@ -30,7 +30,7 @@ final class BlockOverseas
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ($request->is('install', 'install/*', 'up')) {
+        if ($request->is('install', 'install/*', 'up', 'cron/run')) {
             return $next($request);
         }
 

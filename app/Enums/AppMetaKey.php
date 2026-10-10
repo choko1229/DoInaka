@@ -19,4 +19,8 @@ enum AppMetaKey: string
     case LastUpdateCheck = 'last_update_check';
     case LastNotifiedVersion = 'last_notified_version';
     case CronAlertState = 'cron_alert_state';
+    case SchedulerLastCliRun = 'scheduler_last_cli_run';
+    case WebCronLastRun = 'webcron_last_run';
+    case WebCronLastResult = 'webcron_last_result';
+    case WebCronFailures = 'webcron_failures';
 }
