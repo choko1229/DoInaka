@@ -41,6 +41,15 @@ final class InstallEnvironment
         }
     }
 
+    /**
+     * まだ設置していない(.env がないまま起動した)か。このとき、DB はまだ使えない。DB・settings・app_meta を読む前に、これで分岐する。
+     * 設置の途中で .env ができたあとのリクエストは、false(DB が使える)。
+     */
+    public static function isFresh(): bool
+    {
+        return self::get('DOINAKA_FRESH_INSTALL') === '1';
+    }
+
     public static function temporaryKey(string $basePath): string
     {
         $path = $basePath.'/storage/app/private/install-app.key';

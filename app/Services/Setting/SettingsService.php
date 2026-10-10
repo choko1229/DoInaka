@@ -7,6 +7,7 @@ namespace App\Services\Setting;
 use App\Enums\SettingKey;
 use App\Exceptions\InvalidSettingValueException;
 use App\Models\Setting;
+use App\Services\Install\InstallEnvironment;
 use Illuminate\Contracts\Cache\Repository as CacheRepository;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Contracts\Encryption\StringEncrypter;
@@ -171,6 +172,11 @@ class SettingsService
      */
     private function all(): array
     {
+        // 設置前(.env がない)は DB が使えない。settings は読まず、すべて初期値にする
+        if (InstallEnvironment::isFresh()) {
+            return [];
+        }
+
         /** @var array<string, mixed> */
         return $this->cache()->rememberForever(self::CACHE_KEY, fn (): array => $this->load());
     }
