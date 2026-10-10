@@ -247,3 +247,16 @@
 | cron の停止の通知 | `WatchCron`(Web の応答のあと、1分に1回)が `CronWatcher` を呼ぶ。5分以上動いていなければ Discord に1回だけ「止まっている」、動き出したら1回だけ「再開」(状態は app_meta の cron_alert_state)。一度も動いていなければ「まだ一度も動いていない」。設置前は何もしない。ダッシュボードの警告は従来どおり。`CRON_WATCH=false` で切れる(phpunit では切ってある) |
 | 通しのテスト | `FullFlowTest`: 投稿 → AI の判定(モック)→ 審査 → 公開 → 検索で見つかる → サイトマップに載る → 削除依頼でぼかされ検索・サイトマップから外れる → 残すと戻る。テストは1つのトランザクションなので、全文インデックス(コミット後に見える)の代わりに LIKE で探す(本番の ngram 全文は SearchEngineTest 側と manual-checks) |
 | リリースZIPの中身(フェーズ8の自己レビューで発見) | ReleaseBuilder が esources/prompts(AI のプロンプト)を入れておらず、ZIP から入れた本番では AI の判定・下書き・照合がすべて失敗する状態だった。esources/prompts と、新しい esources/legal(固定ページの文面)を入れ、ZIP のテストに加えた |
+
+## 2026-10-10 CI の PHP 警告と Dependabot の整理
+
+| 項目 | 決めたこと |
+| --- | --- |
+| PHP 警告の原因 | CI の Pest に 700 件以上出ていた `file_get_contents(…/.env): Failed to open stream` の警告(フェーズ7以前から)。**CI のランナーには `.env` がなく**、Laravel が起動のたびに `.env` を読もうとして(Dotenv が内部で読み込みに失敗し)、PHPUnit がそれをテストの警告として数えていた。ローカルは `.env` があるので出なかった。`--display-warnings` で CI のログに出して特定した(コードのバグではなく、テスト環境の欠けだった) |
+| 直し方 | ci.yml の Pest の前に `touch .env`(空の .env を置く。値は ci.yml の env: と phpunit.xml の `<env>` が決めるので、テストの内容は変わらない)。警告を `@` や error_reporting で黙らせてはいない。`.env.testing` を置く案は、手元のテストが `.env` の DB の資格情報を使えなくなる(全件失敗した)ので取りやめた |
+| 再発の防止 | phpunit.xml に `failOnWarning="true"`。今後、同じ種類の警告が出たら CI もローカルも失敗する。なお、HEIC のテストが環境の ImageMagick で「スキップ」になる表示(WARN と出るが警告ではなくスキップ)は、失敗にならない |
+| Dependabot #2 actions/setup-node 4→6 | マージ。破壊的な変更は「自動キャッシュを npm だけに限る」「node24 のランナー(v2.327.1 以上)が要る」。ci.yml・release.yml は `cache: npm` を明示していて、GitHub のホストランナーを使うので影響なし。CI は成功 |
+| Dependabot #3 actions/cache 4→6 | マージ。v6 は ESM 化と依存の更新だけ。使い方(path・key・restore-keys)は同じで影響なし。CI は成功 |
+| Dependabot #4 actions/checkout 4→7 | マージ。破壊的な変更は `pull_request_target` と `workflow_run` での fork の PR のチェックアウトを止める安全側の変更。このリポジトリは使っていないので影響なし。CI は成功 |
+| Dependabot #9 playwright 1.49→1.64 | マージ。開発用のパッケージで、CI には入っていない(ブラウザのダウンロードが要るため手元の `npm run e2e` で確かめる=manual-checks)。リリースノートは新機能が中心で、e2e の spec が使う API(goto・locator・expect)に削除はない。`npm ci`・ビルドは CI で成功。実機の E2E は manual-checks のまま |
+| マージの手順 | main に「ci が成功し、ブランチが最新であること」の保護が掛かっていたので、1つずつ `gh pr update-branch` → CI → squash マージの順で進めた |
