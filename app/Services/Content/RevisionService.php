@@ -22,9 +22,9 @@ class RevisionService
     /**
      * 作成を履歴に残す(before は空)。モデルは保存済みであること。
      */
-    public function recordCreated(Model $model, ?User $actor = null, ?string $reason = null, ?int $submissionId = null): Revision
+    public function recordCreated(Model $model, ?User $actor = null, ?string $reason = null, ?int $submissionId = null, RevisionCause $cause = RevisionCause::Created): Revision
     {
-        return $this->store($model, null, $this->snapshot->capture($model), RevisionCause::Created, $actor, $reason, $submissionId);
+        return $this->store($model, null, $this->snapshot->capture($model), $cause, $actor, $reason, $submissionId);
     }
 
     /**

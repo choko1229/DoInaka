@@ -45,8 +45,9 @@ final class SpotController extends PublicController
         if ($spot instanceof RedirectResponse) {
             return $spot;
         }
+        $this->abortIfHeld($spot);
 
-        $spot->load(['region.parent', 'category', 'tags']);
+        $spot->load(['region.parent', 'category', 'tags', 'media']);
         $this->views->record($request, $spot);
 
         return view('public.spots.show', [

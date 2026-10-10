@@ -28,7 +28,7 @@
                         <td class="t-small">{{ $revision->before === null ? '' : implode(', ', $changed) }}</td>
                         <td class="actions">
                             @if ($revision->before !== null)
-                                <form method="post" action="{{ route('admin.revisions.rollback', $revision) }}" onsubmit="return confirm(@js(__('content.rollback_confirm')))">@csrf<x-button type="submit" size="sm">{{ __('content.rollback') }}</x-button></form>
+                                <form method="post" action="{{ route('admin.revisions.rollback', $revision) }}" data-confirm="{{ __('content.rollback_confirm') }}">@csrf<x-button type="submit" size="sm">{{ __('content.rollback') }}</x-button></form>
                             @endif
                         </td>
                     </tr>

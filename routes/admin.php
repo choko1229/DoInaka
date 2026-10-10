@@ -2,15 +2,26 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Admin\AdController;
 use App\Http\Controllers\Admin\AdminBarController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\ContentController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\DraftController;
 use App\Http\Controllers\Admin\EventAdminController;
+use App\Http\Controllers\Admin\InquiryController;
+use App\Http\Controllers\Admin\LogController;
 use App\Http\Controllers\Admin\MasterController;
+use App\Http\Controllers\Admin\RegionPageController;
+use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\RevisionController;
+use App\Http\Controllers\Admin\SettingsController;
+use App\Http\Controllers\Admin\SourceController;
+use App\Http\Controllers\Admin\SuggestController;
+use App\Http\Controllers\Admin\TipController;
 use App\Http\Controllers\Admin\TwoFactorController;
 use App\Http\Controllers\Admin\UpdateController;
+use App\Http\Controllers\Admin\UserAdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -73,6 +84,27 @@ Route::middleware('admin')->group(function (): void {
         Route::delete('/articles/{article}', [ContentController::class, 'destroyArticle'])->name('articles.destroy');
         Route::post('/comments/{comment}/moderate', [ContentController::class, 'moderateComment'])->name('comments.moderate');
 
+        // 審査(投稿・修正依頼・情報提供・コメント。却下ボックス)。状態の変更は ReviewService だけが行う
+        Route::get('/review', [ReviewController::class, 'index'])->name('review');
+        Route::get('/review/rejected', [ReviewController::class, 'rejected'])->name('review.rejected');
+        Route::get('/review/{submission}', [ReviewController::class, 'show'])->whereNumber('submission')->name('review.show');
+        Route::post('/review/{submission}/approve', [ReviewController::class, 'approve'])->whereNumber('submission')->name('review.approve');
+        Route::post('/review/{submission}/reject', [ReviewController::class, 'reject'])->whereNumber('submission')->name('review.reject');
+        Route::post('/review/{submission}/restore', [ReviewController::class, 'restore'])->whereNumber('submission')->name('review.restore');
+        Route::get('/corrections', [ReviewController::class, 'corrections'])->name('corrections');
+        Route::post('/corrections/{submission}/confirm', [ReviewController::class, 'confirmCorrection'])->whereNumber('submission')->name('corrections.confirm');
+        Route::post('/corrections/{submission}/rollback', [ReviewController::class, 'rollbackCorrection'])->whereNumber('submission')->name('corrections.rollback');
+        Route::get('/drafts', [DraftController::class, 'index'])->name('drafts');
+        Route::post('/drafts', [DraftController::class, 'read'])->middleware('throttle:20,1')->name('drafts.read');
+        Route::post('/drafts/save', [DraftController::class, 'save'])->name('drafts.save');
+        Route::post('/suggest', SuggestController::class)->middleware('throttle:20,1')->name('suggest');
+        Route::get('/region-pages', [RegionPageController::class, 'index'])->name('region-pages');
+        Route::post('/region-pages/regenerate', [RegionPageController::class, 'regenerate'])->name('region-pages.regenerate');
+        Route::get('/media/{media}/original', [ReviewController::class, 'original'])->whereNumber('media')->name('media.original');
+        Route::get('/tips', [TipController::class, 'index'])->name('tips');
+        Route::get('/tips/{submission}', [TipController::class, 'show'])->whereNumber('submission')->name('tips.show');
+        Route::post('/tips/{submission}/mask/{media}', [TipController::class, 'mask'])->whereNumber(['submission', 'media'])->name('tips.mask');
+
         Route::get('/revisions/{type}/{id}', [RevisionController::class, 'index'])->whereNumber('id')->name('revisions');
         Route::post('/revisions/{revision}/rollback', [RevisionController::class, 'rollback'])->name('revisions.rollback');
     });
@@ -91,8 +123,52 @@ Route::middleware('admin')->group(function (): void {
         Route::post('/ng-words', [MasterController::class, 'storeNgWord'])->name('.ng.store');
         Route::delete('/ng-words/{ngWord}', [MasterController::class, 'destroyNgWord'])->name('.ng.destroy');
     });
+
+    // 会員の管理(管理者だけ。設計書5.3)
+    Route::middleware('can:manage-masters')->prefix('users')->name('users')->group(function (): void {
+        Route::get('/', [UserAdminController::class, 'index'])->name('');
+        Route::get('/{user}', [UserAdminController::class, 'show'])->whereNumber('user')->name('.show');
+        Route::post('/{user}/suspend', [UserAdminController::class, 'suspend'])->whereNumber('user')->name('.suspend');
+        Route::post('/{user}/restore', [UserAdminController::class, 'restore'])->whereNumber('user')->name('.restore');
+        Route::post('/{user}/role', [UserAdminController::class, 'role'])->whereNumber('user')->name('.role');
+    });
+    // お問い合わせ・削除依頼(管理者だけ。メールアドレスを見る)
+    Route::middleware('can:manage-masters')->prefix('inquiries')->name('inquiries')->group(function (): void {
+        Route::get('/', [InquiryController::class, 'index'])->name('');
+        Route::get('/{inquiry}', [InquiryController::class, 'show'])->whereNumber('inquiry')->name('.show');
+        Route::post('/{inquiry}/status', [InquiryController::class, 'status'])->whereNumber('inquiry')->name('.status');
+        Route::post('/{inquiry}/reply', [InquiryController::class, 'reply'])->whereNumber('inquiry')->name('.reply');
+        Route::post('/{inquiry}/remove', [InquiryController::class, 'remove'])->whereNumber('inquiry')->name('.remove');
+        Route::post('/{inquiry}/keep', [InquiryController::class, 'keep'])->whereNumber('inquiry')->name('.keep');
+        Route::post('/replies/{reply}/retry', [InquiryController::class, 'retry'])->whereNumber('reply')->name('.retry');
+    });
+    // 情報源の巡回は管理者だけ(設計書6.2)
+    Route::middleware('can:manage-masters')->prefix('sources')->name('sources')->group(function (): void {
+        Route::get('/', [SourceController::class, 'index'])->name('');
+        Route::get('/create', [SourceController::class, 'create'])->name('.create');
+        Route::post('/', [SourceController::class, 'store'])->name('.store');
+        Route::get('/{source}/edit', [SourceController::class, 'edit'])->whereNumber('source')->name('.edit');
+        Route::put('/{source}', [SourceController::class, 'update'])->whereNumber('source')->name('.update');
+        Route::delete('/{source}', [SourceController::class, 'destroy'])->whereNumber('source')->name('.destroy');
+        Route::post('/{source}/run', [SourceController::class, 'run'])->whereNumber('source')->name('.run');
+        Route::post('/{source}/pause', [SourceController::class, 'pause'])->whereNumber('source')->name('.pause');
+        Route::post('/{source}/resume', [SourceController::class, 'resume'])->whereNumber('source')->name('.resume');
+        Route::post('/{source}/trust', [SourceController::class, 'trust'])->whereNumber('source')->name('.trust');
+        Route::post('/candidates/{candidate}/ignore', [SourceController::class, 'ignoreCandidate'])->whereNumber('candidate')->name('.candidates.ignore');
+    });
     // 設定・AI・広告・更新適用は管理者だけ(設計書5.3)
     Route::middleware('can:manage-settings')->group(function (): void {
+        Route::get('/settings/{tab?}', [SettingsController::class, 'show'])->where('tab', '[a-z]+')->name('settings');
+        Route::post('/settings/{tab}', [SettingsController::class, 'update'])->where('tab', '[a-z]+')->name('settings.update');
+        Route::get('/logs/{tab?}', [LogController::class, 'index'])->where('tab', 'operations|reviews|ai|errors')->name('logs');
+        Route::get('/logs/{tab}/csv', [LogController::class, 'csv'])->where('tab', 'operations|reviews|ai|errors')->middleware('throttle:10,1')->name('logs.csv');
+        Route::get('/ads', [AdController::class, 'index'])->name('ads');
+        Route::post('/ads/adsense', [AdController::class, 'saveAdsense'])->name('ads.adsense');
+        Route::get('/ads/create', [AdController::class, 'create'])->name('ads.create');
+        Route::post('/ads', [AdController::class, 'store'])->name('ads.store');
+        Route::get('/ads/{slot}/edit', [AdController::class, 'edit'])->whereNumber('slot')->name('ads.edit');
+        Route::put('/ads/{slot}', [AdController::class, 'update'])->whereNumber('slot')->name('ads.update');
+        Route::delete('/ads/{slot}', [AdController::class, 'destroy'])->whereNumber('slot')->name('ads.destroy');
         Route::get('/update', [UpdateController::class, 'index'])->name('update');
         Route::post('/update/check', [UpdateController::class, 'check'])->name('update.check');
         Route::post('/update/apply', [UpdateController::class, 'apply'])->name('update.apply');

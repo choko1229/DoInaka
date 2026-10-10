@@ -41,10 +41,24 @@
             <script type="application/ld+json">{!! json_encode($block, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) !!}</script>
         @endforeach
     @endif
+    @php
+        // 設定を読めないとき(DB の障害・設置前)でも、ページは描く
+        try {
+            $ga4 = app(\App\Services\Setting\SettingsService::class)->string(\App\Enums\SettingKey::AnalyticsGa4Id);
+        } catch (\Throwable) {
+            $ga4 = '';
+        }
+    @endphp
+    @if (preg_match('/^G-[A-Z0-9]+$/', $ga4) === 1)
+        <meta name="ga4-id" content="{{ $ga4 }}">
+    @endif
     @stack('head')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
     {{ $slot }}
+    @unless (request()->is('admin', 'admin/*', 'install', 'install/*'))
+        <x-cookie-banner />
+    @endunless
 </body>
 </html>

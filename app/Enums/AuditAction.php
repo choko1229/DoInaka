@@ -24,4 +24,18 @@ enum AuditAction: string
     case MasterUpdate = 'master.update';
     case MasterDelete = 'master.delete';
     case CommentModerate = 'comment.moderate';
+    case SubmissionReview = 'submission.review';
+    case SubmissionPublish = 'submission.publish';
+    case UserSuspend = 'user.suspend';
+    case UserRestore = 'user.restore';
+    case UserRoleChange = 'user.role_change';
+    case UserViewEmail = 'user.view_email';
+    case UserWithdraw = 'user.withdraw';
+    case SettingsChange = 'settings.change';
+    case AdChange = 'ad.change';
+    case LogExport = 'log.export';
+    case InquiryHandle = 'inquiry.handle';
+    case InquiryReply = 'inquiry.reply';
+    case TakedownRemove = 'takedown.remove';
+    case TakedownKeep = 'takedown.keep';
 }

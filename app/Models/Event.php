@@ -6,8 +6,10 @@ namespace App\Models;
 
 use App\Enums\EventStatus;
 use App\Exceptions\EventSourceMissingException;
+use App\Models\Scopes\HeldContentScope;
 use Carbon\CarbonInterface;
 use Database\Factories\EventFactory;
+use Illuminate\Database\Eloquent\Attributes\ScopedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -37,12 +39,15 @@ use Illuminate\Support\Collection;
  * @property EventStatus $status
  * @property bool $is_published
  * @property Carbon|null $published_at
+ * @property int|null $crawl_source_id
+ * @property bool $auto_published
  * @property bool $is_postponed
  * @property Carbon|null $postponed_from
  * @property string|null $search_text
  * @property-read \Illuminate\Database\Eloquent\Collection<int, EventSchedule> $schedules
  * @property-read \Illuminate\Database\Eloquent\Collection<int, EventSource> $sources
  */
+#[ScopedBy([HeldContentScope::class])]
 class Event extends Model
 {
     /** @use HasFactory<EventFactory> */
@@ -59,6 +64,7 @@ class Event extends Model
             'is_published' => 'boolean',
             'is_postponed' => 'boolean',
             'is_anonymous' => 'boolean',
+            'auto_published' => 'boolean',
             'published_at' => 'datetime',
             'postponed_from' => 'date',
         ];
@@ -102,6 +108,16 @@ class Event extends Model
     public function sources(): HasMany
     {
         return $this->hasMany(EventSource::class)->orderBy('id');
+    }
+
+    /**
+     * 公開された写真(処理済みの画像)
+     *
+     * @return MorphMany<Media, $this>
+     */
+    public function media(): MorphMany
+    {
+        return $this->morphMany(Media::class, 'mediable')->whereNotNull('path_large')->orderBy('sort_order')->orderBy('id');
     }
 
     /** @return MorphToMany<Tag, $this> */

@@ -41,8 +41,9 @@ final class ArticleController extends PublicController
         if ($article instanceof RedirectResponse) {
             return $article;
         }
+        $this->abortIfHeld($article);
 
-        $article->load(['region.parent', 'tags', 'relations']);
+        $article->load(['region.parent', 'tags', 'relations', 'media']);
         $this->views->record($request, $article);
 
         return view('public.articles.show', [

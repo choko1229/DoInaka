@@ -6,6 +6,7 @@ namespace App\Services\Content;
 
 use App\Enums\EventStatus;
 use App\Enums\Recurrence;
+use App\Enums\RevisionCause;
 use App\Exceptions\EventSourceMissingException;
 use App\Models\Article;
 use App\Models\Event;
@@ -72,7 +73,7 @@ class ContentService
      * @param  list<array<string, mixed>>  $sources
      * @param  list<string>  $tags
      */
-    public function saveEvent(?Event $event, array $data, array $schedules, array $sources, array $tags, ?User $actor = null, ?string $reason = null): Event
+    public function saveEvent(?Event $event, array $data, array $schedules, array $sources, array $tags, ?User $actor = null, ?string $reason = null, ?int $submissionId = null): Event
     {
         $isNew = $event === null;
         $event ??= new Event;
@@ -111,15 +112,15 @@ class ContentService
         };
 
         if ($isNew) {
-            DB::transaction(function () use ($change, $event, $actor, $reason): void {
+            DB::transaction(function () use ($change, $event, $actor, $reason, $submissionId): void {
                 $change();
-                $this->revisions->recordCreated($event, $actor, $reason);
+                $this->revisions->recordCreated($event, $actor, $reason, $submissionId, $submissionId === null ? RevisionCause::Created : RevisionCause::Submission);
             });
 
             return $event->refresh();
         }
 
-        $this->revisions->update($event, $change, actor: $actor, reason: $reason);
+        $this->revisions->update($event, $change, $submissionId === null ? RevisionCause::AdminEdit : RevisionCause::Submission, $actor, $reason, $submissionId);
 
         return $event->refresh();
     }
@@ -128,7 +129,7 @@ class ContentService
      * @param  array<string, mixed>  $data
      * @param  list<string>  $tags
      */
-    public function saveSpot(?Spot $spot, array $data, array $tags, ?User $actor = null, ?string $reason = null): Spot
+    public function saveSpot(?Spot $spot, array $data, array $tags, ?User $actor = null, ?string $reason = null, ?int $submissionId = null): Spot
     {
         $isNew = $spot === null;
         $spot ??= new Spot;
@@ -144,7 +145,7 @@ class ContentService
             $this->refreshSearchText($spot);
         };
 
-        return $this->persist($spot, $isNew, $change, $actor, $reason);
+        return $this->persist($spot, $isNew, $change, $actor, $reason, $submissionId);
     }
 
     /**
@@ -152,7 +153,7 @@ class ContentService
      * @param  list<string>  $tags
      * @param  list<array{related_type: string, related_id: int}>  $relations
      */
-    public function saveArticle(?Article $article, array $data, array $tags, array $relations, ?User $actor = null, ?string $reason = null): Article
+    public function saveArticle(?Article $article, array $data, array $tags, array $relations, ?User $actor = null, ?string $reason = null, ?int $submissionId = null): Article
     {
         $isNew = $article === null;
         $article ??= new Article;
@@ -178,7 +179,7 @@ class ContentService
             $this->refreshSearchText($article);
         };
 
-        return $this->persist($article, $isNew, $change, $actor, $reason);
+        return $this->persist($article, $isNew, $change, $actor, $reason, $submissionId);
     }
 
     /** 検索用のテキストを作り直す(保存・履歴から戻したあと) */
@@ -208,18 +209,21 @@ class ContentService
      * @param  \Closure(): mixed  $change
      * @return T
      */
-    private function persist(Spot|Article $model, bool $isNew, \Closure $change, ?User $actor, ?string $reason): Spot|Article
+    private function persist(Spot|Article $model, bool $isNew, \Closure $change, ?User $actor, ?string $reason, ?int $submissionId = null): Spot|Article
     {
+        // 投稿の承認で作る・直すときは、履歴に投稿の ID を残す(原因は「投稿の承認」)
+        $cause = $submissionId === null ? RevisionCause::AdminEdit : RevisionCause::Submission;
+
         if ($isNew) {
-            DB::transaction(function () use ($change, $model, $actor, $reason): void {
+            DB::transaction(function () use ($change, $model, $actor, $reason, $submissionId, $cause): void {
                 $change();
-                $this->revisions->recordCreated($model, $actor, $reason);
+                $this->revisions->recordCreated($model, $actor, $reason, $submissionId, $submissionId === null ? RevisionCause::Created : $cause);
             });
 
             return $model->refresh();
         }
 
-        $this->revisions->update($model, $change, actor: $actor, reason: $reason);
+        $this->revisions->update($model, $change, $cause, $actor, $reason, $submissionId);
 
         return $model->refresh();
     }

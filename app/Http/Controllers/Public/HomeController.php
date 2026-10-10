@@ -72,7 +72,7 @@ final class HomeController extends Controller
             return [];
         }
 
-        $byId = $model::query()->with(['region.parent', 'category', 'tags'])->whereIn('id', $ids)->get()->keyBy('id');
+        $byId = $model::query()->with(['region.parent', 'category', 'tags', 'media'])->whereIn('id', $ids)->get()->keyBy('id');
         /** @var list<T> $out */
         $out = [];
         foreach ($ids as $id) {

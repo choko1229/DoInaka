@@ -60,7 +60,8 @@ it('中身が範囲外の値は拒否する', function (mixed $value, SettingKey
     '検索方式' => ['mysql', SettingKey::SearchDriver],
     '更新時刻' => [24, SettingKey::UpdateFixedHour],
     'スコアが1を超える' => [1.5, SettingKey::ReviewAutoApproveMinScore],
-    '0以下の上限' => [0, SettingKey::SpamMaxUrls],
+    '負の上限' => [-1, SettingKey::SpamMaxUrls],
+    '50を超える URL 数' => [51, SettingKey::SpamMaxUrls],
 ]);
 
 it('空を許すのは回数の上限だけ', function (): void {

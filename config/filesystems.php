@@ -35,7 +35,8 @@ return [
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app/private'),
-            'serve' => true,
+            // 元の画像などの非公開ファイルを、URL で配信する経路は作らない(/storage/ は公開用の画像だけ。MediaFileController)
+            'serve' => false,
             'throw' => false,
             'report' => false,
         ],

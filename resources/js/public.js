@@ -9,13 +9,6 @@ if (bar && bar.dataset.url) {
         .then((html) => {
             if (html) {
                 bar.innerHTML = html;
-                bar.querySelectorAll('form[data-confirm]').forEach((f) => {
-                    f.addEventListener('submit', (e) => {
-                        if (!window.confirm(f.dataset.confirm)) {
-                            e.preventDefault();
-                        }
-                    });
-                });
             }
         })
         .catch(() => {});
@@ -79,4 +72,8 @@ document.querySelectorAll('form[data-reaction]').forEach((form) => {
 
 if (document.querySelector('[data-map]')) {
     import('./map.js');
+}
+
+if (document.querySelector('[data-region-picker], [data-map-picker], [data-photos]')) {
+    import('./post.js');
 }

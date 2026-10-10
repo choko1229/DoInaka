@@ -4,7 +4,7 @@
 
 ## 今のフェーズ
 
-フェーズ5(投稿・画像・審査)— 着手前
+フェーズ0〜8 すべて完了。【BETA】v26.10.1 のプレリリースを作成済み(人の確認は docs/manual-checks.md)
 
 ## 終わったフェーズ
 
@@ -15,10 +15,16 @@
 | 2 ログインと2段階認証 | [#6](https://github.com/choko1229/DoInaka/pull/6) | Google ログイン・TOTP・回復コード・端末を覚える・権限 |
 | 3 データと管理のコンテンツ | [#7](https://github.com/choko1229/DoInaka/pull/7) | 地域・分類・行事・スポット・記事・履歴・マスタ・管理画面 |
 | 4 公開画面 | [#8](https://github.com/choko1229/DoInaka/pull/8) | 公開ルート・検索・詳細・地域ページ・地図・SEO・API・管理者バー・海外制限・人気スコア |
+| 5 投稿・画像・審査 | [#10](https://github.com/choko1229/DoInaka/pull/10) | 投稿・修正依頼・コメント・情報提供・画像処理・審査画面・却下ボックス・定期削除 |
+| 6 AI審査とAI下書き | [#11](https://github.com/choko1229/DoInaka/pull/11) | OpenRouter・AI判定・自動承認/却下・URLから下書き・情報源の巡回・地域ページの紹介文 |
+| 7 マイページ・会員・広告・ログ・設定 | [#12](https://github.com/choko1229/DoInaka/pull/12) | マイページ・会員の管理・広告枠・ログとCSV・設定の全タブ・ダッシュボード・停止中の会員の制限 |
+| 8 公開前の運用準備 | [#13](https://github.com/choko1229/DoInaka/pull/13) | 固定ページ・お問い合わせと削除依頼(ぼかし・AI の照合・会員への照会・返信メール)・Cookie 同意・セキュリティヘッダー・cron の点検と停止通知・通しのテスト |
 
 ## 次にやること
 
-1. フェーズ5(投稿・画像・審査の人の手)に進む。投稿フォーム(/post/)・修正依頼(/report/)・コメント・Turnstile・画像の処理・審査画面。公開側のコメント表示・お気に入り・行った!の API はフェーズ4で済み
+- docs/manual-checks.md の「フェーズ8で追加」を中心に、人の確認を進める(バックアップの復元、SPF/DKIM、外部サービスの表と実物の照合、GA4・AdSense・Search Console、HTTPS の 301 など)
+- プレリリース【BETA】v26.10.1(https://github.com/choko1229/DoInaka/releases/tag/v26.10.1)を、テスト用の環境に置いて、確認する。問題がなければ、正式版は人がタグ(vYY.M.N)を push して作る(Claude Code は作らない)
+- Dependabot の PR(#2〜#4)の扱いを決める
 
 ## 環境メモ
 

@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Models\Scopes\HeldContentScope;
 use Database\Factories\ArticleFactory;
+use Illuminate\Database\Eloquent\Attributes\ScopedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -26,6 +28,7 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $published_at
  * @property string|null $search_text
  */
+#[ScopedBy([HeldContentScope::class])]
 class Article extends Model
 {
     /** @use HasFactory<ArticleFactory> */
@@ -44,6 +47,16 @@ class Article extends Model
     public function region(): BelongsTo
     {
         return $this->belongsTo(Region::class);
+    }
+
+    /**
+     * 公開された写真(処理済みの画像)
+     *
+     * @return MorphMany<Media, $this>
+     */
+    public function media(): MorphMany
+    {
+        return $this->morphMany(Media::class, 'mediable')->whereNotNull('path_large')->orderBy('sort_order')->orderBy('id');
     }
 
     /** @return MorphToMany<Tag, $this> */

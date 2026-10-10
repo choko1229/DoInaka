@@ -20,7 +20,7 @@ final class SeriesController extends PublicController
             return $series;
         }
 
-        $events = Event::query()->where('series_id', $series->id)->where('is_published', true)->with(['schedules', 'region.parent'])->get()
+        $events = Event::query()->where('series_id', $series->id)->where('is_published', true)->with(['schedules', 'region.parent', 'tags', 'media'])->get()
             ->sortByDesc(fn (Event $e) => $e->firstDate()?->toDateString() ?? '')->values();
         abort_if($events->isEmpty(), 404);
 

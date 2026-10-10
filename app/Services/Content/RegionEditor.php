@@ -21,7 +21,7 @@ class RegionEditor
     public function __construct(private readonly RevisionService $revisions) {}
 
     /**
-     * @param  array{name: string, name_kana: string|null, slug: string, is_active: bool, kind?: string|null, era?: string|null, parent_id?: int|null, former_parent_id?: int|null, notes?: string|null}  $data
+     * @param  array{name: string, name_kana: string|null, slug: string, is_active: bool, kind?: string|null, era?: string|null, parent_id?: int|null, former_parent_id?: int|null, notes?: string|null, official_url?: string|null}  $data
      *
      * @throws ValidationException
      */
@@ -38,6 +38,8 @@ class RegionEditor
                 'slug' => $data['slug'],
                 'is_active' => $data['is_active'],
                 'notes' => $data['notes'] ?? $region->notes,
+                // 紹介文の情報元(自治体公式サイトの概要・沿革ページ。設計書9.8)
+                'official_url' => array_key_exists('official_url', $data) ? $data['official_url'] : $region->official_url,
             ];
 
             // 旧町村だけ、親と時代を変えられる(都道府県・市区町村の階層は総務省のコードに従う)

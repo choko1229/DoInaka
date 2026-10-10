@@ -93,6 +93,7 @@ final class MasterController extends Controller
             'era' => ['nullable', Rule::enum(EraTag::class)],
             'parent_id' => ['nullable', 'integer', Rule::exists('regions', 'id')],
             'former_parent_id' => ['nullable', 'integer', Rule::exists('regions', 'id')],
+            'official_url' => ['nullable', 'string', 'max:500', 'url:http,https'],
             'reason' => ['nullable', 'string', 'max:200'],
         ]);
         $input = new FormInput($request);
@@ -105,6 +106,7 @@ final class MasterController extends Controller
             'era' => $input->nullableString('era'),
             'parent_id' => $input->nullableInt('parent_id'),
             'former_parent_id' => $input->nullableInt('former_parent_id'),
+            'official_url' => $input->nullableString('official_url'),
         ], $this->user($request), $input->nullableString('reason'));
 
         $this->audit->record(AuditAction::MasterUpdate, $this->user($request), 'region', $region->id);

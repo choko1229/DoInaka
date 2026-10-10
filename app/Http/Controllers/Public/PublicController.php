@@ -6,12 +6,16 @@ namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\Controller;
 use App\Models\Region;
+use App\Models\Scopes\HeldContentScope;
 use App\Services\Analytics\PageViewRecorder;
 use App\Services\Public\MetaBuilder;
+use App\Services\Takedown\ContentHolds;
 use App\Services\Url\PublicLinks;
+use App\Support\PageMeta;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\RedirectResponse;
 
 /**
@@ -47,7 +51,7 @@ abstract class PublicController extends Controller
         $parsed = $this->links->parseItem($segment);
         abort_if($parsed === null, 404);
 
-        $query = $class::query();
+        $query = $class::query()->withoutGlobalScope(HeldContentScope::class);
         if (in_array(SoftDeletes::class, class_uses_recursive($class), true)) {
             $query->withoutGlobalScope(SoftDeletingScope::class);
         }
@@ -67,5 +71,21 @@ abstract class PublicController extends Controller
         }
 
         return $item;
+    }
+
+    /**
+     * 削除依頼の確認中のページは、本文を HTML に出さず、noindex の「確認中」だけを返す(ぼかして残す。消さない)。
+     *
+     * @throws HttpResponseException
+     */
+    protected function abortIfHeld(Model $item): void
+    {
+        if (app(ContentHolds::class)->pageHold($item) === null) {
+            return;
+        }
+
+        throw new HttpResponseException(response()->view('public.held', [
+            'meta' => new PageMeta(title: __('inquiry.held_title'), noindex: true),
+        ])->header('X-Robots-Tag', 'noindex'));
     }
 }

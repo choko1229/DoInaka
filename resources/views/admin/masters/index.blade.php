@@ -14,7 +14,7 @@
         <form method="get" action="{{ route('admin.masters') }}" class="inline-form">
             <input type="hidden" name="tab" value="regions">
             <label for="pref" class="visually-hidden">{{ __('masters.pref_label') }}</label>
-            <select id="pref" name="pref" onchange="this.form.submit()">
+            <select id="pref" name="pref" data-autosubmit>
                 @foreach ($prefectures as $pref)
                     <option value="{{ $pref->slug }}" @selected($selected?->id === $pref->id)>{{ $pref->name }}</option>
                 @endforeach

@@ -13,6 +13,7 @@
         </select>
         <button class="btn btn-primary btn-sm" type="submit">{{ __('public.apply') }}</button>
     </form>
+    <x-ad position="list" />
     @if ($spots->isEmpty())
         <x-empty-state :title="__('public.no_results')" :aside="__('public.no_results_aside')">{{ __('public.no_results_body') }}</x-empty-state>
     @else

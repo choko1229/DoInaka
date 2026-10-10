@@ -472,3 +472,32 @@ textarea { width: 100%; min-height: 160px; padding: var(--space-3); border: 2px 
 .admin-bar-menu[open] { background: #2c3a32; border-radius: var(--radius-sm); }
 .admin-bar-logout { margin: 0 0 0 auto; }.region-art { display: block; margin-bottom: var(--space-4); border-radius: var(--radius-md); overflow: hidden; background: var(--surface-sunken); }
 .region-art img { display: block; width: 100%; height: auto; max-height: 240px; object-fit: cover; }
+/* ---- 投稿・修正依頼(フェーズ5) ---- */
+.consent { margin: var(--space-4) 0; padding: var(--space-3) var(--space-4); border-radius: var(--radius-md); background: var(--surface-sunken); }
+.receipt { font-size: 28px; letter-spacing: 0.08em; margin: var(--space-2) 0 var(--space-4); }
+.post-choices .card { margin-top: 0; color: inherit; text-decoration: none; }
+.post-choices .card:hover h2 { text-decoration: underline; }
+.comment-form { display: grid; gap: var(--space-2); margin-top: var(--space-4); }
+.gallery { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+.gallery figure { margin: 0; }
+.gallery img { display: block; width: 100%; height: auto; border-radius: var(--radius-sm); background: var(--surface-sunken); }
+.source-flyer { display: block; max-width: 160px; margin-top: var(--space-2); border-radius: var(--radius-sm); }
+/* ---- 広告(フェーズ7)。PR は必ず「PR」と表示する ---- */
+.ad { position: relative; margin: var(--space-4) 0; padding: var(--space-3) var(--space-4); border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface-sunken); }
+.ad-label { display: inline-block; margin-right: var(--space-2); padding: 0 var(--space-2); border: 1px solid var(--ink-muted); border-radius: var(--radius-sm); color: var(--ink-muted); font-size: 12px; line-height: 18px; }
+.ad p { margin: var(--space-1) 0 0; }
+.stat-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+.stat { display: grid; gap: var(--space-1); margin-top: 0; text-decoration: none; color: inherit; }
+a.stat:hover strong { text-decoration: underline; }
+/* フェーズ8: 固定ページ、フッターのリンク、Cookie の同意バナー、お問い合わせ */
+.footer-links { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); margin: 0 0 var(--space-3); }
+.legal { padding-block: var(--space-6); }
+.legal-body h2 { font-size: 1.15rem; margin: var(--space-6) 0 var(--space-2); }
+.legal-body p, .legal-body li { line-height: 1.9; }
+.legal-body table { width: 100%; border-collapse: collapse; font-size: 0.9rem; display: block; overflow-x: auto; }
+.legal-body th, .legal-body td { border: 1px solid var(--border, #ccc); padding: var(--space-2); vertical-align: top; text-align: left; }
+.cookie-banner { position: fixed; inset: auto 0 0 0; z-index: 50; padding: var(--space-3) var(--space-4); background: var(--surface, #fff); color: var(--text, #222); border-top: 2px solid var(--accent); box-shadow: 0 -4px 16px rgb(0 0 0 / 15%); }
+.cookie-banner[hidden] { display: none; }
+.cookie-banner .cookie-actions { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-2); }
+.takedown-notice { border: 2px dashed var(--accent); padding: var(--space-3); border-radius: var(--radius, 8px); }
+.blurred-image { filter: blur(24px); }
