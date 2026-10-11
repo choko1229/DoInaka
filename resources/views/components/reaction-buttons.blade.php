@@ -1,6 +1,6 @@
-@props(['type', 'id', 'favoriteCount' => 0, 'visitCount' => 0])
+@props(['type', 'id', 'favoriteCount' => 0, 'visitCount' => 0, 'primary' => null])
 {{-- JS なしでも動くよう、普通のフォーム(POST + CSRF)。JS があれば fetch で更新する。未ログインはログイン画面へ --}}
-<div class="reactions">
+<div @class(['reactions', 'is-visited-primary' => $primary === 'visited'])>
     <form method="post" action="{{ url("/api/v1/visits/{$type}/{$id}") }}" data-reaction>
         @csrf
         <button class="btn btn-sm reaction-visited" type="submit">{{ __('public.visited') }} <span data-count>{{ $visitCount }}</span></button>

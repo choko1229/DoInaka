@@ -10,27 +10,7 @@
     <x-slot:hero>
         <header class="hero-header" style="{{ $heroStyle }}">
             <div class="container">
-                <div class="hero-top">
-                    <x-logo :size="32" />
-                    @php($heroNav = [
-                        ['href' => "/{$pref}/events/", 'label' => __('public.nav_events')],
-                        ['href' => "/{$pref}/spots/", 'label' => __('public.nav_spots')],
-                        ['href' => "/{$pref}/articles/", 'label' => __('public.nav_articles')],
-                        ['href' => "/{$pref}/map/", 'label' => __('public.nav_map')],
-                        auth()->check() ? ['href' => '/mypage/', 'label' => __('public.nav_mypage')] : ['href' => '/login', 'label' => __('public.nav_login')],
-                    ])
-                    <nav class="sky-header-nav" aria-label="{{ __('layout.main_nav') }}">
-                        @foreach ($heroNav as $item)<a href="{{ $item['href'] }}">{{ $item['label'] }}</a>@endforeach
-                        <a class="sky-cta" href="/post/">{{ __('public.nav_post') }}</a>
-                    </nav>
-                    <details class="sky-header-menu">
-                        <summary aria-label="{{ __('layout.menu') }}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
-                        <nav class="sky-header-drawer" aria-label="{{ __('layout.main_nav') }}">
-                            @foreach ($heroNav as $item)<a href="{{ $item['href'] }}">{{ $item['label'] }}</a>@endforeach
-                            <a class="sky-cta" href="/post/">{{ __('public.nav_post') }}</a>
-                        </nav>
-                    </details>
-                </div>
+                <x-hero-top :pref="$pref" />
                 <div class="hero-copy">
                     <h1 class="hero-title">{{ __('layout.tagline') }}</h1>
                     <p class="hero-lead">{{ __('public.hero_lead') }}<span class="hero-time">{{ __('public.hero_time.'.$themeContext->theme->value) }}</span></p>

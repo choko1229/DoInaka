@@ -132,3 +132,5 @@
 - [x] kagoya の自動バックアップの範囲と保持期間(設定済み)
 - [x] ド田舎.net のドメイン追加・ドキュメントルート・SSL(設定済み)
 - [x] 確認スクリプト・dkcheck フォルダ・ログ・cron の登録の削除(対応済み)
+
+- [ ] 地域ページの人口・面積: 運営者が国勢調査・国土地理院の数字を CSV にして php artisan regions:import-stats で取り込む(列は docs/decisions.md 2026-10-11)
