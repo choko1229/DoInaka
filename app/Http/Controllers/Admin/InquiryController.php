@@ -27,10 +27,11 @@ final class InquiryController extends Controller
     {
         $kind = InquiryKind::tryFrom((string) $request->query('kind', ''));
         $status = InquiryStatus::tryFrom((string) $request->query('status', ''));
+        $all = $request->query('status') === 'all';
 
         $query = Inquiry::query()
             ->when($kind !== null, fn ($q) => $q->where('kind', $kind))
-            ->when($status !== null, fn ($q) => $q->where('status', $status), fn ($q) => $q->where('status', '!=', InquiryStatus::Done))
+            ->when($status !== null, fn ($q) => $q->where('status', $status), fn ($q) => $all ? $q : $q->where('status', '!=', InquiryStatus::Done))
             ->orderByDesc('urgent')->orderByDesc('id');
 
         return view('admin.inquiries.index', [
@@ -39,7 +40,11 @@ final class InquiryController extends Controller
             'status' => $status,
             'kinds' => InquiryKind::cases(),
             'statuses' => InquiryStatus::cases(),
+            'request_all' => $all,
             'counts' => [
+                'open' => Inquiry::query()->where('status', '!=', InquiryStatus::Done)->count(),
+                'all' => Inquiry::query()->count(),
+                'kinds' => Inquiry::query()->get(['kind'])->countBy(fn (Inquiry $i): string => $i->kind->value)->all(),
                 'new' => Inquiry::query()->where('status', InquiryStatus::New)->count(),
                 'urgent' => Inquiry::query()->where('status', '!=', InquiryStatus::Done)->where('urgent', true)->count(),
             ],

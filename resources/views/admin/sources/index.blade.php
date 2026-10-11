@@ -5,6 +5,17 @@
     </div>
     <p class="t-small t-muted">{{ __('crawl.lead') }}</p>
 
+    @php
+        $paused = $sources->filter(fn ($s) => $s->isPaused());
+        $nextRun = $sources->where('is_active', true)->whereNotNull('next_run_at')->min('next_run_at');
+    @endphp
+    <div class="board-stats">
+        <div class="card board-stat"><span class="t-small t-muted">{{ __('crawl.stat_total') }}</span><strong>{{ __('admin.items', ['count' => $sources->count()]) }}</strong><span class="t-small t-muted">{{ __('crawl.stat_trusted', ['count' => $sources->where('is_trusted', true)->count()]) }}</span></div>
+        <div class="card board-stat"><span class="t-small t-muted">{{ __('crawl.stat_next') }}</span><strong>{{ $nextRun ? \Illuminate\Support\Carbon::parse($nextRun)->setTimezone('Asia/Tokyo')->isoFormat('M/D(ddd) H:mm') : '—' }}</strong><span class="t-small t-muted">{{ __('crawl.stat_next_note') }}</span></div>
+        <div class="card board-stat"><span class="t-small t-muted">{{ __('crawl.stat_runs') }}</span><strong>{{ __('admin.times', ['count' => $runs->where('created_at', '>=', now()->startOfDay())->count()]) }}</strong><span class="t-small t-muted">{{ __('crawl.stat_runs_note') }}</span></div>
+        <div class="card board-stat"><span class="t-small t-muted">{{ __('crawl.stat_paused') }}</span><strong>{{ __('admin.items', ['count' => $paused->count()]) }}</strong><span class="t-small t-muted">{{ __('crawl.stat_paused_note') }}</span></div>
+    </div>
+
     <div class="table-wrap">
         <table class="table">
             <thead><tr><th>{{ __('crawl.col_name') }}</th><th>{{ __('crawl.col_state') }}</th><th>{{ __('crawl.col_interval') }}</th><th>{{ __('crawl.col_last') }}</th><th></th></tr></thead>
@@ -78,4 +89,5 @@
             </tbody>
         </table>
     </div>
+    <section class="card board-card"><h2>{{ __('crawl.rules_title') }}</h2><ul class="rules">@foreach (__('crawl.rules') as $rule)<li>{{ $rule }}</li>@endforeach</ul></section>
 </x-layouts.admin>

@@ -4,12 +4,14 @@
 <x-layouts.admin :title="__('settings.title')" current="settings">
     <div class="page-head"><h1 class="t-h1">{{ __('settings.title') }}</h1><p class="t-small t-muted">{{ __('settings.lead') }}</p></div>
 
-    <div class="tabs">
+    <div class="settings-layout">
+    <nav class="settings-tabs" aria-label="{{ __('settings.title') }}">
         @foreach ($tabs as $t)
             <a href="{{ route('admin.settings', ['tab' => $t]) }}" @if ($tab === $t) aria-current="page" @endif>{{ __('settings.tab.'.$t) }}</a>
         @endforeach
         <a href="{{ route('admin.update') }}">{{ __('settings.tab.update') }}</a>
-    </div>
+    </nav>
+    <div class="settings-body">
 
     <form class="card" method="post" action="{{ route('admin.settings.update', ['tab' => $tab]) }}">
         @csrf
@@ -98,4 +100,6 @@
             <p class="t-small t-muted">{{ __('cron.update_note') }}</p>
         </section>
     @endif
+    </div>
+    </div>
 </x-layouts.admin>

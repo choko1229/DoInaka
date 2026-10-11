@@ -1,7 +1,6 @@
 <x-layouts.admin :title="__('ai.draft_title')" current="drafts">
-    <div class="page-head"><h1 class="t-h1">{{ __('ai.draft_title') }}</h1></div>
-    <p class="t-small t-muted">{{ __('ai.draft_lead') }}</p>
-    <form method="post" action="{{ route('admin.drafts.read') }}" class="card container-narrow">
+    <div class="page-head"><h1 class="t-h1">{{ __('ai.draft_title') }}</h1><p class="t-small">{{ __('ai.draft_today', ['count' => $aiToday]) }}</p></div>
+    <form method="post" action="{{ route('admin.drafts.read') }}" class="card draft-top">
         @csrf
         <div class="field">
             <label for="url">{{ __('ai.draft_url') }}</label>
@@ -9,8 +8,11 @@
             @error('url')<p class="field-error" role="alert">{{ $message }}</p>@enderror
         </div>
         <button class="btn btn-primary" type="submit">{{ $result && $result['status'] === 'limited' ? __('ai.retry') : __('ai.draft_read') }}</button>
+        <p class="t-small t-muted draft-help">{{ __('ai.draft_lead') }}</p>
     </form>
 
+    <div class="draft-grid">
+    <div>
     @if ($result)
         @if ($result['status'] !== 'ok')
             <p class="alert alert-warning" role="status">{{ $result['reason'] }}</p>
@@ -18,7 +20,7 @@
             <p class="alert alert-warning" role="status">{{ __('ai.draft_not_event') }}</p>
         @else
             @php($d = $result['draft'])
-            <form method="post" action="{{ route('admin.drafts.save') }}" class="card container-narrow">
+            <form method="post" action="{{ route('admin.drafts.save') }}" class="card draft-result">
                 @csrf
                 <h2 class="t-h2">{{ __('ai.draft_result') }}</h2>
                 <p class="t-small t-muted">{{ __('ai.draft_confidence', ['value' => number_format($d->confidence, 2)]) }}@if ($d->isCancelled) / {{ __('layout.status_cancelled') }}@endif</p>
@@ -39,4 +41,11 @@
             </form>
         @endif
     @endif
+    </div>
+    <aside class="draft-side">
+        <section class="card board-card"><h2>{{ __('ai.draft_recent') }}</h2>
+            <ul class="draft-recent">@forelse ($recent as $e)<li><span>{{ $e->title }}</span><span class="t-small t-muted">{{ $e->created_at?->diffForHumans() }}</span></li>@empty<li class="t-muted">{{ __('submission.review_empty') }}</li>@endforelse</ul>
+        </section>
+    </aside>
+    </div>
 </x-layouts.admin>

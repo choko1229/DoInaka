@@ -57,6 +57,7 @@ use Illuminate\Contracts\Foundation\MaintenanceMode;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
@@ -131,6 +132,10 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        // ページ送りは、サイトの見た目に合わせた自前の表示を使う(標準の Tailwind 用の表示は使わない)
+        Paginator::defaultView('pagination.default');
+        Paginator::defaultSimpleView('pagination.default');
+
         // ポリモーフィックな関係には、短い名前だけを保存する(クラス名を DB に入れない)
         Relation::enforceMorphMap([
             'event' => Event::class, 'series' => EventSeries::class, 'spot' => Spot::class, 'article' => Article::class,

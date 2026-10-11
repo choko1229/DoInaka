@@ -5,8 +5,11 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Admin;
 
 use App\Enums\AuditAction;
+use App\Enums\SubmissionStatus;
+use App\Enums\SubmissionType;
 use App\Http\Controllers\Controller;
 use App\Models\Region;
+use App\Models\Submission;
 use App\Models\User;
 use App\Services\Audit\AuditLogger;
 use App\Services\Region\RegionPageQueue;
@@ -40,6 +43,8 @@ final class RegionPageController extends Controller
             'regions' => $query->paginate(30)->withQueryString(),
             'filter' => $filter,
             'q' => $q,
+            // 地域ページへの修正依頼で、審査待ちのもの(裏付けが取れず、人の判断を待っている)
+            'holds' => Submission::query()->where('type', SubmissionType::Correction)->where('status', SubmissionStatus::InReview)->whereHas('corrections', fn ($q) => $q->where('target_type', 'region'))->with(['corrections', 'user'])->latest('id')->limit(20)->get(),
             'counts' => [
                 'pending' => DB::table('region_generation_queue')->whereIn('status', ['pending', 'running'])->count(),
                 'failed' => DB::table('region_generation_queue')->where('status', 'failed')->count(),

@@ -109,4 +109,13 @@ return [
     'mypage_link' => '削除の依頼',
     'discord_deadline' => '削除依頼 :receipt は、会員への照会の期限が過ぎました(反対なし)。管理画面で確認してください。',
     'deadlines_notified' => '期限が過ぎた照会を :count 件、知らせました。',
+    'admin_lead' => 'フォームから届いたもの。削除依頼の対象は、確認が終わるまでぼかして「確認中」と表示します',
+    'chip_open' => '未対応',
+    'chip_all' => 'すべて',
+    'chip_kind' => ['general' => '一般の質問・不具合', 'takedown' => '削除依頼', 'listing' => '掲載・修正', 'ads' => '広告', 'privacy' => '個人情報'],
+    'admin_col_body' => '内容',
+    'admin_col_mail' => 'メール',
+    'mail_yes' => 'あり',
+    'mail_no' => 'なし',
+    'admin_note' => '届いたら Discord に通知します(内容は送らず、受付番号と種類だけ)。メールアドレスは返信のためだけに使い、ログには出しません。',
 ];

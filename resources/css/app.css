@@ -1003,3 +1003,76 @@ main.is-focus > .container { width: 100%; }
 .review-reject select, .review-reject input { height: 44px; padding: 0 12px; border: 2px solid var(--line-strong); border-radius: 6px; background: var(--surface); color: var(--ink); font: inherit; }
 .btn-danger-outline { border-color: var(--danger); color: var(--danger); }
 .review-dup { margin: 0; padding: 12px; border-radius: 12px; background: var(--surface-sunken); }
+/* AI下書き作成(デザイン: AdminDraftPC) */
+.draft-top { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 16px; align-items: end; padding: 20px 24px; margin-bottom: 16px; }
+.draft-top .field { margin: 0; }
+.draft-help { grid-column: 1 / -1; margin: 0; }
+.draft-grid { display: grid; gap: 16px; align-items: start; }
+@media (min-width: 1100px) { .draft-grid { grid-template-columns: minmax(0, 1fr) 300px; } }
+.draft-result { padding: 24px; }
+.draft-recent { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.draft-recent li { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line); }
+.draft-recent li:first-child { border-top: 0; }
+/* 情報提供(デザイン: AdminTipsPC): 左に一覧、右に詳細 */
+.tips-grid { display: grid; gap: 16px; align-items: start; }
+@media (min-width: 1100px) { .tips-grid { grid-template-columns: 280px minmax(0, 1fr); } }
+.tips-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.tips-list a { display: grid; gap: 2px; padding: 8px 12px; border: 1px solid var(--line-strong); border-radius: 6px; background: var(--surface-sunken); color: var(--ink); text-decoration: none; }
+.tips-list a.is-selected { border-color: var(--accent); background: var(--surface); }
+.tips-detail { display: grid; gap: 16px; min-width: 0; }
+.tips-detail .card { margin: 0; }
+/* ページ送り(管理画面・公開側の共通) */
+.pager-nav { display: grid; gap: 8px; justify-items: start; margin: 16px 0; }
+.pager { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+.pager-link { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; height: 40px; padding: 0 12px; border: 2px solid var(--line-strong); border-radius: var(--radius-pill); color: var(--ink); text-decoration: none; background: var(--surface); font-weight: 700; font-size: 14px; }
+.pager-link.is-current { border-color: var(--accent); color: var(--accent); }
+.pager-link.is-disabled, .pager-link.is-gap { border-color: var(--line); color: var(--ink-muted); }.hold-row { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 8px; }
+.board-card + .board-h2 { margin-top: 24px; }
+.is-ok-text { color: var(--success); font-weight: 700; }
+.admin-nav ul { gap: 0; }
+.admin-nav a { padding: 9px 12px; }
+.admin-nav .nav-group { margin-top: 20px; }.rules { margin: 0; padding-left: 20px; display: grid; gap: 4px; }
+
+/* 設定(デザイン: AdminSettingsPC): 左に項目の一覧、右に入力 */
+.settings-layout { display: grid; gap: 24px; align-items: start; }
+@media (min-width: 1024px) { .settings-layout { grid-template-columns: 200px minmax(0, 1fr); } }
+.settings-tabs { display: grid; gap: 2px; }
+.settings-tabs a { padding: 8px 12px; border-radius: var(--radius-sm); color: var(--ink); text-decoration: none; }
+.settings-tabs a[aria-current='page'] { background: var(--surface-sunken); font-weight: 700; }
+@media (max-width: 1023px) { .settings-tabs { display: flex; flex-wrap: wrap; gap: 8px; } .settings-tabs a { border: 2px solid var(--line-strong); border-radius: var(--radius-pill); } }
+.settings-body > .card { padding: 24px; }.admin-auth { padding-top: 56px; }
+.admin-auth-card { padding: 36px; display: grid; gap: 16px; }
+.admin-auth-card h1 { margin: 0; }
+.admin-auth-card p { margin: 0; }
+
+/* 管理画面のスマホ: 上のバーとメニュー(デザイン: Admin) */
+.admin-menu-check { position: absolute; opacity: 0; pointer-events: none; }
+.admin-menu-button { display: none; }
+@media (max-width: 1023px) {
+    .admin-nav { padding: 0 16px; background: var(--surface); border-bottom: 1px solid var(--line); }
+    .admin-brand { padding: 12px 0; }
+    .admin-menu-button { display: inline-grid; margin-left: auto; width: 40px; height: 40px; place-items: center; cursor: pointer; color: var(--ink); }
+    .admin-menu-body { display: none; padding-bottom: 12px; }
+    .admin-menu-check:checked ~ .admin-menu-body { display: block; }
+    .admin-menu-check:focus-visible ~ .admin-brand .admin-menu-button { outline: 2px solid var(--focus); }
+    .admin-main { padding: 16px; }
+    .board-title { font-size: 24px; line-height: 32px; }
+    .board-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+    .board-stat strong { font-size: 28px; }
+    .board-head { flex-wrap: wrap; }
+}@media (max-width: 767px) {
+    .board-stats > :nth-child(4) { display: none; }
+    .board-stat { padding: 12px; }
+    .board-stat .t-small { font-size: 12px; line-height: 16px; }
+    .board-table table, .board-table tbody, .board-table tr, .board-table td { display: block; }
+    .board-table thead { display: none; }
+    .board-table tr { padding: 12px 16px; border-top: 1px solid var(--line); }
+    .board-table tr:first-child { border-top: 0; }
+    .board-table td { padding: 2px 0; border: 0; }
+    .board-table td.actions { text-align: left; padding-top: 8px; }
+    .table-wrap .table, .table-wrap .table tbody, .table-wrap .table tr, .table-wrap .table td { display: block; }
+    .table-wrap .table thead { display: none; }
+    .table-wrap .table tr { padding: 12px 16px; border-top: 1px solid var(--line); }
+    .table-wrap .table td { padding: 2px 0; border: 0; }
+    .table-wrap .table td.actions { text-align: left; padding-top: 8px; }
+}

@@ -32,3 +32,9 @@
 | AdminEventsPC | 差あり | 行事の一覧(状態・件数の印)と、開催回の欄を合わせた。差: 一覧の件数の細かい印(修正依頼あり) |
 | AdminReviewPC(審査の詳細) | 差あり | 上のバーだけの画面、投稿のままとAIの案と採用のチェック、AIの判定、判断(承認・却下の理由の選択)を合わせた。差: 重複の候補の中身(ID だけ)、画像の顔の判定は画像ごとでなく全体 |
 | AdminCorrectionsPC / AdminRejectedPC / AdminTipsPC | 差あり | 左の並びで選ぶ形にし、並び順・文言・ボタンを合わせた |
+| AdminDraftPC(AI下書き作成) | 差あり | 上の入力・結果の欄・右の「最近の下書き」を合わせた。差: 「似た掲載」の欄、日時の入力の並び |
+| AdminTipsPC(情報提供) | 差あり | 上の4つの数・絞り込み・左の一覧と右の詳細の2列を合わせた。差: 絞り込みの「香川県外」「同じ行事あり」 |
+| AdminRegionsPC(地域ページ) | 差あり | 4つの数・表(検索の公開・確認日と出典)・再生成の説明・修正の保留を合わせた。差: 行ごとの「すぐ作る」「出典を足す」ボタン |
+| AdminUsersPC / AdminInquiriesPC / AdminSourcesPC / AdminSettingsPC | 差あり | 絞り込みの印・状態の印・上の数・左の項目の並びを合わせた。差: お問い合わせの詳細は別の画面、情報源の追加の入力は別の画面 |
+| Admin SP(各画面) | 差あり | 上のバー+メニュー、数のカード、表はカード状に積む。差: 審査待ちの絞り込みの横スクロール |
+| 未確認(差が残る可能性) | 未 | AdminMastersPC(右の編集の欄)・AdminLogsPC・AdminAdsPC・AdminUpdatePC・AdminEventEditPC・AdminSpotEditPC・AdminMasterEditPC は、共通の見た目だけ合わせた |
