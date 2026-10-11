@@ -7,7 +7,8 @@
         "dev": "vite",
         "e2e": "playwright test",
         "e2e:contrast": "playwright test e2e/contrast.spec.js --project=pc",
-        "e2e:shots": "playwright test e2e/shots.spec.js --project=pc"
+        "e2e:shots": "playwright test e2e/shots.spec.js --project=pc",
+        "e2e:compare": "playwright test e2e/compare.spec.js --project=pc"
     },
     "devDependencies": {
         "@axe-core/playwright": "^4.13.0",

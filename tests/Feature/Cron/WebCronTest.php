@@ -313,3 +313,40 @@ it('設定の「予約処理」をオフにすると保存され、操作ログ�
 
     expect(app(SettingsService::class)->bool(SettingKey::CronWebEnabled))->toBeFalse();
 });
+
+it('取りこぼし: 毎日3時40分の予約は、その分にアクセスがなくても、次にアクセスのあったときに、遅れて動く。動かしたら、もう動かさない', function (): void {
+    Http::fake(['openrouter.ai/*' => Http::response(['data' => [['id' => 'meta/llama:free', 'name' => 'Llama']]])]);
+
+    // 最初の実行(記録がない予約は、記録を始めるだけ。一度に全部は動かさない)
+    Carbon::setTestNow(Carbon::parse('2026-10-12 03:30:30', 'Asia/Tokyo'));
+    $first = app(WebCronRunner::class)->run();
+    expect($first['ran'])->not->toContain('ai-models-refresh');
+
+    // 3時40分を過ぎた、アクセスの少ない時間(41分後)。その分には動かなかったが、取りこぼしとして動く
+    Carbon::setTestNow(Carbon::parse('2026-10-12 05:12:00', 'Asia/Tokyo'));
+    Cache::flush();
+    $second = app(WebCronRunner::class)->run();
+    expect($second['ran'])->toContain('ai-models-refresh');
+    Http::assertSent(fn (Request $request): bool => str_contains($request->url(), 'openrouter.ai'));
+
+    // 次のアクセス(まだ次の3時40分ではない)では、動かさない
+    Carbon::setTestNow(Carbon::parse('2026-10-12 05:14:00', 'Asia/Tokyo'));
+    Cache::flush();
+    expect(app(WebCronRunner::class)->run()['ran'])->not->toContain('ai-models-refresh');
+
+    // 翌日の3時40分を過ぎれば、また動く
+    Carbon::setTestNow(Carbon::parse('2026-10-13 09:00:00', 'Asia/Tokyo'));
+    Cache::flush();
+    expect(app(WebCronRunner::class)->run()['ran'])->toContain('ai-models-refresh');
+});
+
+it('設定の「いますぐ一覧を取得」: キーなしで、モデルの一覧を取り直し、選べるようになる', function (): void {
+    Http::fake(['openrouter.ai/*' => Http::response(['data' => [['id' => 'meta/llama:free', 'name' => 'Llama'], ['id' => 'openai/gpt-4o', 'name' => 'GPT']]])]);
+    $this->actingAsVerifiedAdmin(User::factory()->admin()->twoFactor()->create());
+
+    $this->get('/admin/settings/ai')->assertOk()->assertSee('いますぐ一覧を取得')->assertSee('日本時間の3時40分');
+    $this->post('/admin/settings/ai/models/refresh')->assertRedirect('/admin/settings/ai')->assertSessionHas('status');
+    $this->get('/admin/settings/ai')->assertOk()->assertSee('meta/llama:free')->assertDontSee('openai/gpt-4o');
+
+    Http::fake(['openrouter.ai/*' => Http::response('', 500)]);
+});
