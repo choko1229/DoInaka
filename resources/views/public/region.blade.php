@@ -46,16 +46,32 @@
             </section>
 
             @if ($units->isNotEmpty() || $alsoChildren->isNotEmpty())
+                @php
+                    $all = $units->concat($alsoChildren);
+                    $groups = $isPref
+                        ? [__('region.group_city') => $all->filter(fn ($r) => str_ends_with($r->name, '市')), __('region.group_town') => $all->reject(fn ($r) => str_ends_with($r->name, '市'))]
+                        : ['' => $all];
+                    $nCity = $all->filter(fn ($r) => str_ends_with($r->name, '市'))->count();
+                    $nTown = $all->count() - $nCity;
+                @endphp
                 <section class="detail-section region-wide">
-                    <h2 class="detail-h2">{{ $isPref ? __('public.cities') : __('region.areas_before', ['name' => $region->name]) }}</h2>
-                    <div class="region-cards">
-                        @foreach ($units->concat($alsoChildren) as $child)
-                            <a class="region-card" href="{{ $links->region($child) }}">
-                                @if ($child->name_kana)<span class="t-small t-muted">{{ $child->name_kana }}</span>@endif
-                                <strong>{{ $child->name }}</strong>
-                            </a>
-                        @endforeach
+                    <div class="block-head">
+                        <h2 class="detail-h2">{{ $isPref ? __('region.cities_title', ['name' => $region->name, 'city' => $nCity, 'town' => $nTown]) : __('region.areas_before', ['name' => $region->name]) }}</h2>
+                        @if ($isPref)<span class="t-small t-muted">{{ __('region.former_from_city') }}</span>@endif
                     </div>
+                    @foreach ($groups as $label => $list)
+                        @continue($list->isEmpty())
+                        @if ($label !== '')<h3 class="region-group">{{ $label }}</h3>@endif
+                        <div class="region-cards">
+                            @foreach ($list as $child)
+                                <a class="region-card" href="{{ $links->region($child) }}">
+                                    <strong>{{ $child->name }}</strong>
+                                    @if ($child->name_kana)<span class="t-small t-muted">{{ $child->name_kana }}</span>@endif
+                                    @if ($child->intro_body === null)<span class="t-small t-muted">{{ __('region.preparing_short') }}</span>@endif
+                                </a>
+                            @endforeach
+                        </div>
+                    @endforeach
                 </section>
             @endif
 
@@ -89,6 +105,13 @@
                 @if ($stat === null)<p class="t-small t-muted">{{ __('region.stats_pending') }}</p>
                 @else<p class="t-small t-muted">{{ __('region.stats_auto') }}@if ($stat->source_label) {{ $stat->source_label }}@endif</p>@endif
             </section>
+            @if ($shikoku->isNotEmpty())
+                <section class="card side-card">
+                    <h2 class="detail-h2">{{ __('region.other_prefs') }}</h2>
+                    <p class="chip-row">@foreach ($shikoku as $other)<a class="chip" href="{{ $links->region($other) }}">{{ $other->name }}</a>@endforeach</p>
+                    <p class="t-small t-muted">{{ __('region.other_prefs_note', ['name' => $region->name]) }}</p>
+                </section>
+            @endif
         </aside>
     </div>
 </x-layouts.public>

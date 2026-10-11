@@ -47,4 +47,11 @@ return [
     'areas_before' => ':nameの地域(合併前の町)',
     'events_spots' => ':nameのイベントとスポット',
     'ai_short' => 'AIが情報元をもとに作成し、出典と照らし合わせて確認しました',
+    'group_city' => '市',
+    'group_town' => '町・村',
+    'cities_title' => ':nameの市町(:city市:town町)',
+    'former_from_city' => '合併前の町は各市町のページから',
+    'preparing_short' => '紹介文は準備中',
+    'other_prefs' => '四国のほかの県',
+    'other_prefs_note' => 'ほかの県は情報提供と投稿で集めています(巡回は:nameだけ)。',
 ];

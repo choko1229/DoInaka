@@ -827,4 +827,5 @@ a.stat:hover strong { text-decoration: underline; }
     .region-wide .card-grid > a.event-card .event-card-wanted, .region-wide .card-grid > a.event-card .event-card-tags { display: none; }
     .region-wide .card-grid > a.event-card .event-card-body { padding: 0; }
     .region-cards { grid-template-columns: 1fr; }
-}
+}.region-group { margin: 8px 0 0; font-size: 14px; color: var(--ink-muted); font-weight: 400; }
+.region-card { align-content: start; min-height: 88px; }@media (min-width: 1024px) { .region-cards { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; } }
