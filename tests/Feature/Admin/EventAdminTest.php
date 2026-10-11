@@ -199,11 +199,11 @@ it('一覧は、行事名・地域で探せて、「来年分なし」「非公�
     $old = Event::factory()->create(['series_id' => $other->id]);
     $old->schedules()->create(['date' => '2025-10-01']);
 
-    $this->get('/admin/events?q=獅子')->assertSee('獅子舞奉納')->assertDontSee('朝市');
-    $this->get('/admin/events?q=直島')->assertSee('朝市')->assertDontSee('獅子舞奉納');
-    $this->get('/admin/events?filter=upcoming')->assertSee('獅子舞奉納')->assertDontSee('朝市');
-    $this->get('/admin/events?filter=no_next')->assertSee('朝市')->assertDontSee('獅子舞奉納');
-    $this->get('/admin/events?filter=unpublished')->assertSee('獅子舞奉納')->assertSee('朝市');
+    $this->get('/admin/events?q=獅子')->assertSee('<strong>獅子舞奉納</strong>', false)->assertDontSee('<strong>朝市</strong>', false);
+    $this->get('/admin/events?q=直島')->assertSee('<strong>朝市</strong>', false)->assertDontSee('<strong>獅子舞奉納</strong>', false);
+    $this->get('/admin/events?filter=upcoming')->assertSee('<strong>獅子舞奉納</strong>', false)->assertDontSee('<strong>朝市</strong>', false);
+    $this->get('/admin/events?filter=no_next')->assertSee('<strong>朝市</strong>', false)->assertDontSee('<strong>獅子舞奉納</strong>', false);
+    $this->get('/admin/events?filter=unpublished')->assertSee('<strong>獅子舞奉納</strong>', false)->assertSee('<strong>朝市</strong>', false);
 });
 
 it('すべての編集画面が開く(新規・編集)', function (): void {

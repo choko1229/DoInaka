@@ -78,8 +78,10 @@ final class EventAdminController extends Controller
             ->pluck('next_date', 'series_id');
 
         $selected = null;
-        if ($request->filled('series')) {
-            $selected = EventSeries::query()->with(['events.schedules', 'events.region'])->find($request->integer('series'));
+        // 選んでいなければ、一覧の先頭の行事の開催回を出す
+        $selectedId = $request->filled('series') ? $request->integer('series') : $series->first()?->id;
+        if ($selectedId !== null) {
+            $selected = EventSeries::query()->with(['events.schedules', 'events.region'])->find($selectedId);
         }
 
         return view('admin.events.index', [
@@ -91,6 +93,8 @@ final class EventAdminController extends Controller
             'counts' => [
                 'all' => EventSeries::query()->count(),
                 'unpublished' => EventSeries::query()->whereHas('events', fn (Builder $e) => $e->where('is_published', false))->count(),
+                'upcoming' => EventSeries::query()->whereHas('events.schedules', fn (Builder $s) => $s->where('date', '>=', $today))->count(),
+                'no_next' => EventSeries::query()->where('recurrence', Recurrence::Yearly->value)->whereDoesntHave('events.schedules', fn (Builder $s) => $s->where('date', '>=', $today))->count(),
             ],
         ]);
     }

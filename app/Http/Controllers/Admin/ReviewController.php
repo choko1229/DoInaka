@@ -12,6 +12,7 @@ use App\Models\Media;
 use App\Models\Revision;
 use App\Models\Submission;
 use App\Models\User;
+use App\Services\Ai\SuggestionApplier;
 use App\Services\Content\RevisionService;
 use App\Services\Submission\CorrectionFields;
 use App\Services\Submission\ReviewService;
@@ -70,7 +71,18 @@ final class ReviewController extends Controller
 
     public function approve(Request $request, Submission $submission): RedirectResponse
     {
+        $request->validate(['adopt' => ['nullable', 'array'], 'adopt.*' => ['string', 'in:title,body,address,hours,access,category,slug']]);
         try {
+            // 人の審査では、管理者が「採用」にした AI の整形案だけを取り込む(チェックの欄がなければ、投稿のまま)
+            if ($request->has('adopt_shown')) {
+                $adopt = [];
+                foreach ($request->array('adopt') as $field) {
+                    if (is_string($field)) {
+                        $adopt[] = $field;
+                    }
+                }
+                app(SuggestionApplier::class)->apply($submission, $submission->ai_result ?? [], $adopt);
+            }
             $this->review->approve($submission, $this->user($request));
         } catch (InvalidSubmissionTransition $e) {
             return back()->with('error', $e->getMessage());
@@ -81,10 +93,11 @@ final class ReviewController extends Controller
 
     public function reject(Request $request, Submission $submission): RedirectResponse
     {
-        $request->validate(['reason' => ['nullable', 'string', 'max:300']]);
+        $request->validate(['reason' => ['nullable', 'string', 'max:300'], 'note' => ['nullable', 'string', 'max:300']]);
+        $reason = trim($request->string('reason')->toString().' '.$request->string('note')->toString());
 
         try {
-            $this->review->reject($submission, $this->user($request), $request->string('reason')->toString() ?: null);
+            $this->review->reject($submission, $this->user($request), $reason !== '' ? $reason : null);
         } catch (InvalidSubmissionTransition $e) {
             return back()->with('error', $e->getMessage());
         }

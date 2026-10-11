@@ -1,7 +1,5 @@
-@php($counts = ['review' => \App\Models\Submission::query()->where('status', \App\Enums\SubmissionStatus::InReview)->count(), 'waiting' => 0, 'rejected' => \App\Models\Submission::query()->whereIn('status', [\App\Enums\SubmissionStatus::Rejected, \App\Enums\SubmissionStatus::AutoRejected])->count()])
-<x-layouts.admin :title="__('submission.tab_tips')" current="review">
+<x-layouts.admin :title="__('submission.tab_tips')" current="tips">
     <div class="page-head"><h1 class="t-h1">{{ __('submission.tab_tips') }}</h1><p class="t-small t-muted">{{ __('submission.tips_lead') }}</p></div>
-    @include('admin.review._tabs', ['current' => 'tips', 'counts' => $counts])
     <div class="table-wrap" id="ai-live-list" data-ai-live>
         <table class="table">
             <thead><tr><th>{{ __('submission.col_receipt') }}</th><th>{{ __('submission.tip_url') }}</th><th>{{ __('submission.photos') }}</th><th>{{ __('submission.col_status') }}</th><th>{{ __('aistatus.title') }}</th><th></th></tr></thead>

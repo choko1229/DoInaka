@@ -5,17 +5,18 @@
         <p class="t-small t-muted">{{ __('content.events_lead') }}</p>
     </div>
 
-    <form method="get" action="{{ route('admin.events') }}" class="inline-form">
+    <form method="get" action="{{ route('admin.events') }}" class="filter-bar">
         <input type="search" name="q" value="{{ $q }}" placeholder="{{ __('content.search_placeholder') }}" aria-label="{{ __('content.search_placeholder') }}">
         @foreach (['all', 'upcoming', 'no_next', 'unpublished'] as $f)
-            <a class="chip" href="{{ route('admin.events', array_filter(['filter' => $f === 'all' ? null : $f, 'q' => $q ?: null])) }}" @if ($filter === $f) aria-current="page" @endif>{{ __('content.filter_'.$f) }}@if ($f === 'all') {{ $counts['all'] }}@elseif ($f === 'unpublished') {{ $counts['unpublished'] }}@endif</a>
+            <a class="chip" href="{{ route('admin.events', array_filter(['filter' => $f === 'all' ? null : $f, 'q' => $q ?: null])) }}" @if ($filter === $f) aria-current="page" @endif>{{ __('content.filter_'.$f) }}@if (isset($counts[$f])) {{ $counts[$f] }}@endif</a>
         @endforeach
         <x-button :href="route('admin.series.create')" variant="primary">{{ __('content.series_add') }}</x-button>
     </form>
 
-    <div class="table-wrap">
+    <h2 class="board-h2">{{ __('content.series_list') }}</h2>
+    <div class="card board-table">
         <table class="table">
-            <thead><tr><th>{{ __('content.col_series') }}</th><th>{{ __('content.col_next') }}</th><th>{{ __('content.col_events') }}</th><th></th></tr></thead>
+            <thead><tr><th>{{ __('content.col_series') }}</th><th>{{ __('content.col_next') }}</th><th>{{ __('content.col_events') }}</th><th>{{ __('content.col_status') }}</th><th></th></tr></thead>
             <tbody>
                 @forelse ($series as $item)
                     <tr>
@@ -23,16 +24,16 @@
                             <strong>{{ $item->title }}</strong><br>
                             <span class="t-small t-muted">{{ $item->region->name }}@if ($item->category) ・ {{ $item->category->name }}@endif ・ {{ $item->recurrence->label() }}</span>
                         </td>
-                        <td>{{ isset($nextDates[$item->id]) ? \Illuminate\Support\Carbon::parse($nextDates[$item->id])->isoFormat('M/D(ddd)') : __('content.none') }}</td>
+                        <td><a class="plain-link" href="{{ route('admin.events', array_filter(['series' => $item->id, 'filter' => $filter === 'all' ? null : $filter])) }}">{{ isset($nextDates[$item->id]) ? \Illuminate\Support\Carbon::parse($nextDates[$item->id])->isoFormat('M/D(ddd)') : __('content.none') }}</a></td>
                         <td>{{ __('content.events_count', ['count' => $item->events_count]) }}</td>
+                        <td>@php($noNext = $item->recurrence === \App\Enums\Recurrence::Yearly && ! isset($nextDates[$item->id]))@if ($noNext)<span class="status-tag is-warn">{{ __('content.tag_no_next') }}</span>@else<span class="status-tag is-ok">{{ __('content.tag_public') }}</span>@endif</td>
                         <td class="actions">
-                            <a class="btn btn-sm" href="{{ route('admin.events', array_filter(['series' => $item->id, 'filter' => $filter === 'all' ? null : $filter])) }}">{{ __('content.events_show') }}</a>
                             <a class="btn btn-sm" href="{{ route('admin.series.edit', $item) }}">{{ __('content.edit') }}</a>
                             <a class="btn btn-sm" href="{{ route('admin.events.create', ['series' => $item->id]) }}">{{ __('content.event_add') }}</a>
                         </td>
                     </tr>
                 @empty
-                    <tr><td colspan="4" class="t-muted">{{ __('content.empty') }}</td></tr>
+                    <tr><td colspan="5" class="t-muted">{{ __('content.empty') }}</td></tr>
                 @endforelse
             </tbody>
         </table>
@@ -40,7 +41,7 @@
     {{ $series->links() }}
 
     @if ($selected)
-        <section class="card" aria-labelledby="detail-title">
+        <section class="card board-card" aria-labelledby="detail-title">
             <h2 class="t-h2" id="detail-title">{{ __('content.events_of', ['title' => $selected->title]) }}</h2>
             <div class="table-wrap">
                 <table class="table">

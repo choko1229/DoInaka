@@ -22,6 +22,7 @@ final class DashboardController extends Controller
         return view('admin.dashboard', [
             'warnings' => $warnings->all(),
             'counts' => $stats->counts(),
+            'board' => $stats->board(),
             'recent' => $stats->recentOperations(),
             // AI の今日の使用回数(UTC の日付。OpenRouter のリセットに合わせる)と、制限エラーで止まっていること
             'cron' => ['mode' => $cron->mode(), 'lastRun' => $cron->lastRun(), 'lastWeb' => $cron->lastWebRun(), 'result' => $cron->lastResult()],
