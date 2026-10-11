@@ -22,18 +22,109 @@ final class RegionOutline
     private const PAD = 16;
 
     /**
-     * @return array{rings: list<list<array{0: float, 1: float}>>, real: bool}|null 図の中の点の並び(リングごと)と、実際の形か(false は略図)
+     * @return array{rings: list<list<array{0: float, 1: float}>>, inner: list<list<array{0: float, 1: float}>>, real: bool}|null 図の中の点の並び(リングごと)・合併前の町の輪郭(点線)・実際の形か(false は略図)
      */
     public function shape(Region $region): ?array
     {
         $real = $this->realRings($region);
         if ($real !== null) {
-            return ['rings' => $this->fit($real), 'real' => true];
+            // 図の大きさは、主な部分(最大の面積の 30% 以上のリング)で決める。離れた小さな島で、本土が小さくなりすぎないように。
+            // 図の外に出る小さなリングは省く
+            $main = $this->mainRings($real);
+            $inner = $this->formerRings($region);
+
+            return ['rings' => $this->inFrame($this->fit($real, $main)), 'inner' => $this->inFrame($this->fit($inner, $main)), 'real' => true];
         }
 
         $points = $this->points($region);
 
-        return $points === null ? null : ['rings' => [$points], 'real' => false];
+        return $points === null ? null : ['rings' => [$points], 'inner' => [], 'real' => false];
+    }
+
+    /**
+     * 主な部分のリング(最大の面積の 30% 以上)。
+     *
+     * @param  list<list<array{0: float, 1: float}>>  $rings
+     * @return list<list<array{0: float, 1: float}>>
+     */
+    private function mainRings(array $rings): array
+    {
+        $areas = array_map(function (array $ring): float {
+            $sum = 0.0;
+            for ($i = 0, $n = count($ring); $i < $n - 1; $i++) {
+                $sum += $ring[$i][0] * $ring[$i + 1][1] - $ring[$i + 1][0] * $ring[$i][1];
+            }
+
+            return abs($sum / 2);
+        }, $rings);
+        $largest = $areas === [] ? 0.0 : max($areas);
+
+        $main = [];
+        foreach ($rings as $i => $ring) {
+            if ($areas[$i] >= $largest * 0.3) {
+                $main[] = $ring;
+            }
+        }
+
+        return $main === [] ? $rings : $main;
+    }
+
+    /**
+     * 図の枠(280×150)に、すっかり収まらないリングは省く。
+     *
+     * @param  list<list<array{0: float, 1: float}>>  $rings
+     * @return list<list<array{0: float, 1: float}>>
+     */
+    private function inFrame(array $rings): array
+    {
+        return array_values(array_filter($rings, function (array $ring): bool {
+            foreach ($ring as [$x, $y]) {
+                if ($x < 0 || $x > self::WIDTH || $y < 0 || $y > self::HEIGHT) {
+                    return false;
+                }
+            }
+
+            return true;
+        }));
+    }
+
+    /**
+     * 合併前の町の輪郭(点線で描く)。合併前の町が2つ以上、データにあるときだけ。
+     *
+     * @return list<list<array{0: float, 1: float}>>
+     */
+    private function formerRings(Region $region): array
+    {
+        $code = (string) $region->code;
+        $file = resource_path('data/outlines/'.substr($code, 0, 2).'.json');
+        if (strlen($code) !== 6 || ! is_file($file)) {
+            return [];
+        }
+        $data = json_decode((string) file_get_contents($file), true);
+        $former = is_array($data) && is_array($data['former'] ?? null) ? $data['former'] : [];
+
+        $rings = [];
+        $found = 0;
+        foreach ($region->children()->whereNotNull('abolished_on')->pluck('name') as $name) {
+            $towns = is_string($name) && is_array($former[$name] ?? null) ? $former[$name] : [];
+            if ($towns === []) {
+                continue;
+            }
+            $found++;
+            foreach ($towns as $ring) {
+                $points = [];
+                foreach (is_array($ring) ? $ring : [] as $p) {
+                    if (is_array($p) && is_numeric($p[0] ?? null) && is_numeric($p[1] ?? null)) {
+                        $points[] = [(float) $p[0], (float) $p[1]];
+                    }
+                }
+                if (count($points) >= 4) {
+                    $rings[] = $points;
+                }
+            }
+        }
+
+        return $found >= 2 ? $rings : [];
     }
 
     /**
@@ -99,16 +190,17 @@ final class RegionOutline
     }
 
     /**
-     * 経度・緯度のリングを、280×150 の図に収める(縦横の比をそろえる)。
+     * 経度・緯度のリングを、280×150 の図に収める(縦横の比をそろえる)。$basis があれば、その範囲で収める(外周の図に、内側の線を重ねるため)。
      *
      * @param  list<list<array{0: float, 1: float}>>  $rings
+     * @param  list<list<array{0: float, 1: float}>>|null  $basis
      * @return list<list<array{0: float, 1: float}>>
      */
-    private function fit(array $rings): array
+    private function fit(array $rings, ?array $basis = null): array
     {
         $xs = [];
         $ys = [];
-        foreach ($rings as $ring) {
+        foreach ($basis ?? $rings as $ring) {
             foreach ($ring as [$x, $y]) {
                 $xs[] = $x;
                 $ys[] = $y;

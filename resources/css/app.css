@@ -1123,5 +1123,6 @@ label:has(> input[type='radio']) { display: flex; align-items: center; gap: 8px;
 .outline { margin: 0; padding: 8px; border-radius: 12px; background: var(--surface-sunken); display: grid; gap: 4px; }
 .outline svg { width: 100%; height: auto; display: block; }
 .outline polygon, .outline path { fill: var(--surface); stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; fill-rule: evenodd; }
+.outline path.outline-inner { fill: none; stroke: var(--ink-muted); stroke-width: 1; stroke-dasharray: 3 3; }
 .region-parts { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
 .region-part { display: grid; gap: 4px; font-size: 12px; font-weight: 700; }

@@ -48,7 +48,7 @@ it('形の略図: 次の階層の位置が3つ以上あれば、それを囲む�
         Region::factory()->create(['parent_id' => $pref->id, 'slug' => 'city'.$i, 'name' => '市'.$i, 'lat' => $lat, 'lng' => $lng]);
     }
 
-    $this->get('/kagawa/')->assertOk()->assertSee('class="outline"', false)->assertSee('<path d="M', false)->assertSee('町の位置から作った略図です');
+    $this->get('/kagawa/')->assertOk()->assertSee('class="outline"', false)->assertSee('class="outline-main"', false)->assertSee('町の位置から作った略図です')->assertDontSee('outline-inner', false);
 });
 
 it('形の図: 国土数値情報から作った輪郭のデータがある市区町村は、実際の形を図にして出す(略図ではない)', function (): void {
@@ -56,9 +56,19 @@ it('形の図: 国土数値情報から作った輪郭のデータがある市�
     Region::factory()->create(['parent_id' => $pref->id, 'slug' => 'marugame', 'name' => '丸亀市', 'code' => '372021']);
 
     $response = $this->get('/kagawa/marugame/')->assertOk()->assertSee('国土数値情報(行政区域)をもとにした形です')->assertDontSee('町の位置から作った略図です');
-    preg_match('/<figure class="outline">.*?<path d="([^"]+)"/s', $response->getContent(), $m);
+    preg_match('/<figure class="outline">.*?<path class="outline-main" d="([^"]+)"/s', $response->getContent(), $m);
     // 実際の輪郭は、略図(数点)より多くの点を持つ
     expect(substr_count($m[1] ?? '', 'L'))->toBeGreaterThan(30);
 
     $this->get('/kagawa/')->assertOk()->assertSee('国土数値情報(行政区域)をもとにした形です');
+});
+
+it('形の図: 合併前の町が2つ以上、輪郭のデータにあれば、その境を点線で重ねる', function (): void {
+    $pref = Region::factory()->prefecture()->create(['slug' => 'kagawa', 'name' => '香川県', 'code' => '370002']);
+    $city = Region::factory()->create(['parent_id' => $pref->id, 'slug' => 'marugame', 'name' => '丸亀市', 'code' => '372021']);
+    foreach (['丸亀市' => 'marugame-old', '綾歌町' => 'ayauta', '飯山町' => 'hanzan'] as $name => $slug) {
+        Region::factory()->create(['parent_id' => $city->id, 'slug' => $slug, 'name' => $name, 'abolished_on' => '2005-03-22']);
+    }
+
+    $this->get('/kagawa/marugame/')->assertOk()->assertSee('class="outline-inner"', false)->assertSee('点線は合併前の町の境');
 });

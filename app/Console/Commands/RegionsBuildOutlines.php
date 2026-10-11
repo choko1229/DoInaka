@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Console\Commands;
 
+use App\Models\Region;
 use Illuminate\Console\Command;
 
 /**
@@ -15,7 +16,7 @@ use Illuminate\Console\Command;
  */
 final class RegionsBuildOutlines extends Command
 {
-    protected $signature = 'regions:build-outlines {geojson : 国土数値情報 N03 の GeoJSON のパス} {pref : 都道府県コード(2桁)}';
+    protected $signature = 'regions:build-outlines {geojson : 国土数値情報 N03 の GeoJSON のパス} {pref : 都道府県コード(2桁)} {--former= : 合併前の年の版(N03 の XML。2000年版など)のパス。合併前の町の輪郭(点線)を作る}';
 
     protected $description = '国土数値情報の行政区域から、地域ページの形の図に使う軽い輪郭のデータを作る';
 
@@ -60,6 +61,24 @@ final class RegionsBuildOutlines extends Command
             $out[$code] = $this->prepare($rings, max($e[1] - $e[0], $e[3] - $e[2]) / 200);
         }
 
+        $formerPath = $this->option('former');
+        if (is_string($formerPath) && $formerPath !== '') {
+            $former = $this->formerOutlines($formerPath, $pref);
+            if ($former === null) {
+                $this->error('合併前の版の XML を読めませんでした。');
+
+                return self::FAILURE;
+            }
+            // 地域(合併前の町)に同じ名前があるものだけ残す
+            $names = [];
+            foreach (Region::query()->whereNotNull('abolished_on')->pluck('name') as $name) {
+                if (is_string($name)) {
+                    $names[$name] = true;
+                }
+            }
+            $out['former'] = array_intersect_key($former, $names);
+        }
+
         $dir = resource_path('data/outlines');
         if (! is_dir($dir)) {
             mkdir($dir, 0775, true);
@@ -70,6 +89,92 @@ final class RegionsBuildOutlines extends Command
         $this->info(count($out).' 件を書きました: '.$file.'('.round((int) filesize($file) / 1024, 1).' KB)');
 
         return self::SUCCESS;
+    }
+
+    /**
+     * 合併前の年の版(N03 の XML。曲線 Curve と、向きを逆にする OrientableCurve と、面 Surface をつなぐ形式)から、
+     * 町ごとの外周のリングを作る(簡略化済み)。キーは町の名前。
+     *
+     * @return array<string, list<list<array{0: float, 1: float}>>>|null
+     */
+    private function formerOutlines(string $path, string $pref): ?array
+    {
+        $xml = is_file($path) ? (string) file_get_contents($path) : '';
+        if ($xml === '') {
+            return null;
+        }
+
+        /** @var array<string, list<array{0: float, 1: float}>> $curves */
+        $curves = [];
+        if (preg_match_all('/<gml:Curve gml:id="(c\d+)">.*?<gml:posList>(.*?)<\/gml:posList>/s', $xml, $m, PREG_SET_ORDER) > 0) {
+            foreach ($m as $row) {
+                $numbers = preg_split('/\s+/', trim($row[2])) ?: [];
+                $points = [];
+                for ($i = 0; $i + 1 < count($numbers); $i += 2) {
+                    // posList は「緯度 経度」の順
+                    $points[] = [(float) $numbers[$i + 1], (float) $numbers[$i]];
+                }
+                $curves[$row[1]] = $points;
+            }
+        }
+
+        /** @var array<string, array{0: string, 1: bool}> $oriented 向きつきの曲線: id => [元の曲線, 逆向きか] */
+        $oriented = [];
+        if (preg_match_all('/<gml:OrientableCurve gml:id="(_c\d+)" orientation="([+-])">\s*<gml:baseCurve xlink:href="#(c\d+)"\/>/s', $xml, $m, PREG_SET_ORDER) > 0) {
+            foreach ($m as $row) {
+                $oriented[$row[1]] = [$row[3], $row[2] === '-'];
+            }
+        }
+
+        /** @var array<string, list<array{0: float, 1: float}>> $surfaces */
+        $surfaces = [];
+        if (preg_match_all('/<gml:Surface gml:id="(a\d+)">(.*?)<\/gml:Surface>/s', $xml, $m, PREG_SET_ORDER) > 0) {
+            foreach ($m as $row) {
+                $ring = [];
+                preg_match_all('/xlink:href="#(_?c\d+)"/', $row[2], $members);
+                foreach ($members[1] as $id) {
+                    [$base, $reverse] = str_starts_with($id, '_') ? ($oriented[$id] ?? [null, false]) : [$id, false];
+                    $points = $base !== null ? ($curves[$base] ?? []) : [];
+                    if ($reverse) {
+                        $points = array_reverse($points);
+                    }
+                    // つなぎ目の点が重なるときは、片方を省く
+                    if ($ring !== [] && $points !== [] && $ring[count($ring) - 1] === $points[0]) {
+                        array_shift($points);
+                    }
+                    array_push($ring, ...$points);
+                }
+                if (count($ring) >= 3) {
+                    if ($ring[0] !== $ring[count($ring) - 1]) {
+                        $ring[] = $ring[0];
+                    }
+                    $surfaces[$row[1]] = $ring;
+                }
+            }
+        }
+
+        $result = [];
+        if (preg_match_all('/<ksj:AdministrativeBoundary .*?<ksj:bounds xlink:href="#(a\d+)"\/>.*?<ksj:cityName>(.*?)<\/ksj:cityName>.*?<ksj:administrativeAreaCode[^>]*>(\d+)</s', $xml, $m, PREG_SET_ORDER) > 0) {
+            foreach ($m as $row) {
+                if (! str_starts_with($row[3], $pref) || ! isset($surfaces[$row[1]])) {
+                    continue;
+                }
+                $result[$row[2]][] = $surfaces[$row[1]];
+            }
+        }
+
+        // 町ごとに、簡略化する(町の幅の 1/100。点線なので粗くてよい)
+        return array_map(fn (array $rings): array => $this->prepare($rings, $this->tolerance($rings, 100)), $result);
+    }
+
+    /**
+     * @param  list<list<array{0: float, 1: float}>>  $rings
+     */
+    private function tolerance(array $rings, int $divisor): float
+    {
+        $e = $this->extent($rings);
+
+        return max($e[1] - $e[0], $e[3] - $e[2]) / $divisor;
     }
 
     /**
