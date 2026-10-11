@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Member;
 
 use App\Enums\FavoriteList;
+use App\Enums\SettingKey;
+use App\Enums\SubmissionStatus;
+use App\Enums\SubmissionType;
 use App\Exceptions\UserChangeRefused;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
@@ -15,6 +18,8 @@ use App\Models\Submission;
 use App\Models\User;
 use App\Models\Visit;
 use App\Services\Admin\UserWithdrawal;
+use App\Services\Setting\SettingsService;
+use App\Services\Submission\SubmissionStateMachine;
 use App\Services\Url\PublicLinks;
 use App\Support\PageMeta;
 use App\Support\Text;
@@ -33,20 +38,36 @@ final class MyPageController extends Controller
 {
     private const TYPES = ['event' => Event::class, 'spot' => Spot::class, 'article' => Article::class];
 
-    public function index(Request $request): View
+    /** 自分の投稿(デザイン MyPagePC・MyPageSP): 左にプロフィールの札、右に状態つきの一覧 */
+    public function index(Request $request, PublicLinks $links): View
     {
         $user = $this->user($request);
+        $types = [SubmissionType::Tip, SubmissionType::Spot, SubmissionType::Article];
+        $submissions = Submission::query()->where('user_id', $user->id)->whereIn('type', $types)->latest('id')->limit(50)->get();
+        $min = max(1, app(SettingsService::class)->int(SettingKey::ReviewAutoApproveMinApproved));
 
         return $this->page('mypage.index', [
             'user' => $user,
-            'counts' => [
-                'favorite' => Favorite::query()->where('user_id', $user->id)->where('list', FavoriteList::Favorite)->count(),
-                'want_to_go' => Favorite::query()->where('user_id', $user->id)->where('list', FavoriteList::WantToGo)->count(),
+            'submissions' => $submissions,
+            'links' => $links,
+            'stats' => [
+                'posted' => Submission::query()->where('user_id', $user->id)->whereIn('type', $types)->count(),
+                'published' => $user->approved_count,
                 'visited' => Visit::query()->where('user_id', $user->id)->count(),
-                'submissions' => Submission::query()->where('user_id', $user->id)->count(),
+                'remaining' => max(0, $min - $user->approved_count),
+                'ratio' => min(100, (int) round($user->approved_count / $min * 100)),
             ],
-            'recent' => Submission::query()->where('user_id', $user->id)->latest('id')->limit(5)->get(),
         ]);
+    }
+
+    /** 審査待ちの投稿を、本人が取り下げる(却下ではなく「取り下げ」の理由で閉じる) */
+    public function withdrawSubmission(Request $request, int $id, SubmissionStateMachine $machine): RedirectResponse
+    {
+        $submission = Submission::query()->where('user_id', $this->user($request)->id)->findOrFail($id);
+        abort_unless(in_array($submission->status, [SubmissionStatus::AiPending, SubmissionStatus::AiDeferred, SubmissionStatus::InReview], true), 404);
+        $machine->transition($submission, SubmissionStatus::Rejected, null, (string) __('mypage.withdrawn_by_author'));
+
+        return redirect('/mypage/')->with('status', __('mypage.submission_withdrawn'));
     }
 
     public function submissions(Request $request): View

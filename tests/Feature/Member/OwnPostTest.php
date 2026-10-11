@@ -75,3 +75,23 @@ it('他人が編集の審査待ちを装って差し替えようとしても、�
     expect(fn () => app(ReviewService::class)->approve($submission, User::factory()->admin()->create()))->toThrow(HttpException::class);
     expect($this->spot->refresh()->title)->toBe('古い題名');
 });
+
+it('マイページ: 自分の投稿が状態つきで並ぶ(審査待ち・公開中・見送りの理由)。審査待ちは取り下げられる', function (): void {
+    $this->actingAs($this->member)->post('/post/spot/', spotInput(['title' => '審査待ちの岩']))->assertRedirect('/post/done/');
+    $pending = Submission::query()->latest('id')->firstOrFail();
+    $pending->forceFill(['status' => SubmissionStatus::InReview])->save();
+
+    $rejected = new Submission;
+    $rejected->forceFill(['receipt_no' => 'T-2', 'type' => 'article', 'action' => 'create', 'payload' => ['title' => '見送りの記事', 'body' => 'x'], 'user_id' => $this->member->id, 'status' => 'rejected', 'reject_reason' => '場所をぼかしてください', 'consented_at' => now(), 'terms_version' => 'x'])->save();
+
+    $this->get('/mypage/')->assertOk()->assertSee('審査待ちの岩')->assertSee('審査待ち')->assertSee('取り下げる')
+        ->assertSee('見送りの記事')->assertSee('見送り')->assertSee('場所をぼかしてください')->assertSee('書きなおして投稿')
+        ->assertSee("/users/{$this->member->id}/", false);
+
+    $this->post("/mypage/submissions/{$pending->id}/withdraw/")->assertRedirect('/mypage/');
+    expect($pending->refresh()->status)->toBe(SubmissionStatus::Rejected)->and($pending->reject_reason)->toBe('本人が取り下げました');
+
+    // 他の人の投稿は取り下げられない
+    $other = User::factory()->create();
+    $this->actingAs($other)->post("/mypage/submissions/{$rejected->id}/withdraw/")->assertNotFound();
+});

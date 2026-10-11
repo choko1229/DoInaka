@@ -895,3 +895,25 @@ main.is-focus > .container { width: 100%; }
 .about-main .legal-body { margin-top: 16px; }
 .about-main .chip-row { margin-top: 24px; }
 .about-facts { background: transparent; padding: 0; gap: 12px 16px; }
+/* マイページ(デザイン: MyPagePC / MyPageSP) */
+.mypage-grid { display: grid; gap: 24px; align-items: start; margin-top: 8px; }
+@media (min-width: 1024px) { .mypage-grid { grid-template-columns: 260px minmax(0, 1fr); } }
+.mypage-who { display: flex; gap: 12px; align-items: center; }
+.avatar-lg { width: 56px; height: 56px; font-size: 20px; }
+.mypage-name { display: block; font-size: 18px; }
+.mypage-counts { margin: 0; }
+.meter { height: 8px; border-radius: 4px; background: var(--surface-sunken); overflow: hidden; }
+.meter span { display: block; height: 100%; background: var(--accent); }
+.mypage-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 12px; }
+.mypage-rows { display: grid; gap: 12px; }
+.mypage-row { padding: 16px; display: grid; gap: 6px; }
+.mypage-row-meta { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.mypage-row-title { margin: 0; font-size: 18px; line-height: 28px; }
+.mypage-row p { margin: 0; }
+.mypage-row-actions { display: flex; flex-wrap: wrap; gap: 16px; }
+.mypage-row-actions form { margin: 0; }
+.status-tag { display: inline-block; padding: 0 10px; border: 1px solid currentColor; border-radius: var(--radius-pill); font-size: 12px; line-height: 20px; font-weight: 700; }
+.status-tag.is-pending { color: var(--warning); }
+.status-tag.is-published { color: var(--success); }
+.status-tag.is-rejected { color: var(--danger); }
+.link-button { border: 0; background: none; padding: 0; font: inherit; color: var(--accent); text-decoration: underline; cursor: pointer; }
