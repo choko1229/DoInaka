@@ -45,6 +45,7 @@ final class SettingsController extends Controller
             'settings' => $this->settings,
             'modelKeys' => $tab === 'ai' ? SettingsCatalog::modelKeys() : [],
             'freeModels' => $this->models->all(),
+            'modelsError' => $tab === 'ai' ? $this->models->lastError() : null,
             'cron' => $tab === 'cron' ? ['mode' => $cron->mode(), 'lastRun' => $cron->lastRun(), 'lastWeb' => $cron->lastWebRun(), 'result' => $cron->lastResult(), 'failures' => $cron->failures()] : null,
         ]);
     }
@@ -54,7 +55,13 @@ final class SettingsController extends Controller
     {
         $count = $this->models->refresh();
 
-        return redirect()->route('admin.settings', ['tab' => 'ai'])->with($count > 0 ? 'status' : 'error', $count > 0 ? __('settings.models_refreshed', ['count' => $count]) : __('settings.models_refresh_failed'));
+        $reason = $this->models->lastError();
+        $failed = $count === 0 || $reason !== null;
+
+        return redirect()->route('admin.settings', ['tab' => 'ai'])->with(
+            $failed ? 'error' : 'status',
+            $failed ? __('settings.models_refresh_failed').($reason !== null ? __('settings.models_refresh_reason', ['reason' => $reason]) : '') : __('settings.models_refreshed', ['count' => $count]),
+        );
     }
 
     public function update(Request $request, string $tab): RedirectResponse

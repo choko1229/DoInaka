@@ -59,7 +59,7 @@
         @if ($tab === 'ai')
             <h2 class="t-h2">{{ __('settings.models_title') }}</h2>
             <p class="t-small t-muted">{{ __('settings.models_help') }}</p>
-            @if ($freeModels === [])<p class="alert alert-warning" role="status">{{ __('settings.models_unknown') }}</p>@endif
+            @if ($freeModels === [])<p class="alert alert-warning" role="status">{{ __('settings.models_unknown') }}@if ($modelsError ?? null) {{ __('settings.models_refresh_reason', ['reason' => $modelsError]) }}@endif</p>@endif
             <form method="post" action="{{ route('admin.settings.models.refresh') }}">@csrf<button class="btn btn-sm" type="submit">{{ __('settings.models_refresh') }}</button> <span class="t-small t-muted">{{ __('settings.models_refresh_help') }}</span></form>
             @foreach ($modelKeys as $purpose => $key)
                 @php($current = array_values($settings->array($key)))
