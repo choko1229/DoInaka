@@ -84,3 +84,8 @@ it('robots.txt は管理画面を除き、サイトマップを案内する', fu
 
     expect($body)->toContain('Disallow: /admin/')->and($body)->toContain('Sitemap: http://localhost/sitemap.xml');
 });
+
+it('public/robots.txt(静的ファイル)を置かない: Web サーバーが先に返してしまい、robots.txt のルート(公開前モードの全体禁止・サイトマップの案内)が効かなくなる', function (): void {
+    expect(file_exists(public_path('robots.txt')))->toBeFalse();
+    expect(file_exists(public_path('sitemap.xml')))->toBeFalse();
+});

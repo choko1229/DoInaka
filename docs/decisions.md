@@ -331,3 +331,12 @@
 | 設置を https で行えば | インストーラーは、そのときの URL(https)を APP_URL に書くので、起きない。**まず https で /install/ を開く**(operations.md) |
 | テスト | `CanonicalUrlTest`: APP_URL が http のままでも、https のアクセスは転送されない(正規のホスト)・www や共有ドメインは https の正規 URL へ・http のアクセスは従来どおり、転送のくり返し(どの入口でも、転送先は転送されない)、管理画面の警告。直す前は失敗することを確認した |
 | 当面の回避(復旧) | 運営者が、サーバーの `.env` の `APP_URL=` を https:// にする(FTP・ファイルマネージャー。コードの更新は不要。キャッシュの設定があれば、`bootstrap/cache/config.php` を消す)。ブラウザ側は、Cookie の削除では直らない(HSTS は https だけを使う指示)。直ったあと、新しい版(このコードの修正)に更新する |
+
+## 2026-10-11 静的な robots.txt が、ルートを隠していた
+
+| 項目 | 決めたこと |
+| --- | --- |
+| 症状 | 本番で公開前モードの ON のとき、obots.txt が User-agent: * / Disallow:(空=すべて許可)を返していた。コードのルートは Disallow: /(公開前モード)や、サイトマップの案内を返すはずだった |
+| 原因 | Laravel の初期の public/robots.txt(空の Disallow)が、フェーズ0から残っていて、Web サーバー(nginx・Apache)が、ファイルがあればそれを先に返す。ルートに届かなかった(テストは、ルートを直接呼ぶので気付けなかった) |
+| 直し方 | public/robots.txt を消した。obots.txt と sitemap.xml は、ルート(SeoController)だけが返す。ファイルを置かないことを、テストで守る(SeoTest) |
+| 影響 | 公開前モードの間は、ページ自体が 503・noindex なので、検索には載らなかった。公開(オフ)にしたあとは、Disallow: /admin/ などと Sitemap: の行が出るようになる |
