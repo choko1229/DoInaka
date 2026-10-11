@@ -134,3 +134,6 @@
 - [x] 確認スクリプト・dkcheck フォルダ・ログ・cron の登録の削除(対応済み)
 
 - [ ] 地域ページの人口・面積: 運営者が国勢調査・国土地理院の数字を CSV にして php artisan regions:import-stats で取り込む(列は docs/decisions.md 2026-10-11)
+
+- [ ] 本番の OpenRouter: 設定の画面でキーを入れ、「モデル一覧を取得」を押して、用途ごとにモデルを選ぶ。無料モデルは応答が遅いことがあるので、タイムアウトを60〜150秒にしておく(開発環境では30秒だと地域ページの紹介文がタイムアウトした)
+- [ ] 管理画面(PC・スマホ)を、docs/design/png の AdminPC・AdminSP などと見比べる。残りの差は docs/design-diff.md

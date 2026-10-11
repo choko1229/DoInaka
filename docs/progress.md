@@ -4,7 +4,7 @@
 
 ## 今のフェーズ
 
-フェーズ0〜8 すべて完了。本番で見つかった問題の修正(設置前の /install、コントラスト、アクセスで動く予約処理、AI の状況)も完了。最新の【BETA】は v26.10.5(人の確認は docs/manual-checks.md)
+フェーズ0〜8: すべて完了。フェーズ9(本番で見つけた問題の修正と、デザインとの差を埋める作業): PR #26〜#38 まで完了。公開側(トップ・一覧・詳細・地域・県・地図・投稿・ログイン・エラー・運営者情報・マイページ)と管理画面の骨格・主な画面をデザインに合わせた。要件の抜け(F-A03・F-A05・F-P06 の人口面積・F-P05 の関連・F-P08)を補った。実機の OpenRouter で、投稿の判定と地域ページの紹介文を確かめた。要件と実装の対応は docs/requirements-trace.md、画面の差は docs/design-diff.md。
 
 ## 終わったフェーズ
 
@@ -22,8 +22,10 @@
 
 ## 次にやること
 
-- 本番(kagoya)に【BETA】v26.10.5 を置いて、docs/manual-checks.md の「コントラスト」「アクセスで動く予約処理」「AI の状況」「フェーズ8で追加」を中心に、人の確認を進める(本番の画面は、運営者の許可があるときだけ、Claude in Chrome で見るだけにする)
-- 問題がなければ、正式版は人がタグ(vYY.M.N)を push して作る(Claude Code は作らない)
+- 本番(kagoya)に最新の【BETA】を置いて、docs/manual-checks.md の確認をする(人の作業)。OpenRouter のキーとモデルを設定画面で入れる(モデル一覧は設定で取得できる)
+- 地域ページの人口・面積の CSV を用意して php artisan regions:import-stats で取り込む。自治体の公式サイトの URL(regions.official_url)を入れて、出典2件以上にする
+- docs/design-diff.md の「差あり」「未」の画面を順に詰める(AdminMasters・Logs・Ads・Update・イベント編集・スポット編集、PC・スマホ)
+- 公開前モード(site.prelaunch)をオフにするのは、運営者が決める
 
 ## 環境メモ
 

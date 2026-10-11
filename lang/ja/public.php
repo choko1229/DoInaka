@@ -110,6 +110,7 @@ return [
     'favorite' => 'お気に入り',
     'visited' => '行った!',
     'want_to_go' => '行きたい',
+    'article_related' => '関連するスポット・イベント',
     'for_you' => 'あなたへのおすすめ',
     'for_you_note' => 'お気に入りや「行った!」から選んでいます',
     'author_title' => ':nameさんの投稿',

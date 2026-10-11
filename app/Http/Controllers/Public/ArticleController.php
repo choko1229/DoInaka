@@ -7,6 +7,8 @@ namespace App\Http\Controllers\Public;
 use App\Contracts\SearchEngine;
 use App\Enums\CategoryTarget;
 use App\Models\Article;
+use App\Models\Event;
+use App\Models\Spot;
 use App\Services\Public\SearchQueryFactory;
 use App\Services\Url\UrlCanonicalizer;
 use Illuminate\Contracts\View\View;
@@ -51,6 +53,29 @@ final class ArticleController extends PublicController
             'pref' => $pref,
             'article' => $article,
             'shareUrl' => app(UrlCanonicalizer::class)->shareUrl($this->links->article($article)),
+            'related' => $this->related($article),
         ]);
+    }
+
+    /**
+     * 記事に結びつけた、公開中のスポット・イベント(F-P05)。
+     *
+     * @return list<Spot|Event>
+     */
+    private function related(Article $article): array
+    {
+        $out = [];
+        foreach ($article->relations as $relation) {
+            $model = match ($relation->related_type) {
+                'spot' => Spot::query()->where('is_published', true)->with(['region.parent', 'category', 'tags', 'media'])->find($relation->related_id),
+                'event' => Event::query()->where('is_published', true)->with(['region.parent', 'category', 'tags', 'media'])->find($relation->related_id),
+                default => null,
+            };
+            if ($model !== null) {
+                $out[] = $model;
+            }
+        }
+
+        return $out;
     }
 }
