@@ -21,7 +21,7 @@
     <div class="event-card-body">
         @if ($date || $status !== 'scheduled')
             <div>
-                @if ($date)<span class="event-card-date {{ $status === 'cancelled' ? 'is-cancelled' : '' }}">@if ($status === 'cancelled'){{ __('layout.status_cancelled') }}・@endif{{ $date }}</span>@endif
+                @if ($date || $status === 'cancelled')<span class="event-card-date {{ $status === 'cancelled' ? 'is-cancelled' : '' }}">@if ($status === 'cancelled'){{ __('layout.status_cancelled') }}@if ($date)・@endif @endif{{ $date }}</span>@endif
                 @if ($status === 'ended')<span class="event-card-status">{{ __('layout.status_ended') }}</span>@endif
                 @if ($status === 'postponed')<span class="event-card-status postponed">{{ __('layout.status_postponed') }}</span>@endif
                 @if ($status === 'undecided')<span class="event-card-status">{{ __('layout.status_undecided') }}</span>@endif
