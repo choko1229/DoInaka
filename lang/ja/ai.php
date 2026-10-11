@@ -39,4 +39,6 @@ return [
     'suggest_button' => 'AIに提案させる',    'usage_title' => 'AI の使用状況',
     'usage_today' => '今日(UTC)の呼び出し: :count 回(UTC 0時=日本時間9時にリセットされます)',
     'spam' => 'AIの判定に失敗したため、人の審査に回しました。',
+    'draft_today' => '今日のAI :count回・管理者の操作は最優先',
+    'draft_recent' => '最近の下書き',
 ];

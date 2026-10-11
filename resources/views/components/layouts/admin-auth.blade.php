@@ -1,7 +1,7 @@
 @props(['step' => null])
 <x-layouts.base :title="__('auth.admin_login_title')" :noindex="true">
     <main id="main" class="admin-auth">
-        @if ($step !== null)
+        @if ($step !== null && $step > 1)
             <ol class="auth-steps" aria-label="{{ __('auth.two_factor_title') }}">
                 @foreach ([1 => 'step_login', 2 => 'step_code', 3 => 'step_setup', 4 => 'step_recovery'] as $number => $label)
                     <li @if ($number === $step) aria-current="step" @endif>{{ __('auth.'.$label) }}</li>

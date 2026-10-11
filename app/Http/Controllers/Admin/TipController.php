@@ -24,11 +24,40 @@ use Illuminate\Http\UploadedFile;
  */
 final class TipController extends Controller
 {
-    public function index(): View
+    public function index(Request $request): View
     {
+        $kind = in_array($request->query('kind'), ['url', 'photo'], true) ? (string) $request->query('kind') : 'all';
+        $open = [SubmissionStatus::InReview, SubmissionStatus::AiPending, SubmissionStatus::AiDeferred];
+        $base = fn () => Submission::query()->where('type', SubmissionType::Tip);
+        $waiting = $base()->whereIn('status', $open);
+
+        $query = $base()->whereIn('status', $open)->with('user')->withCount('media')->orderBy('id');
+        if ($kind === 'url') {
+            $query->whereNotNull('payload->source_url');
+        } elseif ($kind === 'photo') {
+            $query->whereNull('payload->source_url');
+        }
+        $tips = $query->paginate(20)->withQueryString();
+
+        $selected = $request->filled('id') ? $base()->with(['media.original', 'user'])->find($request->integer('id')) : null;
+        $selected ??= $tips->first();
+        $selected?->loadMissing(['media.original', 'user']);
+
+        $month = now()->startOfMonth();
+
         return view('admin.tips.index', [
-            'tips' => Submission::query()->where('type', SubmissionType::Tip)->whereIn('status', [SubmissionStatus::InReview, SubmissionStatus::AiPending, SubmissionStatus::AiDeferred])
-                ->withCount('media')->orderBy('id')->paginate(20),
+            'tips' => $tips,
+            'selected' => $selected,
+            'kind' => $kind,
+            'series' => EventSeries::query()->orderByDesc('id')->limit(100)->get(['id', 'title']),
+            'counts' => [
+                'waiting' => (clone $waiting)->count(),
+                'url' => (clone $waiting)->whereNotNull('payload->source_url')->count(),
+                'photo' => (clone $waiting)->whereNull('payload->source_url')->count(),
+                'reading' => $base()->whereIn('status', [SubmissionStatus::AiPending, SubmissionStatus::AiDeferred])->count(),
+                'published' => $base()->where('status', SubmissionStatus::Approved)->where('updated_at', '>=', $month)->count(),
+                'dismissed' => $base()->whereIn('status', [SubmissionStatus::Rejected, SubmissionStatus::AutoRejected])->where('updated_at', '>=', $month)->count(),
+            ],
         ]);
     }
 

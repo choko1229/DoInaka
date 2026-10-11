@@ -8,8 +8,10 @@ use App\Enums\AuditAction;
 use App\Enums\Recurrence;
 use App\Exceptions\AiRateLimited;
 use App\Http\Controllers\Controller;
+use App\Models\Event;
 use App\Models\EventSeries;
 use App\Models\User;
+use App\Services\Ai\AiUsage;
 use App\Services\Ai\DraftService;
 use App\Services\Audit\AuditLogger;
 use App\Services\Content\ContentService;
@@ -28,7 +30,7 @@ final class DraftController extends Controller
 {
     public function index(): View
     {
-        return view('admin.drafts.index', ['result' => null, 'url' => '', 'groups' => app(RegionOptions::class)->grouped()]);
+        return view('admin.drafts.index', ['result' => null, 'url' => '', 'groups' => app(RegionOptions::class)->grouped(), 'aiToday' => app(AiUsage::class)->today(), 'recent' => Event::query()->where('is_published', false)->latest('id')->limit(3)->get()]);
     }
 
     public function read(Request $request, DraftService $drafts): View
@@ -42,7 +44,7 @@ final class DraftController extends Controller
             $result = ['status' => 'limited', 'reason' => __('ai.rate_limited_retry', ['time' => $e->retryAt->setTimezone('Asia/Tokyo')->format('m/d H:i')])];
         }
 
-        return view('admin.drafts.index', ['result' => $result, 'url' => $url, 'groups' => app(RegionOptions::class)->grouped()]);
+        return view('admin.drafts.index', ['result' => $result, 'url' => $url, 'groups' => app(RegionOptions::class)->grouped(), 'aiToday' => app(AiUsage::class)->today(), 'recent' => Event::query()->where('is_published', false)->latest('id')->limit(3)->get()]);
     }
 
     /** 下書きを、非公開のイベントとして保存する(情報元は、読んだページ)。公開は編集画面で、確認してから */

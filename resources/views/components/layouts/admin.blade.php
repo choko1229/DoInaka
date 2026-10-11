@@ -25,7 +25,10 @@
             <div class="admin-brand">
                 <x-logo :size="24" :href="route('admin.dashboard')" />
                 <span class="admin-badge">{{ __('layout.admin_badge') }}</span>
+                <label class="admin-menu-button" for="admin-menu-toggle" aria-label="{{ __('layout.menu') }}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></label>
             </div>
+            <input type="checkbox" id="admin-menu-toggle" class="admin-menu-check">
+            <div class="admin-menu-body">
             @php($n = auth()->check() ? app(\App\Services\Admin\DashboardStats::class)->nav() : ['review' => 0, 'corrections' => 0, 'tips' => 0, 'rejected' => 0, 'undecided' => 0])
             <ul>
                 <li><a href="{{ route('admin.dashboard') }}" @if ($current === 'dashboard') aria-current="page" @endif>{{ __('layout.admin_dashboard') }}</a></li>
@@ -67,6 +70,7 @@
                     <form method="post" action="{{ route('admin.two-factor.reset') }}" data-confirm="{{ __('auth.account_reset_confirm') }}">@csrf<button type="submit" class="link-button">{{ __('auth.account_reset_two_factor') }}</button></form>
                 </div>
             @endauth
+            </div>
         </nav>
         <main id="main" class="admin-main">
             @if (session('status'))
