@@ -23,6 +23,9 @@ final class GenerateRegionIntro implements ShouldQueue
 
     public int $tries = 1;
 
+    /** 下書きとファクトチェックの2回、大きなモデルを呼ぶ。キューの既定(60秒)で打ち切られないようにする */
+    public int $timeout = 300;
+
     public function __construct(public readonly int $regionId) {}
 
     public function handle(RegionIntroGenerator $generator): void

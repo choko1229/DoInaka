@@ -23,6 +23,9 @@ final class RunCrawlSource implements ShouldQueue
 
     public int $tries = 3;
 
+    /** 大きなモデルは1ページの解析に数十秒かかる。キューの既定(60秒)で打ち切られないようにする */
+    public int $timeout = 600;
+
     public function __construct(public readonly int $sourceId) {}
 
     public function handle(CrawlRunner $runner, WebCronBudget $budget): void
