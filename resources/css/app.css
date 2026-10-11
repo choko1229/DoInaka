@@ -1110,3 +1110,4 @@ label:has(> input[type='radio']) { display: flex; align-items: center; gap: 8px;
 }@media (max-width: 767px) { .map-ctls .map-ctl:nth-child(-n+2) { display: none; } }
 .side-map-title { display: none; }
 @media (max-width: 1023px) { .side-map-title { display: block; order: 6; margin: 8px 0 0; } .side-map { order: 6; } }
+.map-pick { height: 240px; margin: 8px 0; }

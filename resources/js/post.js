@@ -40,9 +40,16 @@ if (mapEl) {
             attribution: '<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank" rel="noopener">地理院タイル</a>',
         }).addTo(map);
 
+        // 標準のピン画像は読み込めないので、地図の画面と同じ形のピンを使う
+        const pin = L.divIcon({
+            className: 'map-pin map-pin-event',
+            html: '<svg viewBox="0 0 30 40" width="30" height="40" aria-hidden="true"><path d="M15 1C7.8 1 2 6.6 2 13.6 2 23 15 39 15 39s13-16 13-25.4C28 6.6 22.2 1 15 1z"/><circle cx="15" cy="14" r="5"/></svg>',
+            iconSize: [30, 40],
+            iconAnchor: [15, 40],
+        });
         let marker = null;
         const place = (lat, lng) => {
-            marker ? marker.setLatLng([lat, lng]) : (marker = L.marker([lat, lng]).addTo(map));
+            marker ? marker.setLatLng([lat, lng]) : (marker = L.marker([lat, lng], { icon: pin }).addTo(map));
             latInput.value = lat.toFixed(6);
             lngInput.value = lng.toFixed(6);
         };
