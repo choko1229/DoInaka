@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 /**
  * URL のクエリを検索条件にする。範囲外・不正な値は黙って捨てる(エラーにしない。設計書11章)。
  *
- * クエリ: q, category(スラッグ), tag, when(today|weekend), from, to(Y-m-d), past, lat, lng, r(km), sort, page
+ * クエリ: q, category(スラッグ), tag, when(today|weekend|month), area(市町のスラッグ), from, to(Y-m-d), past, lat, lng, r(km), sort, page
  */
 final class SearchQueryFactory
 {
@@ -31,20 +31,30 @@ final class SearchQueryFactory
         $tag = $this->text($request->query('tag'), 60);
 
         $categoryId = $fixedCategoryId;
-        $categorySlug = $this->text($request->query('category'), 60);
-        if ($categoryId === null && $categorySlug !== null) {
-            $categoryId = Category::query()->where('target', $target)->where('slug', $categorySlug)->where('is_active', true)->value('id');
-            $categoryId = is_numeric($categoryId) ? (int) $categoryId : null;
-        }
+        // 分類は、1つ(category=slug)でも、複数(category[]=slug)でも受け付ける(画面はチェックボックス)
+        $rawCategory = $request->query('category');
+        $slugs = array_values(array_filter(array_map(fn (mixed $s): ?string => $this->text($s, 60), is_array($rawCategory) ? array_slice($rawCategory, 0, 20) : [$rawCategory])));
+        /** @var list<int> $categoryIds */
+        $categoryIds = $slugs === [] ? [] : array_values(Category::query()->where('target', $target)->whereIn('slug', $slugs)->where('is_active', true)->pluck('id')->all());
 
         $preset = $fixedPreset;
         $when = $request->query('when');
+        $when = is_string($when) ? $when : null;
         if ($preset === null && is_string($when) && in_array($when, SearchQuery::PRESETS, true)) {
             $preset = $when;
         }
 
-        $from = $this->date($request->query('from'));
-        $to = $this->date($request->query('to'));
+        // 今月: 今日から月末まで(期間として渡す)
+        $monthFrom = null;
+        $monthTo = null;
+        if ($preset === null && $when === 'month') {
+            $today = CarbonImmutable::now();
+            $monthFrom = $today->toDateString();
+            $monthTo = $today->endOfMonth()->toDateString();
+        }
+
+        $from = $monthFrom ?? $this->date($request->query('from'));
+        $to = $monthTo ?? $this->date($request->query('to'));
         if ($from !== null && $to !== null && $to < $from) {
             [$from, $to] = [$to, $from];
         }
@@ -65,9 +75,10 @@ final class SearchQueryFactory
         $page = is_string($page) && ctype_digit($page) ? min(1000, max(1, (int) $page)) : 1;
 
         return new SearchQuery(
-            regionIds: $region === null ? null : $this->scope->ids($region),
+            regionIds: $this->regionIds($request, $region),
             q: $q,
             categoryId: $categoryId,
+            categoryIds: $categoryIds,
             tag: $tag,
             preset: $preset,
             dateFrom: $from,
@@ -80,6 +91,24 @@ final class SearchQueryFactory
             page: $page,
             perPage: 12,
         );
+    }
+
+    /** area=市町のスラッグで、県の中の市町に絞る(県のスラッグ以外の指定は、県全体のまま) */
+    /** @return list<int>|null */
+    private function regionIds(Request $request, ?Region $region): ?array
+    {
+        if ($region === null) {
+            return null;
+        }
+        $area = $this->text($request->query('area'), 60);
+        if ($area !== null) {
+            $city = Region::query()->where('parent_id', $region->id)->where('slug', $area)->where('is_active', true)->first();
+            if ($city !== null) {
+                return $this->scope->ids($city);
+            }
+        }
+
+        return $this->scope->ids($region);
     }
 
     private function text(mixed $value, int $max): ?string

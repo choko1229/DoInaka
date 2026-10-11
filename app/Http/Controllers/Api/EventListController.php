@@ -31,7 +31,7 @@ final class EventListController extends Controller
         }
 
         return response()->json([
-            'html' => view('public.events.partials.results', ['events' => $events, 'query' => $query])->render(),
+            'html' => view('public.events.partials.results', ['events' => $events, 'query' => $query, 'pref' => $region->slug, 'basePath' => '/'.$region->slug.'/events/'])->render(),
             'total' => $events->total(),
         ]);
     }

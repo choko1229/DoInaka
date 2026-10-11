@@ -103,8 +103,9 @@ class MysqlSearchEngine implements SearchEngine
             $builder->whereIn("{$table}.region_id", $query->regionIds === [] ? [0] : $query->regionIds);
         }
 
-        if ($hasCategory && $query->categoryId !== null) {
-            $builder->where("{$table}.category_id", $query->categoryId);
+        $categoryIds = array_values(array_unique([...($query->categoryId !== null ? [$query->categoryId] : []), ...$query->categoryIds]));
+        if ($hasCategory && $categoryIds !== []) {
+            $builder->whereIn("{$table}.category_id", $categoryIds);
         }
 
         if ($query->tag !== null && $query->tag !== '') {
