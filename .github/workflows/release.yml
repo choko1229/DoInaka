@@ -97,6 +97,8 @@ jobs:
           ./vendor/bin/pint --test
           ./vendor/bin/phpstan analyse --memory-limit=1G --no-progress
           npm run build
+          # CI と同じく、空の .env を置く(Laravel が .env を読もうとして出す PHP の警告を防ぐ。ZIP には入らない)
+          touch .env
           ./vendor/bin/pest
 
       - name: 配布用ZIPを作る(本番用の vendor とビルド済みアセット)
