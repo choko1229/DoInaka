@@ -9,8 +9,8 @@ use App\Enums\SettingKey;
 use App\Models\User;
 use App\Services\Ai\AiRequest;
 use App\Services\Ai\AiResponse;
+use App\Services\Ai\OpenRouterModels;
 use App\Services\Setting\SettingsService;
-use Illuminate\Support\Facades\Cache;
 
 /**
  * AI の呼び出し口の偽物。返事(配列)か例外を順に返し、受け取った依頼を記録する。足りなくなったら最後の返事を繰り返す。
@@ -79,10 +79,10 @@ function reviewResult(array $override = []): array
     ], $override);
 }
 
-/** OpenRouter の無料モデルの一覧を、キャッシュに入れる */
+/** OpenRouter の無料モデルの一覧を、保存しておく */
 function knownFreeModels(array $ids): void
 {
-    Cache::forever('ai:free-models', array_combine($ids, $ids));
+    app(OpenRouterModels::class)->store(array_combine($ids, $ids));
 }
 
 function memberWithApproved(int $count): User
