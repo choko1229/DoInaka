@@ -160,6 +160,8 @@ it('会員の管理画面: 一覧はメールを出さず、詳細で出して�
     $this->actingAsVerifiedAdmin(User::factory()->twoFactor()->create(['role' => 'editor']))->get('/admin/users')->assertForbidden();
 
     $this->actingAsVerifiedAdmin($admin);
+    // ログインしたことのある会員(last_login_at が入っている)でも、一覧が開ける(日時として扱う)
+    $member->forceFill(['last_login_at' => now()->subDay()])->save();
     $this->get('/admin/users')->assertOk()->assertSee('山田')->assertDontSee('yamada-secret@example.com');
     $this->get('/admin/users?q=山田')->assertOk()->assertSee('山田');
     $this->get('/admin/users?q=yamada-secret')->assertOk()->assertDontSee('山田');

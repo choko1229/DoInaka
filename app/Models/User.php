@@ -42,6 +42,7 @@ class User extends Authenticatable
             'status' => UserStatus::class,
             // TOTP の秘密鍵は暗号化して保存する
             'totp_secret' => 'encrypted',
+            'last_login_at' => 'datetime',
             'totp_confirmed_at' => 'datetime',
             'totp_locked_until' => 'datetime',
         ];
