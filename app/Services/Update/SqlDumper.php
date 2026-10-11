@@ -35,7 +35,8 @@ class SqlDumper
         $count = 0;
 
         try {
-            fwrite($handle, "-- doinaka dump\nSET NAMES utf8mb4;\nSET FOREIGN_KEY_CHECKS=0;\n");
+            // 全テーブルのダンプには印を付ける(戻すとき、ダンプにないテーブルを消してよいのは、全テーブルのダンプのときだけ)
+            fwrite($handle, "-- doinaka dump\n".($only === null ? "-- scope: all\n" : '')."SET NAMES utf8mb4;\nSET FOREIGN_KEY_CHECKS=0;\n");
 
             foreach ($this->tables($pdo) as $table) {
                 if ($only !== null && ! in_array($table, $only, true)) {
@@ -76,6 +77,9 @@ class SqlDumper
 
         $statements = 0;
 
+        // ダンプにないテーブル(更新で新しい版の migration が作ったもの)が残ると、やり直しの migrate が「already exists」で落ちる。先に消す
+        $this->dropExtraTables($db, $path);
+
         try {
             while (($line = fgets($handle)) !== false) {
                 $line = trim($line);
@@ -90,6 +94,52 @@ class SqlDumper
         }
 
         return $statements;
+    }
+
+    /**
+     * 戻すときに消すテーブル: 全テーブルのダンプ(印あり)に書かれていないテーブル。
+     * 更新で新しい版の migration が作ったテーブルがあたる(残ると、やり直しの migrate が「already exists」で落ちる)。
+     * 部分のダンプ・印のないダンプ・空のダンプのときは、何も消さない。
+     *
+     * @return list<string>
+     */
+    public function extraTables(Connection $db, string $path): array
+    {
+        $handle = @fopen($path, 'rb');
+        if ($handle === false) {
+            return [];
+        }
+        $known = [];
+        $full = false;
+        while (($line = fgets($handle)) !== false) {
+            $line = trim($line);
+            if ($line === '-- scope: all') {
+                $full = true;
+            } elseif (preg_match('/^DROP TABLE IF EXISTS `((?:[^`]|``)+)`;/', $line, $m) === 1) {
+                $known[str_replace('``', '`', $m[1])] = true;
+            }
+        }
+        fclose($handle);
+
+        if (! $full || $known === []) {
+            return [];
+        }
+
+        return array_values(array_filter($this->tables($db->getPdo()), fn (string $table): bool => ! isset($known[$table])));
+    }
+
+    private function dropExtraTables(Connection $db, string $path): void
+    {
+        $extra = $this->extraTables($db, $path);
+        if ($extra === []) {
+            return;
+        }
+        $pdo = $db->getPdo();
+        $pdo->exec('SET FOREIGN_KEY_CHECKS=0');
+        foreach ($extra as $table) {
+            $pdo->exec('DROP TABLE IF EXISTS `'.str_replace('`', '``', $table).'`');
+        }
+        $pdo->exec('SET FOREIGN_KEY_CHECKS=1');
     }
 
     /**
