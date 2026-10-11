@@ -39,3 +39,14 @@ it('人口・面積の取り込み: コードが合う地域だけ入り、再�
     expect(RegionStat::query()->count())->toBe(1)->and(RegionStat::query()->where('region_id', $city->id)->first()->population)->toBe(109000);
     unlink($file);
 });
+
+it('形の略図: 次の階層の位置が3つ以上あれば、それを囲む形を図にして出す。足りなければ出さない', function (): void {
+    $pref = Region::factory()->prefecture()->create(['slug' => 'kagawa', 'name' => '香川県']);
+    $this->get('/kagawa/')->assertOk()->assertDontSee('<polygon', false);
+
+    foreach ([[34.34, 134.04], [34.29, 133.80], [34.20, 134.30], [34.10, 133.90]] as $i => [$lat, $lng]) {
+        Region::factory()->create(['parent_id' => $pref->id, 'slug' => 'city'.$i, 'name' => '市'.$i, 'lat' => $lat, 'lng' => $lng]);
+    }
+
+    $this->get('/kagawa/')->assertOk()->assertSee('<polygon points="', false)->assertSee('町の位置から作った略図です');
+});

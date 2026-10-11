@@ -265,3 +265,15 @@ it('情報元の文章をそのまま写した文は、裏付けがあっても�
     expect($result['status'])->toBe('published')->and($result['kept'])->toBe(3)
         ->and($region->intro_body)->not->toContain('中讃地域の中心都市')->and($region->intro_body)->toContain('丸亀城は日本一高い石垣で知られます。');
 });
+
+it('段落ごとの出典番号を持ち、地域ページの段落の終わりに脚注として出る(本文には番号を入れない)', function (): void {
+    $region = regionWorld();
+    useAi(introScript([true, true, true, true]));
+
+    app(RegionIntroGenerator::class)->generate($region);
+    $region->refresh();
+
+    expect($region->intro_paragraph_sources)->toBeArray()->and($region->intro_paragraph_sources)->not->toBeEmpty()
+        ->and($region->intro_body)->not->toContain('[1]');
+    $this->get('/kagawa/marugame/')->assertOk()->assertSee('<sup class="fn">', false)->assertSee('href="#ref-1"', false);
+});
