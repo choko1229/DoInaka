@@ -9,6 +9,7 @@ use App\Enums\SettingKey;
 use App\Enums\SettingType;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Services\Ai\AiUsage;
 use App\Services\Ai\ModelRecommender;
 use App\Services\Ai\OpenRouterModels;
 use App\Services\Audit\AuditLogger;
@@ -33,6 +34,7 @@ final class SettingsController extends Controller
         private readonly AuditLogger $audit,
         private readonly OpenRouterModels $models,
         private readonly ModelRecommender $recommender,
+        private readonly AiUsage $usage,
     ) {}
 
     public function show(WebCronStatus $cron, string $tab = 'site'): View
@@ -62,6 +64,9 @@ final class SettingsController extends Controller
 
         // 選んでいない用途には、おすすめを自動で入れる(選んであるものは変えない)
         $filled = $failed ? 0 : $this->recommender->apply(false, $this->actorId());
+        if ($filled > 0) {
+            $this->usage->resume();
+        }
 
         return redirect()->route('admin.settings', ['tab' => 'ai'])->with(
             $failed ? 'error' : 'status',
@@ -73,6 +78,8 @@ final class SettingsController extends Controller
     public function recommendModels(): RedirectResponse
     {
         $count = $this->recommender->apply(true, $this->actorId());
+        // モデルを選び直したので、古い制限エラーによる停止は解く(新しいモデルで、すぐ試せるように)
+        $this->usage->resume();
         if ($count > 0) {
             $this->audit->record(AuditAction::SettingsChange, auth()->user() instanceof User ? auth()->user() : null, 'setting', 'ai.models', ['after' => 'recommended', 'count' => $count]);
         }
@@ -143,6 +150,12 @@ final class SettingsController extends Controller
                 ]);
             }
         });
+
+        // モデル・キー・タイムアウトを変えたら、古い制限エラーによる停止は解く
+        $aiKeys = [SettingKey::AiApiKey->value, SettingKey::AiTimeoutSec->value, ...array_map(fn (SettingKey $k): string => $k->value, array_values(SettingsCatalog::modelKeys()))];
+        if (array_intersect(array_keys($changes), $aiKeys) !== []) {
+            $this->usage->resume();
+        }
 
         return redirect()->route('admin.settings', ['tab' => $tab])->with('status', $changes === [] ? __('settings.nothing_changed') : __('settings.saved', ['count' => count($changes)]));
     }

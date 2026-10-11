@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 use App\Enums\AiPurpose;
 use App\Enums\SettingKey;
+use App\Services\Ai\AiUsage;
 use App\Services\Ai\ModelRecommender;
 use App\Services\Ai\OpenRouterModels;
 use App\Services\Setting\SettingsService;
+use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Http;
 
 function fakeModelList(): void
@@ -67,6 +69,21 @@ it('おすすめ: 選んだモデルがすべて一覧から消えた用途に�
     app(ModelRecommender::class)->apply();
 
     expect($settings->array(SettingKey::AiModelsSuggest)[0])->toBe('qwen/qwen3-235b-a22b:free');
+});
+
+it('管理画面: モデルを選び直す・タイムアウトを変えると、古い制限エラーによる停止は解ける', function (): void {
+    fakeModelList();
+    app(OpenRouterModels::class)->refresh();
+    $this->actingAsVerifiedAdmin(settingsAdmin());
+    $usage = app(AiUsage::class);
+
+    $usage->pauseUntil(CarbonImmutable::now('UTC')->addHours(10));
+    $this->post('/admin/settings/ai/models/recommend')->assertRedirect();
+    expect($usage->isPaused())->toBeFalse();
+
+    $usage->pauseUntil(CarbonImmutable::now('UTC')->addHours(10));
+    $this->post('/admin/settings/ai', aiTabPayload(['ai__timeout_sec' => '90']))->assertRedirect();
+    expect($usage->isPaused())->toBeFalse();
 });
 
 it('管理画面: 一覧の取得で空の用途におすすめが入り、「おすすめで入れ直す」で全部入れ直せる', function (): void {
