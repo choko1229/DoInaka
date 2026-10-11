@@ -171,7 +171,7 @@ it('審査の一覧と詳細: 1件ごとの AI のバッジと、判定・理由
     $this->get('/admin/review?tab=waiting')->assertOk()->assertSee('待ち');
     expect((string) $this->get('/admin/review?tab=waiting')->getContent())->toContain('data-ai-active');
 
-    $this->get('/admin/review/'.$done->id)->assertOk()->assertSee('AI の判定')->assertSee('完了')->assertSee('0.93')->assertSee('問題のない投稿')->assertSee('棚田の紹介');
+    $this->get('/admin/review/'.$done->id)->assertOk()->assertSee('AIの判定')->assertSee('完了')->assertSee('0.93')->assertSee('問題のない投稿')->assertSee('棚田の紹介');
     $this->get('/admin/review/'.$pending->id)->assertOk()->assertSee('順番を待っています');
     expect((string) $this->get('/admin/review/'.$pending->id)->getContent())->toContain('id="ai-live-detail" data-ai-live');
 });

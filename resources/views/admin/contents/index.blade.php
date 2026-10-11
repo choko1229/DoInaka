@@ -10,7 +10,7 @@
         @endforeach
     </nav>
 
-    <form method="get" action="{{ route('admin.contents') }}" class="inline-form">
+    <form method="get" action="{{ route('admin.contents') }}" class="filter-bar is-end">
         <input type="hidden" name="tab" value="{{ $tab }}">
         <input type="search" name="q" value="{{ $q }}" placeholder="{{ __('content.search') }}" aria-label="{{ __('content.search') }}">
         <x-button type="submit" variant="primary">{{ __('content.search') }}</x-button>

@@ -24,4 +24,11 @@ return [
     'status_undecided' => '次回未定',
     'tagline' => '何もないが、ある。',
     'placeholder_lead' => 'ただいま準備中です。もうしばらくお待ちください。',
+    'nav_tips' => '情報提供',
+    'nav_corrections' => '修正依頼',
+    'nav_rejected' => '却下ボックス',
+    'nav_spots' => 'スポット',
+    'nav_articles' => '記事',
+    'nav_comments' => 'コメント',
+    'nav_undecided' => '日程未入力 :count',
 ];

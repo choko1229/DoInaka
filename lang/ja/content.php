@@ -133,4 +133,7 @@ return [
     'rollback_confirm' => 'この変更を取り消して、変更前の内容に戻します。よろしいですか?',
     'rollback_note' => '戻したことも変更履歴に残ります。最新の版から順に戻すと、いまの内容を失いません。',
     'back_edit' => '編集へ戻る',
+    'series_list' => '行事の一覧',
+    'tag_no_next' => '来年分なし',
+    'tag_public' => '公開',
 ];

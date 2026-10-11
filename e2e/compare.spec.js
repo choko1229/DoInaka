@@ -25,6 +25,27 @@ const BOARDS = {
     ErrorPC: ['/kagawa/no-such-page/', 1280], Error: ['/kagawa/no-such-page/', 390],
         // ログイン後の画面(第3の値 = member / admin)。セッション Cookie は `php artisan dev:session {role}` の JSON を E2E_SESSION_MEMBER / E2E_SESSION_ADMIN に渡す
     MyPagePC: ['/mypage/', 1280, 'member'], MyPageSP: ['/mypage/', 390, 'member'],
+    AdminPC: ['/admin/', 1440, 'admin'], AdminSP: ['/admin/', 390, 'admin'],
+    
+    AdminRejectedPC: ['/admin/review/rejected', 1440, 'admin'], AdminRejectedSP: ['/admin/review/rejected', 390, 'admin'],
+    AdminEventsPC: ['/admin/events', 1440, 'admin'], AdminEventsSP: ['/admin/events', 390, 'admin'],
+    AdminContentsPC: ['/admin/contents', 1440, 'admin'], AdminContentsSP: ['/admin/contents', 390, 'admin'],
+    AdminCorrectionsPC: ['/admin/corrections', 1440, 'admin'], AdminCorrectionsSP: ['/admin/corrections', 390, 'admin'],
+    AdminDraftPC: ['/admin/drafts', 1440, 'admin'], AdminDraftSP: ['/admin/drafts', 390, 'admin'],
+    AdminTipsPC: ['/admin/tips', 1440, 'admin'], AdminTipsSP: ['/admin/tips', 390, 'admin'],
+    AdminRegionsPC: ['/admin/region-pages', 1440, 'admin'], AdminRegionsSP: ['/admin/region-pages', 390, 'admin'],
+    AdminMastersPC: ['/admin/masters', 1440, 'admin'], AdminMastersSP: ['/admin/masters', 390, 'admin'],
+    AdminUsersPC: ['/admin/users', 1440, 'admin'], AdminUsersSP: ['/admin/users', 390, 'admin'],
+    AdminInquiriesPC: ['/admin/inquiries', 1440, 'admin'], AdminInquiriesSP: ['/admin/inquiries', 390, 'admin'],
+    AdminSourcesPC: ['/admin/sources', 1440, 'admin'], AdminSourcesSP: ['/admin/sources', 390, 'admin'],
+    AdminSettingsPC: ['/admin/settings', 1440, 'admin'], AdminSettingsSP: ['/admin/settings', 390, 'admin'],
+    AdminLogsPC: ['/admin/logs', 1440, 'admin'], AdminLogsSP: ['/admin/logs', 390, 'admin'],
+    AdminAdsPC: ['/admin/ads', 1440, 'admin'], AdminAdsSP: ['/admin/ads', 390, 'admin'],
+    AdminUpdatePC: ['/admin/update', 1440, 'admin'], AdminUpdateSP: ['/admin/update', 390, 'admin'],
+    AdminEventEditPC: ['first:/admin/events:a[href*="/edit"]', 1440, 'admin'], AdminEventEditSP: ['first:/admin/events:a[href*="/edit"]', 390, 'admin'],
+    AdminSpotEditPC: ['first:/admin/contents?tab=spot:a[href*="/edit"]', 1440, 'admin'], AdminSpotEditSP: ['first:/admin/contents?tab=spot:a[href*="/edit"]', 390, 'admin'],
+    AdminReviewPC: [`/admin/review/${process.env.E2E_REVIEW_ID ?? 1}`, 1440, 'admin'], AdminReviewSP: [`/admin/review/${process.env.E2E_REVIEW_ID ?? 1}`, 390, 'admin'],
+    AdminLoginPC: ['/admin/login', 1440], AdminLoginSP: ['/admin/login', 390],
 };
 
 test.skip(!dir, 'COMPARE_DIR が必要です');

@@ -1,7 +1,5 @@
-@php($counts = ['review' => \App\Models\Submission::query()->where('status', \App\Enums\SubmissionStatus::InReview)->count(), 'waiting' => 0, 'rejected' => $submissions->total()])
-<x-layouts.admin :title="__('submission.tab_rejected')" current="review">
+<x-layouts.admin :title="__('submission.tab_rejected')" current="rejected">
     <div class="page-head"><h1 class="t-h1">{{ __('submission.tab_rejected') }}</h1><p class="t-small t-muted">{{ __('submission.rejected_lead') }}</p></div>
-    @include('admin.review._tabs', ['current' => 'rejected', 'counts' => $counts])
     <div class="table-wrap">
         <table class="table">
             <thead><tr><th>{{ __('submission.col_receipt') }}</th><th>{{ __('submission.col_type') }}</th><th>{{ __('submission.col_summary') }}</th><th>{{ __('submission.col_status') }}</th><th>{{ __('submission.days_left') }}</th><th></th></tr></thead>

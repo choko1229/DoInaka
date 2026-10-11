@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services\Admin;
 
+use App\Enums\EventStatus;
 use App\Enums\SubmissionStatus;
 use App\Enums\SubmissionType;
 use App\Enums\UserStatus;
@@ -46,6 +47,42 @@ final class DashboardStats
             'region_queue' => (int) DB::table('region_generation_queue')->whereIn('status', ['pending', 'running'])->count(),
             'views_today' => $this->views(1),
             'views_week' => $this->views(7),
+        ];
+    }
+
+    /**
+     * 左の並びに出す数(審査・修正依頼・却下ボックス・日程未入力の行事)。
+     *
+     * @return array{review: int, corrections: int, tips: int, rejected: int, undecided: int}
+     */
+    public function nav(): array
+    {
+        $inReview = fn (SubmissionType ...$types) => Submission::query()->where('status', SubmissionStatus::InReview)->whereIn('type', $types)->count();
+
+        return [
+            'review' => $inReview(SubmissionType::Spot, SubmissionType::Article, SubmissionType::Comment, SubmissionType::VisitPhoto, SubmissionType::Event),
+            'corrections' => $inReview(SubmissionType::Correction),
+            'tips' => $inReview(SubmissionType::Tip),
+            'rejected' => Submission::query()->whereIn('status', [SubmissionStatus::Rejected, SubmissionStatus::AutoRejected])->count(),
+            'undecided' => Event::query()->where('status', EventStatus::Undecided)->count(),
+        ];
+    }
+
+    /**
+     * ダッシュボード(今日の回覧板)の上の部分: 一番古い審査待ち、キューと失敗、審査待ちの先頭、AI が自動で決めたもの。
+     *
+     * @return array<string, mixed>
+     */
+    public function board(): array
+    {
+        $oldest = Submission::query()->where('status', SubmissionStatus::InReview)->oldest('id')->first();
+
+        return [
+            'oldest_days' => $oldest?->created_at !== null ? (int) $oldest->created_at->diffInDays(now()) : null,
+            'queue' => (int) DB::table('jobs')->count(),
+            'failed' => (int) DB::table('failed_jobs')->count(),
+            'pending' => Submission::query()->with('user')->where('status', SubmissionStatus::InReview)->latest('id')->limit(4)->get(),
+            'auto' => Submission::query()->whereNotNull('auto_decision')->where('updated_at', '>=', now()->subDay())->latest('id')->limit(5)->get(),
         ];
     }
 
