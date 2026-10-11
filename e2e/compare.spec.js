@@ -23,15 +23,21 @@ const BOARDS = {
     ArticlePC: ['first:/kagawa/articles/:a.event-card', 1280],
     RegionPC: ['first:/:.area-card', 1280], RegionSP: ['first:/:.area-card', 390],
     ErrorPC: ['/kagawa/no-such-page/', 1280], Error: ['/kagawa/no-such-page/', 390],
+        // ログイン後の画面(第3の値 = member / admin)。セッション Cookie は `php artisan dev:session {role}` の JSON を E2E_SESSION_MEMBER / E2E_SESSION_ADMIN に渡す
+    MyPagePC: ['/mypage/', 1280, 'member'], MyPageSP: ['/mypage/', 390, 'member'],
 };
 
 test.skip(!dir, 'COMPARE_DIR が必要です');
 
-for (const [name, [path, width]] of Object.entries(BOARDS)) {
+for (const [name, [path, width, role]] of Object.entries(BOARDS)) {
     if (only.length > 0 && !only.includes(name)) continue;
     test(`撮影: ${name}`, async ({ page }) => {
         await page.setViewportSize({ width, height: 900 });
         await page.context().addCookies([{ name: 'doinaka_consent', value: 'denied', url: process.env.E2E_BASE_URL ?? 'http://localhost:8080' }]);
+        if (role) {
+            const session = JSON.parse(process.env[`E2E_SESSION_${role.toUpperCase()}`] ?? '{}');
+            await page.context().addCookies([{ name: session.name, value: session.value, url: process.env.E2E_BASE_URL ?? 'http://localhost:8080' }]);
+        }
         if (path.startsWith('first:')) {
             const [, list, selector] = path.split(':');
             await page.goto(list);

@@ -86,6 +86,7 @@ Route::post('/report/{type}/{id}', [SubmissionController::class, 'storeReport'])
 Route::middleware(['auth', 'can:my-page'])->prefix('mypage')->name('mypage.')->group(function (): void {
     Route::get('/', [MyPageController::class, 'index'])->name('index');
     Route::get('/submissions', [MyPageController::class, 'submissions'])->name('submissions');
+    Route::post('/submissions/{id}/withdraw', [MyPageController::class, 'withdrawSubmission'])->whereNumber('id')->name('submissions.withdraw');
     Route::get('/lists', [MyPageController::class, 'lists'])->name('lists');
     Route::get('/posts', [OwnPostController::class, 'index'])->name('posts');
     Route::get('/posts/{type}/{id}/edit', [OwnPostController::class, 'edit'])->whereIn('type', ['spot', 'article'])->whereNumber('id')->name('posts.edit');
