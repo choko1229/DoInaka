@@ -113,7 +113,10 @@
                     @if ($mergedOn)<dt>{{ __('region.merger') }}</dt><dd>{{ $mergedOn->format('Y年n月j日') }}<br><span class="t-small t-muted">{{ $merged->pluck('name')->prepend($region->name)->implode('・') }}</span></dd>@endif
                 </dl>
                 @if ($outline)
-                    <figure class="outline"><svg viewBox="0 0 280 150" role="img" aria-label="{{ __('region.outline_label', ['name' => $region->name]) }}"><polygon points="{{ collect($outline)->map(fn ($p) => $p[0].','.$p[1])->implode(' ') }}" /></svg><figcaption class="t-small t-muted">{{ __('region.outline_note') }}</figcaption></figure>
+                    @php
+                        $outlinePath = collect($outline['rings'])->map(fn ($ring) => 'M'.collect($ring)->map(fn ($p) => $p[0].' '.$p[1])->implode('L').'Z')->implode('');
+                    @endphp
+                    <figure class="outline"><svg viewBox="0 0 280 150" role="img" aria-label="{{ __('region.outline_label', ['name' => $region->name]) }}"><path d="{{ $outlinePath }}" /></svg><figcaption class="t-small t-muted">{{ $outline['real'] ? __('region.outline_note_real') : __('region.outline_note') }}</figcaption></figure>
                 @endif
                 @if ($stat === null)<p class="t-small t-muted">{{ __('region.stats_pending') }}</p>
                 @else<p class="t-small t-muted">{{ __('region.stats_auto') }}@if ($stat->source_label) {{ $stat->source_label }}@endif</p>@endif
