@@ -22,8 +22,16 @@
         @if ($errorId)
             <p class="empty-state-id t-small t-muted">{{ __('errors.error_id') }}: <code>{{ $errorId }}</code></p>
         @endif
+        @if ($code === '404')
+            <form class="empty-state-search" action="{{ url('/kagawa/events/') }}" method="get" role="search">
+                <label class="visually-hidden" for="es-q">{{ __('errors.search_label') }}</label>
+                <input id="es-q" name="q" type="search" maxlength="100" placeholder="{{ __('errors.search_label') }}">
+                <button type="submit">{{ __('errors.search_button') }}</button>
+            </form>
+        @endif
         <div class="empty-state-actions">
-            <x-button variant="primary" :href="url('/')">{{ __('errors.back_to_top') }}</x-button>
+            <x-button :variant="$code === '404' ? 'secondary' : 'primary'" :href="url('/')">{{ __('errors.back_to_top') }}</x-button>
+            @if ($code === '404')<x-button variant="secondary" :href="url('/kagawa/events/')">{{ __('errors.find_events') }}</x-button>@endif
         </div>
     </div>
 </section>
