@@ -877,3 +877,21 @@ main.is-bare { padding: 0; }
 .post-side { display: grid; gap: 16px; }
 .post-side ol { margin: 0; padding-left: 20px; display: grid; gap: 8px; }.post-form > .btn { justify-self: start; padding-inline: 40px; }
 .post-form { gap: 16px; }
+
+/* 一本道の画面(ログイン・エラー): ロゴだけのヘッダーで、中身を縦の真ん中に */
+main.is-focus { min-height: calc(100vh - 107px); display: grid; align-items: center; padding-block: 24px; }
+main.is-focus > .container { width: 100%; }
+.login-card { padding: 36px; display: grid; gap: 16px; }
+.empty-state-search { display: flex; gap: 8px; margin-top: 16px; max-width: 460px; }
+.empty-state-search input { flex: 1; min-width: 0; height: 48px; padding: 0 16px; border: 2px solid var(--line-strong); border-radius: 6px; background: var(--surface); color: var(--ink); font: inherit; }
+.empty-state-search button { height: 48px; padding: 0 20px; border: 0; border-radius: var(--radius-pill); background: var(--accent); color: var(--on-accent); font: 700 14px/1 var(--font-body); cursor: pointer; }
+/* このサイトについて(デザイン: AboutPC) */
+.about { display: grid; gap: 16px; }
+.about-grid { display: grid; gap: 24px; align-items: start; }
+@media (min-width: 1024px) { .about-grid { grid-template-columns: minmax(0, 1fr) 380px; } }
+.about-tagline { margin: 0; padding: 16px 20px; border-radius: var(--radius-lg); background: var(--surface-sunken); display: grid; gap: 4px; }
+.about-tagline .t-aside { font-size: 20px; line-height: 28px; color: var(--ink-muted); }
+.about-tagline small { color: var(--ink-muted); }
+.about-main .legal-body { margin-top: 16px; }
+.about-main .chip-row { margin-top: 24px; }
+.about-facts { background: transparent; padding: 0; gap: 12px 16px; }

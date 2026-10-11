@@ -1,5 +1,5 @@
 @php($status = (int) ($status ?? 500))
-<x-layouts.public :title="__('errors.'.$status.'.title')" :noindex="true">
+<x-layouts.public :title="__('errors.'.$status.'.title')" :noindex="true" :focus="true">
     <x-empty-state
         :code="(string) $status"
         :title="__('errors.'.$status.'.title')"

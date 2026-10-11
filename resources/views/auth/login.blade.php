@@ -1,4 +1,4 @@
-<x-layouts.public :title="__('auth.login_title')" :noindex="true">
+<x-layouts.public :title="__('auth.login_title')" :noindex="true" :focus="true">
     <div class="login-layout">
         <section class="card login-card">
             <h1 class="t-h1">{{ __('auth.login_title') }}</h1>

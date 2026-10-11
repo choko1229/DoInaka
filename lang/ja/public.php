@@ -110,6 +110,8 @@ return [
     'favorite' => 'お気に入り',
     'visited' => '行った!',
     'want_to_go' => '行きたい',
+    'about_heading' => 'このサイトについて',
+    'about_tagline_sub' => '地元の小さな行事ほど、教えてもらえるとうれしいです。',
     'map_list' => 'この範囲の一覧',
     'map_search' => 'この範囲で探す',
     'map_weekend' => '今週末',

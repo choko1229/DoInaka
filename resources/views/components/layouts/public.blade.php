@@ -8,6 +8,7 @@
     'current' => null,
     'hero' => null,
     'footer' => 'inner',
+    'focus' => false,
 ])
 @php
     $navPref = $pref ?? request()->route('pref');
@@ -34,9 +35,9 @@
     @if ($hero)
         {{ $hero }}
     @else
-        <x-sky-header :compact="$compact" :nav="$nav" :cta="$cta" />
+        <x-sky-header :compact="$compact" :nav="$focus ? [] : $nav" :cta="$focus ? null : $cta" />
     @endif
-    <main id="main" @class(['is-hero' => $hero, 'is-bare' => $footer === 'none'])>
+    <main id="main" @class(['is-hero' => $hero, 'is-bare' => $footer === 'none' && ! $focus, 'is-focus' => $focus])>
         <div class="container">
             @if ($meta instanceof \App\Support\PageMeta && $meta->breadcrumbs !== [])
                 <x-breadcrumbs :items="$meta->breadcrumbs" />
@@ -44,5 +45,5 @@
             {{ $slot }}
         </div>
     </main>
-    @if ($footer !== 'none')<x-site-footer :variant="$hero ? 'top' : $footer" />@endif
+    @if ($footer !== 'none' && ! $focus)<x-site-footer :variant="$hero ? 'top' : $footer" />@endif
 </x-layouts.base>
