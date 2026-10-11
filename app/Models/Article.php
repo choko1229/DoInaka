@@ -76,4 +76,10 @@ class Article extends Model
     {
         return $this->morphMany(Revision::class, 'revisionable')->latest('id');
     }
+
+    /** @return BelongsTo<User, $this> */
+    public function author(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'author_user_id');
+    }
 }

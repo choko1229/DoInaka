@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\RegionController as RegionApiController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Install\InstallController;
 use App\Http\Controllers\Member\MyPageController;
+use App\Http\Controllers\Member\OwnPostController;
 use App\Http\Controllers\Member\TakedownConsentController;
 use App\Http\Controllers\Public\ArticleController;
 use App\Http\Controllers\Public\ContactController;
@@ -23,6 +24,7 @@ use App\Http\Controllers\Public\SeoController;
 use App\Http\Controllers\Public\SeriesController;
 use App\Http\Controllers\Public\SpotController;
 use App\Http\Controllers\Public\SubmissionController;
+use App\Http\Controllers\Public\UserController;
 use App\Http\Middleware\EnsureNotInstalled;
 use App\Support\ReservedSlugs;
 use Illuminate\Support\Facades\Route;
@@ -85,6 +87,10 @@ Route::middleware(['auth', 'can:my-page'])->prefix('mypage')->name('mypage.')->g
     Route::get('/', [MyPageController::class, 'index'])->name('index');
     Route::get('/submissions', [MyPageController::class, 'submissions'])->name('submissions');
     Route::get('/lists', [MyPageController::class, 'lists'])->name('lists');
+    Route::get('/posts', [OwnPostController::class, 'index'])->name('posts');
+    Route::get('/posts/{type}/{id}/edit', [OwnPostController::class, 'edit'])->whereIn('type', ['spot', 'article'])->whereNumber('id')->name('posts.edit');
+    Route::post('/posts/{type}/{id}/edit', [OwnPostController::class, 'update'])->whereIn('type', ['spot', 'article'])->whereNumber('id')->middleware(['permit:post', 'throttle:20,1'])->name('posts.update');
+    Route::post('/posts/{type}/{id}/delete', [OwnPostController::class, 'destroy'])->whereIn('type', ['spot', 'article'])->whereNumber('id')->name('posts.destroy');
     Route::get('/profile', [MyPageController::class, 'profile'])->name('profile');
     Route::post('/profile', [MyPageController::class, 'updateProfile'])->name('profile.update');
     Route::get('/withdraw', [MyPageController::class, 'withdraw'])->name('withdraw');
@@ -102,6 +108,9 @@ Route::get('/storage/held/{media}', [HeldMediaController::class, 'show'])->where
 
 // 固定ページ(利用規約・プライバシーポリシー・掲載・投稿ポリシー・運営者情報。設計書6.1)。海外からも見られる
 Route::get('/{page}', [PageController::class, 'show'])->whereIn('page', array_keys(PageController::PAGES))->name('page');
+
+// 投稿者プロフィール
+Route::get('/users/{id}', [UserController::class, 'show'])->whereNumber('id')->name('users.show');
 
 // 公開ページ(設計書6.1)。URL の先頭は県のスラッグ。予約語は県のスラッグにならない。有効でない県は 404
 $pref = '(?!(?:'.implode('|', array_filter(ReservedSlugs::WORDS, fn (string $w): bool => preg_match('/^[a-z0-9-]+$/', $w) === 1)).')(?![a-z0-9-]))[a-z0-9-]+';

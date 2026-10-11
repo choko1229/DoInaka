@@ -10,7 +10,9 @@ use App\Models\Article;
 use App\Models\Event;
 use App\Models\Region;
 use App\Models\Spot;
+use App\Models\User;
 use App\Services\Design\ThemeResolver;
+use App\Services\Public\PersonalRecommendations;
 use App\Services\Region\RegionScope;
 use App\Services\Search\SearchQuery;
 use App\Services\Url\PublicLinks;
@@ -54,6 +56,7 @@ final class HomeController extends Controller
             'spots' => $spots,
             'articles' => $articles,
             'seasonPicks' => $this->seasonPicks($search, $ids, $pref),
+            'forYou' => auth()->user() instanceof User ? app(PersonalRecommendations::class)->for(auth()->user(), $ids, 3) : collect(),
             'areas' => $this->areas($search, $scope, $pref),
             'links' => $links,
             'prefectures' => Region::query()->whereNull('parent_id')->where('is_active', true)->orderBy('sort_order')->orderBy('id')->get(),

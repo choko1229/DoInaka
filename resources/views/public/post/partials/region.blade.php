@@ -12,7 +12,7 @@
     <select id="region_id" name="region_id" data-city @if ($required ?? false) required @endif>
         <option value="">{{ $required ?? false ? '—' : __('submission.city_unknown') }}</option>
         @foreach ($cities as $city)
-            <option value="{{ $city->id }}" @selected((int) old('region_id') === $city->id)>{{ $city->name }}</option>
+            <option value="{{ $city->id }}" @selected((int) old('region_id', $editing?->region_id) === $city->id)>{{ $city->name }}</option>
         @endforeach
     </select>
     </div></div>
