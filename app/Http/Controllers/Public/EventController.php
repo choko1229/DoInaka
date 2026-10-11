@@ -18,6 +18,7 @@ use App\Services\Url\UrlCanonicalizer;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 final class EventController extends PublicController
 {
@@ -127,6 +128,49 @@ final class EventController extends PublicController
             'nearbySpots' => $related->nearbySpots($event),
             'comments' => $comments,
             'shareUrl' => app(UrlCanonicalizer::class)->shareUrl($this->links->event($event)),
+        ]);
+    }
+
+    /** 「カレンダーに追加」: 開催日ごとの予定を iCalendar(.ics)で返す。中止の日は入れない */
+    public function ics(string $pref, string $segment): Response|RedirectResponse
+    {
+        $region = $this->pref($pref);
+        $event = $this->resolveItem(Event::class, $region, $segment);
+        if ($event instanceof RedirectResponse) {
+            return $event;
+        }
+        $this->abortIfHeld($event);
+        $event->load(['schedules']);
+
+        $escape = static fn (string $text): string => str_replace(['\\', ';', ',', "\r\n", "\n"], ['\\\\', '\\;', '\\,', '\\n', '\\n'], $text);
+        $lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//do-inaka.net//JA', 'CALSCALE:GREGORIAN'];
+        foreach ($event->schedules->where('is_cancelled', false) as $s) {
+            $day = $s->date->format('Ymd');
+            $lines[] = 'BEGIN:VEVENT';
+            $lines[] = 'UID:event-'.$event->id.'-'.$s->id.'@do-inaka.net';
+            $lines[] = 'DTSTAMP:'.now()->utc()->format('Ymd\THis\Z');
+            if ($s->start_time !== null && ! $s->is_all_day) {
+                $start = str_replace(':', '', substr($s->start_time, 0, 5)).'00';
+                $end = $s->end_time !== null ? str_replace(':', '', substr($s->end_time, 0, 5)).'00' : null;
+                $lines[] = 'DTSTART;TZID=Asia/Tokyo:'.$day.'T'.$start;
+                if ($end !== null) {
+                    $lines[] = 'DTEND;TZID=Asia/Tokyo:'.$day.'T'.$end;
+                }
+            } else {
+                $lines[] = 'DTSTART;VALUE=DATE:'.$day;
+            }
+            $lines[] = 'SUMMARY:'.$escape($event->title);
+            if ($event->venue_name) {
+                $lines[] = 'LOCATION:'.$escape($event->venue_name);
+            }
+            $lines[] = 'URL:'.$this->links->event($event);
+            $lines[] = 'END:VEVENT';
+        }
+        $lines[] = 'END:VCALENDAR';
+
+        return response(implode("\r\n", $lines)."\r\n", 200, [
+            'Content-Type' => 'text/calendar; charset=utf-8',
+            'Content-Disposition' => 'attachment; filename="event-'.$event->id.'.ics"',
         ]);
     }
 

@@ -11,5 +11,5 @@
         <div><button class="btn btn-sm" type="submit">{{ __('submission.comment_send') }}</button></div>
     </form>
 @else
-    <p class="t-small"><a href="{{ url('/login/') }}">{{ __('submission.comment_login') }}</a></p>
+    <a class="comment-login" href="{{ url('/login/') }}">{{ __('submission.comment_login') }}</a>
 @endauth

@@ -92,7 +92,7 @@ return [
     'comment_received' => 'コメントを受け付けました。確認してから表示します。',
     'comment_label' => 'コメントを書く',
     'comment_send' => 'コメントを送る',
-    'comment_login' => 'コメントするには、ログインが必要です。',
+    'comment_login' => 'ログインしてコメントする',
     'comment_note' => '確認してから表示します。',
     'fields' => ['intro_body' => '紹介文', 'title' => 'タイトル・名前', 'venue_name' => '会場', 'address' => '住所', 'fee' => '参加費', 'url' => '公式サイトのURL', 'body' => '説明', 'hours' => '営業時間', 'access' => 'アクセス'],
 
