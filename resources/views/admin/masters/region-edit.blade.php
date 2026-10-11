@@ -3,7 +3,7 @@
         <h1 class="t-h1">{{ __('masters.region_edit') }}</h1>
         <p class="t-small t-muted">{{ __('masters.lead') }}</p>
     </div>
-    <p><a href="{{ route('admin.masters', ['tab' => 'regions']) }}">{{ __('masters.back') }}</a></p>
+    <p class="t-small"><a href="{{ route('admin.masters', ['tab' => 'regions']) }}">{{ __('masters.title') }}</a> / {{ $region->name }}</p>
 
     @if ($ai->state !== \App\Enums\AiState::None)
         <section class="card" id="ai-live-detail" data-ai-live>
@@ -74,8 +74,11 @@
         </section>
 
         <aside class="card">
-            <h2 class="t-h2">{{ __('masters.field_active') }}</h2>
-            <label class="check-row"><input type="checkbox" name="is_active" value="1" @checked(old('is_active', $region->is_active))><span>{{ __('masters.field_active') }}</span></label>
+            <h2 class="t-h2">{{ __('content.publish_and_save') }}</h2>
+            <fieldset class="field"><legend>{{ __('content.field_state') }}</legend>
+                <label><input type="radio" name="is_active" value="1" @checked((bool) old('is_active', $region->is_active))> {{ __('content.state_published') }}</label>
+                <label><input type="radio" name="is_active" value="0" @checked(! (bool) old('is_active', $region->is_active))> {{ __('content.state_unpublished') }}</label>
+            </fieldset>
             <div class="field">
                 <label for="reason">{{ __('masters.field_reason') }}</label>
                 <input id="reason" name="reason" maxlength="200" value="{{ old('reason') }}">

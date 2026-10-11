@@ -47,7 +47,7 @@
             </table>
         </div>
 
-        <h2 class="board-h2">{{ __('admin.auto_title') }}</h2>
+        <h2 class="board-h2">{{ __('admin.board_auto_title') }}</h2>
         <div class="card board-table">
             <ul class="board-auto">
                 @forelse ($board['auto'] as $s)

@@ -276,6 +276,15 @@ class ContentService
             'hours' => $data['hours'] ?? null,
             'access' => $data['access'] ?? null,
             'url' => $data['url'] ?? null,
+            'closed_days' => $data['closed_days'] ?? null,
+            'fee' => $data['fee'] ?? null,
+            'parking' => $data['parking'] ?? null,
+            'payment' => $data['payment'] ?? null,
+            'toilet' => $data['toilet'] ?? null,
+            'contact' => $data['contact'] ?? null,
+            'best_season' => $data['best_season'] ?? null,
+            'caution_text' => $data['caution_text'] ?? null,
+            'private_land_checked' => (bool) ($data['private_land_checked'] ?? false),
         ];
     }
 

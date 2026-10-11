@@ -71,12 +71,20 @@
                     <h2 class="detail-h2">{{ __('public.basic_info') }}</h2>
                     <dl class="facts">
                         @if ($spot->hours)<dt>{{ __('public.hours') }}</dt><dd>{{ $spot->hours }}</dd>@endif
+                        @if ($spot->closed_days)<dt>{{ __('public.closed_days') }}</dt><dd>{{ $spot->closed_days }}</dd>@endif
                         @if ($spot->address)<dt>{{ __('public.address') }}</dt><dd>{{ $spot->address }}</dd>@endif
                         @if ($spot->access)<dt>{{ __('public.access') }}</dt><dd>{{ $spot->access }}</dd>@endif
+                        @if ($spot->parking)<dt>{{ __('public.parking') }}</dt><dd>{{ $spot->parking }}</dd>@endif
+                        @if ($spot->fee)<dt>{{ __('public.fee') }}</dt><dd>{{ $spot->fee }}</dd>@endif
+                        @if ($spot->payment)<dt>{{ __('public.payment') }}</dt><dd>{{ $spot->payment }}</dd>@endif
+                        @if ($spot->toilet)<dt>{{ __('public.toilet') }}</dt><dd>{{ $spot->toilet }}</dd>@endif
+                        @if ($spot->contact)<dt>{{ __('public.contact_to') }}</dt><dd>{{ $spot->contact }}</dd>@endif
                         @if ($spot->url && preg_match('#^https?://#i', $spot->url) === 1)
                             <dt>{{ __('public.official_site') }}</dt><dd><a href="{{ $spot->url }}" rel="nofollow noopener" target="_blank">{{ $spot->url }}</a></dd>
                         @endif
                     </dl>
+                    @if ($spot->caution_text)<p class="t-small t-muted">{{ $spot->caution_text }}</p>@endif
+                    @if ($spot->best_season)<p class="t-small t-muted">{{ __('public.best_season', ['season' => __('content.season_'.$spot->best_season)]) }}</p>@endif
                 </section>
 
                 @if ($spot->lat !== null && $spot->lng !== null)

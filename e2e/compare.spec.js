@@ -42,8 +42,9 @@ const BOARDS = {
     AdminLogsPC: ['/admin/logs', 1440, 'admin'], AdminLogsSP: ['/admin/logs', 390, 'admin'],
     AdminAdsPC: ['/admin/ads', 1440, 'admin'], AdminAdsSP: ['/admin/ads', 390, 'admin'],
     AdminUpdatePC: ['/admin/update', 1440, 'admin'], AdminUpdateSP: ['/admin/update', 390, 'admin'],
-    AdminEventEditPC: ['first:/admin/events:a[href*="/edit"]', 1440, 'admin'], AdminEventEditSP: ['first:/admin/events:a[href*="/edit"]', 390, 'admin'],
-    AdminSpotEditPC: ['first:/admin/contents?tab=spot:a[href*="/edit"]', 1440, 'admin'], AdminSpotEditSP: ['first:/admin/contents?tab=spot:a[href*="/edit"]', 390, 'admin'],
+    AdminEventEditPC: [`/admin/events/${process.env.E2E_EVENT_ID ?? 1}/edit`, 1440, 'admin'], AdminEventEditSP: [`/admin/events/${process.env.E2E_EVENT_ID ?? 1}/edit`, 390, 'admin'],
+    AdminSpotEditPC: [`/admin/spots/${process.env.E2E_SPOT_ID ?? 1}/edit`, 1440, 'admin'], AdminSpotEditSP: [`/admin/spots/${process.env.E2E_SPOT_ID ?? 1}/edit`, 390, 'admin'],
+    AdminMasterEditPC: [`/admin/masters/regions/${process.env.E2E_REGION_ID ?? 1}/edit`, 1440, 'admin'], AdminMasterEditSP: [`/admin/masters/regions/${process.env.E2E_REGION_ID ?? 1}/edit`, 390, 'admin'],
     AdminReviewPC: [`/admin/review/${process.env.E2E_REVIEW_ID ?? 1}`, 1440, 'admin'], AdminReviewSP: [`/admin/review/${process.env.E2E_REVIEW_ID ?? 1}`, 390, 'admin'],
     AdminLoginPC: ['/admin/login', 1440], AdminLoginSP: ['/admin/login', 390],
 };

@@ -1,4 +1,4 @@
-<div class="repeat-row">
+<div class="repeat-row repeat-row-source">
     <div class="field">
         <label>{{ __('content.field_source_kind') }}</label>
         <select name="sources[{{ $i }}][kind]">

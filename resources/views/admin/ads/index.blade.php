@@ -1,22 +1,24 @@
 <x-layouts.admin :title="__('ads.title')" current="ads">
     <div class="page-head"><h1 class="t-h1">{{ __('ads.title') }}</h1><p class="t-small t-muted">{{ __('ads.lead') }}</p></div>
 
-    <section class="card">
-        <h2 class="t-h2">{{ __('ads.adsense') }}</h2>
+    <h2 class="board-h2">{{ __('ads.adsense') }}</h2>
+    <section class="card board-card">
         <p class="t-small t-muted">{{ __('ads.adsense_help') }}</p>
         @unless ($adsenseReady)<p class="alert alert-warning" role="status">{{ __('ads.adsense_off') }}</p>@endunless
         <form method="post" action="{{ route('admin.ads.adsense') }}">
             @csrf
+            <div class="check-grid">
             @foreach ($positions as $position)
                 <label class="check-row"><input type="checkbox" name="positions[]" value="{{ $position }}" @checked(! empty($adsense[$position]))><span>{{ __('ads.positions.'.$position) }}</span></label>
             @endforeach
+            </div>
             <button class="btn" type="submit">{{ __('ads.save_adsense') }}</button>
         </form>
     </section>
 
-    <section class="card">
-        <div class="card-head"><h2 class="t-h2">{{ __('ads.pr_title') }}</h2><x-button :href="route('admin.ads.create')" variant="primary" size="sm">{{ __('ads.add_pr') }}</x-button></div>
-        <p class="t-small t-muted">{{ __('ads.pr_help') }}</p>
+    <h2 class="board-h2">{{ __('ads.pr_title') }}</h2>
+    <p class="t-small t-muted">{{ __('ads.pr_help') }}</p>
+    <section>
         <div class="table-wrap">
             <table class="table">
                 <thead><tr><th>{{ __('ads.col_title') }}</th><th>{{ __('ads.col_position') }}</th><th>{{ __('ads.col_period') }}</th><th>{{ __('ads.col_state') }}</th><th></th></tr></thead>
@@ -38,5 +40,8 @@
                 </tbody>
             </table>
         </div>
+        <p class="ads-add"><x-button :href="route('admin.ads.create')" variant="primary">{{ __('ads.add_pr') }}</x-button></p>
     </section>
+
+    <section class="card board-card ads-look"><div><h2>{{ __('ads.look_title') }}</h2><p class="t-muted">{{ __('ads.look_body') }}</p></div><div class="ads-sample"><span class="ads-thumb" aria-hidden="true"></span><div><span class="pill">PR</span><br><strong>{{ __('ads.look_sample') }}</strong></div></div></section>
 </x-layouts.admin>

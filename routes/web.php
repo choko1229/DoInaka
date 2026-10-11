@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use App\Enums\UserRole;
+use App\Enums\UserStatus;
 use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\EventListController;
 use App\Http\Controllers\Api\ReactionController;
@@ -26,8 +28,11 @@ use App\Http\Controllers\Public\SpotController;
 use App\Http\Controllers\Public\SubmissionController;
 use App\Http\Controllers\Public\UserController;
 use App\Http\Middleware\EnsureNotInstalled;
+use App\Models\User;
 use App\Support\ReservedSlugs;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 
 Route::get('/', HomeController::class)->name('home');
 
@@ -109,6 +114,28 @@ Route::get('/storage/held/{media}', [HeldMediaController::class, 'show'])->where
 
 // 固定ページ(利用規約・プライバシーポリシー・掲載・投稿ポリシー・運営者情報。設計書6.1)。海外からも見られる
 Route::get('/{page}', [PageController::class, 'show'])->whereIn('page', array_keys(PageController::PAGES))->name('page');
+
+// 開発用: 見本の会員・管理者でログインする(APP_ENV=local のときだけ。本番・テストでは存在しない)
+if (app()->environment('local')) {
+    Route::get('/_dev/login/{role}', function (string $role) {
+        abort_unless(in_array($role, ['member', 'admin'], true), 404);
+        $admin = $role === 'admin';
+        $user = User::query()->firstOrCreate(
+            ['email' => $admin ? 'dev-admin@example.test' : 'dev-member@example.test'],
+            ['name' => $admin ? '見本の管理者' : 'さぬきの山の人', 'role' => $admin ? UserRole::Admin : UserRole::Member, 'status' => UserStatus::Active],
+        );
+        if ($admin && ! $user->hasTwoFactor()) {
+            $user->forceFill(['totp_secret' => Str::random(32), 'totp_confirmed_at' => now()])->save();
+        }
+        Auth::login($user);
+        session()->regenerate();
+        if ($admin) {
+            session()->put('admin.totp_verified_at', now()->getTimestamp());
+        }
+
+        return redirect($admin ? '/admin/' : '/mypage/');
+    });
+}
 
 // 投稿者プロフィール
 Route::get('/users/{id}', [UserController::class, 'show'])->whereNumber('id')->name('users.show');
