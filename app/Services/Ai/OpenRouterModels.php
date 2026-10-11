@@ -19,18 +19,23 @@ final class OpenRouterModels
 
     private const KEY = 'ai:free-models';
 
-    /** 取り直す。失敗したら、前の一覧をそのまま使う */
+    private const ERROR_KEY = 'ai:free-models-error';
+
+    /** 取り直す。失敗したら、前の一覧をそのまま使う(理由は lastError() で見られる) */
     public function refresh(): int
     {
         try {
-            $response = Http::timeout(30)->acceptJson()->get(self::URL);
+            $response = Http::timeout(60)->connectTimeout(20)->withUserAgent('DoInaka/1.0 (+https://xn--gdkt37rmci.net/)')->acceptJson()->get(self::URL);
         } catch (Throwable $e) {
             Log::warning('OpenRouter のモデル一覧を取得できませんでした。', ['exception' => $e::class]);
+            $this->fail($e::class.': '.mb_substr($e->getMessage(), 0, 200));
 
             return count($this->all());
         }
 
         if (! $response->successful() || ! is_array($response->json('data'))) {
+            $this->fail('HTTP '.$response->status().' '.mb_substr(strip_tags($response->body()), 0, 120));
+
             return count($this->all());
         }
 
@@ -43,12 +48,39 @@ final class OpenRouterModels
 
         // 空の一覧は信用しない(全員を「消えた」にしないため)
         if ($models === []) {
+            $this->fail('無料(:free)のモデルが一覧に見つかりませんでした');
+
             return count($this->all());
         }
 
         Cache::forever(self::KEY, $models);
+        Cache::forget(self::ERROR_KEY);
+
+        // 保存できたか確かめる(キャッシュが効かない環境で、成功と見せないため)
+        if ($this->all() === []) {
+            $this->fail('一覧を保存できませんでした(キャッシュの設定を確認してください)');
+
+            return 0;
+        }
 
         return count($models);
+    }
+
+    /** 直近の取得に失敗した理由(なければ null) */
+    public function lastError(): ?string
+    {
+        $error = Cache::get(self::ERROR_KEY);
+
+        return is_string($error) && $error !== '' ? $error : null;
+    }
+
+    private function fail(string $reason): void
+    {
+        try {
+            Cache::forever(self::ERROR_KEY, $reason);
+        } catch (Throwable) {
+            // 理由の保存に失敗しても、取得の結果には影響させない
+        }
     }
 
     /** @return array<string, string> id => 名前 */

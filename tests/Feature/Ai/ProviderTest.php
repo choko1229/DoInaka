@@ -115,3 +115,16 @@ it('モデルの候補の一覧に :free 以外は出ない。取得に失敗し
 
     Cache::forget('ai:free-models');
 });
+
+it('モデル一覧の取得に失敗したとき、理由を覚えておき、成功したら消す', function (): void {
+    Cache::forget('ai:free-models');
+    Http::fake([OpenRouterModels::URL => Http::sequence()->push('blocked', 403)->push(['data' => [['id' => 'meta/llama:free', 'name' => 'Llama']]])]);
+
+    $models = app(OpenRouterModels::class);
+    expect($models->refresh())->toBe(0)
+        ->and($models->lastError())->toContain('HTTP 403')
+        ->and($models->refresh())->toBe(1)
+        ->and($models->lastError())->toBeNull();
+
+    Cache::forget('ai:free-models');
+});

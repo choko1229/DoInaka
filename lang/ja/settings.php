@@ -22,6 +22,7 @@ return [
     'models_refresh_help' => 'OpenRouter の無料のモデルの一覧を取り直します(キーは要りません)。',
     'models_refreshed' => 'モデルの一覧を取得しました(無料のモデル :count 件)。',
     'models_refresh_failed' => 'モデルの一覧を取得できませんでした。時間をおいて、もう一度試してください。',
+    'models_refresh_reason' => '(理由: :reason)',
     'models_unknown' => 'モデルの一覧をまだ取得できていません(下の「いますぐ一覧を取得」で入ります。毎日、日本時間の3時40分にも自動で取得します)。いま保存されているモデルだけが選べます。',
     'models_first' => '第1候補',
     'models_backup' => '予備',
