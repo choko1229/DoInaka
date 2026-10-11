@@ -159,6 +159,7 @@ Route::middleware('admin')->group(function (): void {
     // 設定・AI・広告・更新適用は管理者だけ(設計書5.3)
     Route::middleware('can:manage-settings')->group(function (): void {
         Route::get('/settings/{tab?}', [SettingsController::class, 'show'])->where('tab', '[a-z]+')->name('settings');
+        Route::post('/settings/ai/models/refresh', [SettingsController::class, 'refreshModels'])->middleware('throttle:6,1')->name('settings.models.refresh');
         Route::post('/settings/{tab}', [SettingsController::class, 'update'])->where('tab', '[a-z]+')->name('settings.update');
         Route::get('/logs/{tab?}', [LogController::class, 'index'])->where('tab', 'operations|reviews|ai|errors')->name('logs');
         Route::get('/logs/{tab}/csv', [LogController::class, 'csv'])->where('tab', 'operations|reviews|ai|errors')->middleware('throttle:10,1')->name('logs.csv');

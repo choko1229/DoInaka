@@ -49,6 +49,14 @@ final class SettingsController extends Controller
         ]);
     }
 
+    /** モデルの一覧(OpenRouter の無料のもの)を、いますぐ取り直す。毎日の取得を待たずに、候補を選べるようにする */
+    public function refreshModels(): RedirectResponse
+    {
+        $count = $this->models->refresh();
+
+        return redirect()->route('admin.settings', ['tab' => 'ai'])->with($count > 0 ? 'status' : 'error', $count > 0 ? __('settings.models_refreshed', ['count' => $count]) : __('settings.models_refresh_failed'));
+    }
+
     public function update(Request $request, string $tab): RedirectResponse
     {
         $tabs = SettingsCatalog::tabs();

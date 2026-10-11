@@ -23,4 +23,5 @@ enum AppMetaKey: string
     case WebCronLastRun = 'webcron_last_run';
     case WebCronLastResult = 'webcron_last_result';
     case WebCronFailures = 'webcron_failures';
+    case WebCronEventRuns = 'webcron_event_runs';
 }

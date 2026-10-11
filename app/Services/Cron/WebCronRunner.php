@@ -8,6 +8,8 @@ use App\Enums\AppMetaKey;
 use App\Enums\CronMode;
 use App\Services\Setting\AppMetaService;
 use App\Services\Update\CronHealth;
+use Carbon\CarbonImmutable;
+use Cron\CronExpression;
 use Illuminate\Console\Scheduling\CallbackEvent;
 use Illuminate\Console\Scheduling\Event;
 use Illuminate\Console\Scheduling\Schedule;
@@ -75,7 +77,10 @@ final class WebCronRunner
                     break;
                 }
                 try {
-                    $this->runEvent($event) && $ran[] = $name;
+                    if ($this->runEvent($event)) {
+                        $ran[] = (string) $name;
+                        $this->markRan((string) $name);
+                    }
                 } catch (Throwable $e) {
                     $errors[] = $name.': '.$e::class;
                     report($e);
@@ -148,19 +153,84 @@ final class WebCronRunner
         return $limit === 0 || $limit >= $seconds;
     }
 
-    /** @return array<int|string, Event> */
+    /**
+     * 動かす予約。**時刻になったもの**に加えて、**取りこぼしたもの**(前回動かしたあとに、予定の時刻が過ぎていたもの)も動かす。
+     * サーバーの cron は毎分動くので、毎日3時40分の予約は、その分に必ず動く。アクセスで動かす方式は、その分にアクセスがないと、
+     * 動くべき分を飛ばしてしまう(アクセスが少ない時間帯に動かす予約=毎日・毎週のものが、ずっと動かなくなる)。それを、遅れてでも動かす。
+     * 予約ごとの最後に動かした時刻を app_meta に持つ。記録のない予約は、記録を始めるだけ(一度に全部は動かさない)。
+     *
+     * @return array<int|string, Event>
+     */
     private function dueEvents(): array
     {
+        /** @var array<int|string, string> $runs */
+        $runs = $this->eventRuns();
+        $now = CarbonImmutable::now();
         $due = [];
-        foreach ($this->schedule()->dueEvents($this->app) as $event) {
+
+        foreach ($this->schedule()->events() as $event) {
             /** @var Event $event */
             $name = (string) $event->description;
-            if (! in_array($name, self::SKIPPED, true)) {
-                $due[$name !== '' ? $name : (string) spl_object_id($event)] = $event;
+            if (in_array($name, self::SKIPPED, true)) {
+                continue;
             }
+            $key = $name !== '' ? $name : (string) spl_object_id($event);
+            $seen = isset($runs[$key]) ? CarbonImmutable::parse($runs[$key]) : null; // 記録のない予約は null
+
+            $isDue = $event->isDue($this->app);
+            $missed = $seen !== null && $this->previousDue($event, $now)?->greaterThan($seen) === true;
+
+            if (! $isDue && ! $missed) {
+                if ($seen === null) {
+                    $runs[(string) $key] = $now->toIso8601String();
+                }
+
+                continue;
+            }
+            $due[$key] = $event;
         }
+        $this->saveEventRuns($runs);
 
         return $due;
+    }
+
+    /** その予約の、直近の予定の時刻(いまを含む) */
+    private function previousDue(Event $event, CarbonImmutable $now): ?CarbonImmutable
+    {
+        try {
+            $timezone = config()->string('app.timezone');
+            $previous = (new CronExpression($event->expression))->getPreviousRunDate($now->setTimezone($timezone)->toDateTime(), 0, true, $timezone);
+
+            return CarbonImmutable::instance($previous);
+        } catch (Throwable) {
+            return null;
+        }
+    }
+
+    /** @return array<int|string, string> */
+    private function eventRuns(): array
+    {
+        $json = $this->meta->get(AppMetaKey::WebCronEventRuns);
+        $data = $json === null ? null : json_decode($json, true);
+
+        /** @var array<int|string, string> $runs */
+        $runs = is_array($data) ? $data : [];
+
+        return $runs;
+    }
+
+    /** @param  array<int|string, string>  $runs */
+    private function saveEventRuns(array $runs): void
+    {
+        $this->meta->set(AppMetaKey::WebCronEventRuns, json_encode($runs, JSON_UNESCAPED_UNICODE) ?: '{}');
+    }
+
+    /** 動かした予約の、最後の時刻を残す */
+    private function markRan(string $key): void
+    {
+        $runs = $this->eventRuns();
+        $runs[$key] = CarbonImmutable::now()->toIso8601String();
+        $this->saveEventRuns($runs);
     }
 
     private function updateIsDue(): bool
