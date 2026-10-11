@@ -38,7 +38,17 @@
             <section class="detail-section region-intro">
                 @if ($region->intro_body)
                     <h2 class="detail-h2">{{ __('public.region_intro') }}</h2>
-                    @foreach (preg_split("/\n{2,}/", $region->intro_body) ?: [] as $paragraph)<p>{!! nl2br(e($paragraph)) !!}</p>@endforeach
+                    @php
+                        $paragraphs = preg_split("/\n{2,}/", $region->intro_body) ?: [];
+                        $marks = is_array($region->intro_paragraph_sources) && count($region->intro_paragraph_sources) === count($paragraphs) ? $region->intro_paragraph_sources : [];
+                    @endphp
+                    @foreach ($paragraphs as $pi => $paragraph)
+                        <p>{!! nl2br(e($paragraph)) !!}
+                            @foreach ($marks[$pi] ?? [] as $n)
+                                <sup class="fn"><a href="#ref-{{ $n }}">[{{ $n }}]</a></sup>
+                            @endforeach
+                        </p>
+                    @endforeach
                     <p class="ai-note">{{ __('region.ai_notice') }}@if ($region->intro_generated_at) {{ __('region.last_checked', ['date' => $region->intro_generated_at->format('Y-m-d')]) }}@endif <a href="/report/region/{{ $region->id }}/">{{ __('public.report_difference') }}</a></p>
                 @else
                     <p class="t-muted">{{ __('public.region_preparing') }}</p>
@@ -102,6 +112,9 @@
                     @if ($stat?->area_km2 !== null)<dt>{{ __('region.area') }}</dt><dd>{{ rtrim(rtrim((string) $stat->area_km2, '0'), '.') }} km²</dd>@endif
                     @if ($mergedOn)<dt>{{ __('region.merger') }}</dt><dd>{{ $mergedOn->format('Y年n月j日') }}<br><span class="t-small t-muted">{{ $merged->pluck('name')->prepend($region->name)->implode('・') }}</span></dd>@endif
                 </dl>
+                @if ($outline)
+                    <figure class="outline"><svg viewBox="0 0 280 150" role="img" aria-label="{{ __('region.outline_label', ['name' => $region->name]) }}"><polygon points="{{ collect($outline)->map(fn ($p) => $p[0].','.$p[1])->implode(' ') }}" /></svg><figcaption class="t-small t-muted">{{ __('region.outline_note') }}</figcaption></figure>
+                @endif
                 @if ($stat === null)<p class="t-small t-muted">{{ __('region.stats_pending') }}</p>
                 @else<p class="t-small t-muted">{{ __('region.stats_auto') }}@if ($stat->source_label) {{ $stat->source_label }}@endif</p>@endif
             </section>

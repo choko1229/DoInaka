@@ -3,6 +3,7 @@ import './theme.js';
 import './auth.js';
 import './repeat.js';
 import './tags.js';
+import './region-select.js';
 import './public.js';
 import './confirm.js';
 import './consent.js';

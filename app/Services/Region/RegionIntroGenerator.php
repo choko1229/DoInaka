@@ -80,7 +80,7 @@ final class RegionIntroGenerator
 
         $revision = $this->revisions->update(
             $region,
-            fn () => $region->forceFill(['intro_body' => $body, 'intro_sources' => $citations, 'intro_fact_checked' => true, 'intro_generated_at' => now()])->save(),
+            fn () => $region->forceFill(['intro_body' => $body, 'intro_sources' => $citations, 'intro_paragraph_sources' => $this->paragraphSources($kept, array_column($citations, 'n')), 'intro_fact_checked' => true, 'intro_generated_at' => now()])->save(),
             RevisionCause::AiGenerated,
         );
 
@@ -202,5 +202,28 @@ final class RegionIntroGenerator
         }
 
         return false;
+    }
+
+    /**
+     * 段落ごとの出典番号(本文の段落と同じ並び)。出典の一覧にあるものだけ。
+     *
+     * @param  list<array{text: string, paragraph: int, supported: bool, sources: list<int>}>  $kept
+     * @param  list<int>  $known
+     * @return list<list<int>>
+     */
+    private function paragraphSources(array $kept, array $known): array
+    {
+        $byParagraph = [];
+        foreach ($kept as $sentence) {
+            foreach ($sentence['sources'] as $n) {
+                if (in_array($n, $known, true)) {
+                    $byParagraph[$sentence['paragraph']][$n] = $n;
+                }
+            }
+            $byParagraph[$sentence['paragraph']] ??= [];
+        }
+        ksort($byParagraph);
+
+        return array_values(array_map(fn (array $set): array => array_values($set), $byParagraph));
     }
 }

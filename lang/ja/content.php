@@ -161,4 +161,8 @@ return [
     'state_unpublished' => '非公開',
     'view_public' => '公開ページを見る',
     'map_pick' => '地図を押してピンを置くと、緯度・経度が入ります',
+    'region_pref' => '都道府県',
+    'region_city' => '市町',
+    'region_old' => '旧町村',
+    'region_none' => '(選ばない)',
 ];

@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Public;
 use App\Contracts\SearchEngine;
 use App\Enums\RegionLevel;
 use App\Models\Region;
+use App\Services\Region\RegionOutline;
 use App\Services\Region\RegionPageQueue;
 use App\Services\Region\RegionScope;
 use App\Services\Search\SearchQuery;
@@ -56,6 +57,7 @@ final class RegionController extends PublicController
             'events' => $events,
             'spots' => $spots,
             'indexable' => $indexable,
+            'outline' => app(RegionOutline::class)->points($region),
             'isPref' => $region->level === RegionLevel::Prefecture,
             'shikoku' => $region->level === RegionLevel::Prefecture
                 ? Region::query()->whereNull('parent_id')->where('is_active', true)->whereIn('slug', ['tokushima', 'ehime', 'kochi', 'kagawa'])->where('id', '!=', $region->id)->orderBy('sort_order')->get()

@@ -1118,3 +1118,10 @@ label:has(> input[type='radio']) { display: flex; align-items: center; gap: 8px;
 .tag-input-list { display: contents; }
 .tag-chip-button { border: 0; cursor: pointer; font: inherit; font-size: 12px; font-weight: 700; }
 .tag-input .tag-input-add { border: 2px dashed var(--line-strong); border-radius: var(--radius-pill); height: 28px; min-height: 0; width: 110px; padding: 0 10px; background: transparent; font-size: 12px; }
+.fn { font-size: 12px; margin-left: 2px; }
+.fn a { text-decoration: none; }
+.outline { margin: 0; padding: 8px; border-radius: 12px; background: var(--surface-sunken); display: grid; gap: 4px; }
+.outline svg { width: 100%; height: auto; display: block; }
+.outline polygon { fill: var(--surface); stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; }
+.region-parts { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+.region-part { display: grid; gap: 4px; font-size: 12px; font-weight: 700; }
