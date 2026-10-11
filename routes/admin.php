@@ -160,6 +160,7 @@ Route::middleware('admin')->group(function (): void {
     Route::middleware('can:manage-settings')->group(function (): void {
         Route::get('/settings/{tab?}', [SettingsController::class, 'show'])->where('tab', '[a-z]+')->name('settings');
         Route::post('/settings/ai/models/refresh', [SettingsController::class, 'refreshModels'])->middleware('throttle:6,1')->name('settings.models.refresh');
+        Route::post('/settings/ai/models/recommend', [SettingsController::class, 'recommendModels'])->middleware('throttle:6,1')->name('settings.models.recommend');
         Route::post('/settings/{tab}', [SettingsController::class, 'update'])->where('tab', '[a-z]+')->name('settings.update');
         Route::get('/logs/{tab?}', [LogController::class, 'index'])->where('tab', 'operations|reviews|ai|errors')->name('logs');
         Route::get('/logs/{tab}/csv', [LogController::class, 'csv'])->where('tab', 'operations|reviews|ai|errors')->middleware('throttle:10,1')->name('logs.csv');

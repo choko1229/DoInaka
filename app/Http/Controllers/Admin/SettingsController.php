@@ -9,6 +9,7 @@ use App\Enums\SettingKey;
 use App\Enums\SettingType;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Services\Ai\ModelRecommender;
 use App\Services\Ai\OpenRouterModels;
 use App\Services\Audit\AuditLogger;
 use App\Services\Cron\WebCronStatus;
@@ -31,6 +32,7 @@ final class SettingsController extends Controller
         private readonly SettingsService $settings,
         private readonly AuditLogger $audit,
         private readonly OpenRouterModels $models,
+        private readonly ModelRecommender $recommender,
     ) {}
 
     public function show(WebCronStatus $cron, string $tab = 'site'): View
@@ -58,10 +60,34 @@ final class SettingsController extends Controller
         $reason = $this->models->lastError();
         $failed = $count === 0 || $reason !== null;
 
+        // 選んでいない用途には、おすすめを自動で入れる(選んであるものは変えない)
+        $filled = $failed ? 0 : $this->recommender->apply(false, $this->actorId());
+
         return redirect()->route('admin.settings', ['tab' => 'ai'])->with(
             $failed ? 'error' : 'status',
-            $failed ? __('settings.models_refresh_failed').($reason !== null ? __('settings.models_refresh_reason', ['reason' => $reason]) : '') : __('settings.models_refreshed', ['count' => $count]),
+            $failed ? __('settings.models_refresh_failed').($reason !== null ? __('settings.models_refresh_reason', ['reason' => $reason]) : '') : __('settings.models_refreshed', ['count' => $count]).($filled > 0 ? __('settings.models_auto_filled', ['count' => $filled]) : ''),
         );
+    }
+
+    /** 用途ごとのモデルを、おすすめですべて入れ直す(性能のよい順。選んであったものも置き換える) */
+    public function recommendModels(): RedirectResponse
+    {
+        $count = $this->recommender->apply(true, $this->actorId());
+        if ($count > 0) {
+            $this->audit->record(AuditAction::SettingsChange, auth()->user() instanceof User ? auth()->user() : null, 'setting', 'ai.models', ['after' => 'recommended', 'count' => $count]);
+        }
+
+        return redirect()->route('admin.settings', ['tab' => 'ai'])->with(
+            $this->models->isKnown() ? 'status' : 'error',
+            $this->models->isKnown() ? __('settings.models_recommended', ['count' => $count]) : __('settings.models_recommend_need_list'),
+        );
+    }
+
+    private function actorId(): ?int
+    {
+        $user = auth()->user();
+
+        return $user instanceof User ? $user->id : null;
     }
 
     public function update(Request $request, string $tab): RedirectResponse

@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Enums\AppMetaKey;
+use App\Services\Ai\ModelRecommender;
 use App\Services\Ai\OpenRouterModels;
 use App\Services\Cron\WebCronBudget;
 use App\Services\Cron\WebCronRunner;
@@ -64,7 +65,11 @@ Schedule::command('crawl:run')->hourly()
 Schedule::command('regions:generate')->everyTenMinutes()->withoutOverlapping()->name('regions-generate');
 
 // OpenRouter の無料モデルの一覧を取り直す(1日1回。管理画面の候補と、モデルが消えたかの判断に使う)
-Schedule::call(fn () => app(OpenRouterModels::class)->refresh())->dailyAt('3:40')->name('ai-models-refresh');
+Schedule::call(function (): void {
+    app(OpenRouterModels::class)->refresh();
+    // 選んでいない用途・選んだモデルがすべて消えた用途に、おすすめを入れる
+    app(ModelRecommender::class)->apply();
+})->dailyAt('3:40')->name('ai-models-refresh');
 
 // 人気スコアの集計(1時間ごと。管理者とボットを除いた閲覧、お気に入り、行った!の直近30日)
 Schedule::command('popularity:calculate')->hourly()->name('popularity-calculate');
