@@ -7,6 +7,7 @@ use App\Enums\SettingKey;
 use App\Models\AuditLog;
 use App\Models\Setting;
 use App\Models\User;
+use App\Services\Ai\OpenRouterModels;
 use App\Services\Setting\SettingsCatalog;
 use App\Services\Setting\SettingsService;
 use Illuminate\Support\Facades\Cache;
@@ -106,7 +107,7 @@ function aiTabPayload(array $override = []): array
 }
 
 it('AI のモデル: 無料(:free)だけ保存できる。有料は断られ、一覧にない無料モデルも保存できる(候補の一覧は取得したものだけ)', function (): void {
-    Cache::forever('ai:free-models', ['meta/llama:free' => 'Llama', 'google/gemma:free' => 'Gemma']);
+    app(OpenRouterModels::class)->store(['meta/llama:free' => 'Llama', 'google/gemma:free' => 'Gemma']);
     $this->actingAsVerifiedAdmin(settingsAdmin());
     $html = $this->get('/admin/settings/ai')->assertOk()->getContent();
     expect($html)->toContain('meta/llama:free')->and($html)->not->toContain('openai/gpt-4o');

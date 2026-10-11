@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace App\Services\Ai;
 
-use Illuminate\Support\Facades\Cache;
+use App\Enums\AppMetaKey;
+use App\Services\Setting\AppMetaService;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Throwable;
@@ -12,14 +13,13 @@ use Throwable;
 /**
  * OpenRouter のモデル一覧(/api/v1/models)から、無料(:free)のものだけを持つ(設計書9.2)。1日1回取り直して保存する。
  * 管理画面の候補にも、モデルが消えたかの判断にも、この一覧を使う。
+ * 一覧は DB(app_meta)に置く。キャッシュは、レンタルサーバーの設定によっては残らないことがあるため使わない。
  */
 final class OpenRouterModels
 {
     public const URL = 'https://openrouter.ai/api/v1/models';
 
-    private const KEY = 'ai:free-models';
-
-    private const ERROR_KEY = 'ai:free-models-error';
+    public function __construct(private readonly AppMetaService $meta) {}
 
     /** 取り直す。失敗したら、前の一覧をそのまま使う(理由は lastError() で見られる) */
     public function refresh(): int
@@ -53,43 +53,45 @@ final class OpenRouterModels
             return count($this->all());
         }
 
-        Cache::forever(self::KEY, $models);
-        Cache::forget(self::ERROR_KEY);
+        try {
+            $this->store($models);
+        } catch (Throwable $e) {
+            $this->fail('一覧を保存できませんでした: '.mb_substr($e->getMessage(), 0, 200));
 
-        // 保存できたか確かめる(キャッシュが効かない環境で、成功と見せないため)
-        if ($this->all() === []) {
-            $this->fail('一覧を保存できませんでした(キャッシュの設定を確認してください)');
-
-            return 0;
+            return count($this->all());
         }
+
+        $this->clearError();
 
         return count($models);
     }
 
-    /** 直近の取得に失敗した理由(なければ null) */
-    public function lastError(): ?string
+    /** @param  array<string, string>  $models id => 名前 */
+    public function store(array $models): void
     {
-        $error = Cache::get(self::ERROR_KEY);
-
-        return is_string($error) && $error !== '' ? $error : null;
-    }
-
-    private function fail(string $reason): void
-    {
-        try {
-            Cache::forever(self::ERROR_KEY, $reason);
-        } catch (Throwable) {
-            // 理由の保存に失敗しても、取得の結果には影響させない
-        }
+        $this->meta->set(AppMetaKey::AiFreeModels, (string) json_encode($models, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
     }
 
     /** @return array<string, string> id => 名前 */
     public function all(): array
     {
-        $models = Cache::get(self::KEY, []);
+        $models = json_decode($this->meta->get(AppMetaKey::AiFreeModels) ?? '[]', true);
+        $result = [];
+        foreach (is_array($models) ? $models : [] as $id => $name) {
+            if (is_string($name)) {
+                $result[(string) $id] = $name;
+            }
+        }
 
-        /** @var array<string, string> */
-        return is_array($models) ? $models : [];
+        return $result;
+    }
+
+    /** 直近の取得に失敗した理由(なければ null) */
+    public function lastError(): ?string
+    {
+        $error = $this->meta->get(AppMetaKey::AiFreeModelsError);
+
+        return $error !== null && $error !== '' ? $error : null;
     }
 
     /** 一覧がまだ取れていないとき(初回など)は、判断できない */
@@ -106,5 +108,23 @@ final class OpenRouterModels
     public static function isFree(string $id): bool
     {
         return str_ends_with($id, ':free');
+    }
+
+    private function fail(string $reason): void
+    {
+        try {
+            $this->meta->set(AppMetaKey::AiFreeModelsError, $reason);
+        } catch (Throwable) {
+            // 理由の保存に失敗しても、取得の結果には影響させない
+        }
+    }
+
+    private function clearError(): void
+    {
+        try {
+            $this->meta->set(AppMetaKey::AiFreeModelsError, '');
+        } catch (Throwable) {
+            // 同上
+        }
     }
 }

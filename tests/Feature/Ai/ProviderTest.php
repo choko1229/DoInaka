@@ -15,7 +15,6 @@ use App\Services\Setting\SettingsService;
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\Factory;
 use Illuminate\Http\Client\Request;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 
 require_once __DIR__.'/helpers.php';
@@ -112,12 +111,9 @@ it('モデルの候補の一覧に :free 以外は出ない。取得に失敗し
     Http::swap(new Factory);
     Http::fake([OpenRouterModels::URL => Http::sequence()->push('error', 500)->push(['data' => []])]);
     expect($models->refresh())->toBe(2)->and($models->refresh())->toBe(2);
-
-    Cache::forget('ai:free-models');
 });
 
 it('モデル一覧の取得に失敗したとき、理由を覚えておき、成功したら消す', function (): void {
-    Cache::forget('ai:free-models');
     Http::fake([OpenRouterModels::URL => Http::sequence()->push('blocked', 403)->push(['data' => [['id' => 'meta/llama:free', 'name' => 'Llama']]])]);
 
     $models = app(OpenRouterModels::class);
@@ -125,6 +121,4 @@ it('モデル一覧の取得に失敗したとき、理由を覚えておき、�
         ->and($models->lastError())->toContain('HTTP 403')
         ->and($models->refresh())->toBe(1)
         ->and($models->lastError())->toBeNull();
-
-    Cache::forget('ai:free-models');
 });
