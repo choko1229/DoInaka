@@ -241,3 +241,27 @@ it('地域ページの管理画面: 選んでまとめて再生成。管理者�
     expect(DB::table('region_generation_queue')->whereIn('region_id', [$region->id, $other->id])->where('priority', 1)->count())->toBe(2);
     $this->post('/admin/region-pages/regenerate', [])->assertSessionHasErrors('ids');
 });
+
+it('情報元の文章をそのまま写した文は、裏付けがあっても載せない(Wikipedia は事実の確認だけに使う)', function (): void {
+    $region = regionWorld();
+    $copied = '丸亀市は香川県の中西部に位置し瀬戸内海に面した人口十万人以上の都市であり中讃地域の中心都市です。';
+    Http::swap(new Factory);
+    Http::fake([
+        'https://www.city.marugame.example/robots.txt' => Http::response('', 404),
+        OFFICIAL => Http::response('<html><head><title>丸亀市の概要</title></head><body><p>丸亀城は日本一高い石垣で知られます。</p></body></html>', 200, ['Content-Type' => 'text/html']),
+        'https://ja.wikipedia.org/w/api.php*' => Http::response(['query' => ['pages' => [['title' => '丸亀市', 'extract' => $copied]]]]),
+    ]);
+    useAi([
+        ['paragraphs' => [['text' => $copied.'丸亀城は日本一高い石垣で知られます。うちわの生産が盛んです。', 'sources' => [1, 2]], ['text' => '市内には海に面した地域もあります。', 'sources' => [2]]]],
+        ['results' => [
+            ['index' => 0, 'supported' => true, 'sources' => [2]], ['index' => 1, 'supported' => true, 'sources' => [1]],
+            ['index' => 2, 'supported' => true, 'sources' => [1]], ['index' => 3, 'supported' => true, 'sources' => [2]],
+        ]],
+    ]);
+
+    $result = app(RegionIntroGenerator::class)->generate($region);
+
+    $region->refresh();
+    expect($result['status'])->toBe('published')->and($result['kept'])->toBe(3)
+        ->and($region->intro_body)->not->toContain('中讃地域の中心都市')->and($region->intro_body)->toContain('丸亀城は日本一高い石垣で知られます。');
+});
