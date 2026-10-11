@@ -33,3 +33,9 @@
 - composer・npm・artisan はコンテナ内: `docker compose exec -T app ...`、`docker compose --profile dev run --rm --no-deps node npm ...`
 - main のブランチ保護: リポジトリが非公開(無料プラン)のため設定できない(HTTP 403)。CI(ci)が通ってからマージする運用で代える(decisions.md)
 - phpstan の結果は `$LASTEXITCODE` と `--error-format=raw` で確かめる(出力の末尾だけ見ると見落とす)
+
+## 2026-10-12 本番の AI が動いた(v26.10.21)
+- 原因と対応(PR #49〜#56): 「いますぐ一覧を取得」が保存の form の入れ子で送信されていなかった / 一覧を DB に保存 / おすすめのモデルを自動で入れる / 混雑の 429 は10分だけ止める / 設定変更で停止を解く / アクセスで動かす予約処理で withoutOverlapping の予約が動かなかった / 会員一覧の last_login_at のキャスト
+- 本番で確認(Claude in Chrome・閲覧のみ): AI のログに region_intro・fact_check が ok(nemotron-3-super-120b)。香川県の紹介文が AI で作られ、ファクトチェック済み・出典つき・AI の注記つきで表示された。地域ページの生成待ち 1,972 → 1,971
+- 残り: 生成は1件ずつ10分おき(設計どおり)。kagoya の cron 未登録(アクセスで動かしている)。出典が2件そろうまで検索には出さない(公式サイトの URL の登録が必要)
+- 条件1(デザインとの差 0)は、国土数値情報の境界データ・見本データがなく、略図での代用が残る
