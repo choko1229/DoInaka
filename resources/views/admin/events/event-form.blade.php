@@ -63,9 +63,11 @@
                     <p class="t-caption t-muted">{{ __('content.field_address_help') }}</p>
                 </div>
                 <div class="repeat-row">
-                    <div class="field"><label for="lat">{{ __('content.field_lat') }}</label><input id="lat" name="lat" inputmode="decimal" value="{{ old('lat', $event->lat) }}"></div>
-                    <div class="field"><label for="lng">{{ __('content.field_lng') }}</label><input id="lng" name="lng" inputmode="decimal" value="{{ old('lng', $event->lng) }}"></div>
+                    <div class="field"><label for="lat">{{ __('content.field_lat') }}</label><input id="lat" name="lat" data-lat inputmode="decimal" value="{{ old('lat', $event->lat) }}"></div>
+                    <div class="field"><label for="lng">{{ __('content.field_lng') }}</label><input id="lng" name="lng" data-lng inputmode="decimal" value="{{ old('lng', $event->lng) }}"></div>
                 </div>
+                <div class="map map-pick" data-map-picker role="application" aria-label="{{ __('content.map_pick') }}"></div>
+                <p class="t-caption t-muted">{{ __('content.map_pick') }}</p>
                 <div class="field"><label for="fee">{{ __('content.field_fee') }}</label><input id="fee" name="fee" value="{{ old('fee', $event->fee) }}" maxlength="200"></div>
                 <div class="field"><label for="url">{{ __('content.field_url') }}</label><input id="url" name="url" type="url" value="{{ old('url', $event->url) }}" maxlength="500"></div>
             </section>

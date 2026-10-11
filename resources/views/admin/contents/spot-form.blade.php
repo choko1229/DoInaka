@@ -26,9 +26,11 @@
                 <div class="field"><label for="region_id">{{ __('content.field_region') }}</label><x-region-select :selected="old('region_id', $spot->region_id)" />@error('region_id')<p class="field-error" role="alert">{{ $message }}</p>@enderror</div>
                 <div class="field"><label for="address">{{ __('content.field_address') }}</label><input id="address" name="address" value="{{ old('address', $spot->address) }}" maxlength="300"><p class="t-caption t-muted">{{ __('content.address_help') }}</p></div>
                 <div class="field-pair">
-                    <div class="field"><label for="lat">{{ __('content.field_lat') }}</label><input id="lat" name="lat" inputmode="decimal" value="{{ old('lat', $spot->lat) }}"></div>
-                    <div class="field"><label for="lng">{{ __('content.field_lng') }}</label><input id="lng" name="lng" inputmode="decimal" value="{{ old('lng', $spot->lng) }}"></div>
+                    <div class="field"><label for="lat">{{ __('content.field_lat') }}</label><input id="lat" name="lat" data-lat inputmode="decimal" value="{{ old('lat', $spot->lat) }}"></div>
+                    <div class="field"><label for="lng">{{ __('content.field_lng') }}</label><input id="lng" name="lng" data-lng inputmode="decimal" value="{{ old('lng', $spot->lng) }}"></div>
                 </div>
+                <div class="map map-pick" data-map-picker role="application" aria-label="{{ __('content.map_pick') }}"></div>
+                <p class="t-caption t-muted">{{ __('content.map_pick') }}</p>
             </section>
 
             <section class="card">

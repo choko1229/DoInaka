@@ -160,4 +160,5 @@ return [
     'publish_and_save' => '公開と保存',
     'state_unpublished' => '非公開',
     'view_public' => '公開ページを見る',
+    'map_pick' => '地図を押してピンを置くと、緯度・経度が入ります',
 ];
