@@ -116,7 +116,7 @@
                     @php
                         $toPath = fn (array $rings): string => collect($rings)->map(fn ($ring) => 'M'.collect($ring)->map(fn ($p) => $p[0].' '.$p[1])->implode('L').'Z')->implode('');
                     @endphp
-                    <figure class="outline"><svg viewBox="0 0 280 150" role="img" aria-label="{{ __('region.outline_label', ['name' => $region->name]) }}">@if ($outline['inner'] !== [])<path class="outline-inner" d="{{ $toPath($outline['inner']) }}" />@endif<path class="outline-main" d="{{ $toPath($outline['rings']) }}" /></svg><figcaption class="t-small t-muted">{{ $outline['real'] ? ($outline['inner'] !== [] ? __('region.outline_note_inner') : __('region.outline_note_real')) : __('region.outline_note') }}</figcaption></figure>
+                    <figure class="outline"><svg viewBox="0 0 280 150" role="img" aria-label="{{ __('region.outline_label', ['name' => $region->name]) }}"><path class="outline-fill" d="{{ $toPath($outline['rings']) }}" />@if ($outline['inner'] !== [])<path class="outline-inner" d="{{ $toPath($outline['inner']) }}" />@endif<path class="outline-main" d="{{ $toPath($outline['rings']) }}" /></svg><figcaption class="t-small t-muted">{{ $outline['real'] ? ($outline['inner'] !== [] ? __('region.outline_note_inner') : __('region.outline_note_real')) : __('region.outline_note') }}</figcaption></figure>
                 @endif
                 @if ($stat === null)<p class="t-small t-muted">{{ __('region.stats_pending') }}</p>
                 @else<p class="t-small t-muted">{{ __('region.stats_auto') }}@if ($stat->source_label) {{ $stat->source_label }}@endif</p>@endif
