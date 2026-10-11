@@ -6,6 +6,8 @@
     'meta' => null,
     'pref' => null,
     'current' => null,
+    'hero' => null,
+    'footer' => 'inner',
 ])
 @php
     $navPref = $pref ?? request()->route('pref');
@@ -15,8 +17,12 @@
         ['href' => "/{$navPref}/spots/", 'label' => __('public.nav_spots'), 'current' => $current === 'spots'],
         ['href' => "/{$navPref}/articles/", 'label' => __('public.nav_articles'), 'current' => $current === 'articles'],
         ['href' => "/{$navPref}/map/", 'label' => __('public.nav_map'), 'current' => $current === 'map'],
-        ['href' => '/post/', 'label' => __('public.nav_post'), 'current' => $current === 'post'],
+        // ログイン中は「マイページ」、そうでなければ「ログイン」(画面デザインどおり)
+        auth()->check()
+            ? ['href' => '/mypage/', 'label' => __('public.nav_mypage'), 'current' => $current === 'mypage']
+            : ['href' => '/login', 'label' => __('public.nav_login'), 'current' => $current === 'login'],
     ];
+    $cta = ['href' => '/post/', 'label' => __('public.nav_post')];
     $isAdminBarCandidate = auth()->check() && auth()->user()->isStaff();
 @endphp
 <x-layouts.base :title="$title" :description="$description" :noindex="$noindex" :meta="$meta">
@@ -25,8 +31,12 @@
     @if ($isAdminBarCandidate)
         <div id="admin-bar" data-url="{{ url('/admin/bar') }}" data-page="{{ request()->getPathInfo() }}"></div>
     @endif
-    <x-sky-header :compact="$compact" :nav="$nav" />
-    <main id="main">
+    @if ($hero)
+        {{ $hero }}
+    @else
+        <x-sky-header :compact="$compact" :nav="$nav" :cta="$cta" />
+    @endif
+    <main id="main" @if ($hero) class="is-hero" @endif>
         <div class="container">
             @if ($meta instanceof \App\Support\PageMeta && $meta->breadcrumbs !== [])
                 <x-breadcrumbs :items="$meta->breadcrumbs" />
@@ -34,5 +44,5 @@
             {{ $slot }}
         </div>
     </main>
-    <x-site-footer />
+    <x-site-footer :variant="$hero ? 'top' : $footer" />
 </x-layouts.base>
