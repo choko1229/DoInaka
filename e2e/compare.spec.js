@@ -12,7 +12,7 @@ const BOARDS = {
     EventsPC: ['/kagawa/events/', 1280], Events: ['/kagawa/events/', 390],
     SpotsPC: ['/kagawa/spots/', 1280],
     MapPC: ['/kagawa/map/', 1280], Map: ['/kagawa/map/', 390],
-    PostPC: ['/post/', 1280], Post: ['/post/', 390],
+    PostPC: ['/post/tip/', 1280], Post: ['/post/tip/', 390],
     LoginPC: ['/login', 1280], LoginSP: ['/login', 390],
     LegalPC: ['/terms/', 1280], LegalSP: ['/terms/', 390],
     AboutPC: ['/about/', 1280], AboutSP: ['/about/', 390],

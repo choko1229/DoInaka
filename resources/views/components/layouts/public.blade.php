@@ -36,7 +36,7 @@
     @else
         <x-sky-header :compact="$compact" :nav="$nav" :cta="$cta" />
     @endif
-    <main id="main" @if ($hero) class="is-hero" @endif>
+    <main id="main" @class(['is-hero' => $hero, 'is-bare' => $footer === 'none'])>
         <div class="container">
             @if ($meta instanceof \App\Support\PageMeta && $meta->breadcrumbs !== [])
                 <x-breadcrumbs :items="$meta->breadcrumbs" />
@@ -44,5 +44,5 @@
             {{ $slot }}
         </div>
     </main>
-    <x-site-footer :variant="$hero ? 'top' : $footer" />
+    @if ($footer !== 'none')<x-site-footer :variant="$hero ? 'top' : $footer" />@endif
 </x-layouts.base>
