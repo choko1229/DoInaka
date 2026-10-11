@@ -30,6 +30,12 @@
                     </figcaption>
                 </figure>
 
+                @if ($articles->isNotEmpty())
+                    <section class="detail-section"><h2 class="detail-h2">{{ __('public.spot_articles') }}</h2>
+                        <div class="card-grid detail-more">@foreach ($articles as $a)<x-content-card :item="$a" />@endforeach</div>
+                    </section>
+                @endif
+
                 @if ($spot->body)
                     <section class="detail-section prose"><h2 class="detail-h2">{{ __('public.about_spot') }}</h2><p>{!! nl2br(e($spot->body)) !!}</p></section>
                 @endif
@@ -88,6 +94,7 @@
                 </section>
 
                 @if ($spot->lat !== null && $spot->lng !== null)
+                    <h2 class="detail-h2 side-map-title">{{ __('public.place') }}</h2>
                     <div class="map side-map" data-map data-lat="{{ $spot->lat }}" data-lng="{{ $spot->lng }}" data-title="{{ $spot->title }}" role="img" aria-label="{{ __('public.map_of', ['name' => $spot->title]) }}"></div>
                     <p class="t-small side-maplink"><a href="https://www.google.com/maps/search/?api=1&amp;query={{ $spot->lat }},{{ $spot->lng }}" rel="noopener" target="_blank">{{ __('public.open_map_app') }}</a></p>
                 @endif

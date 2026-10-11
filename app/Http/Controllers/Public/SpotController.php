@@ -6,6 +6,8 @@ namespace App\Http\Controllers\Public;
 
 use App\Contracts\SearchEngine;
 use App\Enums\CategoryTarget;
+use App\Models\Article;
+use App\Models\ArticleRelation;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Spot;
@@ -56,6 +58,8 @@ final class SpotController extends PublicController
             'spot' => $spot,
             'nearbyEvents' => $related->nearbyEvents($spot),
             'nearbySpots' => $related->nearbySpots($spot),
+            // この場所が出てくる記事(記事に結びつけられた、公開中のもの)
+            'articles' => Article::query()->where('is_published', true)->whereIn('id', ArticleRelation::query()->where('related_type', 'spot')->where('related_id', $spot->id)->pluck('article_id'))->with(['region.parent', 'tags', 'media'])->latest('id')->limit(3)->get(),
             'comments' => Comment::query()->where('commentable_type', 'spot')->where('commentable_id', $spot->id)->where('status', 'published')->whereNull('deleted_at')->with('user')->orderBy('id')->limit(100)->get(),
             'shareUrl' => app(UrlCanonicalizer::class)->shareUrl($this->links->spot($spot)),
         ]);
