@@ -9,8 +9,11 @@ use App\Enums\CategoryTarget;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Event;
+use App\Models\Region;
+use App\Services\Public\EventCalendar;
 use App\Services\Public\RelatedContent;
 use App\Services\Public\SearchQueryFactory;
+use App\Services\Search\SearchQuery;
 use App\Services\Url\UrlCanonicalizer;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -35,6 +38,10 @@ final class EventController extends PublicController
 
         $query = $factory->fromRequest($request, $region, CategoryTarget::Event, $mode === 'weekend' ? 'weekend' : null, $fixedCategory?->id);
         $events = $search->events($query)->withQueryString();
+        // カレンダー表示(?view=calendar&month=2026-10)。同じ絞り込み条件で、月の格子に並べる
+        $view = $request->query('view') === 'calendar' ? 'calendar' : 'list';
+        $month = $request->query('month');
+        $calendar = $view === 'calendar' ? app(EventCalendar::class)->month($query, is_string($month) ? $month : null) : null;
 
         // 固定の絞り込みページ(今週末・カテゴリ別)は、それ自体が「条件なし」の入口。クエリが足されたら絞り込み扱い
         $fixedPath = match (true) {
@@ -68,7 +75,26 @@ final class EventController extends PublicController
             'categories' => Category::query()->where('target', CategoryTarget::Event)->where('is_active', true)->orderBy('sort_order')->get(),
             'heading' => $title,
             'basePath' => $fixedPath,
+            'view' => $view,
+            'calendar' => $calendar,
+            'areas' => Region::query()->where('parent_id', $region->id)->where('is_active', true)->orderBy('sort_order')->orderBy('id')->get(),
+            'area' => is_string($request->query('area')) ? $request->query('area') : null,
+            'when' => $this->whenChoice($request, $query),
         ]);
+    }
+
+    /** 「いつ」の選択(今日・今週末・今月・期間を指定)。何も選んでいなければ null */
+    private function whenChoice(Request $request, SearchQuery $query): ?string
+    {
+        $when = $request->query('when');
+        if ($query->preset !== null) {
+            return $query->preset;
+        }
+        if (is_string($when) && $when === 'month') {
+            return 'month';
+        }
+
+        return $query->dateFrom !== null || $query->dateTo !== null ? 'range' : null;
     }
 
     public function show(Request $request, string $pref, string $segment, RelatedContent $related): View|RedirectResponse

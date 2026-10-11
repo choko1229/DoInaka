@@ -14,11 +14,57 @@ if (bar && bar.dataset.url) {
         .catch(() => {});
 }
 
+// JavaScript が動くことを CSS に知らせる(スマホの分類の選択など)
+document.documentElement.classList.add('js');
+
+// 「現在地から10km以内」: チェックして送るときに、位置を調べて lat・lng・r を入れる(位置はサーバーに保存しない)
+const withLocation = (form) =>
+    new Promise((resolve) => {
+        const near = form.querySelector('[data-near]');
+        const set = (lat, lng, r) => {
+            form.querySelector('[data-near-lat]').value = lat;
+            form.querySelector('[data-near-lng]').value = lng;
+            form.querySelector('[data-near-r]').value = r;
+        };
+        if (!near || !near.checked) {
+            set('', '', '');
+            resolve();
+            return;
+        }
+        if (!navigator.geolocation) {
+            near.checked = false;
+            set('', '', '');
+            resolve();
+            return;
+        }
+        navigator.geolocation.getCurrentPosition(
+            (pos) => {
+                set(pos.coords.latitude.toFixed(5), pos.coords.longitude.toFixed(5), '10');
+                resolve();
+            },
+            () => {
+                near.checked = false;
+                set('', '', '');
+                resolve();
+            },
+            { timeout: 8000, maximumAge: 300000 },
+        );
+    });
+
 const filter = document.querySelector('[data-filter-form]');
 if (filter) {
     filter.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const params = new URLSearchParams(new FormData(filter));
+        await withLocation(filter);
+        // 位置が取れたら、lat・lng・r を付けて送る。チェックを外したときは、付けない
+        const data = new FormData(filter);
+        data.delete('near');
+        // カレンダー表示は、部分更新せずに、ふつうに送る
+        if (data.get('view') === 'calendar') {
+            filter.submit();
+            return;
+        }
+        const params = new URLSearchParams(data);
         for (const [k, v] of [...params]) {
             if (v === '') {
                 params.delete(k);

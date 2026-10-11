@@ -17,6 +17,11 @@ const BOARDS = {
     LegalPC: ['/terms/', 1280], LegalSP: ['/terms/', 390],
     AboutPC: ['/about/', 1280], AboutSP: ['/about/', 390],
     ContactPC: ['/contact/', 1280], ContactSP: ['/contact/', 390],
+    // 一覧の最初のリンクを開く(見本データ)
+    EventDetailPC: ['first:/kagawa/events/:a.event-card', 1280], EventDetail: ['first:/kagawa/events/:a.event-card', 390],
+    SpotPC: ['first:/kagawa/spots/:a.event-card', 1280], SpotSP: ['first:/kagawa/spots/:a.event-card', 390],
+    ArticlePC: ['first:/kagawa/articles/:a.event-card', 1280],
+    RegionPC: ['first:/:.area-card', 1280], RegionSP: ['first:/:.area-card', 390],
     ErrorPC: ['/kagawa/no-such-page/', 1280], Error: ['/kagawa/no-such-page/', 390],
 };
 
@@ -27,8 +32,17 @@ for (const [name, [path, width]] of Object.entries(BOARDS)) {
     test(`撮影: ${name}`, async ({ page }) => {
         await page.setViewportSize({ width, height: 900 });
         await page.context().addCookies([{ name: 'doinaka_consent', value: 'denied', url: process.env.E2E_BASE_URL ?? 'http://localhost:8080' }]);
-        await page.goto(path);
+        if (path.startsWith('first:')) {
+            const [, list, selector] = path.split(':');
+            await page.goto(list);
+            await page.locator(selector).first().click();
+        } else {
+            await page.goto(path);
+        }
         await page.waitForLoadState('networkidle');
+        // 画像を遅延読み込みにしているので、最後まで読ませてから撮る
+        await page.evaluate(async () => { for (let y = 0; y < document.body.scrollHeight; y += 600) { window.scrollTo(0, y); await new Promise((r) => setTimeout(r, 60)); } window.scrollTo(0, 0); });
+        await page.waitForTimeout(400);
         await page.screenshot({ path: `${dir}/${name}.png`, fullPage: true });
     });
 }
