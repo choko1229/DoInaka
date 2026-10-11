@@ -40,3 +40,4 @@ _ide_helper.php
 /test-results/
 /playwright-report/
 /serve.log
+/.compare/

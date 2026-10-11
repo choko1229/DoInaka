@@ -1,0 +1,34 @@
+import { test } from '@playwright/test';
+
+// 画面デザイン(docs/design/png)との見比べ用の撮影。COMPARE_DIR を指定したときだけ撮る。
+//   COMPARE_ONLY=top,events で、ボードを絞れる。PC は 1280px(管理画面は 1440px)、スマホは 390px。
+const dir = process.env.COMPARE_DIR;
+const only = (process.env.COMPARE_ONLY ?? '').split(',').filter(Boolean);
+
+// ボード名 => [パス, 幅]。見本データ(DemoSeeder)の入った開発環境で撮る
+const BOARDS = {
+    TopPC: ['/', 1280], Main: ['/', 390],
+    PrefPC: ['/kagawa/', 1280], PrefSP: ['/kagawa/', 390],
+    EventsPC: ['/kagawa/events/', 1280], Events: ['/kagawa/events/', 390],
+    SpotsPC: ['/kagawa/spots/', 1280],
+    MapPC: ['/kagawa/map/', 1280], Map: ['/kagawa/map/', 390],
+    PostPC: ['/post/', 1280], Post: ['/post/', 390],
+    LoginPC: ['/login', 1280], LoginSP: ['/login', 390],
+    LegalPC: ['/terms/', 1280], LegalSP: ['/terms/', 390],
+    AboutPC: ['/about/', 1280], AboutSP: ['/about/', 390],
+    ContactPC: ['/contact/', 1280], ContactSP: ['/contact/', 390],
+    ErrorPC: ['/kagawa/no-such-page/', 1280], Error: ['/kagawa/no-such-page/', 390],
+};
+
+test.skip(!dir, 'COMPARE_DIR が必要です');
+
+for (const [name, [path, width]] of Object.entries(BOARDS)) {
+    if (only.length > 0 && !only.includes(name)) continue;
+    test(`撮影: ${name}`, async ({ page }) => {
+        await page.setViewportSize({ width, height: 900 });
+        await page.context().addCookies([{ name: 'doinaka_consent', value: 'denied', url: process.env.E2E_BASE_URL ?? 'http://localhost:8080' }]);
+        await page.goto(path);
+        await page.waitForLoadState('networkidle');
+        await page.screenshot({ path: `${dir}/${name}.png`, fullPage: true });
+    });
+}
