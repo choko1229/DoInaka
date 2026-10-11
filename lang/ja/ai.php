@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 return [
-    'rate_limited' => 'AI の回数制限に達しました。リセット(UTC 0時)まで待ちます。',
+    'rate_limited' => 'AI の回数制限(または提供元の混雑)のため、しばらく待ちます。1日の上限のときは、リセット(UTC 0時)まで待ちます。',
     'request_failed' => 'AI に接続できませんでした。',
     'http_failed' => 'AI から異常な返事(HTTP :status)がありました。',
     'bad_json' => 'AI の返答が JSON ではありませんでした。',
