@@ -22,8 +22,8 @@
             <thead><tr><th>{{ __('inquiry.admin_col_receipt') }}</th><th>{{ __('inquiry.admin_col_kind') }}</th><th>{{ __('inquiry.admin_col_body') }}</th><th>{{ __('inquiry.admin_col_mail') }}</th><th>{{ __('inquiry.admin_col_status') }}</th></tr></thead>
             <tbody>
                 @forelse ($inquiries as $i)
-                    <tr @class(['is-urgent' => $i->urgent])>
-                        <td><a class="plain-link" href="{{ route('admin.inquiries.show', $i) }}"><strong>{{ $i->receipt_no }}</strong></a><br><span class="t-small t-muted">{{ $i->created_at?->setTimezone('Asia/Tokyo')->isoFormat('M/D H:mm') }}</span></td>
+                    <tr @class(['is-urgent' => $i->urgent, 'is-selected' => $selected?->id === $i->id])>
+                        <td><a class="plain-link" href="{{ route('admin.inquiries', array_filter(['id' => $i->id, 'kind' => $kind?->value, 'status' => $request_all ? 'all' : null])) }}"><strong>{{ $i->receipt_no }}</strong></a><br><span class="t-small t-muted">{{ $i->created_at?->setTimezone('Asia/Tokyo')->isoFormat('M/D H:mm') }}</span></td>
                         <td><span class="status-tag {{ $i->kind === \App\Enums\InquiryKind::Takedown ? 'is-warn' : 'is-ok' }}">{{ __('inquiry.chip_kind.'.$i->kind->value) }}</span></td>
                         <td>@if ($i->urgent)<span class="status-tag is-rejected">{{ __('inquiry.admin_urgent') }}</span> @endif{{ \Illuminate\Support\Str::limit(str_replace("\n", ' ', $i->body), 60) }}</td>
                         <td>{{ $i->email ? __('inquiry.mail_yes') : __('inquiry.mail_no') }}</td>
@@ -36,5 +36,13 @@
         </table>
     </div>
     {{ $inquiries->links() }}
+
+    @if ($selected)
+        @php($inquiry = $selected)
+        <section class="card board-card inquiry-detail">
+            <div class="board-head"><h2>{{ $selected->receipt_no }} ・ {{ __('inquiry.chip_kind.'.$selected->kind->value) }}</h2><span class="t-small t-muted">{{ $selected->created_at?->setTimezone('Asia/Tokyo')->isoFormat('M/D H:mm') }}・{{ $selected->email ? __('inquiry.mail_yes') : __('inquiry.mail_no') }}</span></div>
+            @include('admin.inquiries.partials.detail')
+        </section>
+    @endif
     <p class="t-small t-muted">{{ __('inquiry.admin_note') }}</p>
 </x-layouts.admin>
