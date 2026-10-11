@@ -1111,3 +1111,10 @@ label:has(> input[type='radio']) { display: flex; align-items: center; gap: 8px;
 .side-map-title { display: none; }
 @media (max-width: 1023px) { .side-map-title { display: block; order: 6; margin: 8px 0 0; } .side-map { order: 6; } }
 .map-pick { height: 240px; margin: 8px 0; }
+.board-table tr.is-selected td { background: var(--surface-sunken); }
+.inquiry-detail { margin-top: 16px; }
+.inquiry-detail .card { box-shadow: none; padding: 0; }
+.tag-input { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 8px 12px; border: 2px solid var(--line-strong); border-radius: 6px; background: var(--surface); }
+.tag-input-list { display: contents; }
+.tag-chip-button { border: 0; cursor: pointer; font: inherit; font-size: 12px; font-weight: 700; }
+.tag-input .tag-input-add { border: 2px dashed var(--line-strong); border-radius: var(--radius-pill); height: 28px; min-height: 0; width: 110px; padding: 0 10px; background: transparent; font-size: 12px; }

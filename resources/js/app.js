@@ -2,6 +2,7 @@ import '../css/app.css';
 import './theme.js';
 import './auth.js';
 import './repeat.js';
+import './tags.js';
 import './public.js';
 import './confirm.js';
 import './consent.js';

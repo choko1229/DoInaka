@@ -36,7 +36,7 @@
             <section class="card">
                 <h2 class="t-h2">{{ __('content.section_body') }}</h2>
                 <div class="field"><label for="body">{{ __('content.section_body') }}</label><textarea id="body" name="body" rows="6" maxlength="20000">{{ old('body', $spot->body) }}</textarea><p class="t-caption t-muted">{{ __('content.body_help') }}</p></div>
-                <div class="field"><label for="tags">{{ __('content.field_tags') }}</label><input id="tags" name="tags" value="{{ old('tags', $tagsText) }}" maxlength="300"><p class="t-caption t-muted">{{ __('content.field_tags_help') }}</p></div>
+                <div class="field"><label for="tags">{{ __('content.field_tags') }}</label><input id="tags" name="tags" data-tags value="{{ old('tags', $tagsText) }}" maxlength="300"><p class="t-caption t-muted">{{ __('content.field_tags_help') }}</p></div>
             </section>
 
             <section class="card">

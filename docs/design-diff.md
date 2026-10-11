@@ -39,3 +39,4 @@
 | Admin SP(各画面) | 差あり | 上のバー+メニュー、数のカード、表はカード状に積む。差: 審査待ちの絞り込みの横スクロール |
 | 未確認(差が残る可能性) | 未 | AdminMastersPC(右の編集の欄)・AdminLogsPC・AdminAdsPC・AdminUpdatePC・AdminEventEditPC・AdminSpotEditPC・AdminMasterEditPC は、共通の見た目だけ合わせた |
 | 2026-10-11 追記 | 更新 | AdminMastersPC・AdminLogsPC・AdminAdsPC・AdminUpdatePC・AdminEventEditPC・AdminSpotEditPC・AdminMasterEditPC は、区切り・欄の並び・右の「公開と保存」を合わせた。Map(スマホ)は全面の地図+上の検索+下の一覧。SpotSP は「この場所が出てくる記事」「場所」の見出しを足した。差: 管理画面の地図の指定、タグのチップ入力、旧町村の選択、更新画面の時間帯の棒グラフ(データが貯まるまで空) |
+| 2026-10-11 追記2 | 更新 | お問い合わせは、一覧の下に詳細が同居(別画面の詳細も残す)。管理画面のタグはチップで入力(JavaScript なしなら元の入力欄)。編集画面に位置を選ぶ地図。差が残るもの: 地域ページの境界の図(国土数値情報の形のデータが必要)、紹介文の文末の脚注番号(本文に番号を入れない決定)、旧町村の選択の分割(地域の選択は1つのまとまった選択) |

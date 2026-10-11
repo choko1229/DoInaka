@@ -41,7 +41,7 @@
                 </div>
                 <div class="field">
                     <label for="tags">{{ __('content.field_tags') }}</label>
-                    <input id="tags" name="tags" value="{{ old('tags', $tagsText) }}" maxlength="300">
+                    <input id="tags" name="tags" data-tags value="{{ old('tags', $tagsText) }}" maxlength="300">
                     <p class="t-caption t-muted">{{ __('content.field_tags_help') }}</p>
                 </div>
             </section>

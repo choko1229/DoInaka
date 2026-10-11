@@ -34,8 +34,14 @@ final class InquiryController extends Controller
             ->when($status !== null, fn ($q) => $q->where('status', $status), fn ($q) => $all ? $q : $q->where('status', '!=', InquiryStatus::Done))
             ->orderByDesc('urgent')->orderByDesc('id');
 
+        $inquiries = $query->paginate(30)->withQueryString();
+        $selected = $request->filled('id') ? Inquiry::query()->find($request->integer('id')) : $inquiries->first();
+        $selected?->load(['replies' => fn ($q) => $q->orderBy('id'), 'holds', 'consent']);
+
         return view('admin.inquiries.index', [
-            'inquiries' => $query->paginate(30)->withQueryString(),
+            'selected' => $selected,
+            'statuses' => InquiryStatus::cases(),
+            'inquiries' => $inquiries,
             'kind' => $kind,
             'status' => $status,
             'kinds' => InquiryKind::cases(),
