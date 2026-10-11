@@ -2,7 +2,7 @@
     $links = app(\App\Services\Url\PublicLinks::class);
     $status = $event->displayStatus();
     $ended = $event->status->value === 'ended' || $status === 'ended';
-    $areaName = trim((($event->region?->parent?->parent_id !== null ? $event->region->parent->name : '')).' '.($event->region?->name ?? ''));
+    $areaName = collect([$event->region?->parent?->parent_id !== null ? $event->region->parent->name : null, $event->region?->name])->filter()->unique()->implode(' ');
     $firstSource = $event->sources->first();
     $roots = $comments->filter(fn ($c) => $c->thread_id === null || $c->thread_id === $c->id);
     $replies = $comments->reject(fn ($c) => $c->thread_id === null || $c->thread_id === $c->id)->groupBy('thread_id');
