@@ -40,7 +40,6 @@ final class InquiryController extends Controller
 
         return view('admin.inquiries.index', [
             'selected' => $selected,
-            'statuses' => InquiryStatus::cases(),
             'inquiries' => $inquiries,
             'kind' => $kind,
             'status' => $status,
