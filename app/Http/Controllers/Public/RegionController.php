@@ -57,7 +57,7 @@ final class RegionController extends PublicController
             'events' => $events,
             'spots' => $spots,
             'indexable' => $indexable,
-            'outline' => app(RegionOutline::class)->points($region),
+            'outline' => app(RegionOutline::class)->shape($region),
             'isPref' => $region->level === RegionLevel::Prefecture,
             'shikoku' => $region->level === RegionLevel::Prefecture
                 ? Region::query()->whereNull('parent_id')->where('is_active', true)->whereIn('slug', ['tokushima', 'ehime', 'kochi', 'kagawa'])->where('id', '!=', $region->id)->orderBy('sort_order')->get()
