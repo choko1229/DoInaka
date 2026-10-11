@@ -53,3 +53,13 @@ it('記事の詳細: 匿名なら「匿名」と出て、結びつけた公開�
 
     $this->get(app(PublicLinks::class)->article($article))->assertOk()->assertSee('匿名')->assertSee('関連するスポット・イベント')->assertSee('峠の無人販売所')->assertDontSee('非公開のスポット');
 });
+
+it('スポットの詳細に、この場所が出てくる(公開中の)記事が出る', function (): void {
+    $spot = Spot::factory()->create(['title' => '峠の無人販売所', 'region_id' => $this->city->id, 'is_published' => true]);
+    $article = Article::factory()->create(['title' => '無人販売所を5軒めぐった話', 'region_id' => $this->city->id, 'is_published' => true]);
+    $draft = Article::factory()->create(['title' => '書きかけの記事', 'region_id' => $this->city->id, 'is_published' => false]);
+    $article->relations()->create(['related_type' => 'spot', 'related_id' => $spot->id]);
+    $draft->relations()->create(['related_type' => 'spot', 'related_id' => $spot->id]);
+
+    $this->get(app(PublicLinks::class)->spot($spot))->assertOk()->assertSee('この場所が出てくる記事')->assertSee('無人販売所を5軒めぐった話')->assertDontSee('書きかけの記事');
+});

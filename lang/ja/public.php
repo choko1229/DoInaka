@@ -224,4 +224,6 @@ return [
     'toilet' => 'トイレ',
     'contact_to' => '問い合わせ先',
     'best_season' => 'いちばんの季節: :season',
+    'spot_articles' => 'この場所が出てくる記事',
+    'place' => '場所',
 ];
