@@ -58,7 +58,8 @@ final class RegionIntroGenerator
             return ['status' => 'unavailable', 'reason' => $e->getMessage()];
         }
 
-        $kept = array_values(array_filter($checked, fn (array $s): bool => $s['supported']));
+        // 裏付けのない文と、情報元の文をそのまま写した文は載せない(Wikipedia は事実の確認だけに使い、文章は使わない。設計書9.8)
+        $kept = array_values(array_filter($checked, fn (array $s): bool => $s['supported'] && ! $this->copiesSource($s['text'], $sources)));
         if (count($kept) < self::MIN_SENTENCES) {
             return ['status' => 'rejected', 'reason' => __('region.too_few', ['count' => count($kept)]), 'kept' => count($kept)];
         }
@@ -176,5 +177,30 @@ final class RegionIntroGenerator
         ksort($paragraphs);
 
         return implode("\n\n", array_map(fn (array $s): string => implode('', $s), $paragraphs));
+    }
+
+    /**
+     * 文の中に、情報元の文章と同じ25文字以上の並びがあれば、そのまま写したとみなす。
+     *
+     * @param  list<array{n: int, title: string, url: string|null, text: string}>  $sources
+     */
+    private function copiesSource(string $sentence, array $sources): bool
+    {
+        $clean = fn (string $text): string => (string) preg_replace('/[\s、。,.・「」『』()()\[\]]+/u', '', $text);
+        $needle = $clean($sentence);
+        $length = 25;
+        if (mb_strlen($needle) < $length) {
+            return false;
+        }
+        foreach ($sources as $source) {
+            $haystack = $clean($source['text']);
+            for ($i = 0; $i + $length <= mb_strlen($needle); $i += 5) {
+                if (str_contains($haystack, mb_substr($needle, $i, $length))) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }
