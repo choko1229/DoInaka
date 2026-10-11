@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Enums\UserStatus;
+use App\Models\Article;
 use App\Models\Region;
 use App\Models\Spot;
 use App\Models\User;
@@ -40,4 +41,15 @@ it('スポットの詳細に、投稿者(会員)へのリンクが出る。匿�
 
     $spot->forceFill(['is_anonymous' => true])->save();
     $this->get($url)->assertOk()->assertDontSee('さぬき太郎');
+});
+
+it('記事の詳細: 匿名なら「匿名」と出て、結びつけた公開中のスポットが関連として並ぶ', function (): void {
+    $article = Article::factory()->create(['title' => '無人販売所の話', 'region_id' => $this->city->id, 'is_published' => true]);
+    $article->forceFill(['is_anonymous' => true])->save();
+    $spot = Spot::factory()->create(['title' => '峠の無人販売所', 'region_id' => $this->city->id, 'is_published' => true]);
+    $hidden = Spot::factory()->create(['title' => '非公開のスポット', 'region_id' => $this->city->id, 'is_published' => false]);
+    $article->relations()->create(['related_type' => 'spot', 'related_id' => $spot->id]);
+    $article->relations()->create(['related_type' => 'spot', 'related_id' => $hidden->id]);
+
+    $this->get(app(PublicLinks::class)->article($article))->assertOk()->assertSee('匿名')->assertSee('関連するスポット・イベント')->assertSee('峠の無人販売所')->assertDontSee('非公開のスポット');
 });
