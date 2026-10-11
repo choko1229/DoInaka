@@ -195,6 +195,15 @@ it('実行: 時刻になった予約を、同じプロセスの中で動かし�
         ->and(app(WebCronStatus::class)->lastResult()['ran'])->toContain('cron-heartbeat');
 });
 
+it('実行: withoutOverlapping の予約(地域ページの生成)も、時刻になれば動かす。何度でも動く', function (): void {
+    Carbon::setTestNow(Carbon::parse('2026-10-12 12:10:10', 'Asia/Tokyo'));
+    expect(app(WebCronRunner::class)->run()['ran'])->toContain('regions-generate');
+
+    // 動かしたあとに、重なり防止の印が残らない(残ると、次からずっと動かなくなる)
+    Carbon::setTestNow(Carbon::parse('2026-10-12 12:20:10', 'Asia/Tokyo'));
+    expect(app(WebCronRunner::class)->run()['ran'])->toContain('regions-generate');
+});
+
 it('実行: 同時には1つだけ(ロック)。前回から60秒たっていなければ動かさない', function (): void {
     $lock = Cache::lock('webcron:run', 60);
     $lock->get();

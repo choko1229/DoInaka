@@ -263,33 +263,32 @@ final class WebCronRunner
     /** 同じプロセスの中で、1つの予約を動かす。動かしたら true */
     private function runEvent(Event $event): bool
     {
-        if ($event->shouldSkipDueToOverlapping()) {
-            return false;
-        }
-
-        if ($event instanceof CallbackEvent) {
-            $event->run($this->app);
-
-            return true;
-        }
-
-        // コマンドの予約は、'php' 'artisan' name --option の形。artisan のあとを、同じプロセスで動かす
-        if (preg_match('/artisan[\'"]?\s+(.+)$/', (string) $event->command, $m) !== 1) {
-            return false;
-        }
-        if ($event->withoutOverlapping && ! $event->mutex->create($event)) {
+        // 重なり防止(withoutOverlapping)は、Laravel の印(mutex)ではなく、ここで取る期限つきのロックで行う。
+        // shouldSkipDueToOverlapping() は、印を作ってしまう(あとの create が必ず失敗し、予約が一度も動かなくなる)。
+        // 印は、途中で止まると24時間残る。このロックは、10分で自動で消える。
+        // (アクセスで動かす実行は、webcron:run のロックで、同時には1つだけ)
+        $lock = $event->withoutOverlapping ? Cache::lock('webcron:event:'.sha1($event->expression.(string) $event->command.$event->description), 600) : null;
+        if ($lock !== null && ! $lock->get()) {
             return false;
         }
 
         try {
-            Artisan::call($m[1]);
-        } finally {
-            if ($event->withoutOverlapping) {
-                $event->mutex->forget($event);
-            }
-        }
+            if ($event instanceof CallbackEvent) {
+                $event->run($this->app);
 
-        return true;
+                return true;
+            }
+
+            // コマンドの予約は、'php' 'artisan' name --option の形。artisan のあとを、同じプロセスで動かす
+            if (preg_match('/artisan[\'"]?\s+(.+)$/', (string) $event->command, $m) !== 1) {
+                return false;
+            }
+            Artisan::call($m[1]);
+
+            return true;
+        } finally {
+            $lock?->release();
+        }
     }
 
     /** キューを、残りの時間だけ処理する */
