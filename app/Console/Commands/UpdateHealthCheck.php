@@ -43,7 +43,10 @@ final class UpdateHealthCheck extends Command
                 continue;
             }
             try {
-                $response = $kernel->handle(Request::create(rtrim(config()->string('app.url'), '/').$path));
+                $request = Request::create(rtrim(config()->string('app.url'), '/').$path);
+                // 公開前モードの「準備中」(503)を、失敗と取り違えないための印(外からは付けられない)
+                $request->attributes->set('doinaka.health_check', true);
+                $response = $kernel->handle($request);
                 $status = $response->getStatusCode();
             } catch (Throwable $e) {
                 return $this->failWith(__('update.health_page', ['path' => $path, 'status' => $e::class]));

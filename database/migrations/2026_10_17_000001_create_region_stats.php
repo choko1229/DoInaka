@@ -13,6 +13,11 @@ return new class extends Migration
 {
     public function up(): void
     {
+        // 更新の途中で失敗して戻したあとにやり直しても、テーブルが残っていて落ちないようにする
+        if (Schema::hasTable('region_stats')) {
+            return;
+        }
+
         Schema::create('region_stats', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('region_id')->unique()->constrained()->cascadeOnDelete();

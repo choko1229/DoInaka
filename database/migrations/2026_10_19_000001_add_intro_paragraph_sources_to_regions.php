@@ -13,6 +13,10 @@ return new class extends Migration
 {
     public function up(): void
     {
+        if (Schema::hasColumn('regions', 'intro_paragraph_sources')) {
+            return;
+        }
+
         Schema::table('regions', function (Blueprint $table): void {
             $table->json('intro_paragraph_sources')->nullable()->after('intro_sources');
         });

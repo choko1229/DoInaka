@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 use App\Contracts\Notifier;
 use App\Enums\AppMetaKey;
+use App\Enums\SettingKey;
 use App\Services\Setting\AppMetaService;
+use App\Services\Setting\SettingsService;
 use App\Services\Update\CronHealth;
 use App\Services\Update\UpdateLock;
 use Illuminate\Console\Scheduling\Schedule;
@@ -151,4 +153,24 @@ it('heartbeat の定期処理を動かすと app_meta に最終実行時刻が�
     $event->run($this->app);
 
     expect(app(AppMetaService::class)->get(AppMetaKey::SchedulerLastRun))->not->toBeNull();
+});
+
+it('動作確認: 公開前モード(503 の準備中)でも、更新の動作確認は失敗しない。外からの普通のリクエストは 503 のまま', function (): void {
+    $manifest = public_path('build/manifest.json');
+    $created = false;
+    if (! is_file($manifest)) {
+        @mkdir(dirname($manifest), 0775, true);
+        file_put_contents($manifest, '{}');
+        $created = true;
+    }
+    app(SettingsService::class)->set(SettingKey::SitePrelaunch, true);
+
+    try {
+        $this->get('/kagawa/')->assertStatus(503);
+        $this->artisan('update:health-check')->assertSuccessful();
+    } finally {
+        if ($created) {
+            unlink($manifest);
+        }
+    }
 });

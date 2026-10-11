@@ -80,3 +80,28 @@ it('全テーブルのダンプでは、セッションとキャッシュの中�
 it('書き込めない場所へはダンプしない', function (): void {
     expect(fn () => app(SqlDumper::class)->dump(DB::connection(), '/no/such/dir/dump.sql', ['dump_probe']))->toThrow(RuntimeException::class);
 });
+
+it('全テーブルのダンプを戻すとき、ダンプにないテーブル(新しい版の migration が作ったもの)は消す対象になる', function (): void {
+    app(SqlDumper::class)->dump(DB::connection(), $this->path);
+    Schema::dropIfExists('probe_extra');
+    DB::statement('CREATE TABLE probe_extra (id INT NOT NULL PRIMARY KEY) DEFAULT CHARSET=utf8mb4');
+
+    try {
+        expect(app(SqlDumper::class)->extraTables(DB::connection(), $this->path))->toBe(['probe_extra']);
+    } finally {
+        Schema::dropIfExists('probe_extra');
+    }
+});
+
+it('部分のダンプや、印のないダンプでは、ほかのテーブルを消す対象にしない', function (): void {
+    app(SqlDumper::class)->dump(DB::connection(), $this->path, ['dump_probe']);
+    expect(app(SqlDumper::class)->extraTables(DB::connection(), $this->path))->toBe([]);
+
+    // 古い版が作った、印のない全テーブルのダンプ
+    file_put_contents($this->path, "-- doinaka dump\nSET NAMES utf8mb4;\nDROP TABLE IF EXISTS `dump_probe`;\n");
+    expect(app(SqlDumper::class)->extraTables(DB::connection(), $this->path))->toBe([]);
+
+    // 空のダンプ
+    file_put_contents($this->path, "-- doinaka dump\n-- scope: all\n");
+    expect(app(SqlDumper::class)->extraTables(DB::connection(), $this->path))->toBe([]);
+});

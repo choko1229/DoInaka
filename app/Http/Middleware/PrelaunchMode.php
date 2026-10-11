@@ -29,7 +29,8 @@ final class PrelaunchMode
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (! $this->prelaunch->isOn() || $this->isOpenPath($request) || $this->isVerifiedStaff($request)) {
+        // 更新後の動作確認(update:health-check)が、同じプロセスの中で出す内部のリクエストは通す(外からは付けられない)
+        if (! $this->prelaunch->isOn() || $request->attributes->get('doinaka.health_check') === true || $this->isOpenPath($request) || $this->isVerifiedStaff($request)) {
             return $next($request);
         }
 
