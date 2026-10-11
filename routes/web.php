@@ -112,6 +112,7 @@ Route::prefix('{pref}')->where(['pref' => $pref, 'segment' => '[0-9]+(?:-[a-z0-9
     Route::get('/events/weekend', [EventController::class, 'index'])->defaults('mode', 'weekend')->name('events.weekend');
     Route::get('/events/category/{category}', [EventController::class, 'index'])->name('events.category');
     Route::get('/events/{segment}', [EventController::class, 'show'])->name('events.show');
+    Route::get('/events/{segment}/calendar.ics', [EventController::class, 'ics'])->name('events.ics');
     Route::get('/series/{segment}', [SeriesController::class, 'show'])->name('series.show');
     Route::get('/spots', [SpotController::class, 'index'])->name('spots.index');
     Route::get('/spots/{segment}', [SpotController::class, 'show'])->name('spots.show');

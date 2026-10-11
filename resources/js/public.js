@@ -100,7 +100,7 @@ document.querySelectorAll('form[data-reaction]').forEach((form) => {
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const token = form.querySelector('input[name=_token]')?.value ?? '';
-        const res = await fetch(form.action, { method: 'POST', headers: { Accept: 'application/json', 'X-CSRF-TOKEN': token } });
+        const res = await fetch(form.action, { method: 'POST', headers: { Accept: 'application/json', 'X-CSRF-TOKEN': token }, body: new FormData(form) });
         if (res.status === 401) {
             window.location.href = (await res.json()).login_url;
             return;

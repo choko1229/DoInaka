@@ -731,3 +731,67 @@ a.stat:hover strong { text-decoration: underline; }
     .pager .pager-num, .pager .pager-gap { display: none; }
     .pager .load-more { display: inline-flex; }
 }
+/* イベント詳細(デザイン: EventDetailPC / EventDetail) */
+.detail-grid { gap: 32px; }
+@media (min-width: 1024px) { .detail-grid { grid-template-columns: minmax(0, 1fr) 340px; } }
+.detail-main { gap: var(--space-6, 24px); min-width: 0; }
+.detail-head { display: grid; gap: 8px; }
+.detail-labels { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; }
+.tag-chip { display: inline-flex; align-items: center; height: 24px; padding: 0 10px; border-radius: var(--radius-pill); background: var(--surface-sunken); color: var(--ink); font-size: 12px; font-weight: 700; text-decoration: none; }
+.tag-chip.is-alert { background: transparent; border: 1px solid var(--danger); color: var(--danger); }
+.detail-title { margin: 0; font-size: 36px; line-height: 44px; font-weight: 700; }
+.detail-sub { margin: 0; color: var(--ink-muted); }
+.sources { margin: 0; padding: 14px 20px; }
+.sources-label { margin: 0; font-size: 12px; line-height: 20px; font-weight: 700; color: var(--ink-muted); }
+.sources a { font-size: 16px; }
+.detail-photo { margin: 0; display: grid; gap: 8px; }
+.detail-photo-empty { aspect-ratio: 16 / 9; border-radius: var(--radius-lg); background: var(--surface-sunken); display: grid; place-items: center; color: var(--ink-muted); font-size: 12px; }
+.detail-photo-caption { display: flex; justify-content: space-between; gap: 16px; font-size: 12px; color: var(--ink-muted); }
+.detail-section { display: grid; gap: 12px; max-width: 760px; }
+.detail-more { max-width: none; grid-template-columns: repeat(auto-fill, minmax(240px, 265px)); }
+.detail-h2 { margin: 0; font-size: 24px; line-height: 32px; font-weight: 700; }
+.side-card .detail-h2 { font-size: 18px; line-height: 28px; }
+.side-card { padding: 20px; display: grid; gap: 12px; }
+.side-card .schedule li { display: flex; justify-content: space-between; gap: 12px; padding-top: 8px; border-top: 1px solid var(--line); }
+.side-card .facts { background: transparent; padding: 0; margin: 4px 0 0; gap: 8px 16px; }
+.side-map { height: 240px; margin-top: 0; border-radius: var(--radius-lg); }
+.detail-actions { display: grid; gap: 12px; }
+.detail-actions .reactions { flex-wrap: nowrap; }
+.detail-actions .reaction-want { flex: 1; }
+.detail-actions .reaction-want .btn { width: 100%; }
+.detail-actions .reactions { order: 0; }
+.share { gap: 8px; }
+.comment { padding: 12px 0; border: 0; }
+.comment-item { display: flex; gap: 12px; align-items: flex-start; }
+.comment-item.is-reply { margin-top: 12px; }
+.comment-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 14px; }
+.avatar { flex: 0 0 auto; display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--surface-sunken); font-weight: 700; }
+.avatar.is-official { background: var(--accent); color: var(--on-accent); }
+.comment-replies { margin: 8px 0 0 52px; }
+.comment-replies summary { cursor: pointer; color: var(--accent); font-weight: 700; font-size: 14px; }
+@media (max-width: 767px) {
+    .detail-title { font-size: 28px; line-height: 36px; }
+    .detail-more { grid-template-columns: 1fr; }
+}.reactions .btn { white-space: nowrap; }
+.detail-actions .reactions { flex-wrap: wrap; }
+.detail-actions .reaction-want { flex: 1 1 120px; }
+.sources a { font-weight: 700; }
+.sources .sources-note a { font-weight: 400; }
+.sources-note { margin: 4px 0 0; }
+.comment-login { display: flex; align-items: center; min-height: 48px; padding: 0 16px; border: 2px solid var(--line-strong); border-radius: var(--radius-md); background: var(--surface); color: var(--ink-muted); text-decoration: none; }@media (max-width: 1023px) {
+    .detail-grid, .detail-main, .detail-side { display: contents; }
+    .detail-grid { display: flex; flex-direction: column; gap: 24px; }
+    .detail-photo { order: 1; }
+    .detail-head { order: 2; }
+    .sources { order: 3; }
+    .detail-actions { order: 4; }
+    .side-card { order: 5; }
+    .side-map { order: 6; }
+    .side-maplink { order: 7; }
+    .detail-main > .detail-section { order: 8; }
+    .detail-main > .detail-section#comments { order: 9; }
+    .detail-main > .detail-section:last-child { order: 10; }
+    .side-links { order: 11; }
+    .detail-main > .alert { order: 3; }
+    .detail-grid > * , .detail-main > *, .detail-side > * { min-width: 0; }
+}
