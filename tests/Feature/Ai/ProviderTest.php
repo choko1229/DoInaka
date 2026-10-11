@@ -12,6 +12,7 @@ use App\Services\Ai\AiRequest;
 use App\Services\Ai\OpenRouterModels;
 use App\Services\Ai\OpenRouterProvider;
 use App\Services\Setting\SettingsService;
+use Carbon\CarbonImmutable;
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\Factory;
 use Illuminate\Http\Client\Request;
@@ -57,8 +58,10 @@ it('削除依頼の照合(takedown_check)のリクエストには、必ず data_
     Http::assertSent(fn (Request $request): bool => $request->data()['provider']['data_collection'] === 'deny');
 });
 
-it('429 と 402 は「回数超過」として、リセット(UTC 0時)の時刻つきで投げる', function (): void {
-    Http::fake([OpenRouterProvider::ENDPOINT => Http::sequence()->push(['error' => ['message' => 'limit']], 429)->push(['error' => ['message' => 'limit']], 402)]);
+it('1日の上限の 429 と 402 は、リセット(UTC 0時)の時刻つきで投げる', function (): void {
+    Http::fake([OpenRouterProvider::ENDPOINT => Http::sequence()
+        ->push(['error' => ['message' => 'Rate limit exceeded: free-models-per-day']], 429)
+        ->push(['error' => ['message' => 'limit']], 402)]);
 
     foreach ([429, 402] as $status) {
         try {
@@ -66,6 +69,22 @@ it('429 と 402 は「回数超過」として、リセット(UTC 0時)の時刻
             $this->fail('投げられませんでした');
         } catch (AiRateLimited $e) {
             expect($e->retryAt->format('H:i:s'))->toBe('00:00:00')->and($e->retryAt->timezoneName)->toBe('UTC');
+        }
+    }
+});
+
+it('提供元の一時的な混雑の 429 は、その日ずっとは止めず、10分(Retry-After があればそれ)だけ止める', function (): void {
+    Http::fake([OpenRouterProvider::ENDPOINT => Http::sequence()
+        ->push(['error' => ['message' => 'Provider returned error']], 429)
+        ->push(['error' => ['message' => 'slow down']], 429, ['Retry-After' => '120'])]);
+
+    foreach ([600, 120] as $expected) {
+        try {
+            app(OpenRouterProvider::class)->complete(sampleRequest(), ['a/one:free']);
+            $this->fail('投げられませんでした');
+        } catch (AiRateLimited $e) {
+            $diff = (int) round(CarbonImmutable::now('UTC')->diffInSeconds($e->retryAt, false));
+            expect($diff)->toBeGreaterThan($expected - 5)->and($diff)->toBeLessThanOrEqual($expected);
         }
     }
 });

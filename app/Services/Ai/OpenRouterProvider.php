@@ -12,6 +12,7 @@ use App\Exceptions\AiRequestFailed;
 use App\Services\Setting\SettingsService;
 use Carbon\CarbonImmutable;
 use Illuminate\Http\Client\ConnectionException;
+use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 
 /**
@@ -56,7 +57,7 @@ final class OpenRouterProvider implements AiProvider
         }
 
         if ($response->status() === 429 || $response->status() === 402) {
-            throw new AiRateLimited($this->nextReset());
+            throw new AiRateLimited($this->retryAt($response));
         }
         if (! $response->successful()) {
             throw new AiRequestFailed(__('ai.http_failed', ['status' => $response->status()]));
@@ -76,6 +77,25 @@ final class OpenRouterProvider implements AiProvider
             is_numeric($response->json('usage.prompt_tokens')) ? (int) $response->json('usage.prompt_tokens') : null,
             is_numeric($response->json('usage.completion_tokens')) ? (int) $response->json('usage.completion_tokens') : null,
         );
+    }
+
+    /**
+     * 制限エラーのあと、いつ再開するか。
+     * 1日の上限(free-models-per-day など)・残高不足(402)は、日次のリセット(UTC 0時)まで。
+     * そうでない 429(提供元の一時的な混雑・分あたりの上限)は、短く(Retry-After か10分)止めるだけにする。
+     * 1つのモデルの混雑で、その日の AI をすべて止めないため。
+     */
+    private function retryAt(Response $response): CarbonImmutable
+    {
+        $detail = strtolower((string) json_encode($response->json('error') ?? [], JSON_UNESCAPED_UNICODE));
+        if ($response->status() === 402 || str_contains($detail, 'per-day') || str_contains($detail, 'per day') || str_contains($detail, 'daily')) {
+            return $this->nextReset();
+        }
+
+        $retryAfter = (int) $response->header('Retry-After');
+        $seconds = $retryAfter > 0 ? min(max($retryAfter, 30), 3600) : 600;
+
+        return CarbonImmutable::now('UTC')->addSeconds($seconds);
     }
 
     /** OpenRouter の日次のリセット(UTC 0時) */
