@@ -62,6 +62,7 @@
             @if ($freeModels === [])<p class="alert alert-warning" role="status">{{ __('settings.models_unknown') }}@if ($modelsError ?? null) {{ __('settings.models_refresh_reason', ['reason' => $modelsError]) }}@endif</p>@endif
             {{-- form の中に form は置けない(入れ子にすると内側が無視され、保存の送信になってしまう)。送信先の form は外に置き、form 属性で結ぶ --}}
             <p><button class="btn btn-sm" type="submit" form="models-refresh-form">{{ __('settings.models_refresh') }}</button> <span class="t-small t-muted">{{ __('settings.models_refresh_help') }}</span></p>
+            <p><button class="btn btn-sm" type="submit" form="models-recommend-form" data-confirm="{{ __('settings.models_recommend_help') }}">{{ __('settings.models_recommend') }}</button> <span class="t-small t-muted">{{ __('settings.models_recommend_help') }}</span></p>
             @foreach ($modelKeys as $purpose => $key)
                 @php($current = array_values($settings->array($key)))
                 <fieldset class="field">
@@ -83,6 +84,7 @@
     </form>
     @if ($tab === 'ai')
         <form id="models-refresh-form" method="post" action="{{ route('admin.settings.models.refresh') }}" hidden>@csrf</form>
+        <form id="models-recommend-form" method="post" action="{{ route('admin.settings.models.recommend') }}" hidden>@csrf</form>
     @endif
 
     @if ($cron)

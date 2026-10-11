@@ -40,9 +40,21 @@ final class OpenRouterModels
         }
 
         $models = [];
+        $meta = [];
         foreach ((array) $response->json('data') as $row) {
             if (is_array($row) && is_string($row['id'] ?? null) && self::isFree($row['id'])) {
-                $models[$row['id']] = is_string($row['name'] ?? null) ? $row['name'] : $row['id'];
+                $name = is_string($row['name'] ?? null) ? $row['name'] : $row['id'];
+                $models[$row['id']] = $name;
+                $params = $row['supported_parameters'] ?? null;
+                $modalities = is_array($row['architecture'] ?? null) ? ($row['architecture']['input_modalities'] ?? []) : [];
+                $meta[$row['id']] = [
+                    'name' => $name,
+                    'ctx' => is_numeric($row['context_length'] ?? null) ? (int) $row['context_length'] : 0,
+                    'vision' => is_array($modalities) && in_array('image', $modalities, true),
+                    // 項目がないときは、使えると見なす(使えなければ、実行時に予備へ切り替わる)
+                    'json' => ! is_array($params) || in_array('response_format', $params, true) || in_array('structured_outputs', $params, true),
+                    'created' => is_numeric($row['created'] ?? null) ? (int) $row['created'] : 0,
+                ];
             }
         }
 
@@ -55,6 +67,7 @@ final class OpenRouterModels
 
         try {
             $this->store($models);
+            $this->meta->set(AppMetaKey::AiFreeModelsMeta, (string) json_encode($meta, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
         } catch (Throwable $e) {
             $this->fail('一覧を保存できませんでした: '.mb_substr($e->getMessage(), 0, 200));
 
@@ -81,6 +94,32 @@ final class OpenRouterModels
             if (is_string($name)) {
                 $result[(string) $id] = $name;
             }
+        }
+
+        return $result;
+    }
+
+    /**
+     * おすすめを選ぶための情報(文脈の長さ・画像を読めるか・JSON で返せるか・公開日)。
+     * 一覧だけ保存してあって情報がないとき(古い版で取得したもの)は、名前だけで判断できるよう、不明の値で補う。
+     *
+     * @return array<string, array{name: string, ctx: int, vision: bool, json: bool, created: int}>
+     */
+    public function meta(): array
+    {
+        $stored = json_decode($this->meta->get(AppMetaKey::AiFreeModelsMeta) ?? '[]', true);
+        $stored = is_array($stored) ? $stored : [];
+
+        $result = [];
+        foreach ($this->all() as $id => $name) {
+            $row = is_array($stored[$id] ?? null) ? $stored[$id] : [];
+            $result[$id] = [
+                'name' => $name,
+                'ctx' => is_int($row['ctx'] ?? null) ? $row['ctx'] : 0,
+                'vision' => ($row['vision'] ?? false) === true,
+                'json' => ($row['json'] ?? true) === true,
+                'created' => is_int($row['created'] ?? null) ? $row['created'] : 0,
+            ];
         }
 
         return $result;

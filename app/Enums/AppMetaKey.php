@@ -26,4 +26,5 @@ enum AppMetaKey: string
     case WebCronEventRuns = 'webcron_event_runs';
     case AiFreeModels = 'ai_free_models';
     case AiFreeModelsError = 'ai_free_models_error';
+    case AiFreeModelsMeta = 'ai_free_models_meta';
 }
