@@ -3,8 +3,8 @@
     $field = fn (string $name) => $errors->first($name);
 @endphp
 <x-layouts.public :meta="$meta" current="post">
-    <h1 class="t-display">{{ __('enums.submission_type.'.$type->value) }}</h1>
-    <p>{{ __('submission.lead_'.$type->value) }}</p>
+    <h1 class="page-title">{{ $type === \App\Enums\SubmissionType::Tip ? __('submission.heading_tip') : __('enums.submission_type.'.$type->value) }}</h1>
+    <p class="page-lead">{{ __('submission.lead_'.$type->value) }}</p>
 
     @if ($errors->any())
         <div class="alert alert-danger" role="alert">
@@ -13,11 +13,13 @@
         </div>
     @endif
 
-    <form class="card container-narrow" method="post" action="/post/{{ $type->value }}/" enctype="multipart/form-data" novalidate>
+    <div @class(['post-grid', 'has-side' => $type === \App\Enums\SubmissionType::Tip])>
+    <form class="card post-form" method="post" action="/post/{{ $type->value }}/" enctype="multipart/form-data" novalidate>
         @csrf
 
         @if ($type === \App\Enums\SubmissionType::Tip)
             <div class="field">
+                <h2 class="field-heading">{{ __('submission.source_heading') }} <span class="req">{{ __('submission.required') }}</span></h2>
                 <label for="source_url">{{ __('submission.tip_url') }}</label>
                 <input id="source_url" type="url" name="source_url" maxlength="500" value="{{ old('source_url') }}" placeholder="https://" aria-describedby="source-hint">
                 <p id="source-hint" class="t-small t-muted">{{ __('submission.tip_url_hint') }}</p>
@@ -73,4 +75,11 @@
         <x-consent :overseas="true" />
         <button class="btn btn-primary" type="submit">{{ __('submission.send') }}</button>
     </form>
+    @if ($type === \App\Enums\SubmissionType::Tip)
+        <aside class="post-side">
+            <section class="card side-card"><h2 class="detail-h2">{{ __('submission.flow_title') }}</h2><ol>@foreach (__('submission.flow_steps') as $step)<li>{{ $step }}</li>@endforeach</ol><p class="t-small t-muted">{{ __('submission.flow_note') }}</p></section>
+            <section class="card side-card"><h2 class="detail-h2">{{ __('submission.photo_title') }}</h2><p>{{ __('submission.photo_body') }}</p><p><a href="/post/spot/">{{ __('submission.photo_link') }}</a></p></section>
+        </aside>
+    @endif
+    </div>
 </x-layouts.public>
