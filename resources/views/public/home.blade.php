@@ -61,6 +61,13 @@
             @endif
         </section>
 
+        @if ($forYou->isNotEmpty())
+            <section class="top-section" aria-labelledby="for-you">
+                <div class="top-section-head"><h2 id="for-you">{{ __('public.for_you') }}</h2><span class="t-small t-muted">{{ __('public.for_you_note') }}</span></div>
+                <div class="card-row">@foreach ($forYou as $event)<x-content-card :item="$event" />@endforeach</div>
+            </section>
+        @endif
+
         <div class="top-two">
             <section class="season-card" aria-labelledby="season-picks">
                 <header><span class="season-badge">{{ __('public.season_short.'.$seasonKey) }}</span><h2 id="season-picks">{{ __('public.season_picks') }}</h2></header>

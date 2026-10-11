@@ -5,7 +5,8 @@
                 <p class="detail-labels">@foreach ($article->tags as $tag)<a class="tag-chip" href="/{{ $pref }}/articles/?tag={{ urlencode($tag->name) }}">{{ $tag->name }}</a>@endforeach</p>
             @endif
             <h1 class="detail-title">{{ $article->title }}</h1>
-            <p class="detail-sub">{{ $article->region->name }}@if ($article->published_at)・{{ $article->published_at->format('Y-m-d') }}@endif</p>
+            <p class="detail-sub">{{ $article->region->name }}@if ($article->published_at)・{{ $article->published_at->format('Y-m-d') }}@endif
+                @if ($article->author && ! $article->is_anonymous && $article->author->status === \App\Enums\UserStatus::Active)<span class="detail-author">・{{ __('public.posted_by') }}: <a href="/users/{{ $article->author->id }}/">{{ $article->author->name }}</a></span>@endif</p>
         </header>
         <x-media-gallery :media="$article->media" :title="$article->title" />
         @if ($article->body)<div class="prose"><p>{!! nl2br(e($article->body)) !!}</p></div>@endif

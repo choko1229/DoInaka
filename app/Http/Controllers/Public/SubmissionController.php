@@ -4,16 +4,15 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Public;
 
-use App\Enums\CategoryTarget;
 use App\Enums\SubmissionType;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
-use App\Models\Category;
 use App\Models\Event;
 use App\Models\Region;
 use App\Models\Spot;
 use App\Models\User;
 use App\Services\Submission\CorrectionFields;
+use App\Services\Submission\PostFormData;
 use App\Services\Submission\SubmissionIntake;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -36,7 +35,7 @@ final class SubmissionController extends Controller
     {
         $submissionType = $this->postable($type);
 
-        return view('public.post.form', $this->formData($submissionType));
+        return view('public.post.form', app(PostFormData::class)->for($submissionType));
     }
 
     public function store(Request $request, string $type): RedirectResponse
@@ -134,20 +133,5 @@ final class SubmissionController extends Controller
         }
 
         return $values;
-    }
-
-    /** @return array<string, mixed> */
-    private function formData(SubmissionType $type): array
-    {
-        $default = Region::query()->whereNull('parent_id')->where('is_active', true)->where('accepts_posts', true)->orderByDesc('crawl_enabled')->orderBy('sort_order')->orderBy('id')->first();
-
-        return [
-            'type' => $type,
-            'prefectures' => Region::query()->whereNull('parent_id')->where('is_active', true)->where('accepts_posts', true)->orderBy('sort_order')->orderBy('id')->get(['id', 'name']),
-            'defaultPref' => $default,
-            'cities' => $default === null ? collect() : Region::query()->where('parent_id', $default->id)->where('is_active', true)->orderBy('sort_order')->orderBy('id')->get(['id', 'name']),
-            'categories' => Category::query()->where('target', CategoryTarget::Spot)->where('is_active', true)->orderBy('sort_order')->get(['id', 'name']),
-            'maxPhotos' => $type === SubmissionType::Article ? 10 : 5,
-        ];
     }
 }

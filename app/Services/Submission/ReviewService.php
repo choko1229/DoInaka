@@ -8,6 +8,7 @@ use App\Enums\AuditAction;
 use App\Enums\CommentStatus;
 use App\Enums\Recurrence;
 use App\Enums\RevisionCause;
+use App\Enums\SubmissionAction;
 use App\Enums\SubmissionStatus;
 use App\Enums\SubmissionType;
 use App\Models\Article;
@@ -148,7 +149,8 @@ final class ReviewService
     private function publishSpot(Submission $submission, ?User $actor): void
     {
         $p = $submission->payload ?? [];
-        $spot = $this->content->saveSpot(null, [
+        $existing = $this->editingSpot($submission);
+        $spot = $this->content->saveSpot($existing, [
             'title' => $submission->text('title') ?? '',
             'body' => $p['body'] ?? null,
             'region_id' => $submission->number('region_id'),
@@ -159,11 +161,13 @@ final class ReviewService
             'hours' => $p['hours'] ?? null,
             'access' => $p['access'] ?? null,
             'url' => $p['url'] ?? null,
-            'slug' => $submission->text('slug'),
+            'slug' => $existing !== null ? $existing->slug : $submission->text('slug'),
             'is_published' => true,
-        ], $this->tags($p['tags'] ?? null), $actor, null, $submission->id);
+        ], $this->tags($p['tags'] ?? null), $actor, $existing !== null ? (string) __('submission.edit_reason') : null, $submission->id);
 
-        $this->credit($spot, $submission);
+        if ($existing === null) {
+            $this->credit($spot, $submission);
+        }
         $this->attachMedia($submission, $spot);
         $this->link($submission, 'spot', $spot->id);
     }
@@ -171,17 +175,49 @@ final class ReviewService
     private function publishArticle(Submission $submission, ?User $actor): void
     {
         $p = $submission->payload ?? [];
-        $article = $this->content->saveArticle(null, [
+        $existing = $this->editingArticle($submission);
+        /** @var list<array{related_type: string, related_id: int}> $relations */
+        $relations = [];
+        foreach ($existing !== null ? $existing->relations : [] as $relation) {
+            $relations[] = ['related_type' => (string) $relation->related_type, 'related_id' => (int) $relation->related_id];
+        }
+        $article = $this->content->saveArticle($existing, [
             'title' => $submission->text('title') ?? '',
             'body' => $p['body'] ?? null,
             'region_id' => $submission->number('region_id'),
-            'slug' => $submission->text('slug'),
+            'slug' => $existing !== null ? $existing->slug : $submission->text('slug'),
             'is_published' => true,
-        ], $this->tags($p['tags'] ?? null), [], $actor, null, $submission->id);
+        ], $this->tags($p['tags'] ?? null), $relations, $actor, $existing !== null ? (string) __('submission.edit_reason') : null, $submission->id);
 
-        $this->credit($article, $submission);
+        if ($existing === null) {
+            $this->credit($article, $submission);
+        }
         $this->attachMedia($submission, $article);
         $this->link($submission, 'article', $article->id);
+    }
+
+    /** 自分のスポットの編集(action = update)なら、公開中の元のスポットを返す。投稿した本人のものだけ */
+    private function editingSpot(Submission $submission): ?Spot
+    {
+        if ($submission->action !== SubmissionAction::Update) {
+            return null;
+        }
+        $target = Spot::query()->find($submission->target_id);
+        abort_if($target === null || $submission->user_id === null || $target->author_user_id !== $submission->user_id, 422);
+
+        return $target;
+    }
+
+    /** 自分の記事の編集(action = update)なら、公開中の元の記事を返す。投稿した本人のものだけ */
+    private function editingArticle(Submission $submission): ?Article
+    {
+        if ($submission->action !== SubmissionAction::Update) {
+            return null;
+        }
+        $target = Article::query()->find($submission->target_id);
+        abort_if($target === null || $submission->user_id === null || $target->author_user_id !== $submission->user_id, 422);
+
+        return $target;
     }
 
     /** 修正依頼: 対象の項目を直し、履歴(原因 = 投稿の承認)を残す */

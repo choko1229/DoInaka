@@ -10,8 +10,10 @@ use App\Enums\SubmissionAction;
 use App\Enums\SubmissionType;
 use App\Exceptions\UploadRejected;
 use App\Jobs\ReadTipUrl;
+use App\Models\Article;
 use App\Models\Correction;
 use App\Models\Region;
+use App\Models\Spot;
 use App\Models\Submission;
 use App\Models\User;
 use App\Services\Ai\AiClient;
@@ -51,7 +53,7 @@ final class SubmissionIntake
     /**
      * @throws ValidationException
      */
-    public function submit(SubmissionType $type, Request $request, ?User $user): Submission
+    public function submit(SubmissionType $type, Request $request, ?User $user, Spot|Article|null $editing = null): Submission
     {
         /** @var array<string, mixed> $data */
         $data = Validator::make($request->all(), $this->rules($type), [], __('submission.attributes'))->validate();
@@ -105,13 +107,14 @@ final class SubmissionIntake
 
         $tipReadable = $inspection !== null && $inspection['status'] === 'ok';
 
-        return DB::transaction(function () use ($type, $request, $user, $payload, $validated, $files, $data, $hasTarget, $tipReadable): Submission {
+        return DB::transaction(function () use ($type, $request, $user, $payload, $validated, $files, $data, $hasTarget, $tipReadable, $editing): Submission {
             $submission = $this->machine->open([
                 'receipt_no' => ReceiptNumber::generate(),
                 'type' => $type,
-                'action' => SubmissionAction::Create,
-                'target_type' => $hasTarget ? $this->str($data['target_type'] ?? null) : null,
-                'target_id' => $hasTarget ? $this->int($data['target_id'] ?? null) : null,
+                // 自分の投稿の編集は、公開中のものを残したまま、新しい内容を審査に回す(承認で差し替わる)
+                'action' => $editing !== null ? SubmissionAction::Update : SubmissionAction::Create,
+                'target_type' => $editing !== null ? $editing->getMorphClass() : ($hasTarget ? $this->str($data['target_type'] ?? null) : null),
+                'target_id' => $editing !== null ? $editing->getKey() : ($hasTarget ? $this->int($data['target_id'] ?? null) : null),
                 'payload' => $payload,
                 'user_id' => $user?->id,
                 'ip_hash' => $this->hasher->hash($request->ip()),

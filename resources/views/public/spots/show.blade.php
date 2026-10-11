@@ -16,7 +16,7 @@
                         @foreach ($spot->tags as $tag)<a class="tag-chip" href="/{{ $pref }}/spots/?tag={{ urlencode($tag->name) }}">{{ $tag->name }}</a>@endforeach
                     </p>
                     <h1 class="detail-title">{{ $spot->title }}</h1>
-                    <p class="detail-sub">{{ $areaName }}@if ($areaName !== '')・@endif{{ __('public.visited') }} {{ __('public.visit_people', ['count' => $visitCount]) }}</p>
+                    <p class="detail-sub">{{ $areaName }}@if ($areaName !== '')・@endif{{ __('public.visited') }} {{ __('public.visit_people', ['count' => $visitCount]) }}@if ($spot->author && ! $spot->is_anonymous && $spot->author->status === \App\Enums\UserStatus::Active)<span class="detail-author">・{{ __('public.posted_by') }}: <a href="/users/{{ $spot->author->id }}/">{{ $spot->author->name }}</a></span>@endif</p>
                 </header>
 
                 <figure class="detail-photo">
