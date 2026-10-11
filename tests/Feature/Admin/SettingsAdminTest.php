@@ -121,6 +121,19 @@ it('AI のモデル: 無料(:free)だけ保存できる。有料は断られ、�
     expect(collect(settingsLogs())->pluck('key')->all())->toContain('ai.models.review_text');
 });
 
+it('AI のタブ: 「いますぐ一覧を取得」は、保存の form の中の form にならない(入れ子だと保存が送信される)', function (): void {
+    $this->actingAsVerifiedAdmin(settingsAdmin());
+    $html = $this->get('/admin/settings/ai')->assertOk()->getContent();
+
+    $dom = new DOMDocument;
+    @$dom->loadHTML('<?xml encoding="utf-8"?>'.$html);
+    $nested = (new DOMXPath($dom))->query('//form//form');
+
+    expect($nested->length)->toBe(0)
+        ->and($html)->toContain('form="models-refresh-form"')
+        ->and($html)->toContain('id="models-refresh-form"');
+});
+
 it('真偽・小数・重み・空にできる設定を保存できる', function (): void {
     $this->actingAsVerifiedAdmin(settingsAdmin());
     $settings = app(SettingsService::class);

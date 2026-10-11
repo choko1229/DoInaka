@@ -60,7 +60,8 @@
             <h2 class="t-h2">{{ __('settings.models_title') }}</h2>
             <p class="t-small t-muted">{{ __('settings.models_help') }}</p>
             @if ($freeModels === [])<p class="alert alert-warning" role="status">{{ __('settings.models_unknown') }}@if ($modelsError ?? null) {{ __('settings.models_refresh_reason', ['reason' => $modelsError]) }}@endif</p>@endif
-            <form method="post" action="{{ route('admin.settings.models.refresh') }}">@csrf<button class="btn btn-sm" type="submit">{{ __('settings.models_refresh') }}</button> <span class="t-small t-muted">{{ __('settings.models_refresh_help') }}</span></form>
+            {{-- form の中に form は置けない(入れ子にすると内側が無視され、保存の送信になってしまう)。送信先の form は外に置き、form 属性で結ぶ --}}
+            <p><button class="btn btn-sm" type="submit" form="models-refresh-form">{{ __('settings.models_refresh') }}</button> <span class="t-small t-muted">{{ __('settings.models_refresh_help') }}</span></p>
             @foreach ($modelKeys as $purpose => $key)
                 @php($current = array_values($settings->array($key)))
                 <fieldset class="field">
@@ -80,6 +81,9 @@
 
         <button class="btn btn-primary" type="submit">{{ __('content.save') }}</button>
     </form>
+    @if ($tab === 'ai')
+        <form id="models-refresh-form" method="post" action="{{ route('admin.settings.models.refresh') }}" hidden>@csrf</form>
+    @endif
 
     @if ($cron)
         <section class="card">
