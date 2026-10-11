@@ -149,7 +149,7 @@ return [
     'col_received' => '受付',
     'record' => '実績:count',
     'safe' => '安全 :score',
-    'auto_title' => 'AIが自動で決めたもの(直近24時間)',
+    'board_auto_title' => 'AIが自動で決めたもの(直近24時間)',
     'auto_approved' => '自動承認',
     'auto_rejected' => '自動却下',
     'look' => '見る',

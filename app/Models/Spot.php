@@ -30,6 +30,15 @@ use Illuminate\Support\Carbon;
  * @property string|null $hours
  * @property string|null $access
  * @property string|null $url
+ * @property string|null $closed_days
+ * @property string|null $fee
+ * @property string|null $parking
+ * @property string|null $payment
+ * @property string|null $toilet
+ * @property string|null $contact
+ * @property string|null $best_season
+ * @property string|null $caution_text
+ * @property bool $private_land_checked
  * @property bool $is_published
  * @property Carbon|null $published_at
  * @property string|null $search_text
@@ -46,7 +55,7 @@ class Spot extends Model
 
     protected function casts(): array
     {
-        return ['is_published' => 'boolean', 'is_anonymous' => 'boolean', 'published_at' => 'datetime'];
+        return ['is_published' => 'boolean', 'private_land_checked' => 'boolean', 'is_anonymous' => 'boolean', 'published_at' => 'datetime'];
     }
 
     /** @return BelongsTo<Region, $this> */

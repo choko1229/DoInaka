@@ -103,6 +103,26 @@
                 <p class="t-caption t-muted">{{ __('content.schedule_help') }}</p>
             </section>
 
+            @if ($event->exists)
+                <section class="card">
+                    <h2 class="t-h2">{{ __('content.section_photos') }}</h2>
+                    @php($photos = $event->media()->orderBy('sort_order')->get())
+                    @if ($photos->isEmpty())
+                        <p class="t-muted">{{ __('content.photos_none') }}</p>
+                    @else
+                        <div class="photo-grid">
+                            @foreach ($photos as $photo)
+                                <figure>
+                                    @if ($photo->isProcessed())<img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url((string) $photo->path_small) }}" alt="" loading="lazy">@endif
+                                    <figcaption class="t-small t-muted">{{ $photo->credit ?: __('content.photo_visitor') }}</figcaption>
+                                </figure>
+                            @endforeach
+                        </div>
+                    @endif
+                    <p class="t-caption t-muted">{{ __('content.photos_help') }}</p>
+                </section>
+            @endif
+
             <section class="card">
                 <h2 class="t-h2">{{ __('content.section_url') }}</h2>
                 <div class="field">

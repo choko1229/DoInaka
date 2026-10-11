@@ -218,4 +218,10 @@ return [
     'cal_next' => '次の月',
     'page_n' => ':n ページ目',
     'load_more' => 'もっと見る',
+    'closed_days' => 'お休み',
+    'parking' => '駐車場',
+    'payment' => '支払い',
+    'toilet' => 'トイレ',
+    'contact_to' => '問い合わせ先',
+    'best_season' => 'いちばんの季節: :season',
 ];

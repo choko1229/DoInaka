@@ -1,4 +1,4 @@
-<div class="repeat-row">
+<div class="repeat-row repeat-row-schedule">
     <div class="field"><label>{{ __('content.col_date') }}</label><input type="date" name="schedules[{{ $i }}][date]" value="{{ $row['date'] ?? '' }}"></div>
     <div class="field"><label>{{ __('content.field_start') }}</label><input type="time" name="schedules[{{ $i }}][start_time]" value="{{ $row['start_time'] ?? '' }}"></div>
     <div class="field"><label>{{ __('content.field_end') }}</label><input type="time" name="schedules[{{ $i }}][end_time]" value="{{ $row['end_time'] ?? '' }}"></div>

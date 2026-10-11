@@ -84,7 +84,7 @@
     @if ($type === \App\Enums\SubmissionType::Tip)
         <aside class="post-side">
             <section class="card side-card"><h2 class="detail-h2">{{ __('submission.flow_title') }}</h2><ol>@foreach (__('submission.flow_steps') as $step)<li>{{ $step }}</li>@endforeach</ol><p class="t-small t-muted">{{ __('submission.flow_note') }}</p></section>
-            <section class="card side-card"><h2 class="detail-h2">{{ __('submission.photo_title') }}</h2><p>{{ __('submission.photo_body') }}</p><p><a href="/post/spot/">{{ __('submission.photo_link') }}</a></p></section>
+            <section class="card side-card"><h2 class="detail-h2">{{ __('submission.side_photo_title') }}</h2><p>{{ __('submission.photo_body') }}</p><p><a href="/post/spot/">{{ __('submission.photo_link') }}</a></p></section>
         </aside>
     @endif
     </div>
