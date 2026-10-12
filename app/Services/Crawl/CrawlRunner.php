@@ -71,13 +71,28 @@ final class CrawlRunner
             return $this->finish($run, 'skipped', error: $source->isPaused() ? 'paused' : ($source->is_active ? 'not_enabled' : 'inactive'));
         }
 
-        // 一覧ページは、リンクを知るために毎回(条件なしで)読む。変わっていなければ解析しない
-        $list = $this->fetcher->fetch($source->url);
-        if (! $list->ok()) {
-            return $this->fail($source, $run, 'list_failed');
+        // アクセスで動かしていて(時間の上限があって)、1時間以内に一覧を読んだ続きの実行は、一覧を取り直さず、覚えておいたリンクで先へ進む
+        // (同じサイトへは10秒あけて読むので、一覧の取り直しだけで、短い上限を使い切ってしまう)
+        $cacheKey = 'crawl:urls:'.$source->id;
+        $cached = $deadline !== null ? Cache::get($cacheKey) : null;
+        $resuming = is_array($cached) && $cached !== [];
+        if ($resuming) {
+            /** @var list<string> $urls */
+            $urls = array_values(array_filter($cached, 'is_string'));
+            $list = null;
+        } else {
+            // 一覧ページは、リンクを知るために毎回(条件なしで)読む。変わっていなければ解析しない
+            $list = $this->fetcher->fetch($source->url);
+            if (! $list->ok()) {
+                return $this->fail($source, $run, 'list_failed');
+            }
+            $urls = $this->urls($source, $list);
+            if ($deadline !== null) {
+                Cache::put($cacheKey, $urls, now()->addHour());
+            }
         }
-        $urls = $this->urls($source, $list);
 
+        $processed = 0;
         $timeUp = false;
         $found = 0;
         $changed = 0;
@@ -88,15 +103,17 @@ final class CrawlRunner
         try {
             foreach (array_slice($urls, 0, max(1, $this->settings->int(SettingKey::CrawlMaxPagesPerSite))) as $url) {
                 // 時間の上限(アクセスで動かしているとき)に近ければ、ここで区切る。解析まで終えたページは記録済みなので、次回は続きから読む
-                if ($deadline !== null && CarbonImmutable::now()->addSeconds(self::TIME_MARGIN_SECONDS)->greaterThan($deadline)) {
+                // (1回の実行で、最低1ページは必ず進める。余裕がなくても、続きの実行が何も進めずに終わって、同じところを繰り返さないように)
+                if ($processed > 0 && $deadline !== null && CarbonImmutable::now()->addSeconds(self::TIME_MARGIN_SECONDS)->greaterThan($deadline)) {
                     $timeUp = true;
                     break;
                 }
-                // 少し前に読んで、解析まで終えているページ(一覧ページ以外)は、取り直さずに飛ばす。
+                // 少し前に読んで、解析まで終えているページは、取り直さずに飛ばす(続きの実行は、一覧ページも飛ばす)。
                 // 同じサイトへは10秒あけて読むので、取り直すと、続きの実行が先頭のページで時間を使い切り、先へ進めない
-                if ($url !== $source->url && $this->recentlyDone($source, $url)) {
+                if (($url !== $source->url || $resuming) && $this->recentlyDone($source, $url)) {
                     continue;
                 }
+                $processed++;
                 $page = $this->fetchPage($source, $url, $url === $source->url ? $list : null);
                 if ($page === null) {
                     continue;
@@ -124,6 +141,11 @@ final class CrawlRunner
         } catch (AiUnavailable|AiBadResponse|AiRequestFailed) {
             // AI が使えない・壊れているときは、今回は解析できなかった(ページのハッシュは確定していないので、次回やり直す)
             return $this->fail($source, $run, 'ai_failed', $fetched, $changed);
+        }
+
+        if (! $timeUp) {
+            // 最後まで読めたので、覚えておいたリンクは捨てる(次の巡回は、一覧から読み直す)
+            Cache::forget($cacheKey);
         }
 
         if ($timeUp) {
