@@ -19,6 +19,28 @@ final class WebCronBudget
         $this->deadline = CarbonImmutable::now()->addSeconds($seconds);
     }
 
+    /**
+     * 時間の上限を延ばす(巡回のように、1ページに数十秒かかる処理のため)。PHP の実行時間の上限を延ばせたときだけ、
+     * 締め切りも延ばす。延ばせないサーバーでは、何もしない(従来どおりの短い上限で区切る)。
+     */
+    public function extend(int $seconds): bool
+    {
+        if ($this->deadline === null) {
+            return false;
+        }
+        if (function_exists('set_time_limit')) {
+            @set_time_limit($seconds + 30);
+        }
+        $limit = (int) ini_get('max_execution_time');
+        if ($limit !== 0 && $limit < $seconds + 30) {
+            return false;
+        }
+
+        $this->deadline = CarbonImmutable::now()->addSeconds($seconds);
+
+        return true;
+    }
+
     public function stop(): void
     {
         $this->deadline = null;

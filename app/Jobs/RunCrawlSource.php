@@ -26,6 +26,9 @@ final class RunCrawlSource implements ShouldQueue
     /** 大きなモデルは1ページの解析に数十秒かかる。キューの既定(60秒)で打ち切られないようにする */
     public int $timeout = 600;
 
+    /** アクセスで動かすときの、1回の実行時間(延ばせたとき) */
+    public const WEB_SECONDS = 150;
+
     public function __construct(public readonly int $sourceId) {}
 
     public function handle(CrawlRunner $runner, WebCronBudget $budget): void
@@ -40,6 +43,12 @@ final class RunCrawlSource implements ShouldQueue
             $this->release($wait);
 
             return;
+        }
+
+        // アクセスで動かしているときは、実行時間を延ばせれば延ばす(同じサイトへ10秒あけて読み、1ページの解析に数十秒かかるため、
+        // 25秒では1ページも進めない)。延ばせないときは、従来どおり短い上限で区切る
+        if (config()->boolean('app.crawl_web_extend', true)) {
+            $budget->extend(self::WEB_SECONDS);
         }
 
         try {

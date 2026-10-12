@@ -7,6 +7,7 @@ use App\Enums\AppMetaKey;
 use App\Enums\CronMode;
 use App\Enums\SettingKey;
 use App\Jobs\RunCrawlSource;
+use App\Models\CrawlRun;
 use App\Models\User;
 use App\Services\Crawl\CrawlRunner;
 use App\Services\Cron\WebCronBudget;
@@ -276,12 +277,31 @@ it('巡回のジョブ: 区切ったときは、同じジョブをもう一度�
     fakeSite(['https://city.example/events/' => listHtml(['/events/1']), 'https://city.example/events/1' => detailHtml('x')]);
     useAi([['events' => []]]);
     Queue::fake();
+    // 実行時間を延ばせないサーバーの動き(上限を延ばさない)
+    config(['app.crawl_web_extend' => false]);
 
     app(WebCronBudget::class)->start(10);
     (new RunCrawlSource($source->id))->handle(app(CrawlRunner::class), app(WebCronBudget::class));
 
     Queue::assertPushed(RunCrawlSource::class, fn (RunCrawlSource $job): bool => $job->sourceId === $source->id && $job->delay !== null);
     app(WebCronBudget::class)->stop();
+});
+
+it('巡回のジョブ: アクセスで動かすとき、実行時間を延ばせれば、上限(締め切り)も延ばして、ページを読み進める', function (): void {
+    fakeDns();
+    Storage::fake('local');
+    $source = crawlSource();
+    fakeSite(['https://city.example/events/' => listHtml(['/events/1']), 'https://city.example/events/1' => detailHtml('x')]);
+    useAi([['events' => []], ['events' => []]]);
+
+    $budget = app(WebCronBudget::class);
+    $budget->start(10);
+    (new RunCrawlSource($source->id))->handle(app(CrawlRunner::class), $budget);
+
+    // 上限が10秒でも、延ばせる(CLI は無制限)ので、区切らずに最後まで読む
+    expect(CrawlRun::query()->latest('id')->first()?->status)->toBe('ok')
+        ->and($budget->remaining())->toBeGreaterThan(60);
+    $budget->stop();
 });
 
 it('cron の停止の通知: アクセスで動かしているときは「止まった」とは言わない。自分自身を呼べない状態が続いたときだけ、1回知らせる', function (): void {
