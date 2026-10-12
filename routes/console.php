@@ -44,6 +44,9 @@ Schedule::command('update:run-scheduled')
 // 更新の途中で残ったメンテナンス表示の解除
 Schedule::command('update:recover')->everyFiveMinutes()->name('update-recover');
 
+// 位置のない行事(巡回で取り込んだものなど)に、住所・会場名から緯度・経度を入れる(地図のピンのため。少しずつ)
+Schedule::command('events:geocode')->everyThirtyMinutes()->name('events-geocode');
+
 // イベント終了処理: 最終日を過ぎた開催回を「開催済み」にする(毎年開催の行事は、次回未定の下書きを作る)
 Schedule::command('events:finish')->hourly()->name('events-finish');
 

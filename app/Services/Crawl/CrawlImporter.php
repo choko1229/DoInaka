@@ -13,6 +13,7 @@ use App\Models\Event;
 use App\Models\Region;
 use App\Models\Submission;
 use App\Services\Ai\EventDraft;
+use App\Services\Geo\Geocoder;
 use App\Services\Region\RegionScope;
 use App\Services\Submission\ReviewService;
 use App\Services\Submission\SubmissionStateMachine;
@@ -35,6 +36,7 @@ final class CrawlImporter
         private readonly SubmissionStateMachine $machine,
         private readonly ReviewService $review,
         private readonly RegionScope $scope,
+        private readonly Geocoder $geocoder,
     ) {}
 
     /**
@@ -155,12 +157,32 @@ final class CrawlImporter
             'start_time' => $draft->startTime, 'end_time' => $draft->endTime, 'source_url' => $sourceUrl, 'source_name' => $source->name,
             'crawl_source_id' => $source->id, 'confidence' => $draft->confidence,
             'notice' => $draft->isCancelled ? 'cancelled' : ($draft->isPostponed ? 'postponed' : null),
-        ], fn (mixed $v): bool => $v !== null);
+        ] + $this->coordinates($source, $draft), fn (mixed $v): bool => $v !== null);
 
         $submission = $this->open(SubmissionType::Event, $payload, null, null);
         $this->machine->transition($submission, SubmissionStatus::InReview);
 
         return $submission;
+    }
+
+    /**
+     * 地図のピンの位置。住所(なければ会場名)から、国土地理院の住所検索で調べる。見つからなければ入れない(地図には出ない)。
+     *
+     * @return array{lat?: float, lng?: float}
+     */
+    private function coordinates(CrawlSource $source, EventDraft $draft): array
+    {
+        $query = $draft->address ?? $draft->venue;
+        if ($query === null || trim($query) === '') {
+            return [];
+        }
+
+        /** @var Region|null $region */
+        $region = $source->region;
+        $prefecture = $region === null ? null : ($region->parent_id === null ? $region : $region->parent);
+        $found = $this->geocoder->find($query, $prefecture?->name);
+
+        return $found ?? [];
     }
 
     /** @param  array<string, mixed>  $payload */
