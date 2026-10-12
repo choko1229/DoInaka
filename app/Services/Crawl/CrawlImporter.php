@@ -180,7 +180,8 @@ final class CrawlImporter
         /** @var Region|null $region */
         $region = $source->region;
         $prefecture = $region === null ? null : ($region->parent_id === null ? $region : $region->parent);
-        $found = $this->geocoder->find($query, $prefecture?->name);
+        $near = $region !== null && $region->lat !== null && $region->lng !== null ? [(float) $region->lat, (float) $region->lng] : null;
+        $found = $this->geocoder->find($query, $prefecture?->name, $near);
 
         return $found ?? [];
     }
