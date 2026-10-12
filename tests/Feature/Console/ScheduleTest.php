@@ -36,6 +36,7 @@ const EXPECTED_SCHEDULE = [
     'holidays-import' => '10 3 * * 0',
     'geo-import' => '20 3 * * 0',
     'takedown-deadlines' => '0 9 * * *',
+    'events-geocode' => '*/30 * * * *',
 ];
 
 it('設計書10.2の定期処理がすべて登録されている(名前と頻度)', function (): void {
