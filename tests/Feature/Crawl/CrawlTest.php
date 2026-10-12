@@ -9,6 +9,7 @@ use App\Enums\SubmissionType;
 use App\Exceptions\AiRateLimited;
 use App\Jobs\RunCrawlSource;
 use App\Models\CrawlCandidate;
+use App\Models\CrawlPage;
 use App\Models\CrawlRun;
 use App\Models\Event;
 use App\Models\EventSeries;
@@ -46,6 +47,36 @@ beforeEach(function (): void {
 afterEach(function (): void {
     Carbon::setTestNow();
     Cache::flush();
+});
+
+it('続きの実行: 少し前に解析まで終えたページは取り直さず、先のページへ進む(先頭で時間を使い切らない)', function (): void {
+    $source = crawlSource();
+    fakeSite([
+        'https://city.example/events/' => listHtml(['/events/1', '/events/2']),
+        'https://city.example/events/1' => detailHtml('一つ目'),
+        'https://city.example/events/2' => detailHtml('二つ目'),
+    ]);
+    // /events/1 は、30分前に解析まで終えている
+    $done = new CrawlPage;
+    $done->forceFill(['crawl_source_id' => $source->id, 'url' => 'https://city.example/events/1', 'url_hash' => hash('sha256', 'https://city.example/events/1'), 'content_hash' => 'abc', 'fetched_at' => now()->subMinutes(30)])->save();
+    useAi([crawlReply(), crawlReply()]);
+
+    app(CrawlRunner::class)->run($source);
+
+    Http::assertNotSent(fn (Request $request): bool => $request->url() === 'https://city.example/events/1');
+    Http::assertSent(fn (Request $request): bool => $request->url() === 'https://city.example/events/2');
+});
+
+it('解析できなかったページは、次回「変更なし」で飛ばさず、また解析する(ETag を先に覚えない)', function (): void {
+    $source = crawlSource();
+    fakeSite(['https://city.example/events/' => Http::response(listHtml([]), 200, ['Content-Type' => 'text/html; charset=UTF-8', 'ETag' => '"v1"'])]);
+    useAi([new AiRateLimited(CarbonImmutable::now('UTC')->addHour())]);
+
+    expect(fn () => app(CrawlRunner::class)->run($source))->toThrow(AiRateLimited::class);
+
+    $page = CrawlPage::query()->where('crawl_source_id', $source->id)->first();
+    // 解析まで終えていないので、ハッシュも ETag も記録されていない(次回は条件なしで読み、解析をやり直す)
+    expect($page?->content_hash)->toBeNull()->and($page?->etag)->toBeNull();
 });
 
 it('一覧ページと詳細ページを読み、イベントを審査に取り込む(信頼済みでないものは自動で公開しない)', function (): void {
@@ -108,11 +139,13 @@ it('内容が変わらないページで AI を呼ばない(本文のハッシ�
     app(CrawlRunner::class)->run($source);
     expect($ai->requests)->toHaveCount(2);
 
-    // 2回目: 同じ内容 → AI を呼ばない
+    // 2回目(次の巡回=翌日): 同じ内容 → AI を呼ばない
+    Carbon::setTestNow(now()->addDay());
     app(CrawlRunner::class)->run($source->refresh());
     expect($ai->requests)->toHaveCount(2);
 
     // 詳細ページは ETag を送り、304 が返れば、本文を読まない
+    Carbon::setTestNow(now()->addDay());
     Http::swap(new Factory);
     fakeSite(['https://city.example/events/' => listHtml(['/events/1']), 'https://city.example/events/1' => Http::response('', 304)]);
     app(CrawlRunner::class)->run($source->refresh());
@@ -120,6 +153,7 @@ it('内容が変わらないページで AI を呼ばない(本文のハッシ�
     expect($ai->requests)->toHaveCount(2);
 
     // 内容が変わったら、また解析する
+    Carbon::setTestNow(now()->addDay());
     Http::swap(new Factory);
     fakeSite(['https://city.example/events/' => listHtml(['/events/1', '/events/9']), 'https://city.example/events/1' => Http::response('', 304)]);
     app(CrawlRunner::class)->run($source->refresh());
