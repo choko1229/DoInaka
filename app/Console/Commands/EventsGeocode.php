@@ -35,7 +35,8 @@ final class EventsGeocode extends Command
             $region = $event->region;
             $prefecture = $region === null ? null : ($region->parent_id === null ? $region : $region->parent);
 
-            $found = $geocoder->find($query, $prefecture?->name);
+            $near = $region !== null && $region->lat !== null && $region->lng !== null ? [(float) $region->lat, (float) $region->lng] : null;
+            $found = $geocoder->find($query, $prefecture?->name, $near);
             if ($found === null) {
                 continue;
             }
