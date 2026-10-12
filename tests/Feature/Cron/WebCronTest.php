@@ -19,6 +19,7 @@ use App\Services\Setting\SettingsService;
 use App\Services\Update\CronHealth;
 use App\Services\Update\CronWatcher;
 use Carbon\CarbonImmutable;
+use Illuminate\Http\Client\Factory;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Cache;
@@ -260,14 +261,23 @@ it('巡回: 時間の上限が近いと、ページの途中で区切って、�
     fakeSite(['https://city.example/events/' => listHtml(['/events/1']), 'https://city.example/events/1' => detailHtml('丸亀の秋祭り')]);
     useAi([['events' => [crawledEvent()]], ['events' => []]]);
 
-    // 上限まで残り10秒(余裕の15秒より近い)→ ページを1つも読まずに区切る。失敗にも成功にも数えない
+    // 上限まで残り10秒(余裕の15秒より近い)→ 1回の実行で最低1ページは進めて(一覧)、そこで区切る。失敗にも成功にも数えない
     $run = app(CrawlRunner::class)->run($source, CarbonImmutable::now()->addSeconds(10));
-    expect($run->status)->toBe('deferred')->and($run->error)->toBe('time_budget')->and($run->pages_fetched)->toBe(0)
+    expect($run->status)->toBe('deferred')->and($run->error)->toBe('time_budget')->and($run->pages_fetched)->toBe(1)
         ->and($source->refresh()->failure_streak)->toBe(0)->and($source->isPaused())->toBeFalse();
 
-    // 次の実行(上限なし)で、続きから読んで終わる
+    // 続きの実行(まだ上限がある)は、一覧を取り直さず、覚えておいたリンクで先の詳細ページへ進む
+    Http::swap(new Factory);
+    fakeSite(['https://city.example/events/1' => detailHtml('丸亀の秋祭り')]);
+    $run = app(CrawlRunner::class)->run($source, CarbonImmutable::now()->addSeconds(10));
+    Http::assertNotSent(fn (Request $r): bool => (string) $r->url() === 'https://city.example/events/');
+    expect($run->pages_fetched)->toBe(1)->and($run->pages_changed)->toBe(1);
+
+    // 次の実行(上限なし)で、最後まで読んで終わる
+    Http::swap(new Factory);
+    fakeSite(['https://city.example/events/' => listHtml(['/events/1']), 'https://city.example/events/1' => detailHtml('丸亀の秋祭り')]);
     $run = app(CrawlRunner::class)->run($source);
-    expect($run->status)->toBe('ok')->and($run->pages_fetched)->toBe(2);
+    expect($run->status)->toBe('ok');
 });
 
 it('巡回のジョブ: 区切ったときは、同じジョブをもう一度キューに入れる(待ち時間つき)', function (): void {
