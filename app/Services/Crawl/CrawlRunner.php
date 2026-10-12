@@ -92,6 +92,11 @@ final class CrawlRunner
                     $timeUp = true;
                     break;
                 }
+                // 少し前に読んで、解析まで終えているページ(一覧ページ以外)は、取り直さずに飛ばす。
+                // 同じサイトへは10秒あけて読むので、取り直すと、続きの実行が先頭のページで時間を使い切り、先へ進めない
+                if ($url !== $source->url && $this->recentlyDone($source, $url)) {
+                    continue;
+                }
                 $page = $this->fetchPage($source, $url, $url === $source->url ? $list : null);
                 if ($page === null) {
                     continue;
@@ -110,7 +115,7 @@ final class CrawlRunner
                     $published += $result['result'] === 'published' ? 1 : 0;
                 }
                 // 解析まで終わったページだけ、ハッシュを確定する(制限エラーで中断したページは、次回また解析する)
-                $page['record']->forceFill(['content_hash' => $page['hash'], 'event_count' => count($drafts), 'changed_at' => now()])->save();
+                $page['record']->forceFill(['content_hash' => $page['hash'], 'event_count' => count($drafts), 'changed_at' => now()] + ($page['validators'] ?? []))->save();
             }
         } catch (AiRateLimited $e) {
             $run->forceFill(['pages_fetched' => $fetched, 'pages_changed' => $changed, 'events_found' => $found, 'submissions_created' => $created, 'auto_published' => $published])->save();
@@ -139,6 +144,17 @@ final class CrawlRunner
         return $this->finish($run, 'ok');
     }
 
+    /** 1時間以内に読んで、解析まで終えているページか(続きの実行で飛ばすため。次の巡回は1日以上あとなので、取り直す) */
+    private function recentlyDone(CrawlSource $source, string $url): bool
+    {
+        return CrawlPage::query()
+            ->where('crawl_source_id', $source->id)
+            ->where('url_hash', hash('sha256', $url))
+            ->whereNotNull('content_hash')
+            ->where('fetched_at', '>=', now()->subHour())
+            ->exists();
+    }
+
     /**
      * 巡回する URL(一覧ページ + 同じサイト内のリンク。RSS は項目のリンクだけ)。
      *
@@ -156,7 +172,7 @@ final class CrawlRunner
     /**
      * ページを取得し、変わっているかを判定する。取れない・読んではいけないページは null。
      *
-     * @return array{record: CrawlPage, text: string, hash: string, changed: bool}|null
+     * @return array{record: CrawlPage, text: string, hash: string, changed: bool, validators?: array<string, mixed>}|null
      */
     private function fetchPage(CrawlSource $source, string $url, ?FetchResult $prefetched = null): ?array
     {
@@ -174,9 +190,14 @@ final class CrawlRunner
         }
 
         $hash = $result->hash();
-        $record->forceFill(['etag' => $result->etag, 'last_modified' => $result->lastModified, 'fetched_at' => now()])->save();
+        $changed = $record->content_hash !== $hash;
+        $validators = ['etag' => $result->etag, 'last_modified' => $result->lastModified, 'fetched_at' => now()];
+        // 変わっているページは、解析まで終えてから記録する(先に ETag を覚えると、解析できなかったとき、次回は「変更なし」で飛ばしてしまう)
+        if (! $changed) {
+            $record->forceFill($validators)->save();
+        }
 
-        return ['record' => $record, 'text' => $result->text(), 'hash' => $hash, 'changed' => $record->content_hash !== $hash];
+        return ['record' => $record, 'text' => $result->text(), 'hash' => $hash, 'changed' => $changed, 'validators' => $validators];
     }
 
     /**
